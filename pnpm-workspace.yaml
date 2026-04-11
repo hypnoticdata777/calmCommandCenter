@@ -1,0 +1,26 @@
+# ============================================================
+# ARCHIVO: pnpm-workspace.yaml
+#
+# ¿QUÉ HACE ESTE ARCHIVO?
+# Define el "workspace" de pnpm — el espacio de trabajo del proyecto.
+#
+# ¿QUÉ ES PNPM?
+# Es un gestor de paquetes (como npm o yarn) pero más rápido y
+# eficiente. En lugar de copiar dependencias en cada proyecto,
+# las comparte desde un almacén central en tu computadora.
+#
+# ¿QUÉ ES UN WORKSPACE?
+# Cuando un repositorio tiene múltiples proyectos relacionados
+# (monorepo), el workspace le dice a pnpm dónde encontrar cada uno.
+# Permite instalar dependencias para todos los proyectos con un
+# solo comando desde la raíz.
+# ============================================================
+
+# "packages" lista las carpetas que contienen proyectos (con package.json).
+packages:
+  # '.' representa la carpeta raíz del proyecto.
+  # Este proyecto tiene un solo paquete en la raíz.
+  # Si hubiera subproyectos, se agregarían aquí:
+  # - 'packages/*'   (todos los subdirectorios de packages/)
+  # - 'apps/web'     (un proyecto específico)
+  - '.'

@@ -1,0 +1,55 @@
+// ============================================================
+// ARCHIVO: tsconfig.node.json
+//
+// ¿QUÉ HACE ESTE ARCHIVO?
+// Configura TypeScript específicamente para los archivos que corren
+// en Node.js (el entorno de las herramientas de desarrollo),
+// NO en el navegador. El archivo principal que cubre es vite.config.ts.
+//
+// ¿POR QUÉ EXISTE SEPARADO DE tsconfig.json?
+// El navegador y Node.js son entornos distintos con capacidades
+// distintas. Node.js siempre es más nuevo que los navegadores,
+// así que puede usar características más modernas de JavaScript.
+// Tener dos tsconfig evita mezclar las reglas de ambos entornos.
+// ============================================================
+{
+  "compilerOptions": {
+    // ES2022 es más moderno que el ES2020 del tsconfig.json principal,
+    // porque Node.js (donde corre Vite) siempre está más actualizado
+    // que los navegadores que deben soportar los usuarios.
+    "target": "ES2022",
+
+    // Solo necesitamos APIs de JavaScript puro (ES2023) — sin DOM.
+    // Vite corre en Node.js, no en el navegador, así que no existe
+    // document, window, etc. Incluirlos causaría confusión.
+    "lib": ["ES2023"],
+
+    // ESNext para usar la sintaxis moderna de import/export.
+    "module": "ESNext",
+
+    // Omite verificación de tipos en librerías externas. Más velocidad.
+    "skipLibCheck": true,
+
+    // Modo de resolución de módulos optimizado para Vite.
+    "moduleResolution": "bundler",
+
+    // Permite escribir extensiones explícitas en los imports.
+    "allowImportingTsExtensions": true,
+
+    // Cada archivo es un módulo independiente.
+    "isolatedModules": true,
+
+    // Todos los archivos se tratan como módulos con import/export.
+    "moduleDetection": "force",
+
+    // Solo revisa tipos — Vite se encarga de la compilación real.
+    "noEmit": true,
+
+    // Verificaciones estrictas de tipos activadas.
+    "strict": true
+  },
+
+  // Solo aplica esta configuración a vite.config.ts — el único archivo
+  // de configuración de Vite que necesita el entorno de Node.js.
+  "include": ["vite.config.ts"]
+}

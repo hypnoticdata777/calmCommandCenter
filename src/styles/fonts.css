@@ -1,0 +1,36 @@
+/*
+  ============================================================
+  ARCHIVO: fonts.css
+
+  ¿QUÉ HACE ESTE ARCHIVO?
+  Carga las dos fuentes tipográficas del proyecto desde Google Fonts.
+  Google Fonts es un servicio gratuito que sirve fuentes a tu sitio
+  sin que tengas que descargarlas ni hospedarlas tú mismo.
+
+  LAS DOS FUENTES:
+  - Playfair Display: fuente de display/titulares. Tiene serifs
+    (esos pequeños remates en las letras). Se usa en títulos, números
+    grandes y encabezados. Da la sensación editorial/seria.
+  - Crimson Text: fuente para cuerpo de texto. Más legible en párrafos
+    largos. También tiene serifs. Combina perfectamente con Playfair.
+  ============================================================
+*/
+
+/*
+  @import url('...') le dice al navegador: "ve a esta URL y descarga el CSS".
+  El CSS que descarga de Google Fonts define las reglas @font-face
+  que apuntan a los archivos de fuente (.woff2) reales.
+
+  DESGLOSE DE LA URL:
+  family=Playfair+Display:wght@400;500;600;700
+    → Carga Playfair Display en pesos: 400 (normal), 500, 600, 700 (negrita)
+  family=Crimson+Text:ital,wght@0,400;0,600;1,400
+    → Carga Crimson Text:
+      ital=0, wght=400 → normal, peso regular
+      ital=0, wght=600 → normal, semibold
+      ital=1, wght=400 → itálica, peso regular
+  display=swap
+    → Mientras la fuente carga, muestra texto con una fuente del sistema.
+      Sin esto, el texto sería invisible hasta que cargue la fuente.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');

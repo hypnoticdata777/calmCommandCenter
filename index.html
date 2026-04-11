@@ -1,0 +1,55 @@
+
+  <!-- ============================================================
+    ARCHIVO: index.html
+
+    ¿QUÉ HACE ESTE ARCHIVO?
+    Es el punto de entrada de toda la aplicación — el único archivo
+    HTML real del proyecto. El navegador lo carga primero cuando
+    visitas el sitio. Su trabajo es mínimo: preparar la página y
+    decirle a React dónde "enchufarse" para tomar el control.
+
+    FLUJO DE CARGA:
+    1. El navegador descarga index.html
+    2. Ve el <script> y descarga main.tsx (compilado por Vite)
+    3. main.tsx monta el componente App dentro del <div id="root">
+    4. React toma control de toda la página desde ese punto
+  ============================================================ -->
+
+  <!-- DOCTYPE le dice al navegador que este es HTML5 (el estándar moderno).
+       Sin esto, el navegador entraría en "modo de compatibilidad" y algunas
+       cosas podrían verse diferente. -->
+  <!DOCTYPE html>
+
+  <!-- lang="en" le dice a los lectores de pantalla y motores de búsqueda
+       que el idioma principal de la página es inglés. -->
+  <html lang="en">
+    <head>
+      <!-- charset DEBE ser lo primero en <head> — regla del estándar HTML.
+           UTF-8 permite mostrar cualquier carácter: acentos, emojis, etc. -->
+      <meta charset="UTF-8" />
+
+      <!-- viewport controla cómo se escala la página en dispositivos móviles.
+           width=device-width → el ancho se adapta al ancho del dispositivo
+           initial-scale=1.0 → sin zoom al cargar (tamaño natural) -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      <!-- El título que aparece en la pestaña del navegador y en resultados de búsqueda -->
+      <title>Calm Command Center Design</title>
+    </head>
+
+    <body>
+      <!-- El <body> contiene todo lo visible en la página. -->
+
+      <!-- Este div vacío es el "contenedor raíz" de React.
+           Empieza vacío — React lo llenará con toda la interfaz.
+           El id="root" es como una dirección: main.tsx lo busca
+           con document.getElementById("root") para montar la app. -->
+      <div id="root"></div>
+
+      <!-- Este script carga el punto de entrada de JavaScript.
+           type="module" habilita la sintaxis moderna import/export.
+           Vite intercepta esta petición y sirve el código transformado.
+           Al ejecutarse, main.tsx monta React dentro del div#root. -->
+      <script type="module" src="/src/main.tsx"></script>
+    </body>
+  </html>

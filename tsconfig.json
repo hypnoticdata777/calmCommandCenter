@@ -1,0 +1,81 @@
+// ============================================================
+// ARCHIVO: tsconfig.json
+//
+// ¿QUÉ HACE ESTE ARCHIVO?
+// Configura el compilador de TypeScript para los archivos del
+// código fuente (carpeta src/). TypeScript es JavaScript con
+// "tipos" — te avisa de errores antes de ejecutar el código.
+// Este archivo le dice al compilador cómo interpretar el código.
+//
+// NOTA: Los archivos .json normalmente no aceptan comentarios,
+// pero los tsconfig usan JSONC (JSON with Comments) — TypeScript
+// los lee con su propio parser que entiende los // y /* */.
+// ============================================================
+{
+  "compilerOptions": {
+    // target: a qué versión de JavaScript se convierte el código.
+    // ES2020 es compatible con todos los navegadores modernos.
+    "target": "ES2020",
+
+    // Usa la forma moderna de definir propiedades en clases JavaScript.
+    // Necesario para compatibilidad con el estándar ES2022+.
+    "useDefineForClassFields": true,
+
+    // lib: qué APIs del entorno puede usar el código.
+    // ES2020 = métodos modernos de JS (Promise, Array, etc.)
+    // DOM = APIs del navegador (document, window, fetch, etc.)
+    // DOM.Iterable = permite recorrer con for...of elementos del DOM
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // module: qué sistema de módulos usar para import/export.
+    // ESNext = la sintaxis más moderna (import/export nativo).
+    "module": "ESNext",
+
+    // Omite la verificación de tipos en librerías externas (.d.ts).
+    // Acelera mucho la compilación sin sacrificar seguridad en tu código.
+    "skipLibCheck": true,
+
+    // Cómo TypeScript busca los archivos al hacer un import.
+    // "bundler" = modo optimizado para Vite y otros bundlers modernos.
+    "moduleResolution": "bundler",
+
+    // Permite escribir import "./archivo.tsx" con extensión explícita.
+    // Requerido cuando se usa moduleResolution: bundler.
+    "allowImportingTsExtensions": true,
+
+    // Cada archivo se trata como módulo independiente.
+    // Necesario para que Vite pueda transpilar archivos uno por uno.
+    "isolatedModules": true,
+
+    // "force" hace que TypeScript trate todos los archivos como módulos
+    // (con import/export), incluso si un archivo no tiene ninguno.
+    "moduleDetection": "force",
+
+    // TypeScript solo revisa tipos — NO genera archivos JavaScript.
+    // Vite se encarga de la compilación real. TypeScript = solo revisor.
+    "noEmit": true,
+
+    // Cómo transformar la sintaxis JSX (el HTML-dentro-de-JS de React).
+    // "react-jsx" usa la transformación moderna de React 17+ que no
+    // requiere escribir "import React from 'react'" en cada archivo.
+    "jsx": "react-jsx",
+
+    // Activa todas las verificaciones estrictas de TypeScript.
+    // Detecta más errores potenciales. Muy recomendado en proyectos serios.
+    "strict": true,
+
+    // Atajos de importación (deben coincidir con el alias de vite.config.ts).
+    // "@/*" mapea a "./src/*" — así "@/components/Button" encuentra
+    // el archivo en src/components/Button sin importar desde dónde importes.
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  // include: qué carpetas analiza TypeScript. Solo revisa "src/".
+  "include": ["src"],
+
+  // references: este tsconfig "conoce" también la config para Vite/Node.
+  // Permite tener configuraciones separadas según el entorno de ejecución.
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

@@ -1,0 +1,41 @@
+/*
+  ============================================================
+  ARCHIVO: tailwind.css
+
+  ¿QUÉ HACE ESTE ARCHIVO?
+  Configura y activa Tailwind CSS v4 para el proyecto.
+
+  ¿QUÉ ES TAILWIND CSS?
+  Es un framework de estilos que en vez de escribir CSS a mano,
+  usas clases predefinidas directamente en el HTML/JSX:
+    <div class="flex items-center text-red-500 p-4">
+  Tailwind genera solo el CSS que realmente usas — nada más.
+  ============================================================
+*/
+
+/*
+  @import 'tailwindcss' activa el framework Tailwind CSS.
+  source(none) le dice a Tailwind: "no busques clases por tu cuenta,
+  yo te digo exactamente dónde buscar" (usando @source abajo).
+  Esto es más eficiente y controlado que dejar que Tailwind escanee todo.
+*/
+@import 'tailwindcss' source(none);
+
+/*
+  @source le dice a Tailwind dónde buscar las clases que usa el proyecto.
+  '../**\/*.{js,ts,jsx,tsx}' es un "glob pattern" que significa:
+    ../       → sube un nivel (de src/styles/ a src/)
+    **\/       → busca en TODAS las subcarpetas recursivamente
+    *.         → cualquier archivo
+    {js,ts,jsx,tsx} → que termine en .js, .ts, .jsx, o .tsx
+  Tailwind lee esos archivos, encuentra todas las clases usadas
+  (como "flex", "text-white", "rounded-full") y genera solo ese CSS.
+*/
+@source '../**/*.{js,ts,jsx,tsx}';
+
+/*
+  tw-animate-css agrega clases de animación CSS adicionales a Tailwind.
+  Te da clases como "animate-fade-in", "animate-slide-up", etc.
+  para animar elementos sin escribir keyframes manualmente.
+*/
+@import 'tw-animate-css';

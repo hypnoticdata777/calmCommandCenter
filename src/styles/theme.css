@@ -1,0 +1,314 @@
+/*
+  ============================================================
+  ARCHIVO: theme.css
+
+  ¿QUÉ HACE ESTE ARCHIVO?
+  Es el cerebro visual del proyecto. Define TODO el sistema de diseño:
+  - Variables de color para modo claro y modo oscuro
+  - Tamaños de bordes redondeados
+  - Tipografía base para todos los elementos HTML
+  - El sistema de color de Tailwind conectado a las variables
+
+  ¿QUÉ ES UNA VARIABLE CSS?
+  Una variable CSS (también llamada "custom property") guarda un valor
+  con un nombre para reutilizarlo. Se declara con "--" al inicio:
+    --color-rojo: #dc2626;
+  Y se usa así en cualquier parte del CSS:
+    color: var(--color-rojo);
+  Si cambias la variable, TODOS los elementos que la usen se actualizan.
+  ============================================================
+*/
+
+/*
+  @custom-variant dark define cómo Tailwind detecta el "modo oscuro".
+  "&:is(.dark *)" significa: "aplica estos estilos cuando el elemento
+  está dentro de un elemento que tiene la clase .dark"
+  En la práctica: cuando el <html> o <body> tiene class="dark",
+  todos los elementos adentro usan los estilos del modo oscuro.
+*/
+@custom-variant dark (&:is(.dark *));
+
+/*
+  :root es el selector del elemento raíz del documento (el <html>).
+  Las variables definidas aquí son GLOBALES — disponibles en todo el CSS.
+  Estas son las variables del MODO CLARO (el predeterminado).
+*/
+:root {
+  --font-size: 16px;           /* tamaño base de fuente; 1rem = este valor */
+
+  /* ---- COLORES PRINCIPALES ---- */
+  --background: #ffffff;                /* fondo de la página: blanco */
+  --foreground: oklch(0.145 0 0);       /* color de texto principal: casi negro */
+
+  /* ---- TARJETAS Y POPOVERS ---- */
+  /* oklch() es un espacio de color moderno (más preciso que rgb/hex).
+     Formato: oklch(luminosidad cromacidad matiz)
+     oklch(0.145 0 0) = muy oscuro, sin saturación = casi negro
+     oklch(1 0 0) = máxima luminosidad, sin saturación = blanco puro */
+  --card: #ffffff;                      /* fondo de tarjetas */
+  --card-foreground: oklch(0.145 0 0);  /* texto dentro de tarjetas */
+  --popover: oklch(1 0 0);              /* fondo de popovers/tooltips */
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* ---- COLOR PRIMARIO (botones principales, links) ---- */
+  --primary: #030213;                   /* casi negro — el color de acción principal */
+  --primary-foreground: oklch(1 0 0);  /* texto sobre fondo primario: blanco */
+
+  /* ---- COLOR SECUNDARIO (botones secundarios, badges) ---- */
+  --secondary: oklch(0.95 0.0058 264.53); /* gris muy claro con toque azulado */
+  --secondary-foreground: #030213;
+
+  /* ---- COLORES "MUTED" (atenuados — para texto de apoyo) ---- */
+  --muted: #ececf0;                     /* fondo atenuado: gris claro */
+  --muted-foreground: #717182;          /* texto atenuado: gris medio */
+
+  /* ---- COLOR DE ACENTO (hover states, elementos destacados) ---- */
+  --accent: #e9ebef;                    /* fondo de acento: gris muy claro */
+  --accent-foreground: #030213;
+
+  /* ---- COLOR DESTRUCTIVO (errores, botones de eliminar) ---- */
+  --destructive: #d4183d;              /* rojo para acciones peligrosas */
+  --destructive-foreground: #ffffff;   /* texto blanco sobre rojo */
+
+  /* ---- BORDES E INPUTS ---- */
+  /* rgba(0, 0, 0, 0.1) = negro al 10% de opacidad = borde muy sutil */
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;                 /* fondo del input: transparente */
+  --input-background: #f3f3f5;         /* fondo alternativo de inputs */
+  --switch-background: #cbced4;        /* fondo del toggle/switch apagado */
+
+  /* ---- PESOS DE FUENTE ---- */
+  --font-weight-medium: 500;            /* semi-negrita */
+  --font-weight-normal: 400;            /* regular */
+
+  /* ---- RING (anillo de foco para accesibilidad) ---- */
+  /* El ring es el contorno que aparece cuando haces Tab para navegar */
+  --ring: oklch(0.708 0 0);            /* gris medio */
+
+  /* ---- COLORES DE GRÁFICAS (para los componentes de charts) ---- */
+  --chart-1: oklch(0.646 0.222 41.116);  /* naranja */
+  --chart-2: oklch(0.6 0.118 184.704);   /* verde azulado */
+  --chart-3: oklch(0.398 0.07 227.392);  /* azul oscuro */
+  --chart-4: oklch(0.828 0.189 84.429);  /* amarillo */
+  --chart-5: oklch(0.769 0.188 70.08);   /* amarillo-naranja */
+
+  /* ---- BORDES REDONDEADOS ---- */
+  /* rem = unidad relativa al font-size base (16px). 0.625rem = 10px */
+  --radius: 0.625rem;                   /* radio base de bordes redondeados */
+
+  /* ---- COLORES DEL SIDEBAR (panel lateral de navegación) ---- */
+  --sidebar: oklch(0.985 0 0);          /* fondo del sidebar: casi blanco */
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+/*
+  .dark contiene las variables del MODO OSCURO.
+  Cuando el elemento <html> tiene la clase "dark", estas variables
+  REEMPLAZAN a las de :root para todos los elementos dentro.
+  Next-themes (la librería de temas) se encarga de agregar/quitar
+  esa clase automáticamente según la preferencia del usuario.
+*/
+.dark {
+  --background: oklch(0.145 0 0);   /* fondo oscuro: casi negro */
+  --foreground: oklch(0.985 0 0);   /* texto claro: casi blanco */
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/*
+  @theme inline conecta las variables CSS del proyecto con el sistema
+  de Tailwind CSS v4. Sin esto, Tailwind no sabría que "bg-background"
+  debe usar la variable --background.
+
+  var(--nombre) lee el valor de una variable CSS definida arriba.
+  Así cuando el modo cambia (claro/oscuro), las clases de Tailwind
+  también cambian automáticamente sin tocar el HTML.
+*/
+@theme inline {
+  --color-background: var(--background); /* bg-background en Tailwind */
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  /* calc() hace matemáticas con variables CSS en tiempo real.
+     --radius base es 10px (0.625rem), y las variantes se derivan de él:
+     sm = 10-4 = 6px | md = 10-2 = 8px | lg = 10px | xl = 10+4 = 14px */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  @layer base define estilos base — los más generales, aplicados a
+  elementos HTML directos. Vive en la capa más baja de Tailwind,
+  lo que significa que CUALQUIER clase de utilidad de Tailwind
+  (como text-sm, font-bold) la puede sobreescribir fácilmente.
+  Es el lugar correcto para estilos que deben aplicar a toda la app
+  sin tener que ponerlos en cada componente individualmente.
+*/
+@layer base {
+  /* "*" selecciona TODOS los elementos de la página.
+     @apply es la forma de usar clases de Tailwind dentro de CSS.
+     border-border = aplica el color de borde de la variable --border
+     outline-ring/50 = el anillo de foco (accesibilidad) al 50% de opacidad */
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* El body recibe el fondo y color de texto del tema activo (claro/oscuro),
+     y Crimson Text como fuente predeterminada para todo el texto de la app. */
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Crimson Text', serif;  /* fuente de cuerpo para todo el texto */
+  }
+
+  /* Todos los encabezados usan Playfair Display — la fuente editorial/seria */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Los botones también usan Playfair Display para mantener coherencia */
+  button {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Los inputs usan Crimson Text — coherente con el cuerpo de texto */
+  input {
+    font-family: 'Crimson Text', serif;
+  }
+
+  /*
+    Estilos tipográficos predeterminados para los elementos HTML.
+    var(--text-2xl) etc. son variables de tamaño de Tailwind v4.
+    line-height: 1.5 = altura de línea de 150% del tamaño de fuente
+    (si la fuente es 16px, el espacio entre líneas es 24px).
+  */
+
+  /* html establece el tamaño base de fuente — 16px por defecto.
+     Todo lo que use "rem" como unidad se calcula relativo a este valor. */
+  html {
+    font-size: var(--font-size);  /* 16px — 1rem = 16px */
+  }
+
+  /* h1 es el título más importante de la página */
+  h1 {
+    font-size: var(--text-2xl);              /* equivale a ~24px */
+    font-weight: var(--font-weight-medium);  /* 500 — semi-negrita */
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);               /* equivale a ~20px */
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);               /* equivale a ~18px */
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);             /* equivale a 16px (el base) */
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);  /* 400 — regular (no negrita) */
+    line-height: 1.5;
+  }
+}
+
+/*
+  ============================================================
+  RESUMEN DE theme.css:
+  1. :root     → variables del modo CLARO (colores, radios, pesos)
+  2. .dark     → las mismas variables pero para modo OSCURO
+  3. @theme    → conecta esas variables con las clases de Tailwind
+  4. @layer base → estilos por defecto para todos los elementos HTML
+
+  Si quieres cambiar un color de toda la app, solo cambias la
+  variable aquí y se propaga automáticamente a todos los componentes.
+  ============================================================
+*/

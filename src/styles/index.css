@@ -1,0 +1,28 @@
+/*
+  ============================================================
+  ARCHIVO: index.css
+
+  ¿QUÉ HACE ESTE ARCHIVO?
+  Es el punto de entrada de todos los estilos del proyecto.
+  No contiene CSS propio — solo importa los otros 3 archivos
+  de estilos en el orden correcto.
+
+  Este archivo es importado una sola vez en src/main.tsx,
+  y desde ahí todos los estilos llegan a toda la aplicación.
+
+  ORDEN DE IMPORTACIÓN (importa porque el CSS se aplica en cascada):
+  1. fonts.css  → carga las fuentes primero (necesarias para todo)
+  2. tailwind.css → configura el framework de utilidades CSS
+  3. theme.css  → define los colores, variables y estilos base
+                  (va al final para poder sobreescribir si es necesario)
+  ============================================================
+*/
+
+/* Carga las fuentes Playfair Display y Crimson Text de Google Fonts */
+@import './fonts.css';
+
+/* Activa el framework Tailwind CSS y sus utilidades */
+@import './tailwind.css';
+
+/* Define las variables de color, tipografía y estilos base de los elementos HTML */
+@import './theme.css';
