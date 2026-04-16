@@ -1,55 +1,98 @@
-// ============================================================
-// ARCHIVO: tsconfig.node.json
+// ============================================================================
+// QUICK REFERENCE: TYPESCRIPT NODE CONFIGURATION
+// ============================================================================
+// | CONCEPT                       | DESCRIPTION                                                                 |
+// |-------------------------------|-----------------------------------------------------------------------------|
+// | target                        | Specifies the JavaScript language version for the emitted output.           |
+// | lib                           | Defines which built-in type definitions to include (e.g., ES2023, DOM).     |
+// | module                        | Sets the module system for the project (ESNext for modern ESM).             |
+// | skipLibCheck                  | Skips type checking of .d.ts files to improve compilation speed.           |
+// | moduleResolution              | Determines how TypeScript resolves module imports (e.g., bundler, node).     |
+// | noEmit                        | Tells TypeScript not to output files (letting a bundler like Vite do it).    |
+// | strict                        | Enables a wide range of strong type-checking behavior.                      |
+// | include                       | Specifies the files or directories the compiler should process.             |
+// ============================================================================
+
+// ============================================================================
+// FILE DOCUMENTATION: tsconfig.node.json
+// ============================================================================
+// FILE NAME: tsconfig.node.json
 //
-// ¿QUÉ HACE ESTE ARCHIVO?
-// Configura TypeScript específicamente para los archivos que corren
-// en Node.js (el entorno de las herramientas de desarrollo),
-// NO en el navegador. El archivo principal que cubre es vite.config.ts.
+// WHAT THIS FILE DOES:
+// This is a specialized TypeScript configuration file designed specifically 
+// for the Node.js environment. It focuses on the build-tooling side of the 
+// project rather than the code that runs in the user's browser.
 //
-// ¿POR QUÉ EXISTE SEPARADO DE tsconfig.json?
-// El navegador y Node.js son entornos distintos con capacidades
-// distintas. Node.js siempre es más nuevo que los navegadores,
-// así que puede usar características más modernas de JavaScript.
-// Tener dos tsconfig evita mezclar las reglas de ambos entornos.
-// ============================================================
+// WHAT THE SYSTEM USES IT FOR:
+// It primarily configures how 'vite.config.ts' is parsed and type-checked.
+// Since Vite runs on Node.js, it can use more modern JS features than the 
+// client-side code might support.
+//
+// EXECUTION FLOW:
+// 1. The IDE/Compiler detects this file.
+// 2. It applies these specific rules only to the files listed in "include".
+// 3. It ensures development tools have full type-safety without mixing 
+//    Node-specific globals (like 'process') with Browser globals (like 'window').
+//
+// MAIN SECTIONS:
+// - compilerOptions: Technical rules for how TS interprets the code.
+// - include: Scope definition (which files this config governs).
+// ============================================================================
+
 {
+  // ============================================================
+  // SECTION: COMPILER OPTIONS
+  // ============================================================
   "compilerOptions": {
-    // ES2022 es más moderno que el ES2020 del tsconfig.json principal,
-    // porque Node.js (donde corre Vite) siempre está más actualizado
-    // que los navegadores que deben soportar los usuarios.
+    
+    // We target ES2022 because Node.js environments (where Vite runs) 
+    // are typically more updated than general-purpose browsers.
     "target": "ES2022",
 
-    // Solo necesitamos APIs de JavaScript puro (ES2023) — sin DOM.
-    // Vite corre en Node.js, no en el navegador, así que no existe
-    // document, window, etc. Incluirlos causaría confusión.
+    // We only include ES2023 libraries. Since this is for Node.js, 
+    // we explicitly exclude "DOM" to prevent using browser-only 
+    // APIs in our build configuration scripts.
     "lib": ["ES2023"],
 
-    // ESNext para usar la sintaxis moderna de import/export.
+    // Use ESNext to support the latest ECMAScript module syntax 
+    // (import/export), which is standard for Vite projects.
     "module": "ESNext",
 
-    // Omite verificación de tipos en librerías externas. Más velocidad.
+    // Skips checking the types of external node_modules. 
+    // This significantly speeds up the development environment.
     "skipLibCheck": true,
 
-    // Modo de resolución de módulos optimizado para Vite.
+    // "bundler" resolution is optimized for tools like Vite that 
+    // understand modern module loading strategies.
     "moduleResolution": "bundler",
 
-    // Permite escribir extensiones explícitas en los imports.
+    // Allows importing .ts files directly in the config—useful 
+    // for keeping the build pipeline strictly typed.
     "allowImportingTsExtensions": true,
 
-    // Cada archivo es un módulo independiente.
+    // Ensures that each file can be transpiled safely without 
+    // needing to check other files (required by many modern bundlers).
     "isolatedModules": true,
 
-    // Todos los archivos se tratan como módulos con import/export.
+    // Forces TypeScript to treat all files as modules, preventing 
+    // global scope pollution in the config scripts.
     "moduleDetection": "force",
 
-    // Solo revisa tipos — Vite se encarga de la compilación real.
+    // This file is only for type-checking. Vite handles the 
+    // actual conversion from TS to JS, so we don't "emit" files here.
     "noEmit": true,
 
-    // Verificaciones estrictas de tipos activadas.
+    // Enables "Strict Mode" to catch potential bugs and enforce 
+    // the high engineering standards you're aiming for, Carlos.
     "strict": true
   },
 
-  // Solo aplica esta configuración a vite.config.ts — el único archivo
-  // de configuración de Vite que necesita el entorno de Node.js.
+  // ============================================================
+  // SECTION: INCLUSION RULES
+  // ============================================================
+  
+  // We strictly limit this config to the Vite configuration file.
+  // This prevents Node-specific types from leaking into your 
+  // frontend application logic.
   "include": ["vite.config.ts"]
 }
