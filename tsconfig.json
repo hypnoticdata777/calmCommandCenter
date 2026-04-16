@@ -1,17 +1,52 @@
-// ============================================================
-// ARCHIVO: tsconfig.json
+// ============================================================================
+// QUICK REFERENCE: TYPESCRIPT COMPILER CONFIGURATION
+// ============================================================================
+// | SYNTAX / KEY            | DESCRIPTION                                                                 |
+// |-------------------------|-----------------------------------------------------------------------------|
+// | target                  | The JavaScript version the source code is transpiled into (e.g., ES2020).    |
+// | lib                     | Built-in API definitions available during development (Browser vs Node).    |
+// | module                  | The module system used for imports/exports (e.g., ESNext for Vite).         |
+// | skipLibCheck            | Skips type-checking of .d.ts files in node_modules to speed up builds.      |
+// | moduleResolution        | The algorithm used to locate modules; "bundler" is optimized for Vite/Web.  |
+// | noEmit                  | Ensures TS only handles type checking, leaving file generation to Vite.     |
+// | jsx                     | Configures how JSX/TSX files are transformed into standard JavaScript.      |
+// | strict                  | Enables a suite of type-checking behaviors for maximum code reliability.    |
+// | paths                   | Configures "Aliases" to avoid messy relative imports (../../).              |
+// | include                 | Specifies which directories the TypeScript compiler should monitor.          |
+// | references              | Links to other tsconfig files for project-specific environments.            |
+// ============================================================================
+
+// ============================================================================
+// FILE DOCUMENTATION: tsconfig.json
+// ============================================================================
+// FILE NAME: tsconfig.json
 //
-// ¿QUÉ HACE ESTE ARCHIVO?
-// Configura el compilador de TypeScript para los archivos del
-// código fuente (carpeta src/). TypeScript es JavaScript con
-// "tipos" — te avisa de errores antes de ejecutar el código.
-// Este archivo le dice al compilador cómo interpretar el código.
+// WHAT THIS FILE DOES:
+// This is the core configuration for the TypeScript compiler (tsc). It defines 
+// the rules, constraints, and environment for your application's source code. 
+// It acts as the "source of truth" for how types are validated in the /src folder.
 //
-// NOTA: Los archivos .json normalmente no aceptan comentarios,
-// pero los tsconfig usan JSONC (JSON with Comments) — TypeScript
-// los lee con su propio parser que entiende los // y /* */.
-// ============================================================
+// WHAT THE USER SEES / WHAT THE SYSTEM USES IT FOR:
+// - The Developer (Carlos): Sees real-time error underlining in the IDE (VS Code).
+// - The System (Vite): Uses these settings to understand how to process TSX/TS 
+//   files before bundling them for the browser.
+//
+// EXECUTION FLOW:
+// 1. IDE/Compiler initializes and reads this configuration.
+// 2. It scans the files defined in "include".
+// 3. It applies strictness rules and path mappings to resolve imports.
+// 4. If errors are found, the build process (or IDE) alerts the developer.
+//
+// MAIN SECTIONS:
+// - compilerOptions: Detailed technical settings for the TS engine.
+// - include: Boundary setting for the compiler's scope.
+// - references: Environment isolation (linking Node-specific configs).
+// ============================================================================
+
 {
+  // ============================================================
+  // SECTION: COMPILER OPTIONS
+  // ============================================================
   "compilerOptions": {
     // target: a qué versión de JavaScript se convierte el código.
     // ES2020 es compatible con todos los navegadores modernos.
@@ -64,6 +99,9 @@
     // Detecta más errores potenciales. Muy recomendado en proyectos serios.
     "strict": true,
 
+    // ============================================================
+    // SECTION: PATH ALIASES (SHORTCUTS)
+    // ============================================================
     // Atajos de importación (deben coincidir con el alias de vite.config.ts).
     // "@/*" mapea a "./src/*" — así "@/components/Button" encuentra
     // el archivo en src/components/Button sin importar desde dónde importes.
@@ -71,6 +109,10 @@
       "@/*": ["./src/*"]
     }
   },
+
+  // ============================================================
+  // SECTION: PROJECT SCOPE & REFERENCES
+  // ============================================================
 
   // include: qué carpetas analiza TypeScript. Solo revisa "src/".
   "include": ["src"],
