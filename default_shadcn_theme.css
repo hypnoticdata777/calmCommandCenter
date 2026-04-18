@@ -1,74 +1,211 @@
+/*
+/* ╔══════════════════════════════════════════════════════════════════════════════╗
+/* ║                        TABLA DE CONCEPTOS DEL ARCHIVO                      ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  SÍMBOLO / TÉRMINO              EXPLICACIÓN EN LENGUAJE SIMPLE              ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  :root                        │ Selector especial que apunta al elemento    ║
+/* ║                               │ más alto del HTML (<html>). Las variables   ║
+/* ║                               │ declaradas aquí son globales en toda la     ║
+/* ║                               │ página.                                     ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  .dark                        │ Clase CSS aplicada al elemento <html> para  ║
+/* ║                               │ activar el modo oscuro. Sobreescribe los    ║
+/* ║                               │ valores definidos en :root.                 ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  @theme inline                │ Directiva especial de Tailwind CSS v4 que   ║
+/* ║                               │ convierte las variables CSS personalizadas  ║
+/* ║                               │ en tokens de diseño (utilidades de clase).  ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  --nombre-variable            │ Propiedad personalizada de CSS (CSS Custom  ║
+/* ║                               │ Property). Funciona como una variable:      ║
+/* ║                               │ se declara con -- y se reutiliza con var(). ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  var(--nombre)                │ Función que lee el valor de una propiedad   ║
+/* ║                               │ personalizada. Si la variable no existe,    ║
+/* ║                               │ puede recibir un valor de respaldo.         ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  calc(expresión)              │ Función de CSS para hacer cálculos          ║
+/* ║                               │ matemáticos directamente en el valor de     ║
+/* ║                               │ una propiedad (suma, resta, etc.).          ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  oklch(L C H)                 │ Función de color moderna. Los tres números  ║
+/* ║                               │ representan: Luminosidad (0=negro,1=blanco),║
+/* ║                               │ Croma (intensidad del color), y Tono        ║
+/* ║                               │ (ángulo en la rueda de colores). Es más     ║
+/* ║                               │ uniforme perceptualmente que hex o rgb.     ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  rgba(R, G, B, A)             │ Función de color en formato rojo-verde-azul ║
+/* ║                               │ con canal alfa (A) que controla opacidad:   ║
+/* ║                               │ 0 = transparente, 1 = sólido.              ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  #hexadecimal                 │ Código de color en formato hexadecimal.     ║
+/* ║                               │ Seis dígitos representan rojo, verde y      ║
+/* ║                               │ azul en base 16.                            ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  --radius                     │ Variable base para el redondeo de esquinas. ║
+/* ║                               │ Otras variables de radio se calculan        ║
+/* ║                               │ restando o sumando píxeles a este valor.    ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  --sidebar-*                  │ Grupo de variables exclusivas para el       ║
+/* ║                               │ componente de barra lateral (sidebar).      ║
+/* ║                               │ Se separan del tema general para poder      ║
+/* ║                               │ estilizarla de forma independiente.         ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  --chart-*                    │ Variables de color para los cinco tipos de  ║
+/* ║                               │ gráficas. Se definen por separado para      ║
+/* ║                               │ facilitar el cambio de paleta sin tocar     ║
+/* ║                               │ el resto del tema.                          ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  --color-* (en @theme)        │ Alias de Tailwind v4. Cada --color-* mapea  ║
+/* ║                               │ directamente a una variable CSS del tema,   ║
+/* ║                               │ habilitando clases como bg-primary,         ║
+/* ║                               │ text-muted-foreground, etc.                 ║
+/* ╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
+/*
+/* ╔══════════════════════════════════════════════════════════════════════════════╗
+/* ║                          ENCABEZADO DEL ARCHIVO                            ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  Archivo     : globals.css                                                 ║
+/* ║  Propósito   : Define el sistema de tokens de diseño completo de la        ║
+/* ║                aplicación usando propiedades personalizadas de CSS.         ║
+/* ║                Actúa como la única fuente de verdad para colores, radios,   ║
+/* ║                tipografía y variables de componentes (sidebar, charts).     ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  Secciones del archivo                                                     ║
+/* ║  ─────────────────────────────────────────────────────────────────────     ║
+/* ║  1. Tema claro (:root)     → Variables activas por defecto en toda la app  ║
+/* ║  2. Tema oscuro (.dark)    → Sobreescrituras para el modo oscuro            ║
+/* ║  3. Mapa de Tailwind       → @theme inline conecta variables a utilidades  ║
+/* ╠══════════════════════════════════════════════════════════════════════════════╣
+/* ║  Nota de uso : Para cambiar un color en toda la app, modificar el valor    ║
+/* ║                de la variable aquí. No editar componentes individuales.     ║
+/* ╚══════════════════════════════════════════════════════════════════════════════╝
+*/
+
+
+/* ── Tema claro (valores por defecto) ─────────────────────────────────────── */
+
 :root {
-  --font-size: 16px;
+  --font-size: 16px;                         /* tamaño base para calcular rem en componentes */
+
+  /* ── Colores de fondo y texto principal ───────────────────────────────── */
   --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
+  --foreground: oklch(0.145 0 0);            /* casi negro — oklch con croma 0 es escala de grises */
+
+  /* ── Colores de tarjeta ───────────────────────────────────────────────── */
+  --card: #ffffff;                           /* mismo fondo que la página para integración visual */
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+
+  /* ── Colores de popover (menús flotantes, tooltips) ──────────────────── */
+  --popover: oklch(1 0 0);                   /* blanco puro en oklch — equivalente a #ffffff */
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
+
+  /* ── Color primario (botones principales, acciones clave) ────────────── */
+  --primary: #030213;                        /* negro casi absoluto — contrasta fuerte con fondo blanco */
+  --primary-foreground: oklch(1 0 0);        /* blanco para texto sobre fondo primario oscuro */
+
+  /* ── Color secundario (acciones alternativas, badges) ───────────────── */
+  --secondary: oklch(0.95 0.0058 264.53);    /* gris muy claro con leve tinte azulado */
   --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
+
+  /* ── Color muted (texto deshabilitado, placeholders) ─────────────────── */
+  --muted: #ececf0;                          /* gris suave para fondos de elementos inactivos */
+  --muted-foreground: #717182;               /* gris medio — suficiente contraste para texto secundario */
+
+  /* ── Color de acento (hover, selección, resaltado) ───────────────────── */
   --accent: #e9ebef;
   --accent-foreground: #030213;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
+
+  /* ── Color destructivo (eliminar, errores críticos) ──────────────────── */
+  --destructive: #d4183d;                    /* rojo intenso — señal visual de peligro */
+  --destructive-foreground: #ffffff;         /* blanco para máximo contraste sobre rojo */
+
+  /* ── Bordes, inputs y anillos de foco ────────────────────────────────── */
+  --border: rgba(0, 0, 0, 0.1);             /* negro semitransparente — se adapta a cualquier fondo */
+  --input: transparent;                      /* sin fondo propio — hereda del contenedor */
+  --input-background: #f3f3f5;              /* gris muy claro para diferenciar el campo del fondo */
+  --switch-background: #cbced4;             /* gris para switches en estado apagado */
+  --ring: oklch(0.708 0 0);                 /* gris medio para el anillo de foco de accesibilidad */
+
+  /* ── Pesos tipográficos ───────────────────────────────────────────────── */
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
+
+  /* ── Variables de gráficas (5 colores para series de datos) ──────────── */
+  --chart-1: oklch(0.646 0.222 41.116);     /* naranja cálido */
+  --chart-2: oklch(0.6 0.118 184.704);      /* verde azulado */
+  --chart-3: oklch(0.398 0.07 227.392);     /* azul oscuro */
+  --chart-4: oklch(0.828 0.189 84.429);     /* amarillo */
+  --chart-5: oklch(0.769 0.188 70.08);      /* amarillo-naranja */
+
+  /* ── Radio de bordes ─────────────────────────────────────────────────── */
+  --radius: 0.625rem;                        /* valor base — los tamaños sm/md/lg/xl se calculan desde aquí */
+
+  /* ── Variables exclusivas del componente sidebar ─────────────────────── */
+  --sidebar: oklch(0.985 0 0);              /* blanco casi puro para distinguir del fondo de página */
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: #030213;
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent: oklch(0.97 0 0);        /* hover muy sutil dentro del sidebar */
   --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-border: oklch(0.922 0 0);       /* borde gris claro para separar items del sidebar */
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+
+/* ── Tema oscuro (sobreescritura cuando .dark está activo en <html>) ──────── */
+
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
+  /* ── Fondo y texto invertidos para modo noche ────────────────────────── */
+  --background: oklch(0.145 0 0);           /* negro profundo — base del tema oscuro */
+  --foreground: oklch(0.985 0 0);           /* blanco casi puro para contraste sobre negro */
+
+  --card: oklch(0.145 0 0);                 /* misma base que background para unificar superficies */
   --card-foreground: oklch(0.985 0 0);
+
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
+
+  /* ── Primario invertido — ahora el blanco es la acción principal ─────── */
   --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.205 0 0);   /* gris oscuro para texto sobre primario blanco */
+
+  /* ── Secundario con gris oscuro para no competir con el primario ─────── */
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
+
+  --muted: oklch(0.269 0 0);               /* mismo tono que secondary — elementos apagados */
+  --muted-foreground: oklch(0.708 0 0);    /* gris medio — legible pero sin protagonismo */
+
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
+
+  /* ── Destructivo más apagado en modo oscuro — rojo saturado lastima la vista */
   --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
+  --destructive-foreground: oklch(0.637 0.237 25.331); /* rojo claro sobre rojo oscuro */
+
+  /* ── Bordes e inputs en modo oscuro ──────────────────────────────────── */
+  --border: oklch(0.269 0 0);              /* gris oscuro — suficiente para separar sin brillar */
   --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --ring: oklch(0.439 0 0);               /* anillo de foco más oscuro para no distraer */
+
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
+
+  /* ── Gráficas en modo oscuro — colores más vibrantes para compensar el fondo negro */
+  --chart-1: oklch(0.488 0.243 264.376);   /* azul vivo */
+  --chart-2: oklch(0.696 0.17 162.48);     /* verde */
+  --chart-3: oklch(0.769 0.188 70.08);     /* amarillo-naranja */
+  --chart-4: oklch(0.627 0.265 303.9);     /* púrpura */
+  --chart-5: oklch(0.645 0.246 16.439);    /* rojo-naranja */
+
+  /* ── Sidebar en modo oscuro ──────────────────────────────────────────── */
+  --sidebar: oklch(0.205 0 0);             /* ligeramente más claro que el fondo para distinguirse */
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary: oklch(0.488 0.243 264.376); /* azul — acento de marca visible en oscuro */
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
@@ -76,7 +213,18 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+
+/* ── Mapa de tokens Tailwind v4 (@theme inline) ───────────────────────────── */
+
+/*
+ * Esta sección no define estilos visuales nuevos.
+ * Su único propósito es registrar las variables CSS como tokens de Tailwind,
+ * lo que habilita clases de utilidad como bg-primary, text-muted-foreground,
+ * border-border, etc. Sin este bloque, Tailwind no reconocería las variables.
+ */
 @theme inline {
+
+  /* ── Colores del sistema ──────────────────────────────────────────────── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -98,15 +246,21 @@
   --color-input-background: var(--input-background);
   --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
+
+  /* ── Colores de gráficas ──────────────────────────────────────────────── */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+
+  /* ── Radios calculados a partir de la variable base ──────────────────── */
+  --radius-sm: calc(var(--radius) - 4px);  /* más pequeño que base — para elementos compactos */
+  --radius-md: calc(var(--radius) - 2px);  /* intermedio */
+  --radius-lg: var(--radius);              /* valor base sin modificar */
+  --radius-xl: calc(var(--radius) + 4px);  /* más grande — para tarjetas y modales */
+
+  /* ── Colores del sidebar ──────────────────────────────────────────────── */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
