@@ -243,6 +243,12 @@
     font-family: 'Crimson Text', serif;
   }
 
+  /* Reusable class for any non-heading element that needs Playfair Display.
+     Headings already get it above; this covers <div>, <span>, etc. */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
   /*
     Estilos tipográficos predeterminados para los elementos HTML.
     var(--text-2xl) etc. son variables de tamaño de Tailwind v4.
