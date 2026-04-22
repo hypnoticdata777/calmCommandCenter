@@ -32,13 +32,13 @@ export function BeatingBrain() {
       // overflow-hidden = nada sale de los bordes de la pantalla
       // pointer-events-none = el mouse ignora este div; los clics pasan a través
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {/* Blob estático arriba-izquierda: radial-gradient = color rojo que
-            se desvanece del centro hacia afuera. blur(80px) = desenfoque */}
-        <div className="absolute top-1/4 left-1/3 w-[800px] h-[800px] rounded-full" style={{ background: "radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%)", filter: "blur(80px)", opacity: 0.3 }} />
+        {/* Blob estático arriba-izquierda: usa var(--blob-rgb) para cambiar de
+            rojo (dark) a cian (light) automáticamente con el tema */}
+        <div className="absolute top-1/4 left-1/3 w-[800px] h-[800px] rounded-full" style={{ background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.3) 0%, transparent 70%)", filter: "blur(80px)", opacity: 0.3 }} />
         {/* Blob estático abajo-derecha: más pequeño y más borroso */}
-        <div className="absolute bottom-1/4 right-1/3 w-[700px] h-[700px] rounded-full" style={{ background: "radial-gradient(circle, rgba(220, 38, 38, 0.28) 0%, transparent 70%)", filter: "blur(90px)", opacity: 0.27 }} />
-        {/* Capa de tinte rojo oscuro que da el tono ambiental general */}
-        <div className="absolute inset-0 bg-[#1a0505]" style={{ opacity: 0.15 }} />
+        <div className="absolute bottom-1/4 right-1/3 w-[700px] h-[700px] rounded-full" style={{ background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.28) 0%, transparent 70%)", filter: "blur(90px)", opacity: 0.27 }} />
+        {/* Capa de tinte ambiental — usa var(--blob-tint) para el color correcto por tema */}
+        <div className="absolute inset-0" style={{ backgroundColor: "var(--blob-tint)", opacity: 0.15 }} />
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function BeatingBrain() {
         // top-1/4 left-1/3 = posición; w/h-[800px] = tamaño; rounded-full = círculo
         className="absolute top-1/4 left-1/3 w-[800px] h-[800px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(220, 38, 38, 0.4) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.4) 0%, transparent 70%)",
           filter: "blur(80px)",             // desenfoque — lo vuelve brumoso
           willChange: "transform, opacity", // avisa a la GPU que prepare este elemento
         }}
@@ -85,7 +85,7 @@ export function BeatingBrain() {
         }}
         className="absolute bottom-1/4 right-1/3 w-[700px] h-[700px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(220, 38, 38, 0.38) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.38) 0%, transparent 70%)",
           filter: "blur(90px)",             // más borroso que el Blob 1
           willChange: "transform, opacity",
         }}
@@ -108,7 +108,7 @@ export function BeatingBrain() {
         }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.35) 0%, transparent 70%)",
           filter: "blur(100px)",            // el más borroso de los cuatro
           willChange: "transform, opacity",
         }}
@@ -130,7 +130,7 @@ export function BeatingBrain() {
         }}
         className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(220, 38, 38, 0.32) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.32) 0%, transparent 70%)",
           filter: "blur(70px)",
           willChange: "transform, opacity",
         }}
@@ -150,8 +150,9 @@ export function BeatingBrain() {
           ease: "easeInOut",
         }}
         // inset-0 = cubre toda la pantalla de esquina a esquina
-        // bg-[#1a0505] = rojo muy oscuro, casi negro
-        className="absolute inset-0 bg-[#1a0505]"
+        // backgroundColor usa var(--blob-tint): rojo-oscuro en dark, cian-oscuro en light
+        className="absolute inset-0"
+        style={{ backgroundColor: "var(--blob-tint)" }}
       />
     </div>
   );
