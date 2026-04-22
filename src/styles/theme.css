@@ -92,6 +92,12 @@
   --chart-4: oklch(0.828 0.189 84.429);  /* amarillo */
   --chart-5: oklch(0.769 0.188 70.08);   /* amarillo-naranja */
 
+  /* ---- COLOR DE MARCA (acento principal de la app) ---- */
+  /* Este color cambia entre modo claro y oscuro para mantener el tono de la app */
+  --brand-color: #0e7490;    /* cian oscuro — acento principal en modo claro */
+  --blob-rgb: 14, 116, 144;  /* canales R,G,B de --brand-color para usarlos en rgba() */
+  --blob-tint: #040f11;      /* tinte ambiental del fondo animado en modo claro */
+
   /* ---- BORDES REDONDEADOS ---- */
   /* rem = unidad relativa al font-size base (16px). 0.625rem = 10px */
   --radius: 0.625rem;                   /* radio base de bordes redondeados */
@@ -149,6 +155,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  /* Colores de marca en modo oscuro — rojo */
+  --brand-color: #dc2626;
+  --blob-rgb: 220, 38, 38;
+  --blob-tint: #1a0505;
 }
 
 /*
@@ -202,6 +212,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Conecta --brand-color con las clases de Tailwind: text-brand, bg-brand, border-brand */
+  --color-brand: var(--brand-color);
 }
 
 /*
