@@ -18,15 +18,25 @@ import { createRoot } from "react-dom/client";
 // It must wrap the entire app so every component can use routing hooks.
 import { BrowserRouter } from "react-router-dom";
 
+// ThemeProvider gestiona el modo claro/oscuro.
+// attribute="class" → agrega class="dark" al <html> cuando el modo es oscuro.
+// defaultTheme="dark" → arranca en modo oscuro (el diseño original).
+// enableSystem=false → NO detecta la preferencia del sistema operativo;
+//   el usuario elige manualmente con el botón de toggle.
+// storageKey → guarda la preferencia del usuario en localStorage con esta clave.
+import { ThemeProvider } from "next-themes";
+
 // AppRouter defines all the routes (which URL shows which page).
 import { AppRouter } from "./app/AppRouter.tsx";
 
 // Global styles — applied to the entire app automatically.
 import "./styles/index.css";
 
-// Mount the app. BrowserRouter → AppRouter → Layout → current page.
+// Orden del árbol: ThemeProvider (tema) → BrowserRouter (rutas) → AppRouter (páginas)
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <AppRouter />
-  </BrowserRouter>
+  <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="h777-theme">
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
+  </ThemeProvider>
 );
