@@ -123,8 +123,8 @@ export function RollingHeptagon({
           height={size}  // 300px de alto
           viewBox={`0 0 ${size} ${size}`} // el "lienzo" interno es también 300x300
           className="absolute inset-0" // ocupa todo el espacio del contenedor padre
-          // drop-shadow: sombra roja difusa alrededor del heptágono — efecto de brillo
-          style={{ filter: "drop-shadow(0 0 8px rgba(220, 38, 38, 0.3))" }}
+          // drop-shadow usa var(--blob-rgb) para que el brillo cambie con el tema
+          style={{ filter: "drop-shadow(0 0 8px rgba(var(--blob-rgb), 0.3))" }}
         >
           {/* <polygon> dibuja la figura usando los puntos calculados arriba.
               fill="none" = solo el borde, sin relleno interior
@@ -134,7 +134,8 @@ export function RollingHeptagon({
           <polygon
             points={points}                          // los 7 vértices calculados
             fill="none"                              // sin relleno — solo contorno
-            stroke={`rgba(220, 38, 38, ${opacity})`} // rojo con opacidad variable
+            // stroke como propiedad CSS para que var(--blob-rgb) funcione correctamente
+            style={{ stroke: `rgba(var(--blob-rgb), ${opacity})` }}
             strokeWidth="6"                          // borde de 6px de grosor
             strokeLinecap="round"                    // puntas redondeadas
             strokeLinejoin="round"                   // esquinas redondeadas
@@ -146,7 +147,8 @@ export function RollingHeptagon({
             anima independientemente del heptágono. Se mueve en X e Y
             dentro del contenedor, dando la ilusión de rodar por dentro. */}
         <motion.div
-          className="absolute bg-[#dc2626] rounded-full" // círculo rojo sólido
+          // bg-brand usa var(--brand-color): rojo en dark, cian en light
+          className="absolute bg-brand rounded-full"
           style={{
             width: 20,      // 20px de ancho
             height: 20,     // 20px de alto
