@@ -15,6 +15,9 @@
 // ║                              ║  navigates without page reload   ║
 // ║  useLocation                 ║  Tells you the current URL path  ║
 // ║                              ║  so you can highlight active link║
+// ║  useTheme                    ║  Hook de next-themes — lee y     ║
+// ║                              ║  cambia el tema activo           ║
+// ║  Sun / Moon                  ║  Íconos de Lucide para el toggle ║
 // ║  Menu / X                    ║  Lucide icons: hamburger + close ║
 // ║  scrolled                    ║  true when user scrolled > 80px  ║
 // ║  hovered                     ║  true when mouse is on side pill ║
@@ -28,7 +31,8 @@
 // ║    Desktop — a transparent top bar at page load. Once scrolled, ║
 // ║    it slides to the right as a vertical pill that fades until   ║
 // ║    hovered. Mobile — a small ☰ tab on the right; tapping it    ║
-// ║    opens a full-screen dark overlay with all links.             ║
+// ║    opens a full-screen overlay with all links.                  ║
+// ║    All states include a Sun/Moon button to toggle dark/light.   ║
 // ╠══════════════════════════════════════════════════════════════════╣
 // ║  Structure:                                                     ║
 // ║    1. Desktop top bar  (fixed, horizontal, shown when at top)   ║
@@ -41,7 +45,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+// useTheme da acceso a { theme, setTheme } para leer y cambiar el tema activo
+import { useTheme } from "next-themes";
 // ──────────────────────────────────────────────────────────────────
 
 // ── NAV LINKS CONFIG ───────────────────────────────────────────────
@@ -62,6 +68,17 @@ export function Navbar() {
   const [menuOpen,  setMenuOpen]  = useState(false);
   const location = useLocation(); // current URL path
 
+  // useTheme devuelve el tema activo y la función para cambiarlo.
+  // "mounted" evita un flash de contenido incorrecto (hydration mismatch):
+  // next-themes lee localStorage solo en el cliente, así que esperamos
+  // a que el componente esté montado antes de mostrar el ícono correcto.
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  // Alterna entre "dark" y "light" con un solo clic
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
+
   // ── SCROLL LISTENER ─────────────────────────────────────────────
   // Adds an event listener when the component mounts.
   // Returns a cleanup function that removes it when the component
@@ -77,6 +94,12 @@ export function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
+
+  // Ícono del toggle: Sol = modo claro activo, Luna = modo oscuro activo.
+  // Antes de montar, renderiza null para evitar el flash.
+  const ThemeIcon = mounted
+    ? theme === "dark" ? Sun : Moon
+    : null;
 
   return (
     <>
@@ -100,27 +123,39 @@ export function Navbar() {
               {/* Logo — links back to home */}
               <Link
                 to="/"
-                className="font-display text-lg text-white/80 tracking-wider hover:text-white transition-colors"
+                className="font-display text-lg text-foreground/80 tracking-wider hover:text-foreground transition-colors"
               >
                 h777
               </Link>
 
-              {/* Nav links — right side of top bar */}
+              {/* Nav links + theme toggle — right side of top bar */}
               <div className="flex items-center gap-8">
                 {links.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
-                    // Active link turns red; inactive is subtle white
+                    // Active link uses brand color; inactive is subtle foreground
                     className={`text-sm tracking-wider transition-colors ${
                       location.pathname === link.to
-                        ? "text-[#dc2626]"
-                        : "text-white/60 hover:text-white"
+                        ? "text-brand"
+                        : "text-foreground/60 hover:text-foreground"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
+
+                {/* Botón de toggle dark/light — ícono cambia según el tema */}
+                {ThemeIcon && (
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    aria-label="Toggle theme"
+                    className="text-foreground/60 hover:text-foreground transition-colors"
+                  >
+                    <ThemeIcon size={16} />
+                  </button>
+                )}
               </div>
             </motion.nav>
             // ─────────────────────────────────────────────────────
@@ -139,18 +174,18 @@ export function Navbar() {
               onHoverStart={() => setHovered(true)}
               onHoverEnd={() => setHovered(false)}
               // translate-y-[-50%] centers it vertically on the right edge
-              className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-5 py-6"
+              className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end gap-4 bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-2xl px-5 py-6"
             >
               {/* Logo at the top of the pill */}
               <Link
                 to="/"
-                className="font-display text-sm text-white/80 tracking-wider hover:text-white transition-colors mb-1"
+                className="font-display text-sm text-foreground/80 tracking-wider hover:text-foreground transition-colors mb-1"
               >
                 h777
               </Link>
 
               {/* Thin divider line between logo and links */}
-              <div className="h-px bg-white/10 w-full" />
+              <div className="h-px bg-foreground/10 w-full" />
 
               {/* Vertical link list */}
               <div className="flex flex-col items-end gap-4 pt-1">
@@ -160,14 +195,26 @@ export function Navbar() {
                     to={link.to}
                     className={`text-sm tracking-wider transition-colors ${
                       location.pathname === link.to
-                        ? "text-[#dc2626]"
-                        : "text-white/60 hover:text-white"
+                        ? "text-brand"
+                        : "text-foreground/60 hover:text-foreground"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
               </div>
+
+              {/* Toggle al fondo del pill */}
+              {ThemeIcon && (
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  aria-label="Toggle theme"
+                  className="text-foreground/40 hover:text-foreground transition-colors mt-1"
+                >
+                  <ThemeIcon size={14} />
+                </button>
+              )}
             </motion.nav>
             // ─────────────────────────────────────────────────────
           )}
@@ -186,14 +233,14 @@ export function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }} // appears after the page fades in
-          className="fixed right-4 top-4 z-50 flex items-center justify-center w-10 h-10 bg-white/5 border border-white/10 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"
+          className="fixed right-4 top-4 z-50 flex items-center justify-center w-10 h-10 bg-foreground/5 border border-foreground/10 rounded-lg text-foreground/60 hover:text-foreground hover:bg-foreground/10 transition-colors"
           aria-label="Open menu"
         >
           <Menu size={18} />
         </motion.button>
 
         {/* ── MOBILE OVERLAY MENU ───────────────────────────────── */}
-        {/* Full-screen dark overlay that slides in when ☰ is tapped */}
+        {/* Full-screen overlay that slides in when ☰ is tapped */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -201,19 +248,32 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-50 bg-[#0a0a0a]/96 backdrop-blur-sm flex flex-col items-center justify-center gap-10"
+              className="fixed inset-0 z-50 bg-background/96 backdrop-blur-sm flex flex-col items-center justify-center gap-10"
             >
               {/* X close button */}
               <button
+                type="button"
                 onClick={() => setMenuOpen(false)}
-                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors"
+                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors"
                 aria-label="Close menu"
               >
                 <X size={20} />
               </button>
 
+              {/* Toggle de tema — arriba a la izquierda del overlay */}
+              {ThemeIcon && (
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  aria-label="Toggle theme"
+                  className="absolute top-4 left-4 w-10 h-10 flex items-center justify-center text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  <ThemeIcon size={20} />
+                </button>
+              )}
+
               {/* Logo */}
-              <Link to="/" className="font-display text-2xl text-white/80 mb-2">
+              <Link to="/" className="font-display text-2xl text-foreground/80 mb-2">
                 h777
               </Link>
 
@@ -229,8 +289,8 @@ export function Navbar() {
                     to={link.to}
                     className={`text-2xl tracking-wider transition-colors ${
                       location.pathname === link.to
-                        ? "text-[#dc2626]"
-                        : "text-white/70 hover:text-white"
+                        ? "text-brand"
+                        : "text-foreground/70 hover:text-foreground"
                     }`}
                   >
                     {link.label}
