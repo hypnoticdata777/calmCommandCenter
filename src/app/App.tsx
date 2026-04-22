@@ -99,7 +99,7 @@ export default function App() {
     // flex flex-col = children stack vertically
     // items-center  = everything centered horizontally
     // px-8 py-16    = horizontal padding 8, vertical padding 16
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center px-8 py-16">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16">
 
       {/* ── BACKGROUND LAYER ──────────────────────────────────────── */}
       {/* Rendered first = sits below everything else. */}
@@ -147,7 +147,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
-            className="text-[1.125rem] text-white/60 leading-relaxed tracking-wide"
+            className="text-[1.125rem] text-foreground/60 leading-relaxed tracking-wide"
           >
             A calm command center for developer-operators.
           </motion.p>
@@ -163,33 +163,33 @@ export default function App() {
           className="space-y-12"
         >
           {/* Horizontal rule: h-px = 1px tall, bg-white/10 = 10% white */}
-          <div className="h-px bg-white/10" />
+          <div className="h-px bg-foreground/10" />
 
           <div className="space-y-6">
             {/* h2 = second most important heading.
-                text-[#dc2626] = the project's signature red accent color. */}
-            <h2 className="text-[#dc2626] text-[2.75rem] leading-tight font-bold tracking-[0.02em]">
+                text-brand = color de acento de la marca (rojo en dark, cian en light) */}
+            <h2 className="text-brand text-[2.75rem] leading-tight font-bold tracking-[0.02em]">
               Building systems that remove friction
             </h2>
 
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
-            <div className="space-y-4 text-white/80 leading-loose text-[1.125rem]">
+            <div className="space-y-4 text-foreground/80 leading-loose text-[1.125rem]">
               <p className="italic">Not loud.</p>
               <p className="italic">Not flashy.</p>
               <p className="italic">Not trying to convince.</p>
             </div>
           </div>
 
-          <div className="h-px bg-white/10" />
+          <div className="h-px bg-foreground/10" />
 
           <div className="space-y-6">
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
-            <p className="text-white/90 leading-loose text-[1.125rem]">
+            <p className="text-foreground/90 leading-loose text-[1.125rem]">
               Competence you can feel without being told.
             </p>
-            <p className="text-white/60 leading-loose text-[1.125rem] italic">
+            <p className="text-foreground/60 leading-loose text-[1.125rem] italic">
               Systems that reduce friction without adding noise.
             </p>
           </div>
@@ -208,20 +208,20 @@ export default function App() {
           {/* Principle 1 — font-display applies Playfair Display to this <div>
               because only headings get it automatically via theme.css. */}
           <div className="space-y-3 text-center">
-            <div className="font-display text-[#dc2626] opacity-60 text-xl">1</div>
-            <p className="text-white/70 leading-relaxed">Built for real operations.</p>
+            <div className="font-display text-brand opacity-60 text-xl">1</div>
+            <p className="text-foreground/70 leading-relaxed">Built for real operations.</p>
           </div>
 
           {/* Principle 2 */}
           <div className="space-y-3 text-center">
-            <div className="font-display text-[#dc2626] opacity-60 text-xl">2</div>
-            <p className="text-white/70 leading-relaxed">Systems over noise.</p>
+            <div className="font-display text-brand opacity-60 text-xl">2</div>
+            <p className="text-foreground/70 leading-relaxed">Systems over noise.</p>
           </div>
 
           {/* Principle 3 */}
           <div className="space-y-3 text-center">
-            <div className="font-display text-[#dc2626] opacity-60 text-xl">3</div>
-            <p className="text-white/70 leading-relaxed">Designed to hold under pressure.</p>
+            <div className="font-display text-brand opacity-60 text-xl">3</div>
+            <p className="text-foreground/70 leading-relaxed">Designed to hold under pressure.</p>
           </div>
         </motion.div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -244,7 +244,7 @@ export default function App() {
         }}
       >
         {/* Label copy — very subtle (text-white/40 = only 40% visible) */}
-        <p className="text-white/40 tracking-wide">Leave your email. We'll let you know when we launch.</p>
+        <p className="text-foreground/40 tracking-wide">Leave your email. We'll let you know when we launch.</p>
 
         {/* Input and button sit side by side in a horizontal row */}
         <div className="flex gap-3 w-full">
@@ -259,7 +259,7 @@ export default function App() {
             type="email"
             placeholder="your@email.com"
             required
-            className="flex-1 bg-white/5 border border-white/10 rounded px-4 py-2.5 text-white placeholder:text-white/30 focus:outline-none focus:border-[#dc2626]/40 transition-colors"
+            className="flex-1 bg-foreground/5 border border-foreground/10 rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand/40 transition-colors"
           />
 
           {/* Submit button:
@@ -268,7 +268,7 @@ export default function App() {
               transition-colors = hover change is animated */}
           <button
             type="submit"
-            className="px-6 py-2.5 bg-[#dc2626]/10 border border-[#dc2626]/30 text-[#dc2626] rounded hover:bg-[#dc2626]/20 transition-colors tracking-wide"
+            className="px-6 py-2.5 bg-brand/10 border border-brand/30 text-brand rounded hover:bg-brand/20 transition-colors tracking-wide"
           >
             Notify
           </button>
