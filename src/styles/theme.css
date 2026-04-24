@@ -142,6 +142,10 @@
   --ring: oklch(0.439 0 0);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
+  /* Fondo de inputs en modo oscuro — gris oscuro para que no se vea claro */
+  --input-background: oklch(0.269 0 0);
+  /* Fondo del switch/toggle apagado en modo oscuro */
+  --switch-background: oklch(0.35 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -214,6 +218,10 @@
   --color-sidebar-ring: var(--sidebar-ring);
   /* Conecta --brand-color con las clases de Tailwind: text-brand, bg-brand, border-brand */
   --color-brand: var(--brand-color);
+  /* Tamaño personalizado para el titular principal de la app (el h2 grande).
+     2.75rem no existe en la escala estándar de Tailwind, así que lo definimos
+     aquí. Se usa con la clase: text-display */
+  --text-display: 2.75rem;
 }
 
 /*
