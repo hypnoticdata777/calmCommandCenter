@@ -1,8 +1,16 @@
+// ============================================================
+// ARCHIVO: Contact.tsx
+//
+// ¿QUÉ HACE ESTA PÁGINA?
+// Página de contacto — directo y sin ruido.
+// El fondo animado viene de Layout.tsx — no se define aquí.
+// ============================================================
+
 import { motion } from "motion/react";
 
 export function Contact() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

@@ -13,6 +13,10 @@
 // motion: para las animaciones | useReducedMotion: accesibilidad
 import { motion, useReducedMotion } from "motion/react";
 
+// Importamos HEPTAGON_SLOW como fuente única de los valores por defecto.
+// Antes estaban duplicados aquí y en App.tsx — ahora viven en un solo lugar.
+import { HEPTAGON_SLOW } from "../constants/heptagons";
+
 // "interface" es TypeScript — define qué propiedades (parámetros)
 // puede recibir este componente y qué tipo de dato es cada uno.
 // El "?" al final de cada nombre significa que es OPCIONAL —
@@ -27,43 +31,15 @@ interface RollingHeptagonProps {
 }
 
 // La función recibe sus propiedades con valores por defecto (el "= algo" después de cada nombre).
-// Si App.tsx no pasa un valor, se usa el que está aquí.
+// Los valores por defecto vienen de HEPTAGON_SLOW (importado de constants/heptagons.ts)
+// para que haya una sola fuente de verdad — sin duplicados.
 export function RollingHeptagon({
-  delay = 0,       // por defecto: empieza inmediatamente
-  duration = 40,   // por defecto: tarda 40 segundos en recorrer su camino
-  // xPath: los puntos horizontales del recorrido.
-  // "vw" = porcentaje del ancho de la ventana (60vw = 60% del ancho)
-  // Los valores positivos van a la derecha, negativos a la izquierda.
-  // El primer y último valor son iguales ("60vw") para que el loop sea fluido.
-  xPath = [
-    "60vw",
-    "-45vw",
-    "70vw",
-    "-50vw",
-    "65vw",
-    "-40vw",
-    "75vw",
-    "-55vw",
-    "60vw",  // igual al primero = loop sin salto brusco
-  ],
-  // yPath: los puntos verticales del recorrido.
-  // "vh" = porcentaje del alto de la ventana (55vh = 55% del alto)
-  // Negativos = hacia arriba, positivos = hacia abajo.
-  yPath = [
-    "-35vh",
-    "55vh",
-    "-40vh",
-    "60vh",
-    "10vh",
-    "-30vh",
-    "65vh",
-    "-25vh",
-    "-35vh", // igual al primero = loop fluido
-  ],
-  // rotatePath: los grados de rotación en cada punto del camino.
-  // 0 = sin rotar, 165 = girado 165°, -95 = girado 95° en sentido contrario.
-  rotatePath = [0, 165, -95, 230, -60, 185, -130, 110, 0],
-  opacity = 0.4, // por defecto: 40% visible
+  delay      = HEPTAGON_SLOW.delay,
+  duration   = HEPTAGON_SLOW.duration,
+  xPath      = HEPTAGON_SLOW.xPath,
+  yPath      = HEPTAGON_SLOW.yPath,
+  rotatePath = HEPTAGON_SLOW.rotatePath,
+  opacity    = HEPTAGON_SLOW.opacity,
 }: RollingHeptagonProps) {
   // Preguntamos si el usuario prefiere menos movimiento (accesibilidad)
   const prefersReducedMotion = useReducedMotion();

@@ -1,8 +1,16 @@
+// ============================================================
+// ARCHIVO: Lab.tsx
+//
+// ¿QUÉ HACE ESTA PÁGINA?
+// Muestra herramientas open source y experimentos.
+// El fondo animado viene de Layout.tsx — no se define aquí.
+// ============================================================
+
 import { motion } from "motion/react";
 
 export function Lab() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8">
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

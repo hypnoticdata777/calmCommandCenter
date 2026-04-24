@@ -44,49 +44,8 @@
 import { motion } from "motion/react";
 
 // Each import brings in one piece of the puzzle to assemble here.
-import { BeatingBrain } from "./components/BeatingBrain";
-import { RollingHeptagon } from "./components/RollingHeptagon";
-// ──────────────────────────────────────────────────────────────────
-
-// ── HEPTAGON CONFIG ────────────────────────────────────────────────
-// Instead of hardcoding numbers inside the JSX, we store them here
-// as named constants — the JSX stays clean and readable.
-//
-// xPath / yPath  = list of waypoints the shape travels through (in vw/vh).
-// rotatePath     = how many degrees it rotates at each waypoint.
-// First and last values of xPath/yPath are equal → loop is seamless.
-
-// Slow heptagon: 40s per loop, most visible (opacity 0.4), starts immediately.
-const HEPTAGON_SLOW = {
-  delay: 0,
-  duration: 40,
-  xPath:      ["60vw", "-45vw", "70vw", "-50vw", "65vw", "-40vw", "75vw", "-55vw", "60vw"],
-  yPath:      ["-35vh", "55vh", "-40vh", "60vh", "10vh", "-30vh", "65vh", "-25vh", "-35vh"],
-  rotatePath: [0, 165, -95, 230, -60, 185, -130, 110, 0],
-  opacity:    0.4,  // most visible of the three
-};
-
-// Fast heptagon: 35s per loop, slightly more subtle (opacity 0.35).
-// Starts 5s later so it doesn't appear at the same time as the slow one.
-const HEPTAGON_FAST = {
-  delay: 5,
-  duration: 35,
-  xPath:      ["-55vw", "65vw", "-40vw", "70vw", "-60vw", "55vw", "-45vw", "75vw", "-55vw"],
-  yPath:      ["50vh", "-30vh", "65vh", "-35vh", "20vh", "-40vh", "55vh", "5vh", "50vh"],
-  rotatePath: [0, -120, 95, -175, 60, -210, 140, -85, 0],
-  opacity:    0.35,
-};
-
-// Medium heptagon: 45s per loop, most subtle (opacity 0.3).
-// Starts 12s in — well offset from the other two so they never overlap.
-const HEPTAGON_MEDIUM = {
-  delay: 12,
-  duration: 45,
-  xPath:      ["10vw", "-60vw", "75vw", "0vw", "-50vw", "65vw", "-35vw", "70vw", "10vw"],
-  yPath:      ["-40vh", "30vh", "-25vh", "60vh", "-35vh", "45vh", "-20vh", "55vh", "-40vh"],
-  rotatePath: [0, 180, -110, 240, -70, 195, -155, 125, 0],
-  opacity:    0.3,
-};
+// El fondo animado (BeatingBrain + heptágonos) ya no vive aquí —
+// se movió a Layout.tsx para que nunca se reinicie al navegar entre páginas.
 // ──────────────────────────────────────────────────────────────────
 
 // "export default" makes this the main component of the file.
@@ -95,26 +54,15 @@ export default function App() {
   return (
     // Root container for the entire page.
     // min-h-screen  = at least as tall as the browser window
-    // bg-[#0a0a0a]  = near-black background
+    // bg-background = color del tema activo (negro en dark, blanco en light)
     // flex flex-col = children stack vertically
     // items-center  = everything centered horizontally
     // px-8 py-16    = horizontal padding 8, vertical padding 16
     <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16">
 
-      {/* ── BACKGROUND LAYER ──────────────────────────────────────── */}
-      {/* Rendered first = sits below everything else. */}
-      <BeatingBrain />
-
-      {/* "{...HEPTAGON_SLOW}" is the spread operator — it's shorthand
-          for writing each property of the object as an individual prop.
-          Three instances of the same component with different speeds
-          create a sense of depth in the background. */}
-      <RollingHeptagon {...HEPTAGON_SLOW} />
-      <RollingHeptagon {...HEPTAGON_FAST} />
-      <RollingHeptagon {...HEPTAGON_MEDIUM} />
-      {/* ─────────────────────────────────────────────────────────── */}
-
       {/* ── HERO SECTION ──────────────────────────────────────────── */}
+      {/* El fondo animado (BeatingBrain + heptágonos) está en Layout.tsx
+          y no necesita repetirse aquí. */}
       {/* "relative z-10" places this above the animated background.
           The whole hero fades in from invisible (opacity 0 → 1)
           over 1.2 seconds when the page loads. */}
@@ -138,7 +86,7 @@ export default function App() {
           >
             {/* h1 = most important heading on the page (only one per page).
                 tracking-wider = extra letter spacing for the logo feel. */}
-            <h1 className="text-[3rem] tracking-wider">h777</h1>
+            <h1 className="text-5xl tracking-wider">h777</h1>
           </motion.div>
 
           {/* Tagline — fades in 0.6s after load.
@@ -147,7 +95,7 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
-            className="text-[1.125rem] text-foreground/60 leading-relaxed tracking-wide"
+            className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
             A calm command center for developer-operators.
           </motion.p>
@@ -168,13 +116,13 @@ export default function App() {
           <div className="space-y-6">
             {/* h2 = second most important heading.
                 text-brand = color de acento de la marca (rojo en dark, cian en light) */}
-            <h2 className="text-brand text-[2.75rem] leading-tight font-bold tracking-[0.02em]">
+            <h2 className="text-brand text-display leading-tight font-bold tracking-[0.02em]">
               Building systems that remove friction
             </h2>
 
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
-            <div className="space-y-4 text-foreground/80 leading-loose text-[1.125rem]">
+            <div className="space-y-4 text-foreground/80 leading-loose text-lg">
               <p className="italic">Not loud.</p>
               <p className="italic">Not flashy.</p>
               <p className="italic">Not trying to convince.</p>
@@ -186,10 +134,10 @@ export default function App() {
           <div className="space-y-6">
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
-            <p className="text-foreground/90 leading-loose text-[1.125rem]">
+            <p className="text-foreground/90 leading-loose text-lg">
               Competence you can feel without being told.
             </p>
-            <p className="text-foreground/60 leading-loose text-[1.125rem] italic">
+            <p className="text-foreground/60 leading-loose text-lg italic">
               Systems that reduce friction without adding noise.
             </p>
           </div>

@@ -84,7 +84,15 @@ export function Navbar() {
   // Returns a cleanup function that removes it when the component
   // unmounts — prevents memory leaks.
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 80;
+      setScrolled(isScrolled);
+      // Bug fix: cuando el usuario sube de vuelta al tope, reseteamos
+      // "hovered" a false. Sin esto, el pill reaparecería al 100% de
+      // opacidad la próxima vez que el usuario baje aunque no haya
+      // movido el mouse — porque el estado quedó pegado en true.
+      if (!isScrolled) setHovered(false);
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []); // empty array = run once on mount only
