@@ -97,7 +97,7 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            A calm command center for developer-operators.
+            A calm command center for people building useful things.
           </motion.p>
         </div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -117,15 +117,15 @@ export default function App() {
             {/* h2 = second most important heading.
                 text-brand = color de acento de la marca (rojo en dark, cian en light) */}
             <h2 className="text-brand text-display leading-tight font-bold tracking-[0.02em]">
-              Building systems that remove friction
+              Systems that remove friction.
             </h2>
 
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
-              <p className="italic">Not loud.</p>
-              <p className="italic">Not flashy.</p>
-              <p className="italic">Not trying to convince.</p>
+              <p className="italic">Not louder.</p>
+              <p className="italic">Not prettier.</p>
+              <p className="italic">Just clearer.</p>
             </div>
           </div>
 
@@ -135,10 +135,10 @@ export default function App() {
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
             <p className="text-foreground/90 leading-loose text-lg">
-              Competence you can feel without being told.
+              I build tools, notes, and workflows that make messy work easier to move.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              Systems that reduce friction without adding noise.
+              For operators, students, builders, and anyone trying to turn chaos into something usable.
             </p>
           </div>
         </motion.div>
@@ -157,19 +157,19 @@ export default function App() {
               because only headings get it automatically via theme.css. */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">1</div>
-            <p className="text-foreground/70 leading-relaxed">Built for real operations.</p>
+            <p className="text-foreground/70 leading-relaxed">Built from real problems.</p>
           </div>
 
           {/* Principle 2 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">2</div>
-            <p className="text-foreground/70 leading-relaxed">Systems over noise.</p>
+            <p className="text-foreground/70 leading-relaxed">Designed to reduce noise.</p>
           </div>
 
           {/* Principle 3 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">3</div>
-            <p className="text-foreground/70 leading-relaxed">Designed to hold under pressure.</p>
+            <p className="text-foreground/70 leading-relaxed">Made to hold under pressure.</p>
           </div>
         </motion.div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -192,7 +192,7 @@ export default function App() {
         }}
       >
         {/* Label copy — very subtle (text-white/40 = only 40% visible) */}
-        <p className="text-foreground/40 tracking-wide">Leave your email. We'll let you know when we launch.</p>
+        <p className="text-foreground/40 tracking-wide">Follow the build. I’ll share tools, notes, and experiments as they go live.</p>
 
         {/* Input and button sit side by side in a horizontal row */}
         <div className="flex gap-3 w-full">
