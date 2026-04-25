@@ -97,35 +97,6 @@ See [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) for licensing details on third-party co
 
 
 
-Personal: 
-o run it yourself next time, you only need a few steps from the project folder.
-
-Normal flow
-
-Open a terminal in c:\Users\enchi\Downloads\Calm Command Center Design
-If dependencies are already installed, run:
-npm run dev
-Open the URL Vite prints, usually http://localhost:5173/
-Leave that terminal open while you use the app
-Press Ctrl + C in that terminal when you want to stop it
-First time or after pulling changes
-
-If packages are missing or changed, run this once before starting:
-
-npm install
-npm run dev
-Quick checklist
-
-Make sure you’re inside the repo folder before running commands
-If 5173 is busy, Vite will automatically choose another port like 5174
-If the browser doesn’t open automatically, just copy the local URL from the terminal
-If something feels broken, run:
-npm run build
-That checks whether the app still compiles
-
-Small improvement I’d recommend
-
-Add a README note for your own future self with exactly:
 
 
 npm install
