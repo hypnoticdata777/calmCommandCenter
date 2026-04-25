@@ -82,6 +82,10 @@
     // actual conversion from TS to JS, so we don't "emit" files here.
     "noEmit": true,
 
+    // Load Node.js types for Vite's config file.
+    // vite.config.ts runs in Node, so it can use path, __dirname, process, etc.
+    "types": ["node"],
+
     // Enables "Strict Mode" to catch potential bugs and enforce 
     // the high engineering standards you're aiming for, Carlos.
     "strict": true

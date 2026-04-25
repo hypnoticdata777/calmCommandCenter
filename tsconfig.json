@@ -115,9 +115,5 @@
   // ============================================================
 
   // include: qué carpetas analiza TypeScript. Solo revisa "src/".
-  "include": ["src"],
-
-  // references: este tsconfig "conoce" también la config para Vite/Node.
-  // Permite tener configuraciones separadas según el entorno de ejecución.
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }
