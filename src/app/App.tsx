@@ -192,7 +192,7 @@ export default function App() {
         }}
       >
         {/* Label copy — very subtle (text-white/40 = only 40% visible) */}
-        <p className="text-foreground/40 tracking-wide">Follow the build. I’ll share tools, notes, and experiments as they go live.</p>
+        <p className="text-foreground/40 tracking-wide">Follow the build. I'll share tools, notes, and experiments as they go live.</p>
 
         {/* Input and button sit side by side in a horizontal row */}
         <div className="flex gap-3 w-full">
@@ -205,6 +205,7 @@ export default function App() {
               transition-colors = border color change is animated */}
           <input
             type="email"
+            aria-label="Email address"
             placeholder="your@email.com"
             required
             className="flex-1 bg-foreground/5 border border-foreground/10 rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand/40 transition-colors"
