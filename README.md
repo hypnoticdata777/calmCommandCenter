@@ -41,12 +41,20 @@ Navigation adapts to context — a transparent top bar at rest, a floating right
 
 ## Running locally
 
+### Easiest on Windows
+
+Double-click `start-dev.cmd`.
+
+It will install dependencies if needed, start Vite, and open the browser at [http://127.0.0.1:5173](http://127.0.0.1:5173).
+
+### Terminal
+
 ```bash
 npm install
-npm run dev
+npm start
 ```
 
-Then open [http://localhost:5173](http://localhost:5173).
+Then open [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
 ## Project structure
 
@@ -93,12 +101,3 @@ src/
 ## Attributions
 
 See [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) for licensing details on third-party components and assets.
-
-
-
-
-
-
-npm install
-npm run dev
-If you want, I can make this even easier by adding a double-clickable Windows .bat file like start-dev.bat in the repo.
