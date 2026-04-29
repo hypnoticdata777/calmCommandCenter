@@ -1,31 +1,46 @@
 # Calm Command Center
 
-A dark, atmospheric portfolio site built to feel like a calm operator's dashboard — serious, minimal, and alive.
+A quiet portfolio and personal site built around the feeling of a calm operator's dashboard: focused, minimal, atmospheric, and useful without trying to be loud.
 
-## What it is
+## What It Is
 
-A multi-page portfolio with an animated background made of pulsing red glows and floating geometric shapes. The design language is dark and editorial: near-black background, red accents, and serif typography (Playfair Display + Crimson Text) to create a dramatic but restrained presence.
+Calm Command Center is a React/Vite portfolio site for `h777`. It has a multi-page structure, a persistent animated background, and a navigation system that changes shape depending on scroll position and screen size.
 
-Navigation adapts to context — a transparent top bar at rest, a floating right-side pill when scrolling, and a full-screen overlay on mobile.
+The current site is strongest as a visual and structural foundation. The home page, journal, about page, routing, theme system, animated background, and responsive navigation are in place. Some sections, especially Work and Contact, are intentionally simple placeholders while the real content is still being shaped.
 
-## Pages
+By default the site opens in a dark editorial theme with red accents, serif typography, soft glows, and slow geometric motion. It also includes a light theme with cyan accents through the theme toggle.
 
-| Route | Purpose |
+## Current Pages
+
+| Route | Current status |
 |---|---|
-| `/` | Home — hero, principles, email capture |
-| `/work` | Selected projects |
-| `/lab` | Open source tools and experiments |
-| `/journal` | Writing on systems and operations |
-| `/about` | Who's behind this |
-| `/contact` | Direct contact |
+| `/` | Home page with brand intro, manifesto copy, three principles, and an email capture UI |
+| `/work` | Placeholder page for selected projects |
+| `/lab` | Early page for open source tools, experiments, and utilities |
+| `/journal` | Working journal page with several short field-note style entries |
+| `/about` | More developed about page explaining the project's thinking and focus |
+| `/contact` | Minimal contact placeholder |
+| `*` | 404 page for unknown routes |
 
-## What's inside
+## What's Working
 
-- **Navbar** — scroll-aware navigation: top bar at rest, vertical pill on the right when scrolled (fades until hovered), full-screen overlay on mobile with a `☰` trigger
-- **BeatingBrain** — four layered red blobs that pulse at different speeds, creating an organic breathing atmosphere in the background
-- **RollingHeptagon** — three 7-sided shapes that wander across the screen along different paths and speeds, each with a small ball rolling inside
-- **Hero section** — name, tagline, three guiding principles, and an email capture form for launch signups
-- **ImageWithFallback** — utility component that gracefully handles broken image URLs with a clean placeholder
+- **Responsive routing** - React Router powers the home page, subpages, and catch-all 404 route.
+- **Shared layout** - the navbar and animated background are mounted once in `Layout.tsx`, so they persist across page navigation.
+- **Navbar** - transparent desktop top bar at rest, floating right-side pill after scrolling, and a full-screen mobile overlay menu.
+- **Theme toggle** - dark mode is the default, with a light/cyan theme available through the nav.
+- **BeatingBrain** - layered blurred blobs that pulse at different speeds to create the breathing background atmosphere.
+- **RollingHeptagon** - three animated 7-sided shapes that drift around the viewport, each with a small moving dot inside.
+- **Home page** - a calm hero section with the `h777` mark, positioning copy, principles, and a non-wired email capture form.
+- **Journal page** - a real content page with structured entries rather than only placeholder text.
+- **ImageWithFallback** - a small reusable utility for handling broken image URLs gracefully.
+
+## Still In Progress
+
+- The Work page does not yet list real projects.
+- The Contact page does not yet expose a real contact method.
+- The email capture UI prevents page reloads, but it is not connected to a backend or mailing service yet.
+- The Lab page has positioning copy, but no individual tools or experiments listed yet.
+- A number of shadcn/ui components are present in the codebase, but most are not actively used by the current pages.
 
 ## Stack
 
@@ -35,17 +50,18 @@ Navigation adapts to context — a transparent top bar at rest, a floating right
 | Language | TypeScript |
 | Routing | React Router v7 |
 | Styling | Tailwind CSS v4 |
-| Animations | Motion (motion/react) |
+| Animations | Motion (`motion/react`) |
+| Theme | next-themes |
 | Components | Radix UI + shadcn/ui |
 | Icons | Lucide React |
 
-## Running locally
+## Running Locally
 
-### Easiest on Windows
+### Easiest On Windows
 
 Double-click `start-dev.cmd`.
 
-It will install dependencies if needed, start Vite, and open the browser at [http://127.0.0.1:5173](http://127.0.0.1:5173).
+It installs dependencies if needed, starts Vite, and opens the browser at [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
 ### Terminal
 
@@ -56,47 +72,67 @@ npm start
 
 Then open [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
-## Project structure
+## Useful Scripts
 
+```bash
+npm run dev
+npm start
+npm run build
+npm run typecheck
 ```
+
+## Project Structure
+
+```text
 src/
-├── app/
-│   ├── App.tsx                  # Home page component
-│   ├── AppRouter.tsx            # All route definitions
-│   ├── Layout.tsx               # Navbar wrapper — shared across all pages
-│   ├── components/
-│   │   ├── Navbar.tsx           # Scroll-aware navigation bar
-│   │   ├── BeatingBrain.tsx     # Pulsing red blob background
-│   │   ├── RollingHeptagon.tsx  # Floating 7-sided animated shapes
-│   │   ├── Spiral.tsx           # Eye icon SVG
-│   │   ├── shared/              # Reusable utility components
-│   │   │   └── ImageWithFallback.tsx
-│   │   └── ui/                  # shadcn/ui component library
-│   └── pages/
-│       ├── Work.tsx
-│       ├── Lab.tsx
-│       ├── Journal.tsx
-│       ├── About.tsx
-│       └── Contact.tsx
-├── styles/
-│   ├── index.css
-│   ├── fonts.css
-│   ├── tailwind.css
-│   └── theme.css
-└── main.tsx
+  app/
+    App.tsx                  # Home page
+    AppRouter.tsx            # Route definitions
+    Layout.tsx               # Shared navbar and animated background wrapper
+    components/
+      Navbar.tsx             # Scroll-aware responsive navigation
+      BeatingBrain.tsx       # Pulsing blob background
+      RollingHeptagon.tsx    # Floating 7-sided animated shapes
+      Spiral.tsx             # SVG icon component
+      shared/
+        ImageWithFallback.tsx
+      ui/                    # shadcn/ui component library
+    constants/
+      heptagons.ts           # Shared animation config for heptagons
+    pages/
+      About.tsx
+      Contact.tsx
+      Journal.tsx
+      Lab.tsx
+      NotFound.tsx
+      Work.tsx
+  styles/
+    fonts.css
+    index.css
+    tailwind.css
+    text.js
+    theme.css
+  main.tsx
+  vite-env.d.ts
 ```
 
-## Color palette
+## Design Notes
 
-| Token | Value | Usage |
+The project uses serif typography to make the site feel editorial and deliberate:
+
+- **Playfair Display** for headings, logo-like text, buttons, and display moments.
+- **Crimson Text** for body copy and form text.
+
+The default dark theme uses:
+
+| Token | Current value | Usage |
 |---|---|---|
-| Background | `#0a0a0a` | Page background |
-| Accent | `#dc2626` | Headings, active links, buttons |
-| Text full | `white` | Primary headings |
-| Text 90% | `white/90` | Body text |
-| Text 60% | `white/60` | Taglines, subtle copy |
-| Text 40% | `white/40` | Labels, least prominent |
-| Dividers | `white/10` | Horizontal rules, borders |
+| Background | `oklch(0.145 0 0)` | Page background |
+| Foreground | `oklch(0.985 0 0)` | Primary text |
+| Brand | `#dc2626` | Accent links, active states, buttons, animated glow |
+| Dividers | `foreground/10` | Horizontal rules and subtle borders |
+
+The light theme switches the brand accent to `#0e7490` and adjusts the animated background tint accordingly.
 
 ## Attributions
 
