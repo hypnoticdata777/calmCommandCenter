@@ -1,14 +1,14 @@
 # Calm Command Center
 
-A quiet portfolio and personal site built around the feeling of a calm operator's dashboard: focused, minimal, atmospheric, and useful without trying to be loud.
+A personal site and portfolio for `h777`, built to feel like a calm command center: focused, minimal, atmospheric, and easy to move through.
 
 ## What It Is
 
-Calm Command Center is a React/Vite portfolio site for `h777`. It has a multi-page structure, a persistent animated background, and a navigation system that changes shape depending on scroll position and screen size.
+This is an early but solid version of the site. The main shape is already in place: routing, layout, theme switching, animated background, responsive navigation, the home page, the journal, and the about page.
 
-The current site is strongest as a visual and structural foundation. The home page, journal, about page, routing, theme system, animated background, and responsive navigation are in place. Some sections, especially Work and Contact, are intentionally simple placeholders while the real content is still being shaped.
+Some parts are still light on content. Work, Lab, and Contact exist so the structure is ready, but they are not pretending to be finished. The next step is filling those pages with real projects, tools, and contact details.
 
-By default the site opens in a dark editorial theme with red accents, serif typography, soft glows, and slow geometric motion. It also includes a light theme with cyan accents through the theme toggle.
+The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
 
 ## Current Pages
 
@@ -16,31 +16,31 @@ By default the site opens in a dark editorial theme with red accents, serif typo
 |---|---|
 | `/` | Home page with brand intro, manifesto copy, three principles, and an email capture UI |
 | `/work` | Placeholder page for selected projects |
-| `/lab` | Early page for open source tools, experiments, and utilities |
-| `/journal` | Working journal page with several short field-note style entries |
-| `/about` | More developed about page explaining the project's thinking and focus |
+| `/lab` | Early page for tools, experiments, and utilities |
+| `/journal` | Journal page with a few short field-note style entries |
+| `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Minimal contact placeholder |
 | `*` | 404 page for unknown routes |
 
 ## What's Working
 
-- **Responsive routing** - React Router powers the home page, subpages, and catch-all 404 route.
-- **Shared layout** - the navbar and animated background are mounted once in `Layout.tsx`, so they persist across page navigation.
-- **Navbar** - transparent desktop top bar at rest, floating right-side pill after scrolling, and a full-screen mobile overlay menu.
-- **Theme toggle** - dark mode is the default, with a light/cyan theme available through the nav.
-- **BeatingBrain** - layered blurred blobs that pulse at different speeds to create the breathing background atmosphere.
-- **RollingHeptagon** - three animated 7-sided shapes that drift around the viewport, each with a small moving dot inside.
-- **Home page** - a calm hero section with the `h777` mark, positioning copy, principles, and a non-wired email capture form.
-- **Journal page** - a real content page with structured entries rather than only placeholder text.
-- **ImageWithFallback** - a small reusable utility for handling broken image URLs gracefully.
+- **Routing** - the home page, subpages, and 404 route are wired up with React Router.
+- **Shared layout** - the navbar and animated background live in `Layout.tsx`, so they stay mounted while moving between pages.
+- **Navbar** - a transparent desktop top bar at the top of the page, a right-side pill after scrolling, and a full-screen menu on mobile.
+- **Theme toggle** - the site starts in dark mode, with a light/cyan version available from the nav.
+- **BeatingBrain** - blurred background blobs that pulse at different speeds.
+- **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
+- **Home page** - the `h777` mark, main positioning copy, three principles, and an email capture UI.
+- **Journal page** - real written content, not just placeholder cards.
+- **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
 
-- The Work page does not yet list real projects.
-- The Contact page does not yet expose a real contact method.
-- The email capture UI prevents page reloads, but it is not connected to a backend or mailing service yet.
-- The Lab page has positioning copy, but no individual tools or experiments listed yet.
-- A number of shadcn/ui components are present in the codebase, but most are not actively used by the current pages.
+- Work still needs the actual project writeups.
+- Lab still needs real tools, experiments, or links.
+- Contact still needs a real way to reach me.
+- The email form is only UI right now. It prevents a page reload, but it is not connected to a backend or mailing service yet.
+- The repo includes a larger shadcn/ui component set than the site currently uses.
 
 ## Stack
 
@@ -118,12 +118,12 @@ src/
 
 ## Design Notes
 
-The project uses serif typography to make the site feel editorial and deliberate:
+The site uses serif typography because I wanted it to feel more like a quiet notebook or operating room than a typical software landing page:
 
 - **Playfair Display** for headings, logo-like text, buttons, and display moments.
 - **Crimson Text** for body copy and form text.
 
-The default dark theme uses:
+The default dark theme is built around:
 
 | Token | Current value | Usage |
 |---|---|---|
