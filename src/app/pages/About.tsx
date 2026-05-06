@@ -61,9 +61,9 @@ export function About() {
                 nobody's looking.
               </p>
               <p className="text-foreground/90">
-                I don't build for theory.
+                Most operational problems don't appear in planning meetings.
                 <br />
-                I build for when things get messy.
+                They appear halfway through execution.
               </p>
             </div>
           </motion.div>
@@ -84,11 +84,20 @@ export function About() {
           </div>
 
           <div className="space-y-8 text-lg leading-loose text-foreground/70">
+            <p>Messy environments are honest environments.</p>
             <p>
-              I'm drawn to messy environments, places where things slow down,
-              break, or depend too much on one person.
+              When work slows down, there's always a reason. Usually several.
+              Ownership is blurry. Decisions are trapped behind one exhausted
+              operator. Simple tasks require ceremonial rituals involving five
+              approvals and a dashboard nobody trusts.
             </p>
-            <p className="text-foreground/90">That's usually where the real problem is:</p>
+            <p className="text-foreground/90">
+              Most organizations respond by adding more process.
+              <br />
+              Which is like solving traffic by pouring concrete directly onto
+              the cars.
+            </p>
+            <p>I do the opposite.</p>
 
             <div className="grid gap-4 sm:grid-cols-3">
               {frictionPoints.map((point, index) => (
@@ -105,7 +114,6 @@ export function About() {
             </div>
 
             <div className="space-y-4 text-foreground/80">
-              <p>I don't try to fix everything at once.</p>
               <p>
                 I find the edges.
                 <br />
