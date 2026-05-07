@@ -57,6 +57,13 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## Running Locally
 
+### Requirements
+
+- Node.js `22.18.0` recommended, `22.12.0` or newer required.
+- npm `10` or newer.
+
+This project is set up for npm. Use `package-lock.json` as the dependency source of truth.
+
 ### Easiest On Windows
 
 Double-click `start-dev.cmd`.
@@ -72,12 +79,54 @@ npm start
 
 Then open [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
+For a clean install on a new machine or after copying the project folder:
+
+```bash
+npm ci
+npm start
+```
+
+## Build And Preview Locally
+
+Before replacing another site with this project, run the full local check:
+
+```bash
+npm run build:check
+```
+
+That type-checks the project and creates the production files in `dist/`.
+
+To preview the built production version locally:
+
+```bash
+npm run serve
+```
+
+Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
+
+## Hosting Notes
+
+This is a Vite single-page React app. Static hosts should serve `dist/` and send all routes back to `index.html` so direct URLs like `/about` and `/journal` work after refresh.
+
+Recommended host settings:
+
+| Setting | Value |
+|---|---|
+| Install command | `npm ci` |
+| Build command | `npm run build` |
+| Publish/output folder | `dist` |
+| Node version | `22.18.0` |
+
+The repo includes `public/_redirects` for Netlify-style static hosting and `vercel.json` for Vercel-style rewrites.
+
 ## Useful Scripts
 
 ```bash
 npm run dev
 npm start
+npm run build:check
 npm run build
+npm run serve
 npm run typecheck
 ```
 
