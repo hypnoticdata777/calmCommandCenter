@@ -43,7 +43,7 @@ const journalEntries = [
 
 export function Journal() {
   return (
-    <main className="min-h-screen bg-background text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
+    <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

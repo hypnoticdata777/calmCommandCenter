@@ -42,6 +42,7 @@
 // motion gives us HTML elements that can animate.
 // motion.div is an animatable <div>, motion.p is an animatable <p>, etc.
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 // Each import brings in one piece of the puzzle to assemble here.
 // El fondo animado (BeatingBrain + heptágonos) ya no vive aquí —
@@ -54,11 +55,12 @@ export default function App() {
   return (
     // Root container for the entire page.
     // min-h-screen  = at least as tall as the browser window
-    // bg-background = color del tema activo (negro en dark, blanco en light)
+    // body provides the theme background; this page stays transparent so the
+    // shared animated background can remain visible behind the content.
     // flex flex-col = children stack vertically
     // items-center  = everything centered horizontally
     // px-8 py-16    = horizontal padding 8, vertical padding 16
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16">
+    <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16">
 
       {/* ── HERO SECTION ──────────────────────────────────────────── */}
       {/* El fondo animado (BeatingBrain + heptágonos) está en Layout.tsx
@@ -177,52 +179,34 @@ export default function App() {
       </motion.div>
       {/* ─────────────────────────────────────────────────────────── */}
 
-      {/* ── EMAIL FORM ────────────────────────────────────────────── */}
-      {/* Last element on the page (delay 1.5s) — the page's "signature".
-          Captures emails before launch. relative z-10 keeps it above
-          the animated background layer. */}
-      <motion.form
+      {/* ── NEXT STEPS ────────────────────────────────────────────── */}
+      {/* Last element on the page (delay 1.5s) — gives visitors real paths
+          through the site while contact/newsletter plumbing is still light. */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.6, delay: 1.5, ease: "easeIn" }}
-        className="mt-32 flex flex-col items-center gap-4 relative z-10 w-full max-w-md"
-        onSubmit={(e) => {
-          e.preventDefault(); // stops the browser from refreshing the page on submit
-          // Email submission logic goes here
-        }}
+        className="mt-32 flex flex-col items-center gap-5 relative z-10 w-full max-w-md"
       >
-        {/* Label copy — very subtle (text-white/40 = only 40% visible) */}
-        <p className="text-foreground/40 tracking-wide">Follow the build. I'll share tools, notes, and experiments as they go live.</p>
+        <p className="text-foreground/45 tracking-wide leading-relaxed">
+          Follow the build through the tools, notes, and experiments already taking shape.
+        </p>
 
-        {/* Input and button sit side by side in a horizontal row */}
-        <div className="flex gap-3 w-full">
-
-          {/* Email input:
-              type="email"  = browser validates the format automatically
-              required      = can't submit with an empty field
-              bg-white/5    = near-transparent background
-              focus:border-[#dc2626]/40 = border turns red on focus
-              transition-colors = border color change is animated */}
-          <input
-            type="email"
-            aria-label="Email address"
-            placeholder="your@email.com"
-            required
-            className="flex-1 bg-foreground/5 border border-foreground/10 rounded px-4 py-2.5 text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand/40 transition-colors"
-          />
-
-          {/* Submit button:
-              bg-[#dc2626]/10 = very subtle red background (10% opacity)
-              hover:bg-[#dc2626]/20 = gets slightly more red on hover
-              transition-colors = hover change is animated */}
-          <button
-            type="submit"
+        <div className="flex flex-wrap justify-center gap-3 w-full">
+          <Link
+            to="/lab"
             className="px-6 py-2.5 bg-brand/10 border border-brand/30 text-brand rounded hover:bg-brand/20 transition-colors tracking-wide"
           >
-            Notify
-          </button>
+            Visit Lab
+          </Link>
+          <Link
+            to="/journal"
+            className="px-6 py-2.5 border border-foreground/15 text-foreground/70 rounded hover:border-foreground/30 hover:text-foreground transition-colors tracking-wide"
+          >
+            Read Journal
+          </Link>
         </div>
-      </motion.form>
+      </motion.div>
       {/* ─────────────────────────────────────────────────────────── */}
 
     </div>

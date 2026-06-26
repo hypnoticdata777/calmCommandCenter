@@ -30,7 +30,7 @@ function SectionNumber({ children }: { children: string }) {
 
 export function About() {
   return (
-    <main className="min-h-screen bg-background text-foreground px-6 py-28 md:px-10 lg:px-16 relative z-10">
+    <main className="min-h-screen text-foreground px-6 py-28 md:px-10 lg:px-16 relative z-10">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

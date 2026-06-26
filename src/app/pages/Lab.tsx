@@ -8,7 +8,7 @@ const tools = [
     audience: "solo builders",
     description:
       "A small system for turning scattered notes, tasks, and decisions into one usable operating view before the work starts leaking context.",
-    links: ["GitHub", "Docs"],
+    links: ["Source planned", "Docs planned"],
   },
   {
     name: "Briefcase",
@@ -17,7 +17,7 @@ const tools = [
     audience: "students and operators",
     description:
       "A command-line utility for collecting project fragments into a clean folder structure with notes, next actions, and reference files in predictable places.",
-    links: ["GitHub"],
+    links: ["Source planned"],
   },
   {
     name: "Friction Map",
@@ -26,7 +26,7 @@ const tools = [
     audience: "teams",
     description:
       "A lightweight worksheet for finding the parts of a process that slow people down, hide ownership, or make simple work feel heavier than it should.",
-    links: ["Preview"],
+    links: ["Preview planned"],
   },
 ];
 
@@ -48,7 +48,7 @@ export function Lab() {
   const featuredTool = tools[0];
 
   return (
-    <main className="min-h-screen bg-background text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
+    <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -176,7 +176,7 @@ export function Lab() {
                   <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-foreground/45">
                     <span>For: {tool.audience}</span>
                     {tool.links.map((link) => (
-                      <span key={link} className="text-brand/75">
+                      <span key={link} className="text-brand/60">
                         {link}
                       </span>
                     ))}

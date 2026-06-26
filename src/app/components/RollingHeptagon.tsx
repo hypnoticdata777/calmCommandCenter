@@ -67,8 +67,8 @@ export function RollingHeptagon({
 
   return (
     // Contenedor invisible que cubre toda la pantalla.
-    // z-20 = aparece encima de BeatingBrain (que no tiene z-index explícito)
-    <div className="fixed inset-0 pointer-events-none z-20">
+    // z-[1] keeps the figure above the ambient glow but behind page content.
+    <div className="fixed inset-0 pointer-events-none z-[1]">
 
       {/* Este motion.div es el "contenedor viajero" — es el que se mueve
           por toda la pantalla siguiendo xPath/yPath/rotatePath.

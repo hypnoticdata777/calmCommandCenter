@@ -13,7 +13,7 @@ import { motion } from "motion/react";
 export function Work() {
   return (
     // relative z-10 = este contenido aparece encima del fondo animado
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
+    <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

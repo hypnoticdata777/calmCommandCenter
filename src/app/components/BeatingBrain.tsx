@@ -31,7 +31,7 @@ export function BeatingBrain() {
       // fixed inset-0 = cubre toda la pantalla y se queda fija al hacer scroll
       // overflow-hidden = nada sale de los bordes de la pantalla
       // pointer-events-none = el mouse ignora este div; los clics pasan a través
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Blob estático arriba-izquierda: usa var(--blob-rgb) para cambiar de
             rojo (dark) a cian (light) automáticamente con el tema */}
         <div className="absolute top-1/4 left-1/3 w-[800px] h-[800px] rounded-full" style={{ background: "radial-gradient(circle, rgba(var(--blob-rgb), 0.3) 0%, transparent 70%)", filter: "blur(80px)", opacity: 0.3 }} />
@@ -46,7 +46,7 @@ export function BeatingBrain() {
   // Versión completa con animaciones (solo llega aquí si prefersReducedMotion es false)
   return (
     // Mismo contenedor que la versión estática — cubre toda la pantalla sin interceptar clics
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {/* ---- BLOB 1: Arriba-izquierda, 800px, el más grande ---- */}
       {/* motion.div es como un div normal pero puede animarse */}
       <motion.div

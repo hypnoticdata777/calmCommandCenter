@@ -7,10 +7,11 @@
 // ============================================================
 
 import { motion } from "motion/react";
+import { Github } from "lucide-react";
 
 export function Contact() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
+    <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -22,9 +23,21 @@ export function Contact() {
           Let's talk.
         </h1>
         <div className="h-px bg-foreground/10 w-24 mx-auto" />
-        <p className="text-foreground/40 tracking-wide leading-relaxed">
-          If it's worth saying, say it directly.
-        </p>
+        <div className="space-y-5">
+          <p className="text-foreground/50 tracking-wide leading-relaxed">
+            If it's worth saying, say it directly.
+          </p>
+
+          <a
+            href="https://github.com/hypnoticdata777"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded border border-brand/30 bg-brand/10 px-5 py-2.5 font-display tracking-wide text-brand transition-colors hover:bg-brand/20"
+          >
+            <Github size={16} aria-hidden="true" />
+            GitHub
+          </a>
+        </div>
       </motion.div>
     </div>
   );
