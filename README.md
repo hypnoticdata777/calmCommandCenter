@@ -14,7 +14,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 | Route | Current status |
 |---|---|
-| `/` | Home page with brand intro, manifesto copy, three principles, and an email capture UI |
+| `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Lab and Journal |
 | `/work` | Placeholder page for selected projects |
 | `/lab` | Early page for tools, experiments, and utilities |
 | `/journal` | Journal page with a few short field-note style entries |
@@ -30,7 +30,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 - **Theme toggle** - the site starts in dark mode, with a light/cyan version available from the nav.
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
-- **Home page** - the `h777` mark, main positioning copy, three principles, and an email capture UI.
+- **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Lab and Journal.
 - **Journal page** - real written content, not just placeholder cards.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
@@ -39,7 +39,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 - Work still needs the actual project writeups.
 - Lab still needs real tools, experiments, or links.
 - Contact still needs a real way to reach me.
-- The email form is only UI right now. It prevents a page reload, but it is not connected to a backend or mailing service yet.
+- Contact and newsletter-style plumbing are intentionally minimal until there is a real service behind them.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
 
 ## Stack
