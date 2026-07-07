@@ -111,7 +111,7 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            A calm command center for people building useful things.
+            Where property management ops meet practical software.
           </motion.p>
         </div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -131,15 +131,15 @@ export default function App() {
             {/* h2 = second most important heading.
                 text-brand = color de acento de la marca (rojo en dark, cian en light) */}
             <h2 className="text-brand text-display leading-tight font-bold tracking-[0.02em]">
-              Systems that remove friction.
+              Making messy operations behave themselves.
             </h2>
 
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
-              <p className="italic">Not louder.</p>
-              <p className="italic">Not prettier.</p>
-              <p className="italic">Just clearer.</p>
+              <p className="italic">Less dashboard theater.</p>
+              <p className="italic">Fewer mystery processes.</p>
+              <p className="italic">More things that actually help.</p>
             </div>
           </div>
 
@@ -149,10 +149,10 @@ export default function App() {
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
             <p className="text-foreground/90 leading-loose text-lg">
-              I build tools, notes, and workflows that make messy work easier to move.
+              I come from property management, where perfectly normal tasks can turn into a full-contact sport for no good reason.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              For operators, students, builders, and anyone trying to turn chaos into something usable.
+              Now I build open-source tools, SaaS ideas, and practical workflows for remote teams and hands-on owners who want more control and less operational nonsense.
             </p>
           </div>
         </motion.div>
@@ -171,19 +171,19 @@ export default function App() {
               because only headings get it automatically via theme.css. */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">1</div>
-            <p className="text-foreground/70 leading-relaxed">Built from real problems.</p>
+            <p className="text-foreground/70 leading-relaxed">Remote ops without the headache.</p>
           </div>
 
           {/* Principle 2 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">2</div>
-            <p className="text-foreground/70 leading-relaxed">Designed to reduce noise.</p>
+            <p className="text-foreground/70 leading-relaxed">Practical beats precious.</p>
           </div>
 
           {/* Principle 3 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">3</div>
-            <p className="text-foreground/70 leading-relaxed">Made to hold under pressure.</p>
+            <p className="text-foreground/70 leading-relaxed">Clear enough to actually use.</p>
           </div>
         </motion.div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -201,7 +201,7 @@ export default function App() {
         className="mt-32 flex flex-col items-center gap-5 relative z-10 w-full max-w-md"
       >
         <p className="text-foreground/45 tracking-wide leading-relaxed">
-          Follow the build through the tools, notes, and experiments already taking shape.
+          The lab has the tools. The journal has the thinking behind them.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 w-full">
