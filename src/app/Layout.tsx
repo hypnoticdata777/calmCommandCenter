@@ -16,6 +16,18 @@ import { RollingHeptagon } from "./components/RollingHeptagon";
 // Fuente única de configuración — compartida con App.tsx y las sub-páginas
 import { HEPTAGON_SLOW, HEPTAGON_FAST, HEPTAGON_MEDIUM } from "./constants/heptagons";
 
+// PROJECT COMMAND STRUCTURE - Shared Layout
+// 1. Why: Keeps navigation and ambient background mounted across every route.
+// 2. Who: Every screen in the application.
+// 3. Main modules: Navbar, BeatingBrain, RollingHeptagon trio, and Outlet.
+// 4. Screens: Wraps all route screens defined in AppRouter.
+// 5. Data stored: Imports static heptagon animation configuration.
+// 6. State tracked: None here; children manage nav, theme, route, and animation state.
+// 7. User actions: Indirectly supports navigation and theme changes through Navbar.
+// 8. Rules: Background must stay behind content and must not intercept clicks.
+// 9. Outside tools: React Router Outlet and Motion-powered visual components.
+// 10. Smallest version: Navbar plus Outlet; background is visual polish.
+
 export function Layout() {
   return (
     <>

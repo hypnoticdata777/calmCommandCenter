@@ -1,5 +1,17 @@
 import { motion } from "motion/react";
 
+// PROJECT COMMAND STRUCTURE - Lab
+// 1. Why: Shows tools, experiments, and workflow ideas without pretending all are shipped.
+// 2. Who: Builders, operators, students, and visitors looking for useful systems.
+// 3. Main modules: tools catalog, featured tool, build notes, SectionLabel helper.
+// 4. Screens: "/lab".
+// 5. Data stored: Static arrays for tool cards and build notes.
+// 6. State tracked: featuredTool is derived from tools[0]; no user data is stored.
+// 7. User actions: Read status labels and understand what is prototype/planned.
+// 8. Rules: Planned links must stay non-clickable until real sources/docs exist.
+// 9. Outside tools: Motion for entrance and scroll-in animation.
+// 10. Smallest version: One honest tool entry with status, audience, and purpose.
+
 const tools = [
   {
     name: "Signal Kit",

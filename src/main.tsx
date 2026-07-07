@@ -32,6 +32,18 @@ import { AppRouter } from "./app/AppRouter.tsx";
 // Global styles — applied to the entire app automatically.
 import "./styles/index.css";
 
+// PROJECT COMMAND STRUCTURE - App Boot
+// 1. Why: Connects index.html to the React application.
+// 2. Who: The browser uses this entry point when Vite loads the app.
+// 3. Main modules: ThemeProvider, BrowserRouter, AppRouter.
+// 4. Screens: Enables every screen by mounting the route tree once.
+// 5. Data stored: ThemeProvider persists the theme under localStorage key "h777-theme".
+// 6. State tracked: Theme preference and current browser route.
+// 7. User actions: Theme toggles and navigation work because these providers wrap the app.
+// 8. Rules: Keep providers outside AppRouter so every page receives them.
+// 9. Outside tools: React DOM, next-themes, React Router, Vite.
+// 10. Smallest version: createRoot plus AppRouter inside BrowserRouter.
+
 // Orden del árbol: ThemeProvider (tema) → BrowserRouter (rutas) → AppRouter (páginas)
 createRoot(document.getElementById("root")!).render(
   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="h777-theme">

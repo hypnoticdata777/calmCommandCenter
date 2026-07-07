@@ -8,6 +8,18 @@
 
 import { motion } from "motion/react";
 
+// PROJECT COMMAND STRUCTURE - Journal
+// 1. Why: Gives the site a place for field notes about systems and operations.
+// 2. Who: Readers who want the thinking behind the tools, not just the interface.
+// 3. Main modules: journalEntries data array and the mapped article layout.
+// 4. Screens: "/journal".
+// 5. Data stored: Static post metadata and short sections in code.
+// 6. State tracked: Map index only for staggered animation and separators.
+// 7. User actions: Read entries and move through the shared nav.
+// 8. Rules: Keep entries concise, useful, and tied to the site's system theme.
+// 9. Outside tools: Motion for reveal timing.
+// 10. Smallest version: One entry with title, type, read time, and body copy.
+
 const journalEntries = [
   {
     title: "A system is calm when it knows what to ignore.",

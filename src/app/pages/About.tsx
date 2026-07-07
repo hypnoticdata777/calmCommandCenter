@@ -1,5 +1,17 @@
 import { motion } from "motion/react";
 
+// PROJECT COMMAND STRUCTURE - About
+// 1. Why: Explains the operating philosophy behind h777 and the site.
+// 2. Who: Visitors deciding whether the builder's way of thinking fits their work.
+// 3. Main modules: frictionPoints, principles, focusAreas, and SectionNumber helper.
+// 4. Screens: "/about".
+// 5. Data stored: Static lists of friction, principles, and focus areas.
+// 6. State tracked: Motion reveal state only; no persisted user state.
+// 7. User actions: Read the philosophy and navigate to related sections.
+// 8. Rules: Keep the claims grounded in systems, clarity, and real outcomes.
+// 9. Outside tools: Motion for fade/scroll reveals.
+// 10. Smallest version: One clear explanation of what gets built and why.
+
 const frictionPoints = [
   "unclear ownership",
   "hidden bottlenecks",

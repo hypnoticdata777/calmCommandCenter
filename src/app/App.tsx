@@ -30,12 +30,12 @@
 // ║  What the user sees:                                            ║
 // ║    A dark page with an animated background (blobs + heptagons)  ║
 // ║    and text that fades in progressively from top to bottom.     ║
-// ║    At the bottom, an email capture form for pre-launch signups. ║
+// ║    At the bottom, real links point into Lab and Journal.         ║
 // ╠══════════════════════════════════════════════════════════════════╣
 // ║  Structure:                                                     ║
 // ║    1. Background — BeatingBrain + 3 × RollingHeptagon           ║
 // ║    2. Hero       — name, tagline, copy, three principles        ║
-// ║    3. Form       — email capture before launch                  ║
+// ║    3. CTAs       — real paths into Lab and Journal               ║
 // ╚══════════════════════════════════════════════════════════════════╝
 
 // ── IMPORTS ────────────────────────────────────────────────────────
@@ -43,6 +43,18 @@
 // motion.div is an animatable <div>, motion.p is an animatable <p>, etc.
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+
+// PROJECT COMMAND STRUCTURE - Home
+// 1. Why: Introduces h777 and routes visitors into the real site sections.
+// 2. Who: New visitors, future collaborators, students, builders, and Carlos.
+// 3. Main modules: Hero copy, manifesto lines, principles grid, next-step CTAs.
+// 4. Screens: This is the root screen at "/"; it depends on Layout for nav/background.
+// 5. Data stored: Static landing copy only; no form data or backend records.
+// 6. State tracked: Motion entrance timing only; route/theme state lives outside.
+// 7. User actions: Read the positioning, open Lab, or open Journal.
+// 8. Rules: Do not claim fake signup/contact plumbing; keep content above background.
+// 9. Outside tools: React Router Link and Motion animations.
+// 10. Smallest version: Brand intro, one clear value statement, and one real next step.
 
 // Each import brings in one piece of the puzzle to assemble here.
 // El fondo animado (BeatingBrain + heptágonos) ya no vive aquí —

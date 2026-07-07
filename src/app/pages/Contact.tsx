@@ -9,6 +9,18 @@
 import { motion } from "motion/react";
 import { Github } from "lucide-react";
 
+// PROJECT COMMAND STRUCTURE - Contact
+// 1. Why: Gives visitors a real, low-friction path to reach or inspect the builder.
+// 2. Who: Collaborators, recruiters, classmates, and anyone following the work.
+// 3. Main modules: Contact headline, short copy, GitHub CTA.
+// 4. Screens: "/contact".
+// 5. Data stored: No submitted data; outbound GitHub URL only.
+// 6. State tracked: Motion entrance state only.
+// 7. User actions: Open the GitHub profile in a new tab.
+// 8. Rules: Do not add fake forms unless a real backend/service exists.
+// 9. Outside tools: Lucide GitHub icon, external GitHub profile, Motion.
+// 10. Smallest version: One accurate contact link.
+
 export function Contact() {
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">

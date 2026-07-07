@@ -11,6 +11,18 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
+// PROJECT COMMAND STRUCTURE - NotFound
+// 1. Why: Prevents invalid URLs from becoming blank or confusing screens.
+// 2. Who: Visitors who mistype a URL or follow an outdated link.
+// 3. Main modules: 404 label, message, and Back home Link.
+// 4. Screens: Catch-all route "*".
+// 5. Data stored: Static error copy only.
+// 6. State tracked: Motion entrance state only.
+// 7. User actions: Return to the home route.
+// 8. Rules: Keep the recovery action obvious and route-safe.
+// 9. Outside tools: React Router Link and Motion.
+// 10. Smallest version: 404 message plus a link back to "/".
+
 export function NotFound() {
   return (
     // relative z-10 = aparece encima del fondo animado de Layout.tsx

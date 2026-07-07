@@ -10,6 +10,18 @@
 
 import { motion } from "motion/react";
 
+// PROJECT COMMAND STRUCTURE - Work
+// 1. Why: Reserves a clear place for selected project writeups.
+// 2. Who: Visitors evaluating what has been built.
+// 3. Main modules: Page label, headline, divider, status copy.
+// 4. Screens: "/work".
+// 5. Data stored: Static placeholder copy only.
+// 6. State tracked: Motion entrance state only.
+// 7. User actions: Read the status and navigate elsewhere through the shared nav.
+// 8. Rules: Do not invent finished case studies before real content exists.
+// 9. Outside tools: Motion for the entrance animation.
+// 10. Smallest version: A truthful placeholder that does not break routing.
+
 export function Work() {
   return (
     // relative z-10 = este contenido aparece encima del fondo animado
