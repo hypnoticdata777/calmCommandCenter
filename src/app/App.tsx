@@ -111,7 +111,7 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            Where property management ops meet practical software.
+            A build lab for property management tools that should probably have existed already.
           </motion.p>
         </div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -137,9 +137,9 @@ export default function App() {
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
-              <p className="italic">Less dashboard theater.</p>
-              <p className="italic">Fewer mystery processes.</p>
-              <p className="italic">More things that actually help.</p>
+              <p className="italic">Vendor follow-ups.</p>
+              <p className="italic">Scattered notes.</p>
+              <p className="italic">Software that somehow makes the day longer.</p>
             </div>
           </div>
 
@@ -149,10 +149,10 @@ export default function App() {
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
             <p className="text-foreground/90 leading-loose text-lg">
-              I come from property management, where perfectly normal tasks can turn into a full-contact sport for no good reason.
+              I've spent 7+ years inside PM operations, so I know the usual mess: unclear ownership, remote teams, slow training, and the thousand tiny handoffs that make simple work heavier than it should be.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              Now I build open-source tools, SaaS ideas, and practical workflows for remote teams and hands-on owners who want more control and less operational nonsense.
+              Now I'm turning that experience into open-source tools, workflow experiments, and practical systems for owners, managers, admins, and anyone trying to make property management less painful.
             </p>
           </div>
         </motion.div>
@@ -171,13 +171,13 @@ export default function App() {
               because only headings get it automatically via theme.css. */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">1</div>
-            <p className="text-foreground/70 leading-relaxed">Remote ops without the headache.</p>
+            <p className="text-foreground/70 leading-relaxed">Built from real PM pain.</p>
           </div>
 
           {/* Principle 2 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">2</div>
-            <p className="text-foreground/70 leading-relaxed">Practical beats precious.</p>
+            <p className="text-foreground/70 leading-relaxed">Remote ops without the headache.</p>
           </div>
 
           {/* Principle 3 */}
