@@ -14,22 +14,22 @@ import { motion } from "motion/react";
 
 const frictionPoints = [
   "unclear ownership",
-  "hidden bottlenecks",
-  "unnecessary friction in simple tasks",
+  "slow training",
+  "billing confusion",
 ];
 
 const principles = [
-  "If it's hard to understand, it won't be used",
-  "If it depends on one person, it will fail",
-  "If it creates friction, it will be ignored",
-  "If it doesn't move work forward, it's noise",
+  "Accountability is the starting point, not a feature",
+  "Homeowners do not want cheap. They want clear and logical",
+  "Software only helps when the process has a spine",
+  "If a tool needs a ceremony to explain it, it is already in trouble",
 ];
 
 const focusAreas = [
-  "Tools that automate repetitive work",
-  "Systems that reduce decision fatigue",
-  "Interfaces that feel intuitive instead of forced",
-  "Workflows that continue even when things aren't fully understood",
+  "Open-source tools for property management teams",
+  "Workflow experiments for remote operations",
+  "Vendor follow-up and triage systems",
+  "Clearer handoffs for owners, managers, and admins",
 ];
 
 function SectionNumber({ children }: { children: string }) {
@@ -61,21 +61,25 @@ export function About() {
             </p>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              I build systems that make work move.
+              I turn property management pain into practical tools.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <div className="space-y-5 text-lg md:text-xl leading-loose text-foreground/70">
-              <p>Because most systems don't.</p>
               <p>
-                They stall, depend on the wrong things, or quietly break when
-                nobody's looking.
+                I have spent 7+ years inside property management operations,
+                and more than 10 years across remote service, leadership,
+                systems, and client-facing work.
+              </p>
+              <p>
+                That kind of work teaches you things quickly.
               </p>
               <p className="text-foreground/90">
-                Most operational problems don't appear in planning meetings.
+                Most PM problems are not just software problems.
                 <br />
-                They appear halfway through execution.
+                They are accountability, handoff, training, billing, and
+                clarity problems.
               </p>
             </div>
           </motion.div>
@@ -89,27 +93,29 @@ export function About() {
           className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.9fr_1.1fr]"
         >
           <div className="space-y-5">
-            <SectionNumber>01 / What I Do</SectionNumber>
+            <SectionNumber>01 / What PM Taught Me</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Messy environments are usually telling the truth.
+              Too many hands in the cookie jar means no one gets a cookie.
             </h2>
           </div>
 
           <div className="space-y-8 text-lg leading-loose text-foreground/70">
-            <p>Messy environments are honest environments.</p>
+            <p>Accountability needs to be clear.</p>
             <p>
-              When work slows down, there's always a reason. Usually several.
-              Ownership is blurry. Decisions are trapped behind one exhausted
-              operator. Simple tasks require ceremonial rituals involving five
-              approvals and a dashboard nobody trusts.
+              Not because managers need control for the sake of control, but
+              because people do better work when they know what they own, what
+              they do not, and what success actually looks like.
             </p>
             <p className="text-foreground/90">
-              Most organizations respond by adding more process.
+              Homeowners usually are not asking for cheap.
               <br />
-              Which is like solving traffic by pouring concrete directly onto
-              the cars.
+              They are asking for clear, logical, honest service.
             </p>
-            <p>I do the opposite.</p>
+            <p>
+              They want billing they can understand, updates they can trust,
+              and a system that does not make them feel like they have to chase
+              the company they hired.
+            </p>
 
             <div className="grid gap-4 sm:grid-cols-3">
               {frictionPoints.map((point, index) => (
@@ -127,14 +133,15 @@ export function About() {
 
             <div className="space-y-4 text-foreground/80">
               <p>
-                I find the edges.
+                The problems usually show up in the same places:
                 <br />
-                Map the flow.
+                scattered ownership, slow onboarding, billing confusion,
                 <br />
-                Remove what gets in the way.
+                vendor follow-ups, remote handoffs, and tools nobody fully
+                trusts.
               </p>
               <p className="text-foreground/90">
-                Then build something simple enough that people actually use it.
+                That is the mess I am building from.
               </p>
             </div>
           </div>
@@ -148,9 +155,9 @@ export function About() {
           className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.9fr_1.1fr]"
         >
           <div className="space-y-5">
-            <SectionNumber>02 / How I Think</SectionNumber>
+            <SectionNumber>02 / Software Is Not Magic</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Clarity is not decorative.
+              A new platform will not fix unclear expectations.
             </h2>
           </div>
 
@@ -168,11 +175,13 @@ export function About() {
 
             <div className="space-y-5 text-lg leading-loose text-foreground/65">
               <p>
-                Work should not feel chaotic by default. It usually feels that
-                way because the system behind it is unclear.
+                Software FOMO is real. A new platform will not solve team
+                anxiety, replace accountability, or make people aligned if the
+                company does not know what it wants.
               </p>
               <p className="text-foreground/90">
-                Fix the system, and the work starts to flow.
+                If the process is unclear, software usually just gives the
+                confusion a nicer dashboard.
               </p>
             </div>
           </div>
@@ -188,13 +197,15 @@ export function About() {
           <div className="space-y-5">
             <SectionNumber>03 / Current Focus</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Building for motion, not ceremony.
+              Turning operations experience into tools.
             </h2>
           </div>
 
           <div className="space-y-8">
             <p className="text-lg leading-loose text-foreground/70">
-              Right now I'm focused on building:
+              I am currently finishing Computer Systems Engineering, and I am
+              using that technical background alongside my property management
+              experience to build:
             </p>
 
             <div className="grid gap-4 md:grid-cols-2">
@@ -211,9 +222,10 @@ export function About() {
             </div>
 
             <p className="text-xl leading-loose text-foreground/90">
-              Not everything needs to be solved upfront.
+              The goal is simple: make property management less painful.
               <br />
-              The work just needs to keep moving.
+              Not with more noise, but with clearer tools around the work
+              people already do every day.
             </p>
           </div>
         </motion.section>
@@ -229,22 +241,29 @@ export function About() {
             <div className="space-y-5">
               <SectionNumber>04 / Why It Matters</SectionNumber>
               <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-wide">
-                I care about systems that actually deliver outcomes.
+                I like working with people who want the work to make sense.
               </h2>
             </div>
 
             <div className="space-y-7 text-lg md:text-xl leading-loose text-foreground/70">
-              <p>I'm not interested in building for the sake of building.</p>
+              <p>
+                I enjoy working with honest people, funny people, positive
+                people, and people who are smart enough to challenge a process
+                without turning every conversation into a ceremony.
+              </p>
 
               <div className="flex flex-wrap gap-x-8 gap-y-3 text-brand/80">
+                <span>honesty</span>
                 <span>clarity</span>
-                <span>execution</span>
-                <span>systems that actually deliver outcomes</span>
+                <span>useful software</span>
+                <span>cleaner PM operations</span>
               </div>
 
               <p>
-                If you're working on something real, and need it to move faster,
-                smoother, or more reliably, we'll probably get along.
+                If you are building something useful, trying to make PM
+                operations cleaner, or looking for someone who understands both
+                the business pain and the technical side, we will probably get
+                along.
               </p>
             </div>
           </div>
