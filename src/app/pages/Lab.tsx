@@ -14,38 +14,38 @@ import { motion } from "motion/react";
 
 const tools = [
   {
-    name: "Signal Kit",
-    status: "Prototype",
-    type: "Workflow",
-    audience: "solo builders",
+    name: "PM Ops Map",
+    status: "Built / Open source",
+    type: "Browser app",
+    audience: "PM leaders and small teams",
     description:
-      "A small system for turning scattered notes, tasks, and decisions into one usable operating view before the work starts leaking context.",
-    links: ["Source planned", "Docs planned"],
+      "A free operations map for property management teams that need to see who owns what, what is stuck, and where work is leaking. Departments, tasks, work orders, portfolio records, SOP exports, and handoffs live in one browser workspace with no login, backend, or monthly fee.",
+    links: ["Source ready", "Demo planned", "Docs planned"],
   },
   {
-    name: "Briefcase",
-    status: "In progress",
-    type: "CLI",
-    audience: "students and operators",
+    name: "VendorRadar",
+    status: "POC / In design",
+    type: "Vendor intelligence",
+    audience: "PMCs and owners",
     description:
-      "A command-line utility for collecting project fragments into a clean folder structure with notes, next actions, and reference files in predictable places.",
-    links: ["Source planned"],
+      "A vendor memory layer for teams tired of managing contractors through screenshots, old texts, Facebook posts, Google searches, and pure hope. The smallest useful version captures vendor leads, tags trade and location, tracks quote requests, scores reliability, and remembers who actually worked out.",
+    links: ["POC roadmap", "Prototype notes"],
   },
   {
-    name: "Friction Map",
-    status: "Planned",
-    type: "Template",
-    audience: "teams",
+    name: "TechSync",
+    status: "POC / Early architecture",
+    type: "Field service coordination",
+    audience: "maintenance teams",
     description:
-      "A lightweight worksheet for finding the parts of a process that slow people down, hide ownership, or make simple work feel heavier than it should.",
-    links: ["Preview planned"],
+      "A field-service coordination concept for turning incoming work orders into assigned, trackable technician work. Work orders come from everywhere, but someone still has to get the right job to the right tech at the right time.",
+    links: ["Architecture draft", "POC planned"],
   },
 ];
 
 const buildNotes = [
-  "Tools here start as fixes for real friction, then get cleaned up enough for other people to use.",
-  "Small is preferred. A useful script beats a beautiful platform that nobody has time to maintain.",
-  "Everything open source will include enough context to understand why it exists, not just how to run it.",
+  "Some tools will stay free and open-source. Some may become small paid products if they prove useful enough.",
+  "Nothing here is pretending to be finished before it survives real use.",
+  "The test is simple: if it does not make property management clearer, it does not belong here.",
 ];
 
 function SectionLabel({ children }: { children: string }) {
@@ -77,19 +77,20 @@ export function Lab() {
             <SectionLabel>Lab</SectionLabel>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              Small tools for messy work.
+              Tools for property management problems that keep coming back.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <div className="space-y-5 text-lg md:text-xl leading-loose text-foreground/65">
               <p>
-                Open source utilities, experiments, and workflow pieces built
-                to reduce friction.
+                This is where I turn PM operations pain into small tools,
+                proof-of-concepts, and open-source systems.
               </p>
               <p className="text-foreground/90">
-                Some are usable. Some are still forming. Everything here exists
-                because it solved a real problem first.
+                Some are built. Some are prototypes. Some are still
+                suspiciously ambitious. The rule is simple: if it does not make
+                the work clearer, it does not belong here.
               </p>
             </div>
           </motion.div>
@@ -102,9 +103,9 @@ export function Lab() {
           className="grid gap-10 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
         >
           <div className="space-y-5">
-            <SectionLabel>01 / Featured</SectionLabel>
+            <SectionLabel>01 / Built</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              The most useful thing here right now.
+              The free ops foundation.
             </h2>
           </div>
 
@@ -150,14 +151,14 @@ export function Lab() {
             <div className="space-y-5">
               <SectionLabel>02 / Tools</SectionLabel>
               <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-                A quiet catalog of open source work.
+                A small product shelf, honestly labeled.
               </h2>
             </div>
 
             <p className="text-lg leading-loose text-foreground/65">
-              Ordered by usefulness, not recency. Each entry should make it
-              clear what the tool does, who it helps, and whether it is ready
-              for real use.
+              Ordered by maturity, not hype. Each entry says what it solves,
+              who it helps, and whether it is built, in proof-of-concept, or
+              still being shaped.
             </p>
           </div>
 
