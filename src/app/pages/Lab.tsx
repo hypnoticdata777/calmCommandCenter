@@ -17,10 +17,26 @@ const tools = [
     name: "PM Ops Map",
     status: "Built / Open source",
     type: "Browser app",
-    audience: "PM leaders and small teams",
+    audience: "New PMCs, owners, and ops managers",
     description:
-      "A free operations map for property management teams that need to see who owns what, what is stuck, and where work is leaking. Departments, tasks, work orders, portfolio records, SOP exports, and handoffs live in one browser workspace with no login, backend, or monthly fee.",
-    links: ["Source ready", "Demo planned", "Docs planned"],
+      "A free day-one operations map for property management companies. It gives new teams 260+ editable PM tasks across 17 departments, team assignment, workload balancing, maintenance work orders, portfolio tracking, handbook exports, backups, and optional self-hosted team sync.",
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/hypnoticdata777/pm-ops-map",
+      },
+      {
+        label: "Download",
+        href: "https://github.com/hypnoticdata777/pm-ops-map/releases/latest",
+      },
+      {
+        label: "Screenshots",
+        href: "https://github.com/hypnoticdata777/pm-ops-map/tree/master/docs/screenshots",
+      },
+      {
+        label: "Demo coming soon",
+      },
+    ],
   },
   {
     name: "VendorRadar",
@@ -29,7 +45,7 @@ const tools = [
     audience: "PMCs and owners",
     description:
       "A vendor memory layer for teams tired of managing contractors through screenshots, old texts, Facebook posts, Google searches, and pure hope. The smallest useful version captures vendor leads, tags trade and location, tracks quote requests, scores reliability, and remembers who actually worked out.",
-    links: ["POC roadmap", "Prototype notes"],
+    links: [{ label: "POC roadmap" }, { label: "Prototype notes" }],
   },
   {
     name: "TechSync",
@@ -38,7 +54,7 @@ const tools = [
     audience: "maintenance teams",
     description:
       "A field-service coordination concept for turning incoming work orders into assigned, trackable technician work. Work orders come from everywhere, but someone still has to get the right job to the right tech at the right time.",
-    links: ["Architecture draft", "POC planned"],
+    links: [{ label: "Architecture draft" }, { label: "POC planned" }],
   },
 ];
 
@@ -128,14 +144,26 @@ export function Lab() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              {featuredTool.links.map((link) => (
-                <span
-                  key={link}
-                  className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85"
-                >
-                  {link}
-                </span>
-              ))}
+              {featuredTool.links.map((link) =>
+                link.href ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <span
+                    key={link.label}
+                    className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45"
+                  >
+                    {link.label}
+                  </span>
+                )
+              )}
             </div>
           </article>
         </motion.section>
@@ -188,11 +216,23 @@ export function Lab() {
                   </p>
                   <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-foreground/45">
                     <span>For: {tool.audience}</span>
-                    {tool.links.map((link) => (
-                      <span key={link} className="text-brand/60">
-                        {link}
-                      </span>
-                    ))}
+                    {tool.links.map((link) =>
+                      link.href ? (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-brand/70 transition-colors hover:text-brand"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <span key={link.label} className="text-foreground/38">
+                          {link.label}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               </article>

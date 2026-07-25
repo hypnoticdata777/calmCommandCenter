@@ -1,46 +1,283 @@
-// ============================================================
-// ARCHIVO: Work.tsx
-//
-// ¿QUÉ HACE ESTA PÁGINA?
-// Muestra la página de proyectos seleccionados.
-// El fondo animado (BeatingBrain + heptágonos) viene de Layout.tsx
-// y corre continuamente sin reiniciarse al navegar aquí.
-// Esta página solo define su contenido propio.
-// ============================================================
-
 import { motion } from "motion/react";
 
-// PROJECT COMMAND STRUCTURE - Work
-// 1. Why: Reserves a clear place for selected project writeups.
-// 2. Who: Visitors evaluating what has been built.
-// 3. Main modules: Page label, headline, divider, status copy.
-// 4. Screens: "/work".
-// 5. Data stored: Static placeholder copy only.
-// 6. State tracked: Motion entrance state only.
-// 7. User actions: Read the status and navigate elsewhere through the shared nav.
-// 8. Rules: Do not invent finished case studies before real content exists.
-// 9. Outside tools: Motion for the entrance animation.
-// 10. Smallest version: A truthful placeholder that does not break routing.
+const screenshots = [
+  {
+    title: "Guided dashboard on day one",
+    caption: "A new PMC can start with a guided command center instead of a blank project board.",
+    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/02-dashboard.png",
+  },
+  {
+    title: "Every task, owned and tracked",
+    caption: "260+ editable PM tasks across 17 departments, with ownership and status visible.",
+    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/03-tracking-tasks.png",
+  },
+  {
+    title: "Workload and team assignment",
+    caption: "Role templates, auto-assign, and workload balancing keep responsibility from hiding.",
+    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/05-team-manager.png",
+  },
+];
+
+const facts = [
+  "260+ editable PM tasks",
+  "17 departments",
+  "No login or backend required",
+  "localStorage by default",
+  "Optional self-hosted Team Sync",
+];
+
+const features = [
+  "Guided launch dashboard for new companies",
+  "Task tracking across departments, owners, status, priority, and due dates",
+  "Team assignment engine with workload balancing and role templates",
+  "Maintenance work order pipeline from intake to completion",
+  "Property, tenant, and vendor registry with lease and rent tracking",
+  "Exportable operations handbook in Markdown and printable HTML",
+  "Auto-backups, CSV import/export, and optional team sync",
+];
+
+const links = [
+  {
+    label: "Source",
+    href: "https://github.com/hypnoticdata777/pm-ops-map",
+  },
+  {
+    label: "Download",
+    href: "https://github.com/hypnoticdata777/pm-ops-map/releases/latest",
+  },
+  {
+    label: "Screenshots",
+    href: "https://github.com/hypnoticdata777/pm-ops-map/tree/master/docs/screenshots",
+  },
+];
+
+function SectionLabel({ children }: { children: string }) {
+  return (
+    <p className="text-brand/60 text-sm tracking-widest uppercase">
+      {children}
+    </p>
+  );
+}
 
 export function Work() {
   return (
-    // relative z-10 = este contenido aparece encima del fondo animado
-    <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
+    <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeIn" }}
-        className="text-center space-y-6 max-w-xl"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeIn" }}
+        className="mx-auto flex w-full max-w-6xl flex-col gap-24"
       >
-        <p className="text-brand/60 text-sm tracking-widest uppercase">Work</p>
-        <h1 className="text-4xl font-bold tracking-wide leading-tight">
-          Selected projects.
-        </h1>
-        <div className="h-px bg-foreground/10 w-24 mx-auto" />
-        <p className="text-foreground/40 tracking-wide leading-relaxed">
-          This section is being built carefully.
-        </p>
+        <section className="max-w-4xl space-y-9">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="space-y-8"
+          >
+            <SectionLabel>Work / Case Study 01</SectionLabel>
+
+            <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+              PM Ops Map: a day-one operating system for new property
+              management companies.
+            </h1>
+
+            <div className="h-px bg-foreground/10 w-28" />
+
+            <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
+              A free, open-source browser app that helps new PMCs set up
+              departments, tasks, ownership, maintenance tracking, portfolio
+              records, and operations documentation without signup, backend
+              setup, or monthly software cost.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
+                Demo coming soon
+              </span>
+            </div>
+          </motion.div>
+        </section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: "easeIn" }}
+          className="grid gap-8 border-t border-foreground/10 pt-12 md:grid-cols-5"
+        >
+          {facts.map((fact) => (
+            <div key={fact} className="border-l border-brand/35 pl-4">
+              <p className="text-lg leading-relaxed text-foreground/80">
+                {fact}
+              </p>
+            </div>
+          ))}
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Problem</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              New PMCs do not always know what needs to exist yet.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              A beginning property management company has to track departments,
+              recurring tasks, ownership, handoffs, maintenance intake,
+              vendors, tenant records, lease dates, delinquency, SOPs, and
+              follow-up before the operation has fully matured.
+            </p>
+            <p>
+              Most PM software assumes the company already has enough process,
+              volume, and budget to justify the platform. PM Ops Map starts
+              earlier. It gives owners and ops managers a practical operating
+              structure before work starts falling through the cracks.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Solution</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              A guided workspace instead of an empty board.
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6 text-lg leading-loose text-foreground/70">
+              <p>
+                PM Ops Map opens with a structured operating map: 260+ standard
+                PM tasks across 17 departments, all editable to fit the company.
+                Teams can assign owners, balance workload, track work orders,
+                manage portfolio records, export handbooks, and keep backups
+                without sending data to a server by default.
+              </p>
+              <p className="text-foreground/90">
+                The product decision was simple: make the first useful version
+                frictionless. No login. No monthly fee. No guessing what basic
+                operations should be tracked.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {features.map((feature) => (
+                <p
+                  key={feature}
+                  className="border-b border-foreground/10 pb-4 text-lg leading-relaxed text-foreground/75"
+                >
+                  {feature}
+                </p>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="space-y-10 border-t border-foreground/10 pt-12"
+        >
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="space-y-5">
+              <SectionLabel>Screenshots</SectionLabel>
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+                Proof from the build.
+              </h2>
+            </div>
+
+            <p className="text-lg leading-loose text-foreground/65">
+              The first public case study now has actual product receipts:
+              dashboard, task tracking, and team assignment views from the
+              open-source repo.
+            </p>
+          </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {screenshots.map((screenshot) => (
+              <figure key={screenshot.title} className="space-y-4">
+                <div className="overflow-hidden border border-foreground/10 bg-background/40">
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.title}
+                    className="aspect-[16/11] w-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="space-y-2">
+                  <h3 className="text-xl font-bold tracking-wide">
+                    {screenshot.title}
+                  </h3>
+                  <p className="leading-relaxed text-foreground/55">
+                    {screenshot.caption}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Builder Notes</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Built from real PM operations pain.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              After 7+ years inside property management operations, I kept
+              seeing the same pattern: work goes missing when ownership is
+              unclear, and the sharpest teammate often ends up carrying too
+              much invisible work.
+            </p>
+            <p>
+              PM Ops Map is my answer to that early-stage gap. It gives new
+              owners, ops managers, coordinators, and PM teams a free guided
+              starting point before they are ready for heavier software.
+            </p>
+            <p className="text-foreground/90">
+              Next up: stronger maintenance tracking, deeper vendor and work
+              order tools, owner-ready reports, import presets, and better Team
+              Sync conflict handling.
+            </p>
+          </div>
+        </motion.section>
       </motion.div>
-    </div>
+    </main>
   );
 }
