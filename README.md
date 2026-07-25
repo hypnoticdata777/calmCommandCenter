@@ -1,22 +1,37 @@
 # Calm Command Center
 
-A personal site and portfolio for `h777`, built to feel like a calm command center: focused, minimal, atmospheric, and easy to move through.
+A public portfolio site for `h777`, built to showcase property management tools, case studies, lab notes, and workflow experiments in a calm command center style.
 
 ## What It Is
 
-This is an early but solid version of the site. The main shape is already in place: routing, layout, theme switching, animated background, responsive navigation, the home page, the journal, and the about page.
+This is the portfolio shell for the h777 tool ecosystem. The main shape is in place: routing, layout, theme switching, animated background, responsive navigation, the home page, Lab, Work, Journal, About, Contact, and 404 handling.
 
-Some parts are still light on content. Work, Lab, and Contact exist so the structure is ready, but they are not pretending to be finished. The next step is filling those pages with real projects, tools, and contact details.
+The site is now moving from shell to showcase. PM Ops Map is the first featured case study and the first built/open-source tool on the Lab page. The next step is adding the other ready tools, then replacing "coming soon" links with hosted demos.
 
 The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
+
+## Current Showcase
+
+### PM Ops Map
+
+PM Ops Map is the first flagship tool featured on the site.
+
+- **Status:** Built / open source
+- **Type:** Browser app
+- **Audience:** New PMCs, owners, and operations managers
+- **Source:** [hypnoticdata777/pm-ops-map](https://github.com/hypnoticdata777/pm-ops-map)
+- **Download:** [latest release](https://github.com/hypnoticdata777/pm-ops-map/releases/latest)
+- **Screenshots:** [docs/screenshots](https://github.com/hypnoticdata777/pm-ops-map/tree/master/docs/screenshots)
+
+The Work page now includes the first real case study: **PM Ops Map: a day-one operating system for new property management companies.**
 
 ## Current Pages
 
 | Route | Current status |
 |---|---|
 | `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Lab and Journal |
-| `/work` | Placeholder page for selected projects |
-| `/lab` | Early page for tools, experiments, and utilities |
+| `/work` | First case study shipped: PM Ops Map |
+| `/lab` | Tool shelf with PM Ops Map as the first built/open-source entry |
 | `/journal` | Journal page with a few short field-note style entries |
 | `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Minimal contact placeholder |
@@ -31,16 +46,30 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Lab and Journal.
+- **Lab page** - a product shelf for tools, starting with PM Ops Map and real outbound links.
+- **Work page** - the first portfolio case study, with PM Ops Map positioning, screenshots, links, problem/solution copy, and builder notes.
 - **Journal page** - real written content, not just placeholder cards.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
 
-- Work still needs the actual project writeups.
-- Lab still needs real tools, experiments, or links.
+- Add the next ready tools to Lab.
+- Write case studies for the other showcase-ready tools.
+- Replace "Demo coming soon" once PM Ops Map has a hosted demo URL.
 - Contact still needs a real way to reach me.
 - Contact and newsletter-style plumbing are intentionally minimal until there is a real service behind them.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
+
+## Content Roadmap
+
+Short-term content plan:
+
+1. PM Ops Map case study - shipped.
+2. Add the next 3 ready tools as Lab entries with source/demo/screenshot links where available.
+3. Add 3 semi-ready tools as clearly labeled in-progress entries.
+4. Write one Work case study for each showcase-ready tool.
+5. Host the portfolio and replace temporary demo placeholders with live URLs.
+6. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
 
 ## Stack
 
