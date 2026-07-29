@@ -39,6 +39,27 @@ const tools = [
     ],
   },
   {
+    name: "m3ldSync",
+    status: "Local POC / Public demo packaged",
+    type: "CSV reconciliation tool",
+    audience: "Maintenance managers and busy PM operators",
+    description:
+      "A local browser proof-of-concept that turns repeated maintenance CSV exports into operational memory. It compares imports, spots new, changed, stale, and manually corrected records, then turns the noise into a Kanban triage view with property-level attention signals.",
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/hypnoticdata777/m3ldSync",
+      },
+      {
+        label: "Portfolio assets",
+        href: "https://github.com/hypnoticdata777/m3ldSync/tree/main/docs/portfolio",
+      },
+      {
+        label: "Demo coming soon",
+      },
+    ],
+  },
+  {
     name: "VendorRadar",
     status: "POC / In design",
     type: "Vendor intelligence",
