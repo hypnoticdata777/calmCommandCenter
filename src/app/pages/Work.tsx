@@ -102,6 +102,45 @@ const meldSyncLinks = [
   },
 ];
 
+const techSyncFacts = [
+  "Multi-tenant SaaS POC",
+  "React Native mobile app",
+  "FastAPI backend",
+  "Postgres tenant isolation",
+  "70 backend tests",
+];
+
+const techSyncFeatures = [
+  "Work-order ingestion from CSV and webhook-style sources",
+  "Assignment logic based on priority, technician fit, proximity, and workload",
+  "Tenant-scoped organizations, roles, invitations, and onboarding",
+  "Technician mobile queue with status movement from assignment to completion",
+  "Attachment endpoints for before photos, completion proof, receipts, and field records",
+  "Dashboard metrics, billing endpoints, and admin-ready backend boundaries",
+  "Postgres row-level security backstop plus repository isolation tests",
+];
+
+const techSyncProofPoints = [
+  "Backend API foundation is already organized around organizations, work orders, assignments, technicians, files, billing, and metrics.",
+  "The mobile direction is clear: technicians need a day/week/month field calendar, live job queue, updates, and proof collection.",
+  "The repo documents deferred production work openly: web admin, offline sync, PDF/email ingestion, mobile dependency audit, monitoring, and hosted staging.",
+];
+
+const techSyncLinks = [
+  {
+    label: "Source",
+    href: "https://github.com/hypnoticdata777/Techsync",
+  },
+  {
+    label: "Docs",
+    href: "https://github.com/hypnoticdata777/Techsync#spec-coverage",
+  },
+  {
+    label: "Requirements",
+    href: "https://github.com/hypnoticdata777/Techsync/blob/main/Techsync_SaaS_Requirements.md",
+  },
+];
+
 function SectionLabel({ children }: { children: string }) {
   return (
     <p className="text-brand/60 text-sm tracking-widest uppercase">
@@ -527,6 +566,190 @@ export function Work() {
               Next up: hosted public demo wiring, production authentication for
               owner mode, protected storage, and stronger reporting around
               aging, follow-up, and portfolio-level priorities.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="space-y-12 border-t border-foreground/10 pt-16"
+        >
+          <div className="max-w-4xl space-y-8">
+            <SectionLabel>Work / Case Study 03</SectionLabel>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+              TechSync: field-service dispatch built for proof, priority, and
+              follow-through.
+            </h2>
+            <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
+              A multi-tenant SaaS POC for field-service companies and PM teams
+              that need to ingest work orders, assign the right technician, and
+              track progress through completion proof instead of constant
+              follow-up.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {techSyncLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
+                Screenshots coming soon
+              </span>
+            </div>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-5">
+            {techSyncFacts.map((fact) => (
+              <div key={fact} className="border-l border-brand/35 pl-4">
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  {fact}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Problem</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Field work breaks when dispatch has no shared operating memory.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              Maintenance work orders arrive from scattered exports, calls,
+              messages, portals, spreadsheets, and follow-up threads. The real
+              cost is not just intake. It is figuring out what should go first,
+              who should take it, what the technician actually did, and whether
+              the proof made it back to the office.
+            </p>
+            <p>
+              TechSync is aimed at that coordination layer: PMCs, field-service
+              teams, homeowners, and technicians all need the same work to move
+              from request to assignment to completion without the manager
+              manually chasing every update.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Solution</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              A SaaS foundation for dispatch, technician flow, and job proof.
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6 text-lg leading-loose text-foreground/70">
+              <p>
+                The POC validates the core platform shape: a FastAPI backend,
+                multi-tenant organization model, Postgres-backed isolation,
+                work-order ingestion, assignment logic, technician workflows,
+                attachments, metrics, and billing-ready boundaries.
+              </p>
+              <p className="text-foreground/90">
+                The product ambition is bigger than a dispatch board. The
+                useful version should help a manager know what is urgent, which
+                technician fits the job, how the route should be planned, and
+                what proof came back from the field.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {techSyncFeatures.map((feature) => (
+                <p
+                  key={feature}
+                  className="border-b border-foreground/10 pb-4 text-lg leading-relaxed text-foreground/75"
+                >
+                  {feature}
+                </p>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Technical Proof</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Strong enough to show, still labeled as a POC.
+            </h2>
+          </div>
+
+          <div className="grid gap-5">
+            {techSyncProofPoints.map((point) => (
+              <p
+                key={point}
+                className="border-b border-foreground/10 pb-5 text-lg leading-loose text-foreground/72"
+              >
+                {point}
+              </p>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Builder Notes</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Built around the follow-up problem.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              The pain behind TechSync is familiar: a manager should not have
+              to keep asking technicians for updates, photos, receipts,
+              materials, and completion status just to know whether the work is
+              moving.
+            </p>
+            <p>
+              For the public portfolio, this belongs as an ambitious SaaS POC:
+              real architecture, meaningful tests, clear product direction, and
+              honest boundaries around what still needs production polish.
+            </p>
+            <p className="text-foreground/90">
+              Next up: portfolio-safe screenshots, hosted staging, admin web
+              views, Expo and React Native dependency upgrades, offline sync,
+              PDF/email ingestion, monitoring, and launch-ready security
+              configuration.
             </p>
           </div>
         </motion.section>

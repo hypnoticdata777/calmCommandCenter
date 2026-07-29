@@ -6,7 +6,7 @@ A public portfolio site for `h777`, built to showcase property management tools,
 
 This is the portfolio shell for the h777 tool ecosystem. The main shape is in place: routing, layout, theme switching, animated background, responsive navigation, the home page, Lab, Work, Journal, About, Contact, and 404 handling.
 
-The site is now moving from shell to showcase. PM Ops Map and m3ldSync are the first featured case studies and tool entries. The next step is adding the other ready tools, then replacing "coming soon" links with hosted demos.
+The site is now moving from shell to showcase. PM Ops Map, m3ldSync, and TechSync are the first featured case studies and tool entries. The next step is adding the other ready tools, then replacing "coming soon" links with hosted demos and screenshots.
 
 The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
 
@@ -38,13 +38,26 @@ m3ldSync is the second showcase tool featured on the site.
 
 The Work page now includes the second case study: **m3ldSync: turning maintenance export noise into action.**
 
+### TechSync
+
+TechSync is the third showcase tool featured on the site.
+
+- **Status:** SaaS POC / backend + mobile foundation
+- **Type:** Field service SaaS
+- **Audience:** PMCs, field teams, technicians, and homeowners
+- **Source:** [hypnoticdata777/Techsync](https://github.com/hypnoticdata777/Techsync)
+- **Docs:** [README documentation](https://github.com/hypnoticdata777/Techsync#spec-coverage)
+- **Requirements:** [Techsync SaaS requirements](https://github.com/hypnoticdata777/Techsync/blob/main/Techsync_SaaS_Requirements.md)
+
+The Work page now includes the third case study: **TechSync: field-service dispatch built for proof, priority, and follow-through.**
+
 ## Current Pages
 
 | Route | Current status |
 |---|---|
 | `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Lab and Journal |
-| `/work` | Case studies shipped: PM Ops Map and m3ldSync |
-| `/lab` | Tool shelf with PM Ops Map and m3ldSync as the first showcase entries |
+| `/work` | Case studies shipped: PM Ops Map, m3ldSync, and TechSync |
+| `/lab` | Tool shelf with PM Ops Map, m3ldSync, and TechSync as the first showcase entries |
 | `/journal` | Journal page with a few short field-note style entries |
 | `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Minimal contact placeholder |
@@ -59,16 +72,17 @@ The Work page now includes the second case study: **m3ldSync: turning maintenanc
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Lab and Journal.
-- **Lab page** - a product shelf for tools, starting with PM Ops Map, m3ldSync, and real outbound links.
-- **Work page** - the first two portfolio case studies, with positioning, screenshots, links, problem/solution copy, and builder notes.
+- **Lab page** - a product shelf for tools, starting with PM Ops Map, m3ldSync, TechSync, and real outbound links.
+- **Work page** - the first three portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
 - **Journal page** - real written content, not just placeholder cards.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
 
 - Add the next ready tools to Lab.
-- Write case studies for the other showcase-ready tools.
-- Replace "Demo coming soon" once PM Ops Map and m3ldSync have hosted demo URLs.
+- Write case studies for the remaining showcase-ready tools.
+- Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TechSync have hosted demo URLs.
+- Add portfolio-safe TechSync screenshots or a staged demo walkthrough.
 - Contact still needs a real way to reach me.
 - Contact and newsletter-style plumbing are intentionally minimal until there is a real service behind them.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
@@ -79,11 +93,12 @@ Short-term content plan:
 
 1. PM Ops Map case study - shipped.
 2. m3ldSync case study - shipped.
-3. Add the next ready tools as Lab entries with source/demo/screenshot links where available.
-4. Add 3 semi-ready tools as clearly labeled in-progress entries.
-5. Write one Work case study for each showcase-ready tool.
-6. Host the portfolio and replace temporary demo placeholders with live URLs.
-7. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
+3. TechSync case study - shipped.
+4. Add the next ready tools as Lab entries with source/demo/screenshot links where available.
+5. Add 3 semi-ready tools as clearly labeled in-progress entries.
+6. Write one Work case study for each showcase-ready tool.
+7. Host the portfolio and replace temporary demo placeholders with live URLs.
+8. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
 
 ## Stack
 

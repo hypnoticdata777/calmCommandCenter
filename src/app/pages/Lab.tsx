@@ -70,12 +70,24 @@ const tools = [
   },
   {
     name: "TechSync",
-    status: "POC / Early architecture",
-    type: "Field service coordination",
-    audience: "maintenance teams",
+    status: "SaaS POC / Backend + mobile foundation",
+    type: "Field service SaaS",
+    audience: "PMCs, field teams, technicians, and homeowners",
     description:
-      "A field-service coordination concept for turning incoming work orders into assigned, trackable technician work. Work orders come from everywhere, but someone still has to get the right job to the right tech at the right time.",
-    links: [{ label: "Architecture draft" }, { label: "POC planned" }],
+      "A multi-tenant field-service SaaS POC for ingesting maintenance work orders, assigning them to the best-fit technician by priority, skills, proximity, and workload, and tracking field progress through mobile technician workflows.",
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/hypnoticdata777/Techsync",
+      },
+      {
+        label: "Docs",
+        href: "https://github.com/hypnoticdata777/Techsync#spec-coverage",
+      },
+      {
+        label: "Demo coming soon",
+      },
+    ],
   },
 ];
 
