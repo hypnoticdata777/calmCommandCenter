@@ -141,6 +141,39 @@ const techSyncLinks = [
   },
 ];
 
+const turnFlowFacts = [
+  "Firebase-backed MVP",
+  "Role-based PM, tech, and client views",
+  "Technician photo proof",
+  "Itemized turnover estimates",
+  "Firestore security rules",
+];
+
+const turnFlowFeatures = [
+  "Project lifecycle from Pending Approval to Approved to Sent",
+  "Itemized labor, rate, materials, and task-level estimate tracking",
+  "Technician before, after, and receipt photo uploads per task",
+  "Read-only client approval/status view",
+  "Contacts stored in Firestore for owner/client records",
+  "Chart.js stats for completed vs pending tasks and cost by property",
+  "Backup and restore through dated JSON exports",
+];
+
+const turnFlowLinks = [
+  {
+    label: "Source",
+    href: "https://github.com/hypnoticdata777/turnflow-mvp",
+  },
+  {
+    label: "Docs",
+    href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md",
+  },
+  {
+    label: "Requirements",
+    href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/REQUIREMENTS.md",
+  },
+];
+
 function SectionLabel({ children }: { children: string }) {
   return (
     <p className="text-brand/60 text-sm tracking-widest uppercase">
@@ -580,14 +613,14 @@ export function Work() {
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 03</SectionLabel>
             <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              TechSync: field-service dispatch built for proof, priority, and
-              follow-through.
+              TechSync Ops: the PMC command layer for maintenance dispatch and
+              proof.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              A multi-tenant SaaS POC for field-service companies and PM teams
-              that need to ingest work orders, assign the right technician, and
-              track progress through completion proof instead of constant
-              follow-up.
+              A multi-tenant SaaS POC for PMCs and field-service teams that
+              need to ingest work orders, assign the right technician, keep
+              client communication connected, and track progress through
+              completion proof instead of constant follow-up.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -643,9 +676,9 @@ export function Work() {
             </p>
             <p>
               TechSync is aimed at that coordination layer: PMCs, field-service
-              teams, homeowners, and technicians all need the same work to move
-              from request to assignment to completion without the manager
-              manually chasing every update.
+              teams, technicians, vendors, and client-view users all need the
+              same work to move from request to assignment to completion without
+              the manager manually chasing every update.
             </p>
           </div>
         </motion.section>
@@ -741,15 +774,171 @@ export function Work() {
               moving.
             </p>
             <p>
-              For the public portfolio, this belongs as an ambitious SaaS POC:
-              real architecture, meaningful tests, clear product direction, and
-              honest boundaries around what still needs production polish.
+              For the public portfolio, this belongs as an ambitious PMC SaaS
+              POC: real architecture, meaningful tests, clear product
+              direction, and honest boundaries around what still needs
+              production polish.
             </p>
             <p className="text-foreground/90">
               Next up: portfolio-safe screenshots, hosted staging, admin web
               views, Expo and React Native dependency upgrades, offline sync,
               PDF/email ingestion, monitoring, and launch-ready security
               configuration.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="space-y-12 border-t border-foreground/10 pt-16"
+        >
+          <div className="max-w-4xl space-y-8">
+            <SectionLabel>Work / Case Study 04</SectionLabel>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+              TurnFlow Home: client-side maintenance approvals with proof built
+              in.
+            </h2>
+            <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
+              A Firebase-backed MVP for homeowners and owner clients who need a
+              calmer way to review turnover work, understand itemized estimates,
+              watch approval status, and keep technician photo proof in one
+              shared maintenance record.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {turnFlowLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
+                Screenshots coming soon
+              </span>
+            </div>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-5">
+            {turnFlowFacts.map((fact) => (
+              <div key={fact} className="border-l border-brand/35 pl-4">
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  {fact}
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Problem</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Clients need confidence without being pulled into the whole
+              operation.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              Turnovers and repairs get hard for owners because approvals,
+              estimates, contacts, technician photos, receipts, and final status
+              often live in separate messages or spreadsheets. The client just
+              wants to know what is being proposed, what it costs, what was
+              approved, and what proof came back.
+            </p>
+            <p>
+              TurnFlow Home keeps that workflow intentionally smaller than
+              TechSync Ops. It is not trying to run the entire PMC maintenance
+              department. It gives clients and homeowners a focused approval
+              and maintenance-history layer.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Solution</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              A client-facing record for approvals, tasks, and photo evidence.
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6 text-lg leading-loose text-foreground/70">
+              <p>
+                The MVP uses Firebase Authentication, Firestore, Firebase
+                Storage, and role-based security rules so PM/admin users can
+                create turnover projects, technicians can upload proof, and
+                clients can safely view approval status without editing the
+                operation.
+              </p>
+              <p className="text-foreground/90">
+                The product direction is homeowner-friendly: fewer internal
+                controls, more clarity around what needs approval, what work was
+                completed, and what record should be kept after the job.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {turnFlowFeatures.map((feature) => (
+                <p
+                  key={feature}
+                  className="border-b border-foreground/10 pb-4 text-lg leading-relaxed text-foreground/75"
+                >
+                  {feature}
+                </p>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Builder Notes</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              The client layer should feel simpler than the ops layer.
+            </h2>
+          </div>
+
+          <div className="space-y-6 text-lg leading-loose text-foreground/70">
+            <p>
+              TurnFlow Home should stay focused on client and homeowner
+              confidence: approval clarity, cost context, maintenance records,
+              and proof. That keeps it distinct from TechSync Ops, which owns
+              dispatch, routing, workload, technician management, and company
+              reporting.
+            </p>
+            <p className="text-foreground/90">
+              Next up: public-safe screenshots, a hosted demo environment,
+              polished client approval screens, stronger owner-facing PDF
+              exports, notification flows, and a tighter split between
+              homeowner self-management and PMC-managed projects.
             </p>
           </div>
         </motion.section>

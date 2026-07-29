@@ -6,7 +6,7 @@ A public portfolio site for `h777`, built to showcase property management tools,
 
 This is the portfolio shell for the h777 tool ecosystem. The main shape is in place: routing, layout, theme switching, animated background, responsive navigation, the home page, Lab, Work, Journal, About, Contact, and 404 handling.
 
-The site is now moving from shell to showcase. PM Ops Map, m3ldSync, and TechSync are the first featured case studies and tool entries. The next step is adding the other ready tools, then replacing "coming soon" links with hosted demos and screenshots.
+The site is now moving from shell to showcase. PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home are the first featured case studies and tool entries. The next step is replacing "coming soon" links with hosted demos and adding the remaining ready/semi-ready tools.
 
 The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
 
@@ -38,26 +38,47 @@ m3ldSync is the second showcase tool featured on the site.
 
 The Work page now includes the second case study: **m3ldSync: turning maintenance export noise into action.**
 
-### TechSync
+### TechSync Ops
 
-TechSync is the third showcase tool featured on the site.
+TechSync Ops is the third showcase tool featured on the site.
 
 - **Status:** SaaS POC / backend + mobile foundation
-- **Type:** Field service SaaS
-- **Audience:** PMCs, field teams, technicians, and homeowners
+- **Type:** PMC maintenance command platform
+- **Audience:** PMCs, coordinators, technicians, vendors, and client-view users
 - **Source:** [hypnoticdata777/Techsync](https://github.com/hypnoticdata777/Techsync)
 - **Docs:** [README documentation](https://github.com/hypnoticdata777/Techsync#spec-coverage)
 - **Requirements:** [Techsync SaaS requirements](https://github.com/hypnoticdata777/Techsync/blob/main/Techsync_SaaS_Requirements.md)
 
-The Work page now includes the third case study: **TechSync: field-service dispatch built for proof, priority, and follow-through.**
+The Work page now includes the third case study: **TechSync Ops: the PMC command layer for maintenance dispatch and proof.**
+
+### TurnFlow Home
+
+TurnFlow Home is the fourth showcase tool featured on the site.
+
+- **Status:** MVP / Firebase-backed POC
+- **Type:** Client maintenance portal
+- **Audience:** Homeowners, owner clients, and invited technicians
+- **Source:** [hypnoticdata777/turnflow-mvp](https://github.com/hypnoticdata777/turnflow-mvp)
+- **Docs:** [project workbook](https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md)
+- **Requirements:** [requirements](https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/REQUIREMENTS.md)
+
+The Work page now includes the fourth case study: **TurnFlow Home: client-side maintenance approvals with proof built in.**
+
+### Product Split Brief
+
+The repo also includes an interactive requirements brief that separates the two maintenance products:
+
+- **TurnFlow Home:** client/homeowner maintenance self-management, approvals, history, and proof.
+- **TechSync Ops:** PMC maintenance operations, dispatch, technician workflows, client communication, and reporting.
+- **Local file:** [`docs/product-requirements/maintenance-product-split.html`](docs/product-requirements/maintenance-product-split.html)
 
 ## Current Pages
 
 | Route | Current status |
 |---|---|
 | `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Lab and Journal |
-| `/work` | Case studies shipped: PM Ops Map, m3ldSync, and TechSync |
-| `/lab` | Tool shelf with PM Ops Map, m3ldSync, and TechSync as the first showcase entries |
+| `/work` | Case studies shipped: PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home |
+| `/lab` | Tool shelf with PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home as showcase entries |
 | `/journal` | Journal page with a few short field-note style entries |
 | `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Minimal contact placeholder |
@@ -72,8 +93,9 @@ The Work page now includes the third case study: **TechSync: field-service dispa
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Lab and Journal.
-- **Lab page** - a product shelf for tools, starting with PM Ops Map, m3ldSync, TechSync, and real outbound links.
-- **Work page** - the first three portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
+- **Lab page** - a product shelf for tools, starting with PM Ops Map, m3ldSync, TechSync Ops, TurnFlow Home, and real outbound links.
+- **Work page** - the first four portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
+- **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, not just placeholder cards.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
@@ -81,8 +103,8 @@ The Work page now includes the third case study: **TechSync: field-service dispa
 
 - Add the next ready tools to Lab.
 - Write case studies for the remaining showcase-ready tools.
-- Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TechSync have hosted demo URLs.
-- Add portfolio-safe TechSync screenshots or a staged demo walkthrough.
+- Replace "Demo coming soon" once PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home have hosted demo URLs.
+- Add portfolio-safe TechSync Ops and TurnFlow Home screenshots or staged demo walkthroughs.
 - Contact still needs a real way to reach me.
 - Contact and newsletter-style plumbing are intentionally minimal until there is a real service behind them.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
@@ -93,12 +115,13 @@ Short-term content plan:
 
 1. PM Ops Map case study - shipped.
 2. m3ldSync case study - shipped.
-3. TechSync case study - shipped.
-4. Add the next ready tools as Lab entries with source/demo/screenshot links where available.
-5. Add 3 semi-ready tools as clearly labeled in-progress entries.
-6. Write one Work case study for each showcase-ready tool.
-7. Host the portfolio and replace temporary demo placeholders with live URLs.
-8. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
+3. TechSync Ops case study - shipped.
+4. TurnFlow Home case study - shipped.
+5. Add the next ready tools as Lab entries with source/demo/screenshot links where available.
+6. Add 3 semi-ready tools as clearly labeled in-progress entries.
+7. Write one Work case study for each showcase-ready tool.
+8. Host the portfolio and replace temporary demo placeholders with live URLs.
+9. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
 
 ## Stack
 

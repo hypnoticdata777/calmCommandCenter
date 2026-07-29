@@ -69,12 +69,12 @@ const tools = [
     links: [{ label: "POC roadmap" }, { label: "Prototype notes" }],
   },
   {
-    name: "TechSync",
+    name: "TechSync Ops",
     status: "SaaS POC / Backend + mobile foundation",
-    type: "Field service SaaS",
-    audience: "PMCs, field teams, technicians, and homeowners",
+    type: "PMC maintenance command platform",
+    audience: "PMCs, coordinators, technicians, vendors, and client-view users",
     description:
-      "A multi-tenant field-service SaaS POC for ingesting maintenance work orders, assigning them to the best-fit technician by priority, skills, proximity, and workload, and tracking field progress through mobile technician workflows.",
+      "A multi-tenant maintenance operations POC for PMCs and field-service teams. It ingests work orders, recommends technician assignment by priority, skills, proximity, and workload, and keeps client communication tied to field proof.",
     links: [
       {
         label: "Source",
@@ -83,6 +83,27 @@ const tools = [
       {
         label: "Docs",
         href: "https://github.com/hypnoticdata777/Techsync#spec-coverage",
+      },
+      {
+        label: "Demo coming soon",
+      },
+    ],
+  },
+  {
+    name: "TurnFlow Home",
+    status: "MVP / Firebase-backed POC",
+    type: "Client maintenance portal",
+    audience: "Homeowners, owner clients, and invited technicians",
+    description:
+      "A homeowner and owner-client maintenance companion for turnover and repair workflows. It helps clients track approvals, estimates, itemized tasks, technician photo proof, contacts, charts, and backup/restore records without needing a full PMC command system.",
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/hypnoticdata777/turnflow-mvp",
+      },
+      {
+        label: "Docs",
+        href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md",
       },
       {
         label: "Demo coming soon",

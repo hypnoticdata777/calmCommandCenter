@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maintenance Product Split Requirements</title>
+    <style>
+      :root {
+        --bg: #101214;
+        --panel: #171b1f;
+        --panel-2: #20262b;
+        --text: #f4f0e8;
+        --muted: #b8afa2;
+        --line: rgba(244, 240, 232, 0.14);
+        --accent: #d84b3a;
+        --accent-2: #2da6a1;
+        --warn: #e0b35a;
+        --ok: #7fc27a;
+        --shadow: rgba(0, 0, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(216, 75, 58, 0.16), transparent 30rem),
+          radial-gradient(circle at 85% 10%, rgba(45, 166, 161, 0.14), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 44px 22px 72px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 28px;
+        align-items: end;
+        padding: 30px 0 44px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin-top: 14px;
+        font-size: clamp(2.4rem, 6vw, 5.7rem);
+        letter-spacing: -0.025em;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .hero-copy {
+        max-width: 760px;
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .decision-card {
+        padding: 22px;
+        background: rgba(23, 27, 31, 0.82);
+        border: 1px solid var(--line);
+        box-shadow: 0 20px 60px var(--shadow);
+      }
+
+      .decision-card strong {
+        color: var(--text);
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 -22px 34px;
+        padding: 12px 22px;
+        backdrop-filter: blur(18px);
+        background: rgba(16, 18, 20, 0.82);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .tabs,
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button,
+      .download-link {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        padding: 9px 13px;
+        font: inherit;
+        font-weight: 750;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      button:hover,
+      .download-link:hover,
+      button.active {
+        border-color: rgba(216, 75, 58, 0.75);
+        background: rgba(216, 75, 58, 0.14);
+      }
+
+      .search {
+        width: min(100%, 280px);
+        min-height: 40px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        padding: 9px 12px;
+        font: inherit;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .compare {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin: 34px 0;
+      }
+
+      .card {
+        background: rgba(23, 27, 31, 0.76);
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+
+      .card.teal {
+        border-color: rgba(45, 166, 161, 0.42);
+      }
+
+      .card.red {
+        border-color: rgba(216, 75, 58, 0.42);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 5px 8px;
+        font-size: 0.82rem;
+      }
+
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .product-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 24px;
+        margin: 28px 0;
+        padding-top: 22px;
+      }
+
+      .req-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 20px;
+      }
+
+      details {
+        background: rgba(23, 27, 31, 0.72);
+        border: 1px solid var(--line);
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 18px 20px;
+        font-weight: 850;
+        color: var(--text);
+      }
+
+      .details-body {
+        padding: 0 20px 20px;
+        color: var(--muted);
+      }
+
+      ul {
+        margin: 12px 0 0;
+        padding-left: 20px;
+      }
+
+      li + li {
+        margin-top: 8px;
+      }
+
+      .label {
+        color: var(--accent-2);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .note {
+        border-left: 3px solid var(--warn);
+        color: var(--muted);
+        padding: 0 0 0 16px;
+      }
+
+      .matrix {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      .callout {
+        margin-top: 28px;
+        padding: 20px;
+        border: 1px solid rgba(127, 194, 122, 0.36);
+        background: rgba(127, 194, 122, 0.08);
+      }
+
+      .hidden-by-search {
+        display: none;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .compare,
+        .product-head,
+        .req-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .toolbar {
+          position: static;
+        }
+      }
+
+      @media print {
+        .toolbar,
+        .actions {
+          display: none;
+        }
+
+        body {
+          background: white;
+          color: black;
+        }
+
+        .card,
+        details,
+        .decision-card {
+          break-inside: avoid;
+          background: white;
+          color: black;
+          border-color: #ccc;
+        }
+
+        .section {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">h777 Product Requirements</div>
+          <h1>Maintenance Product Split</h1>
+          <p class="hero-copy">
+            Two products can share maintenance DNA without competing. The split is
+            audience, ownership, and depth: one helps homeowners self-manage
+            maintenance; the other helps PMCs run maintenance operations across
+            clients, technicians, vendors, and internal teams.
+          </p>
+        </div>
+        <aside class="decision-card">
+          <p class="label">Recommended Split</p>
+          <p style="margin-top: 10px">
+            <strong>TurnFlow Home</strong> should become the client/homeowner
+            maintenance self-management product.
+          </p>
+          <p style="margin-top: 12px">
+            <strong>TechSync Ops</strong> should remain the PMC maintenance
+            command platform for work orders, dispatch, technician proof, client
+            communications, and operational reporting.
+          </p>
+        </aside>
+      </section>
+
+      <nav class="toolbar" aria-label="Document controls">
+        <div class="tabs">
+          <button class="tab active" data-target="overview">Overview</button>
+          <button class="tab" data-target="home">TurnFlow Home</button>
+          <button class="tab" data-target="ops">TechSync Ops</button>
+          <button class="tab" data-target="repo">Repo Impact</button>
+        </div>
+        <div class="actions">
+          <a
+            class="download-link"
+            href="./maintenance-product-split.html"
+            download
+            >Download HTML</a
+          >
+          <input
+            id="search"
+            class="search"
+            type="search"
+            placeholder="Filter visible text..."
+            aria-label="Filter visible text"
+          />
+          <button id="expandAll">Expand</button>
+          <button id="collapseAll">Collapse</button>
+          <button id="printPage">Print / Save PDF</button>
+        </div>
+      </nav>
+
+      <section id="overview" class="section active">
+        <div class="grid compare">
+          <article class="card teal">
+            <p class="label">Product A</p>
+            <h2 style="margin-top: 10px">TurnFlow Home</h2>
+            <p style="margin-top: 14px; color: var(--muted)">
+              A homeowner/client maintenance companion for request intake,
+              vendor coordination, approvals, records, reminders, and proof.
+            </p>
+            <div class="meta">
+              <span class="pill">Audience: clients/homeowners</span>
+              <span class="pill">Mode: self-managed</span>
+              <span class="pill">Tone: guided and calm</span>
+            </div>
+          </article>
+
+          <article class="card red">
+            <p class="label">Product B</p>
+            <h2 style="margin-top: 10px">TechSync Ops</h2>
+            <p style="margin-top: 14px; color: var(--muted)">
+              A PMC maintenance operations platform for work-order intake,
+              dispatch, technician workflows, client communications, and proof.
+            </p>
+            <div class="meta">
+              <span class="pill">Audience: PMCs + techs + clients</span>
+              <span class="pill">Mode: managed operations</span>
+              <span class="pill">Tone: command center</span>
+            </div>
+          </article>
+        </div>
+
+        <article class="card">
+          <h2>Boundary Matrix</h2>
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>Question</th>
+                <th>TurnFlow Home</th>
+                <th>TechSync Ops</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Who owns the workflow?</td>
+                <td>Homeowner or client.</td>
+                <td>PMC, dispatcher, coordinator, or field-service company.</td>
+              </tr>
+              <tr>
+                <td>Primary job-to-be-done</td>
+                <td>Help me manage my property's maintenance without feeling lost.</td>
+                <td>Help my company run maintenance without scattered communication.</td>
+              </tr>
+              <tr>
+                <td>Main users</td>
+                <td>Homeowners, owner clients, household members, invited vendors.</td>
+                <td>PMC admins, maintenance coordinators, technicians, owners/clients, vendors.</td>
+              </tr>
+              <tr>
+                <td>Core workflow</td>
+                <td>Intake, triage, quote collection, approval, proof, records, reminders.</td>
+                <td>Intake, assignment, routing, technician updates, client comms, closeout reporting.</td>
+              </tr>
+              <tr>
+                <td>What not to build first</td>
+                <td>Enterprise dispatch, complex routing, multi-tenant company admin.</td>
+                <td>DIY homeowner education, household maintenance coaching, consumer vendor marketplace.</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <div class="callout">
+          <strong>Decision:</strong> keep both. TurnFlow Home becomes the
+          client/homeowner product. TechSync Ops becomes the PMC operating
+          platform. This gives you similar maintenance intelligence across two
+          different markets without confusing the pitch.
+        </div>
+      </section>
+
+      <section id="home" class="section">
+        <div class="product-head">
+          <div>
+            <p class="label">Client/Homeowner Product</p>
+            <h2>TurnFlow Home</h2>
+          </div>
+          <p class="note">
+            Working positioning: a guided maintenance self-management product
+            for homeowners and owner clients who want structure, proof, records,
+            and reminders without hiring a full property management operation.
+          </p>
+        </div>
+
+        <div class="grid req-grid">
+          <details open>
+            <summary>1. Business Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Provide homeowners and owner clients with a guided system to intake, organize, prioritize, and track maintenance requests.</li>
+                <li>Reduce uncertainty by translating maintenance issues into next steps, recommended evidence, vendor-ready scope, and approval records.</li>
+                <li>Create a trusted property maintenance history that survives texts, emails, calls, and lost receipts.</li>
+                <li>Support homeowner decision-making around quotes, budgets, recurring maintenance, and repair proof.</li>
+                <li>Enable lightweight collaboration with household members, invited vendors, and optional advisors without exposing unrelated property data.</li>
+                <li>Package completed maintenance into proof records that can support resale, insurance, warranty, or owner documentation.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details open>
+            <summary>2. Business Rules</summary>
+            <div class="details-body">
+              <ul>
+                <li>Every request must belong to one property and one account owner.</li>
+                <li>A maintenance request cannot be marked complete until required proof fields are satisfied or intentionally waived.</li>
+                <li>Costs remain estimates until a vendor quote, invoice, or homeowner-entered final cost is attached.</li>
+                <li>Emergency labels must show clear guidance that the product is not an emergency dispatch service.</li>
+                <li>Household collaborators can only access properties, requests, and files explicitly shared with them.</li>
+                <li>Vendors only see the scoped request package they were invited to view.</li>
+                <li>Completed records must preserve date, status, photos, cost, vendor, notes, and attachments.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>3. Constraints</summary>
+            <div class="details-body">
+              <ul>
+                <li>The product must not present itself as a licensed contractor, inspector, legal advisor, or emergency response provider.</li>
+                <li>Consumer trust requires simple language, clear privacy controls, and low-friction onboarding.</li>
+                <li>The first version should avoid complex enterprise dispatch, technician payroll, or route optimization.</li>
+                <li>Vendor marketplace and payments should be optional later-stage capabilities, not required for MVP usefulness.</li>
+                <li>Mobile usability is mandatory because users will capture photos and receipts from the property.</li>
+                <li>Data export must exist so homeowners are not locked into the tool.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>4. External Interface Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Email notifications for request updates, reminders, shared reports, and vendor invitations.</li>
+                <li>SMS or push notifications for time-sensitive reminders and vendor responses, if enabled by the user.</li>
+                <li>Calendar export for recurring maintenance reminders and scheduled vendor visits.</li>
+                <li>File storage interface for photos, PDFs, receipts, warranties, invoices, and inspection reports.</li>
+                <li>PDF export for maintenance summaries, quote packages, and completed proof packets.</li>
+                <li>Optional maps/address validation for property setup and vendor appointment context.</li>
+                <li>Future payment or invoice interface for quote deposits and final invoice tracking.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>5. Features</summary>
+            <div class="details-body">
+              <ul>
+                <li>Guided maintenance request intake with issue category, urgency, location, photos, notes, and access instructions.</li>
+                <li>Homeowner dashboard showing open, scheduled, waiting, approved, and completed maintenance.</li>
+                <li>Quote collection workspace with side-by-side vendor options, attachments, and decision notes.</li>
+                <li>Maintenance calendar for recurring HVAC, plumbing, appliance, roof, landscaping, and safety checks.</li>
+                <li>Property record vault for photos, receipts, warranties, manuals, invoices, and closeout packets.</li>
+                <li>Approval and decision log that preserves who approved what, when, and based on which evidence.</li>
+                <li>Exportable maintenance history report for owners, buyers, insurers, or advisors.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>6. Functional Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>The system shall allow a homeowner to create and manage one or more properties.</li>
+                <li>The system shall allow users to create maintenance requests with photos, notes, room/location, urgency, and preferred contact method.</li>
+                <li>The system shall classify requests by category and recommend a next-step checklist.</li>
+                <li>The system shall allow users to invite a vendor to view a scoped request package.</li>
+                <li>The system shall allow users to record quotes, estimated costs, final costs, invoices, receipts, and selected vendor.</li>
+                <li>The system shall support status transitions including Draft, Needs Quote, Waiting, Scheduled, In Progress, Needs Review, Complete, and Archived.</li>
+                <li>The system shall generate exportable proof packets for selected requests or an entire property.</li>
+                <li>The system shall notify users about upcoming recurring tasks, overdue requests, and vendor updates.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>7. Nonfunctional Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Pages used during photo capture and request creation should load in under 2 seconds on normal broadband.</li>
+                <li>The app should remain usable on mobile browsers at common phone widths.</li>
+                <li>User data must be encrypted in transit and protected at rest by the hosting/storage provider.</li>
+                <li>Exports should remain available in common formats such as PDF, CSV, and JSON.</li>
+                <li>The product should support account recovery and data backup procedures.</li>
+                <li>Notification delivery should be observable so failed reminders can be detected.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>8. Quality Attributes</summary>
+            <div class="details-body">
+              <ul>
+                <li>Usability: non-technical homeowners should understand what to do next without training.</li>
+                <li>Trust: private property data, photos, and access instructions must feel protected and controllable.</li>
+                <li>Transparency: estimates, approvals, proof, and final costs should be easy to audit later.</li>
+                <li>Recoverability: users must be able to export records and recover from accidental archive/delete actions.</li>
+                <li>Accessibility: core request and review flows should work with keyboard navigation and readable contrast.</li>
+                <li>Portability: maintenance history should be useful outside the app.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>9. System Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Responsive web or PWA frontend optimized for mobile capture and desktop review.</li>
+                <li>Authentication with account owner, collaborator, and invited vendor access modes.</li>
+                <li>Database model for users, properties, requests, quotes, vendors, files, reminders, and audit events.</li>
+                <li>Object storage for photos, PDFs, receipts, and warranty documents.</li>
+                <li>Notification service for email and optional SMS/push.</li>
+                <li>Export service for PDF packets and structured data backups.</li>
+                <li>Role and sharing rules that restrict collaborators and vendors to scoped data.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>10. User Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>As a homeowner, I want to document an issue quickly so I do not forget important details.</li>
+                <li>As a homeowner, I want to know what proof or photos to collect before calling a vendor.</li>
+                <li>As an owner client, I want to approve or decline quotes with context and cost visibility.</li>
+                <li>As a household collaborator, I want to add updates without seeing unrelated private records.</li>
+                <li>As an invited vendor, I want the scope, photos, access notes, and contact rules in one place.</li>
+                <li>As a homeowner, I want a complete maintenance history I can export when selling, refinancing, insuring, or planning repairs.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="ops" class="section">
+        <div class="product-head">
+          <div>
+            <p class="label">PMC Operations Product</p>
+            <h2>TechSync Ops</h2>
+          </div>
+          <p class="note">
+            Working positioning: a multi-tenant maintenance command platform for
+            PMCs and field-service teams that need intake, dispatch, tech proof,
+            client communication, reporting, and operational accountability.
+          </p>
+        </div>
+
+        <div class="grid req-grid">
+          <details open>
+            <summary>1. Business Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Provide PMCs and field-service teams with one source of truth for maintenance intake, assignment, technician updates, client communication, and closeout proof.</li>
+                <li>Reduce manual follow-up by enforcing structured technician status updates, photos, receipts, and completion notes.</li>
+                <li>Support multi-tenant operations so each PMC/company can manage its own users, properties, clients, vendors, technicians, and work orders.</li>
+                <li>Improve dispatch quality through prioritization, workload visibility, skill matching, proximity, and manual override.</li>
+                <li>Give clients/homeowners controlled visibility into approvals, status, proof, and communication without exposing internal operations.</li>
+                <li>Produce reporting that shows aging work, SLA risk, technician workload, property hotspots, and completion trends.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details open>
+            <summary>2. Business Rules</summary>
+            <div class="details-body">
+              <ul>
+                <li>Every work order must belong to exactly one organization/tenant and one property.</li>
+                <li>Users can only view or modify records permitted by organization, role, and assignment.</li>
+                <li>Technicians can update assigned work and upload proof, but cannot edit financial/client fields unless authorized.</li>
+                <li>Client-visible communication must be separated from internal notes.</li>
+                <li>High-priority or emergency work orders must bypass normal queue ordering and trigger escalation notifications.</li>
+                <li>Work orders cannot be closed without required completion proof unless a manager applies a documented override.</li>
+                <li>Assignment recommendations may be automated, but dispatchers must be able to override them.</li>
+                <li>All status, assignment, communication, and proof changes must create audit events.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>3. Constraints</summary>
+            <div class="details-body">
+              <ul>
+                <li>The platform must support privacy separation across tenants, clients, technicians, vendors, and internal users.</li>
+                <li>External PM software integrations may arrive gradually, so CSV/import workflows must remain useful.</li>
+                <li>Mobile technician workflows must work under field conditions with small screens, variable signal, and fast photo capture needs.</li>
+                <li>Offline sync, advanced routing, PDF/email ingestion, and deep accounting integrations can be staged after MVP.</li>
+                <li>Location tracking must be consent-based and jurisdiction-aware.</li>
+                <li>The system should not attempt to replace accounting, payroll, or legal compliance systems in the first version.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>4. External Interface Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>CSV import/export for work orders, properties, vendors, technicians, and reports.</li>
+                <li>Webhook/API intake for external portals, forms, or property management systems.</li>
+                <li>Email, SMS, and push notification interfaces for dispatch, client updates, approvals, and escalations.</li>
+                <li>Calendar integration for technician schedules, property visits, and follow-up dates.</li>
+                <li>Maps/routing interface for technician proximity, route planning, and service-area constraints.</li>
+                <li>File storage interface for photos, receipts, invoices, PDFs, and closeout packages.</li>
+                <li>Future accounting/export interface for owner charges, vendor invoices, and billing reconciliation.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>5. Features</summary>
+            <div class="details-body">
+              <ul>
+                <li>Central work-order intake with normalized fields, source tracking, duplicates, priority, and property/client context.</li>
+                <li>Dispatch board with technician workload, assignment recommendations, SLA risk, and manual reassignment.</li>
+                <li>Technician mobile workflow for job queue, status updates, notes, before/after photos, receipts, and completion proof.</li>
+                <li>Client/homeowner portal for approval status, updates, messages, proof, and controlled visibility.</li>
+                <li>Communication timeline that separates internal notes from client-facing messages.</li>
+                <li>Vendor/technician profiles with skills, service area, reliability notes, capacity, and affinity history.</li>
+                <li>Operational reporting for aging work orders, workload, cost trends, property hotspots, and completion cycle time.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>6. Functional Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>The system shall allow an organization admin to create users and assign roles such as admin, coordinator, technician, vendor, client, and viewer.</li>
+                <li>The system shall allow authorized users to create, import, edit, assign, and archive work orders.</li>
+                <li>The system shall detect likely duplicate work orders during import or manual creation.</li>
+                <li>The system shall recommend technicians based on skill, proximity, capacity, workload, priority, and historical affinity.</li>
+                <li>The system shall allow dispatchers to manually assign, reassign, pause, escalate, or cancel work orders.</li>
+                <li>The system shall allow technicians to update status, add notes, upload before/after photos, upload receipts, and request additional approval.</li>
+                <li>The system shall allow clients to approve, decline, comment, or view status only within their authorized scope.</li>
+                <li>The system shall generate closeout packages containing timeline, proof, receipts, notes, cost summary, and completion status.</li>
+                <li>The system shall send notifications based on status changes, approvals needed, SLA risk, assignment, and completion.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>7. Nonfunctional Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Tenant data isolation must be enforced at application and database/security-rule levels.</li>
+                <li>Common dashboard views should load within 3 seconds for normal tenant data volumes.</li>
+                <li>Technician status/photo updates should be optimized for mobile networks and retry gracefully after transient failures.</li>
+                <li>The platform should keep an immutable audit trail for sensitive workflow changes.</li>
+                <li>The system should support backup, restore, and export procedures for tenant records.</li>
+                <li>Security logs and operational errors should be observable by administrators.</li>
+                <li>The UI should meet accessibility expectations for role dashboards and client approval views.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>8. Quality Attributes</summary>
+            <div class="details-body">
+              <ul>
+                <li>Reliability: dispatch and technician updates must not silently fail.</li>
+                <li>Security: tenant data, client messages, photos, receipts, and access instructions must be protected.</li>
+                <li>Scalability: the platform should support growth from a small PMC to multi-team operations.</li>
+                <li>Usability: coordinators should see what needs action without digging through every work order.</li>
+                <li>Auditability: managers should be able to reconstruct decisions, assignments, approvals, and closeout evidence.</li>
+                <li>Maintainability: integrations and assignment logic should be modular enough to evolve without rewriting the platform.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>9. System Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>Multi-tenant backend API with organization-scoped data access and role-based permissions.</li>
+                <li>Relational database or equivalent model for organizations, users, roles, properties, clients, vendors, technicians, work orders, assignments, files, messages, approvals, and audit events.</li>
+                <li>Technician mobile app or responsive PWA for field updates, photos, receipts, and route/day views.</li>
+                <li>Web admin dashboard for coordinators, managers, billing/admin users, and reporting.</li>
+                <li>Object storage for photos, receipts, PDFs, and closeout packets.</li>
+                <li>Background job system for notifications, imports, duplicate checks, SLA checks, and report generation.</li>
+                <li>Monitoring, logging, error tracking, backup, and deployment pipeline for production operations.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>10. User Requirements</summary>
+            <div class="details-body">
+              <ul>
+                <li>As a maintenance coordinator, I want every request in one queue so I can prioritize the day.</li>
+                <li>As a dispatcher, I want assignment recommendations so I can choose the best technician faster.</li>
+                <li>As a technician, I want a simple mobile queue so I know what to do next and what proof is required.</li>
+                <li>As a PMC admin, I want role permissions and tenant controls so staff and clients only see appropriate data.</li>
+                <li>As a client/homeowner, I want to see approval status and proof without needing to call for updates.</li>
+                <li>As an operations manager, I want reports showing stale work, overloaded technicians, and properties with repeated maintenance problems.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="repo" class="section">
+        <article class="card">
+          <p class="label">Impact On Current Portfolio Repo</p>
+          <h2 style="margin-top: 10px">What This Changes</h2>
+          <ul>
+            <li>This document adds a strategy/requirements package only. It does not change the live Lab or Work portfolio pages.</li>
+            <li>The existing TechSync portfolio copy is still mostly valid, but the audience should be narrowed later from broad homeowners to PMC-led maintenance operations with controlled client/homeowner visibility.</li>
+            <li>TurnFlow should be added later as a separate Lab entry and case study, but positioned around homeowner/client self-management, approvals, maintenance history, and proof records.</li>
+            <li>TechSync should remain the stronger home for dispatch, technician assignment, routing/proximity, workload, SLA risk, and company-level reporting.</li>
+            <li>Nothing already committed needs to be reverted. The next portfolio edit should refine wording, not undo prior work.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="margin-top: 18px">
+          <p class="label">Suggested Portfolio Update Later</p>
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Portfolio Position</th>
+                <th>Change Needed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TurnFlow Home</td>
+                <td>Client/homeowner maintenance self-management and approval history.</td>
+                <td>Add as new Lab item and case study after screenshots/docs are reviewed.</td>
+              </tr>
+              <tr>
+                <td>TechSync Ops</td>
+                <td>PMC maintenance command platform for intake, dispatch, technician proof, and client comms.</td>
+                <td>Tighten current copy so homeowners are client-view users, not the main buyer.</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const sections = Array.from(document.querySelectorAll(".section"));
+      const search = document.querySelector("#search");
+
+      function setActive(target) {
+        tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.target === target));
+        sections.forEach((section) => section.classList.toggle("active", section.id === target));
+        search.value = "";
+        applyFilter("");
+      }
+
+      function visibleDetails() {
+        return Array.from(document.querySelectorAll(".section.active details"));
+      }
+
+      function applyFilter(value) {
+        const needle = value.trim().toLowerCase();
+        const cards = Array.from(document.querySelectorAll(".section.active details, .section.active .card"));
+        cards.forEach((node) => {
+          const haystack = node.textContent.toLowerCase();
+          node.classList.toggle("hidden-by-search", Boolean(needle) && !haystack.includes(needle));
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => setActive(tab.dataset.target));
+      });
+
+      document.querySelector("#expandAll").addEventListener("click", () => {
+        visibleDetails().forEach((detail) => {
+          detail.open = true;
+        });
+      });
+
+      document.querySelector("#collapseAll").addEventListener("click", () => {
+        visibleDetails().forEach((detail) => {
+          detail.open = false;
+        });
+      });
+
+      document.querySelector("#printPage").addEventListener("click", () => {
+        window.print();
+      });
+
+      search.addEventListener("input", (event) => applyFilter(event.target.value));
+    </script>
+  </body>
+</html>
