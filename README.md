@@ -81,7 +81,7 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/lab` | Tool shelf with PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home as showcase entries |
 | `/journal` | Journal page with a few short field-note style entries |
 | `/about` | Developed about page explaining the thinking behind the site |
-| `/contact` | Minimal contact placeholder |
+| `/contact` | Email-first contact page with GitHub as a secondary link |
 | `*` | 404 page for unknown routes |
 
 ## What's Working
@@ -105,8 +105,8 @@ The repo also includes an interactive requirements brief that separates the two 
 - Write case studies for the remaining showcase-ready tools.
 - Replace "Demo coming soon" once PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home have hosted demo URLs.
 - Add portfolio-safe TechSync Ops and TurnFlow Home screenshots or staged demo walkthroughs.
-- Contact still needs a real way to reach me.
-- Contact and newsletter-style plumbing are intentionally minimal until there is a real service behind them.
+- Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
+- Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
 
 ## Content Roadmap

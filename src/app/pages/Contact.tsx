@@ -7,19 +7,21 @@
 // ============================================================
 
 import { motion } from "motion/react";
-import { Github } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 
 // PROJECT COMMAND STRUCTURE - Contact
 // 1. Why: Gives visitors a real, low-friction path to reach or inspect the builder.
 // 2. Who: Collaborators, recruiters, classmates, and anyone following the work.
-// 3. Main modules: Contact headline, short copy, GitHub CTA.
+// 3. Main modules: Contact headline, short copy, email CTA, GitHub CTA.
 // 4. Screens: "/contact".
-// 5. Data stored: No submitted data; outbound GitHub URL only.
+// 5. Data stored: No submitted data; outbound email and GitHub URLs only.
 // 6. State tracked: Motion entrance state only.
-// 7. User actions: Open the GitHub profile in a new tab.
+// 7. User actions: Send an email or open the GitHub profile in a new tab.
 // 8. Rules: Do not add fake forms unless a real backend/service exists.
 // 9. Outside tools: Lucide GitHub icon, external GitHub profile, Motion.
-// 10. Smallest version: One accurate contact link.
+// 10. Smallest version: One accurate contact method.
+
+const email = "hypnoticdata777@gmail.com";
 
 export function Contact() {
   return (
@@ -37,18 +39,28 @@ export function Contact() {
         <div className="h-px bg-foreground/10 w-24 mx-auto" />
         <div className="space-y-5">
           <p className="text-foreground/50 tracking-wide leading-relaxed">
-            If it's worth saying, say it directly.
+            Email is the cleanest way to reach me right now.
           </p>
 
-          <a
-            href="https://github.com/hypnoticdata777"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded border border-brand/30 bg-brand/10 px-5 py-2.5 font-display tracking-wide text-brand transition-colors hover:bg-brand/20"
-          >
-            <Github size={16} aria-hidden="true" />
-            GitHub
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`mailto:${email}`}
+              className="inline-flex items-center gap-2 rounded border border-brand/30 bg-brand/10 px-5 py-2.5 font-display tracking-wide text-brand transition-colors hover:bg-brand/20"
+            >
+              <Mail size={16} aria-hidden="true" />
+              {email}
+            </a>
+
+            <a
+              href="https://github.com/hypnoticdata777"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded border border-foreground/15 px-5 py-2.5 font-display tracking-wide text-foreground/65 transition-colors hover:border-brand/30 hover:text-brand"
+            >
+              <Github size={16} aria-hidden="true" />
+              GitHub
+            </a>
+          </div>
         </div>
       </motion.div>
     </div>
