@@ -9,7 +9,7 @@
     "npm": ">=10"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/prepare-sites-build.mjs",
     "build:check": "npm run typecheck && npm run build",
     "dev": "vite",
     "dev:local": "vite --host 127.0.0.1 --open /",
