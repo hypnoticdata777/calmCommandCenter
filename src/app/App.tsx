@@ -111,7 +111,8 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            A build lab for property management tools that should probably have existed already.
+            Creating, iterating, and leading frictionless operations, systems,
+            and tools toward better property management experiences.
           </motion.p>
         </div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -137,9 +138,9 @@ export default function App() {
             {/* Three short italic lines — the project manifesto.
                 text-white/80 = white at 80% opacity. */}
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
-              <p className="italic">Vendor follow-ups.</p>
-              <p className="italic">Scattered notes.</p>
-              <p className="italic">Software that somehow makes the day longer.</p>
+              <p className="italic">Vendor and maintenance chaos.</p>
+              <p className="italic">High tenant turnover and move-in friction.</p>
+              <p className="italic">Tech gaps and manual admin overload.</p>
             </div>
           </div>
 
@@ -149,10 +150,16 @@ export default function App() {
             {/* First line more visible (90%), second more subtle (60%) —
                 creates a visual hierarchy within the same text block. */}
             <p className="text-foreground/90 leading-loose text-lg">
-              I've spent 7+ years inside PM operations, so I know the usual mess: unclear ownership, remote teams, slow training, and the thousand tiny handoffs that make simple work heavier than it should be.
+              I have spent 7+ years inside property management operations,
+              managed 250+ client accounts remotely, led small remote teams,
+              and spent more than 10 years working across service, systems,
+              clients, and distributed operations.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              Now I'm turning that experience into open-source tools, workflow experiments, and practical systems for owners, managers, admins, and anyone trying to make property management less painful.
+              Now I am turning that experience into open-source tools,
+              workflow experiments, practical systems, and consulting support
+              for owners, investors, managers, admins, and teams trying to make
+              property management less painful.
             </p>
           </div>
         </motion.div>
@@ -171,19 +178,19 @@ export default function App() {
               because only headings get it automatically via theme.css. */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">1</div>
-            <p className="text-foreground/70 leading-relaxed">Built from real PM pain.</p>
+            <p className="text-foreground/70 leading-relaxed">Transparency.</p>
           </div>
 
           {/* Principle 2 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">2</div>
-            <p className="text-foreground/70 leading-relaxed">Remote ops without the headache.</p>
+            <p className="text-foreground/70 leading-relaxed">Outcomes.</p>
           </div>
 
           {/* Principle 3 */}
           <div className="space-y-3 text-center">
             <div className="font-display text-brand opacity-60 text-xl">3</div>
-            <p className="text-foreground/70 leading-relaxed">Clear enough to actually use.</p>
+            <p className="text-foreground/70 leading-relaxed">Less friction.</p>
           </div>
         </motion.div>
         {/* ─────────────────────────────────────────────────────────── */}
@@ -201,7 +208,8 @@ export default function App() {
         className="mt-32 flex flex-col items-center gap-5 relative z-10 w-full max-w-md"
       >
         <p className="text-foreground/45 tracking-wide leading-relaxed">
-          The lab has the tools. The journal has the thinking behind them.
+          The work has the tools. The lab has the experiments. The journal has
+          the thinking, questions, and occasional useful vent.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 w-full">

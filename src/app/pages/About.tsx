@@ -32,6 +32,13 @@ const focusAreas = [
   "Clearer handoffs for owners, managers, and admins",
 ];
 
+const consultingOffers = [
+  "PMC operations cleanup and accountability mapping",
+  "Maintenance workflow, handoff, and follow-up design",
+  "Remote team rhythms, training structure, and workload clarity",
+  "Tool selection, process setup, and custom tool scoping",
+];
+
 function SectionNumber({ children }: { children: string }) {
   return (
     <div className="font-display text-brand/60 text-sm tracking-widest">
@@ -61,7 +68,7 @@ export function About() {
             </p>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              I turn property management pain into practical tools.
+              An opinionated operator with a systems brain.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
@@ -71,6 +78,12 @@ export function About() {
                 I have spent 7+ years inside property management operations,
                 and more than 10 years across remote service, leadership,
                 systems, and client-facing work.
+              </p>
+              <p>
+                I am trying to leave places better than I found them. That has
+                been the pattern since my earliest service and operations work:
+                find the messy part, understand the real outcome, and improve
+                the way the work moves.
               </p>
               <p>
                 That kind of work teaches you things quickly.
@@ -197,7 +210,7 @@ export function About() {
           <div className="space-y-5">
             <SectionNumber>03 / Current Focus</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Turning operations experience into tools.
+              Turning operations experience into tools and useful systems.
             </h2>
           </div>
 
@@ -235,11 +248,60 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.9fr_1.1fr]"
+        >
+          <div className="space-y-5">
+            <SectionNumber>04 / Consulting</SectionNumber>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Available for PMC ops coaching, cleanup, and tool-minded
+              consulting.
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6 text-lg leading-loose text-foreground/70">
+              <p>
+                If you are a property manager, homeowner, investor, operator,
+                or remote team tired of chaos and nonstop decision calls, I can
+                help organize the messy part.
+              </p>
+              <p>
+                That can mean clarifying accountability across departments,
+                improving handoffs, setting up task systems, shaping training,
+                reviewing maintenance workflows, or scoping a tailored tool
+                before anyone spends money building the wrong thing.
+              </p>
+              <p className="text-foreground/90">
+                Availability depends on schedule and fit. I am always looking
+                for the truth of the problem first, not just trying to be right.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {consultingOffers.map((offer) => (
+                <div
+                  key={offer}
+                  className="border border-foreground/10 bg-background/40 px-5 py-5"
+                >
+                  <p className="text-lg leading-relaxed text-foreground/80">
+                    {offer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
           className="border-t border-foreground/10 pt-12"
         >
           <div className="ml-auto max-w-3xl space-y-10">
             <div className="space-y-5">
-              <SectionNumber>04 / Why It Matters</SectionNumber>
+              <SectionNumber>05 / Why It Matters</SectionNumber>
               <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-wide">
                 I like working with people who want the work to make sense.
               </h2>

@@ -113,9 +113,9 @@ const tools = [
 ];
 
 const buildNotes = [
-  "Some tools will stay free and open-source. Some may become small paid products if they prove useful enough.",
-  "Nothing here is pretending to be finished before it survives real use.",
-  "The test is simple: if it does not make property management clearer, it does not belong here.",
+  "If it is in Work, it has at least reached proof-of-concept. If it is in Lab, it is still being shaped, tested, scoped, or argued with until the useful part shows up.",
+  "Some experiments will become open-source tools, some may become paid products, and some will stay as notes because the idea was useful even if the build was not.",
+  "The test is simple: if it does not make property management clearer, easier to manage, or easier to explain, it does not belong here.",
 ];
 
 function SectionLabel({ children }: { children: string }) {
@@ -147,20 +147,20 @@ export function Lab() {
             <SectionLabel>Lab</SectionLabel>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              Tools for property management problems that keep coming back.
+              Where friction, gaps, and future tool ideas get tested.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <div className="space-y-5 text-lg md:text-xl leading-loose text-foreground/65">
               <p>
-                This is where I turn PM operations pain into small tools,
-                proof-of-concepts, and open-source systems.
+                This is where I bring problems, friction, gaps, suggestions,
+                and future concepts and put them to the test.
               </p>
               <p className="text-foreground/90">
-                Some are built. Some are prototypes. Some are still
-                suspiciously ambitious. The rule is simple: if it does not make
-                the work clearer, it does not belong here.
+                Not all of them come to fruition, but all of them get captured.
+                Most ideas graduate here from the journal before they become
+                work items, case studies, or real products.
               </p>
             </div>
           </motion.div>
@@ -238,9 +238,9 @@ export function Lab() {
             </div>
 
             <p className="text-lg leading-loose text-foreground/65">
-              Ordered by maturity, not hype. Each entry says what it solves,
-              who it helps, and whether it is built, in proof-of-concept, or
-              still being shaped.
+              Ordered by maturity, not hype. Work is where usable tools and
+              proofs live. Lab is where I test the useful pieces before they
+              earn that spot.
             </p>
           </div>
 

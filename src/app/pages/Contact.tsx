@@ -34,12 +34,14 @@ export function Contact() {
       >
         <p className="text-brand/60 text-sm tracking-widest uppercase">Contact</p>
         <h1 className="text-4xl font-bold tracking-wide leading-tight">
-          Let's talk.
+          Bring me the messy part.
         </h1>
         <div className="h-px bg-foreground/10 w-24 mx-auto" />
         <div className="space-y-5">
           <p className="text-foreground/50 tracking-wide leading-relaxed">
-            Email is the cleanest way to reach me right now.
+            Email me if you want help organizing PMC operations, cleaning up
+            maintenance workflows, scoping a tool, or getting a fresh set of
+            experienced eyes on a process that keeps slipping.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -61,6 +63,12 @@ export function Contact() {
               GitHub
             </a>
           </div>
+
+          <p className="mx-auto max-w-lg text-sm leading-loose text-foreground/40">
+            Helpful context: what is messy, what you have already tried, what
+            tools or process you use now, who is involved, and what outcome you
+            want.
+          </p>
         </div>
       </motion.div>
     </div>

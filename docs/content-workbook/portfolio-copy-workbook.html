@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>h777 Portfolio Copy Workbook</title>
+    <style>
+      :root {
+        --bg: #0f0d0d;
+        --panel: #171313;
+        --panel-2: #211b1b;
+        --text: #f7efe7;
+        --muted: #b9ada4;
+        --soft: #8f837b;
+        --line: rgba(247, 239, 231, 0.14);
+        --accent: #dc2626;
+        --accent-2: #0e7490;
+        --good: #75c47a;
+        --warn: #e5b567;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(220, 38, 38, 0.18), transparent 30rem),
+          radial-gradient(circle at 90% 6%, rgba(14, 116, 144, 0.12), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 42px 20px 80px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+        align-items: end;
+        padding: 22px 0 38px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        line-height: 1.12;
+      }
+
+      h1 {
+        max-width: 860px;
+        margin-top: 12px;
+        font-size: clamp(2.4rem, 6vw, 5.8rem);
+        letter-spacing: -0.03em;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        font-size: 1.28rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+        color: var(--text);
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+
+      .quick-card {
+        background: rgba(23, 19, 19, 0.84);
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+
+      .quick-card ul {
+        margin-bottom: 0;
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 -20px 34px;
+        padding: 12px 20px;
+        background: rgba(15, 13, 13, 0.86);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(18px);
+      }
+
+      .tabs,
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button,
+      .download {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        padding: 9px 13px;
+        font-weight: 760;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      button:hover,
+      .download:hover,
+      button.active {
+        border-color: rgba(220, 38, 38, 0.74);
+        background: rgba(220, 38, 38, 0.15);
+      }
+
+      .status {
+        color: var(--soft);
+        font-size: 0.86rem;
+      }
+
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .page-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+        gap: 22px;
+        align-items: start;
+      }
+
+      .card {
+        background: rgba(23, 19, 19, 0.78);
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+
+      .card + .card {
+        margin-top: 18px;
+      }
+
+      .label {
+        color: var(--accent-2);
+        font-size: 0.73rem;
+        font-weight: 850;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .hint {
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--soft);
+      }
+
+      .current {
+        margin-top: 12px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        white-space: pre-wrap;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .field label {
+        color: var(--text);
+        font-weight: 800;
+      }
+
+      .field small {
+        color: var(--soft);
+      }
+
+      textarea,
+      input,
+      select {
+        width: 100%;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.055);
+        color: var(--text);
+        padding: 12px;
+        outline: none;
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      textarea:focus,
+      input:focus,
+      select:focus {
+        border-color: rgba(220, 38, 38, 0.8);
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+      }
+
+      .short {
+        min-height: 70px;
+      }
+
+      .long {
+        min-height: 180px;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .three-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 14px 16px;
+        color: var(--text);
+        font-weight: 850;
+      }
+
+      details div {
+        padding: 0 16px 16px;
+      }
+
+      ul,
+      ol {
+        margin-top: 10px;
+        padding-left: 21px;
+      }
+
+      li + li {
+        margin-top: 7px;
+      }
+
+      .tip {
+        border-left: 3px solid var(--warn);
+        padding-left: 14px;
+        color: var(--muted);
+      }
+
+      .good {
+        border-left: 3px solid var(--good);
+        padding-left: 14px;
+        color: var(--muted);
+      }
+
+      .matrix {
+        width: 100%;
+        margin-top: 16px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 11px;
+        vertical-align: top;
+        text-align: left;
+      }
+
+      th {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      td {
+        color: var(--muted);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 5px 8px;
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .page-grid,
+        .mini-grid,
+        .three-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .toolbar {
+          position: static;
+        }
+      }
+
+      @media print {
+        .toolbar,
+        .actions {
+          display: none;
+        }
+
+        body {
+          background: white;
+          color: black;
+        }
+
+        .section {
+          display: block;
+          break-before: page;
+        }
+
+        .card,
+        .quick-card,
+        textarea,
+        input,
+        select,
+        details {
+          background: white;
+          color: black;
+          border-color: #bbb;
+        }
+
+        textarea,
+        input {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">h777 content workbook</div>
+          <h1>Portfolio Copy Polish</h1>
+          <p>
+            Use this to rewrite the live site with more personal voice, clearer
+            consulting positioning, and better separation between Work, Lab,
+            Journal, About, and Contact. Fill what you can. Messy is welcome.
+          </p>
+        </div>
+        <aside class="quick-card">
+          <p class="label">Big Content Decision</p>
+          <p class="hint" style="margin-top: 10px">
+            Work should prove what you built. Lab should show the tool shelf.
+            Journal should hold your thoughts, proptech opinions, industry
+            notes, and controlled vents. About and Contact should make the PMC
+            consulting offer clear.
+          </p>
+          <div class="pill-row">
+            <span class="pill">English first</span>
+            <span class="pill">Spanish adapted</span>
+            <span class="pill">Consulting offer included</span>
+          </div>
+        </aside>
+      </section>
+
+      <nav class="toolbar" aria-label="Workbook controls">
+        <div class="tabs">
+          <button class="tab active" data-target="guide">Guide</button>
+          <button class="tab" data-target="home">Home</button>
+          <button class="tab" data-target="work">Work</button>
+          <button class="tab" data-target="lab">Lab</button>
+          <button class="tab" data-target="journal">Journal</button>
+          <button class="tab" data-target="about">About</button>
+          <button class="tab" data-target="contact">Contact</button>
+          <button class="tab" data-target="bilingual">Bilingual</button>
+        </div>
+        <div class="actions">
+          <button id="saveDraft">Save</button>
+          <button id="exportJson">Export JSON</button>
+          <button id="printPage">Print / PDF</button>
+          <button id="clearDraft">Clear</button>
+          <span class="status" id="statusText">Autosaves in this browser.</span>
+        </div>
+      </nav>
+
+      <section id="guide" class="section active">
+        <div class="page-grid">
+          <article class="card">
+            <p class="label">How to use this</p>
+            <h2 style="margin-top: 10px">Write the raw truth first.</h2>
+            <p class="hint" style="margin-top: 14px">
+              Do not try to make the first pass beautiful. Answer the prompts
+              like you are explaining the site to a smart friend. I can tighten
+              grammar, rhythm, and layout later.
+            </p>
+            <ol>
+              <li>Start with About and Contact so the consulting offer is clear.</li>
+              <li>Then do Home so the first impression matches the offer.</li>
+              <li>Then rewrite Work and Lab with sharper tool positioning.</li>
+              <li>Use Journal for voice, opinions, lessons, and industry notes.</li>
+              <li>Use the Bilingual tab to decide whether Spanish is a full version or a summary version.</li>
+            </ol>
+          </article>
+
+          <article class="card">
+            <p class="label">Site roles</p>
+            <table class="matrix">
+              <thead>
+                <tr>
+                  <th>Page</th>
+                  <th>Job</th>
+                  <th>What it should not become</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Home</td>
+                  <td>First impression, positioning, trust, next step.</td>
+                  <td>A long resume or every product at once.</td>
+                </tr>
+                <tr>
+                  <td>Work</td>
+                  <td>Case studies and proof of shipped/thoughtful tools.</td>
+                  <td>A blog or loose idea board.</td>
+                </tr>
+                <tr>
+                  <td>Lab</td>
+                  <td>Tool shelf: built, POC, planned, and in-progress.</td>
+                  <td>Deep essays or huge case studies.</td>
+                </tr>
+                <tr>
+                  <td>Journal</td>
+                  <td>Your thinking: PM ops, proptech, lessons, opinions.</td>
+                  <td>Another showcase page.</td>
+                </tr>
+                <tr>
+                  <td>About</td>
+                  <td>Your story, credibility, consulting angle, values.</td>
+                  <td>A generic bio with no offer.</td>
+                </tr>
+                <tr>
+                  <td>Contact</td>
+                  <td>Clear ways to reach you and why someone should.</td>
+                  <td>A fake form with no backend.</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+
+        <article class="card" style="margin-top: 18px">
+          <p class="label">Consulting offer draft</p>
+          <h2 style="margin-top: 10px">Offer language to adapt</h2>
+          <p class="current">
+I am available for limited PMC consulting and ops coaching: helping owners and teams organize maintenance workflows, clarify accountability, improve handoffs, set up task systems, and make daily operations easier to manage. Availability depends on schedule and fit. Start by emailing me with what is messy, what you have tried, and what outcome you want.</p>
+          <div class="field">
+            <label for="global-consulting-offer">Your version</label>
+            <small>Say it like you. Include who you help, what you help with, and that availability depends on timing/fit.</small>
+            <textarea id="global-consulting-offer" data-field="global.consultingOffer" class="long"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <section id="home" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">Home page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              The Home page should answer: who are you, what world are you
+              building in, what pain do you understand, and where should a
+              visitor go next?
+            </p>
+            <div class="current">Current headline:
+Making messy operations behave themselves.
+
+Current support:
+A build lab for property management tools that should probably have existed already.
+
+Current proof/personality:
+I have spent 7+ years inside PM operations...
+
+Current CTA:
+Visit Lab / Read Journal</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Keep the hero short. The first screen is a doorway.</li>
+                  <li>Make the consulting angle visible without turning the page into a sales pitch.</li>
+                  <li>Use plain PM pain: maintenance chaos, vendor follow-up, handoffs, owners wanting clarity.</li>
+                  <li>One strong sentence beats five clever ones.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Home rewrite</h2>
+            <div class="field">
+              <label for="home-tagline">Top tagline</label>
+              <small>Example: A build lab and consulting desk for property management operations.</small>
+              <input id="home-tagline" data-field="home.tagline" />
+            </div>
+            <div class="field">
+              <label for="home-headline">Main headline</label>
+              <small>One sentence or phrase. This is the big red line.</small>
+              <textarea id="home-headline" data-field="home.headline" class="short"></textarea>
+            </div>
+            <div class="field">
+              <label for="home-mess-lines">Three pain lines</label>
+              <small>Short lines like vendor follow-ups, scattered notes, unclear ownership.</small>
+              <textarea id="home-mess-lines" data-field="home.painLines"></textarea>
+            </div>
+            <div class="field">
+              <label for="home-story">Personal credibility paragraph</label>
+              <small>Why should someone believe you? Mention 7+ years PM ops if you want.</small>
+              <textarea id="home-story" data-field="home.story" class="long"></textarea>
+            </div>
+            <div class="field">
+              <label for="home-consulting">Consulting mention</label>
+              <small>Short and calm. This can point people to Contact.</small>
+              <textarea id="home-consulting" data-field="home.consulting"></textarea>
+            </div>
+            <div class="three-grid">
+              <div class="field">
+                <label for="home-principle-1">Principle 1</label>
+                <input id="home-principle-1" data-field="home.principle1" />
+              </div>
+              <div class="field">
+                <label for="home-principle-2">Principle 2</label>
+                <input id="home-principle-2" data-field="home.principle2" />
+              </div>
+              <div class="field">
+                <label for="home-principle-3">Principle 3</label>
+                <input id="home-principle-3" data-field="home.principle3" />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">Work page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              Work is the proof page. It should read like case studies: problem,
+              decision, build, outcome, what is next. It should not carry your
+              industry essays. That belongs in Journal.
+            </p>
+            <div class="current">Current case studies:
+1. PM Ops Map: a day-one operating system for new property management companies.
+2. m3ldSync: turning maintenance export noise into action.
+3. TechSync Ops: the PMC command layer for maintenance dispatch and proof.
+4. TurnFlow Home: client-side maintenance approvals with proof built in.</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Every case study should make the reader smarter about the problem.</li>
+                  <li>Use "why I built it" and "what I learned" to add personality.</li>
+                  <li>Be honest about POC status. Honesty builds trust.</li>
+                  <li>Add screenshots as receipts, not decoration.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Case study mold</h2>
+            <div class="field">
+              <label for="work-page-intro">Work page intro</label>
+              <small>A short intro before the case studies. What should visitors expect here?</small>
+              <textarea id="work-page-intro" data-field="work.pageIntro"></textarea>
+            </div>
+
+            <div class="mini-grid">
+              <div class="field">
+                <label for="work-pmops-note">PM Ops Map personal note</label>
+                <small>What did this tool come from in your real work?</small>
+                <textarea id="work-pmops-note" data-field="work.pmOpsNote"></textarea>
+              </div>
+              <div class="field">
+                <label for="work-meldsync-note">m3ldSync personal note</label>
+                <small>What specific maintenance/export pain made this obvious?</small>
+                <textarea id="work-meldsync-note" data-field="work.meldSyncNote"></textarea>
+              </div>
+              <div class="field">
+                <label for="work-techsync-note">TechSync Ops personal note</label>
+                <small>Why should PMCs care about this as an ops platform?</small>
+                <textarea id="work-techsync-note" data-field="work.techSyncNote"></textarea>
+              </div>
+              <div class="field">
+                <label for="work-turnflow-note">TurnFlow Home personal note</label>
+                <small>Why does this deserve to be separate from TechSync Ops?</small>
+                <textarea id="work-turnflow-note" data-field="work.turnFlowNote"></textarea>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="work-case-study-template">Reusable case study structure</label>
+              <small>Write what every future case study should include.</small>
+              <textarea id="work-case-study-template" data-field="work.caseStudyTemplate" class="long">Problem:
+Who feels it:
+What existed before:
+What I built:
+Strongest features:
+Design decision:
+What I learned:
+What is next:
+Screenshot/demo notes:</textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="lab" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">Lab page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              Lab should feel like the product shelf: built tools, prototypes,
+              POCs, and experiments. It can be tighter and more scannable than
+              Work.
+            </p>
+            <div class="current">Current headline:
+Tools for property management problems that keep coming back.
+
+Current intro:
+This is where I turn PM operations pain into small tools, proof-of-concepts, and open-source systems.
+
+Current tools:
+PM Ops Map, m3ldSync, VendorRadar, TechSync Ops, TurnFlow Home.</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Each tool card needs one audience, one problem, one status.</li>
+                  <li>Do not over-explain here. Link deeper when available.</li>
+                  <li>Use clear maturity labels: Built, MVP, POC, In design, Coming later.</li>
+                  <li>Make "demo coming soon" feel intentional, not unfinished.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Lab rewrite</h2>
+            <div class="field">
+              <label for="lab-headline">Lab headline</label>
+              <textarea id="lab-headline" data-field="lab.headline" class="short"></textarea>
+            </div>
+            <div class="field">
+              <label for="lab-intro">Lab intro</label>
+              <textarea id="lab-intro" data-field="lab.intro"></textarea>
+            </div>
+            <div class="field">
+              <label for="lab-status-rules">How you want to label tool maturity</label>
+              <small>Example: Built means usable now. POC means architecture or demo exists. In design means still shaping.</small>
+              <textarea id="lab-status-rules" data-field="lab.statusRules"></textarea>
+            </div>
+            <div class="field">
+              <label for="lab-tool-tone">Tone for tool cards</label>
+              <small>Should they be direct, playful, serious, consultant-friendly, open-source-friendly?</small>
+              <textarea id="lab-tool-tone" data-field="lab.toolTone"></textarea>
+            </div>
+            <div class="field">
+              <label for="lab-notes">Notes from the build</label>
+              <small>Replace the current three notes if you want them to feel more personal.</small>
+              <textarea id="lab-notes" data-field="lab.buildNotes" class="long"></textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="journal" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">Journal page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              This is where your voice should breathe. It can hold blogs,
+              industry thoughts, tool notes, proptech opinions, lessons from PM
+              operations, and honest venting as long as each post leaves the
+              reader with a useful handle.
+            </p>
+            <div class="current">Current headline:
+Thinking out loud.
+
+Current intro:
+Writing on systems, operations, and building in public.
+
+Current entries:
+1. A system is calm when it knows what to ignore.
+2. Thinking out loud before the work hardens.
+3. Lessons should leave handles.</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Journal can be less polished than Work. That is part of its job.</li>
+                  <li>Use categories like Field Notes, PropTech, PM Ops, Tool Notes, Vent with a Point.</li>
+                  <li>Venting works when it names a real pattern and ends with a lesson or question.</li>
+                  <li>Keep posts short at first. One strong page beats a fake blog archive.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Journal direction</h2>
+            <div class="field">
+              <label for="journal-headline">Journal headline</label>
+              <small>Example: Field notes from the messy middle of property management.</small>
+              <textarea id="journal-headline" data-field="journal.headline" class="short"></textarea>
+            </div>
+            <div class="field">
+              <label for="journal-intro">Journal intro</label>
+              <textarea id="journal-intro" data-field="journal.intro"></textarea>
+            </div>
+            <div class="field">
+              <label for="journal-categories">Categories you want</label>
+              <small>Example: PM Ops, PropTech, Vendor Notes, Tool Builds, Lessons, Controlled Vents.</small>
+              <textarea id="journal-categories" data-field="journal.categories"></textarea>
+            </div>
+            <div class="field">
+              <label for="journal-post-ideas">Post ideas</label>
+              <textarea id="journal-post-ideas" data-field="journal.postIdeas" class="long">1. 
+2. 
+3. 
+4. 
+5. </textarea>
+            </div>
+            <div class="field">
+              <label for="journal-vent-rules">Rules for venting without sounding messy</label>
+              <small>What lines should you not cross? What should every vent give back to the reader?</small>
+              <textarea id="journal-vent-rules" data-field="journal.ventRules"></textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">About page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              About should make you credible and human. It should explain the
+              PM ops background, technical direction, values, and consulting
+              availability.
+            </p>
+            <div class="current">Current headline:
+I turn property management pain into practical tools.
+
+Current credibility:
+7+ years inside property management operations and 10+ years across remote service, leadership, systems, and client-facing work.
+
+Current themes:
+Accountability, handoffs, training, billing, clarity, software is not magic.</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Put the consulting offer here in a clear section.</li>
+                  <li>Say what kind of PMCs you can help: new, growing, remote, maintenance-heavy, messy handoffs.</li>
+                  <li>Say what you do not do if useful: legal, accounting, emergency vendor dispatch, full-time availability.</li>
+                  <li>Make your personality visible without making the page too long.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">About rewrite</h2>
+            <div class="field">
+              <label for="about-headline">About headline</label>
+              <textarea id="about-headline" data-field="about.headline" class="short"></textarea>
+            </div>
+            <div class="field">
+              <label for="about-origin">Your origin story</label>
+              <small>How did you get into PM ops, systems, and building tools?</small>
+              <textarea id="about-origin" data-field="about.origin" class="long"></textarea>
+            </div>
+            <div class="field">
+              <label for="about-consulting">Consulting section</label>
+              <small>Be explicit: available for hire, coaching, suggestions, ops organization, timing/fit.</small>
+              <textarea id="about-consulting" data-field="about.consulting" class="long"></textarea>
+            </div>
+            <div class="field">
+              <label for="about-fit">Who is a good fit to contact you?</label>
+              <textarea id="about-fit" data-field="about.fit"></textarea>
+            </div>
+            <div class="field">
+              <label for="about-values">Values / working style</label>
+              <textarea id="about-values" data-field="about.values"></textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">Contact page</p>
+            <h2 style="margin-top: 10px">Purpose</h2>
+            <p class="hint" style="margin-top: 12px">
+              Contact should tell people when to reach out and what to include.
+              Email-only is fine for v1. Do not add a phone number unless you
+              actively want public calls and texts.
+            </p>
+            <div class="current">Current headline:
+Let's talk.
+
+Current copy:
+Email is the cleanest way to reach me right now.
+
+Current contact:
+hypnoticdata777@gmail.com
+GitHub</div>
+            <details style="margin-top: 16px" open>
+              <summary>Tips</summary>
+              <div>
+                <ul>
+                  <li>Email is enough for v1.</li>
+                  <li>LinkedIn is good if you want consulting/recruiting credibility.</li>
+                  <li>Tell people what to send: company size, problem, current tool stack, desired outcome.</li>
+                  <li>Mention limited availability without sounding unavailable.</li>
+                </ul>
+              </div>
+            </details>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Contact rewrite</h2>
+            <div class="field">
+              <label for="contact-headline">Contact headline</label>
+              <textarea id="contact-headline" data-field="contact.headline" class="short"></textarea>
+            </div>
+            <div class="field">
+              <label for="contact-copy">Contact copy</label>
+              <textarea id="contact-copy" data-field="contact.copy"></textarea>
+            </div>
+            <div class="field">
+              <label for="contact-when">Reasons to contact you</label>
+              <small>Consulting, coaching, ops cleanup, tool collaboration, hiring, feedback.</small>
+              <textarea id="contact-when" data-field="contact.when"></textarea>
+            </div>
+            <div class="field">
+              <label for="contact-email-template">What they should include in the email</label>
+              <textarea id="contact-email-template" data-field="contact.emailTemplate" class="long">Company/context:
+What is messy:
+Current tools/process:
+Team size/portfolio size:
+What outcome you want:
+Timeline:
+Best way to follow up:</textarea>
+            </div>
+            <div class="field">
+              <label for="contact-linkedin">LinkedIn URL if you want it included</label>
+              <input id="contact-linkedin" data-field="contact.linkedin" placeholder="https://www.linkedin.com/in/..." />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="bilingual" class="section">
+        <div class="page-grid">
+          <aside class="card">
+            <p class="label">English and Spanish</p>
+            <h2 style="margin-top: 10px">How to organize it</h2>
+            <p class="hint" style="margin-top: 12px">
+              Do not translate line by line unless you want both languages to
+              feel stiff. Keep one content model, then adapt the copy for each
+              audience.
+            </p>
+            <div class="good" style="margin-top: 16px">
+              Recommended: English as the primary site for now, Spanish as an
+              adapted version after the English copy is stable. Add a language
+              toggle later when both versions are polished.
+            </div>
+            <table class="matrix">
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Good for</th>
+                  <th>Tradeoff</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>English only for v1</td>
+                  <td>Fastest launch polish.</td>
+                  <td>Spanish audience waits.</td>
+                </tr>
+                <tr>
+                  <td>English full, Spanish summary</td>
+                  <td>Good middle path.</td>
+                  <td>Some pages are not fully bilingual.</td>
+                </tr>
+                <tr>
+                  <td>Full bilingual site</td>
+                  <td>Best long-term experience.</td>
+                  <td>More copy maintenance.</td>
+                </tr>
+              </tbody>
+            </table>
+          </aside>
+
+          <article class="card">
+            <p class="label">Fill this</p>
+            <h2 style="margin-top: 10px">Language plan</h2>
+            <div class="field">
+              <label for="bilingual-choice">Preferred language approach</label>
+              <select id="bilingual-choice" data-field="bilingual.choice">
+                <option value="">Choose one</option>
+                <option>English only for v1</option>
+                <option>English full, Spanish summary</option>
+                <option>Full bilingual site</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="bilingual-english-voice">English voice</label>
+              <small>Example: practical, direct, slightly funny, field-tested.</small>
+              <textarea id="bilingual-english-voice" data-field="bilingual.englishVoice"></textarea>
+            </div>
+            <div class="field">
+              <label for="bilingual-spanish-voice">Spanish voice</label>
+              <small>Should Spanish be neutral, Mexican Spanish, Spanglish-light, more formal, more warm?</small>
+              <textarea id="bilingual-spanish-voice" data-field="bilingual.spanishVoice"></textarea>
+            </div>
+            <div class="field">
+              <label for="bilingual-terms">Terms to keep consistent</label>
+              <small>Examples: PMC, property management, operations, work orders, owners, vendors, techs.</small>
+              <textarea id="bilingual-terms" data-field="bilingual.terms" class="long">PMC:
+Property management:
+Operations:
+Work order:
+Owner/client:
+Vendor:
+Technician:
+Maintenance:
+Turnover:</textarea>
+            </div>
+            <div class="field">
+              <label for="bilingual-notes">Translation/adaptation notes</label>
+              <textarea id="bilingual-notes" data-field="bilingual.notes"></textarea>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const storageKey = "h777-portfolio-copy-workbook-v1";
+      const fields = Array.from(document.querySelectorAll("[data-field]"));
+      const statusText = document.querySelector("#statusText");
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const sections = Array.from(document.querySelectorAll(".section"));
+
+      function setStatus(message) {
+        statusText.textContent = message;
+        window.clearTimeout(setStatus.timer);
+        setStatus.timer = window.setTimeout(() => {
+          statusText.textContent = "Autosaves in this browser.";
+        }, 2200);
+      }
+
+      function collectDraft() {
+        return fields.reduce((draft, field) => {
+          draft[field.dataset.field] = field.value;
+          return draft;
+        }, {});
+      }
+
+      function saveDraft() {
+        localStorage.setItem(storageKey, JSON.stringify(collectDraft(), null, 2));
+        setStatus("Saved locally.");
+      }
+
+      function loadDraft() {
+        const raw = localStorage.getItem(storageKey);
+        if (!raw) return;
+
+        try {
+          const draft = JSON.parse(raw);
+          fields.forEach((field) => {
+            if (Object.prototype.hasOwnProperty.call(draft, field.dataset.field)) {
+              field.value = draft[field.dataset.field];
+            }
+          });
+        } catch {
+          setStatus("Saved draft could not be loaded.");
+        }
+      }
+
+      function exportJson() {
+        const blob = new Blob([JSON.stringify(collectDraft(), null, 2)], {
+          type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "h777-portfolio-copy-draft.json";
+        link.click();
+        URL.revokeObjectURL(url);
+        setStatus("Exported JSON.");
+      }
+
+      function clearDraft() {
+        if (!confirm("Clear all filled workbook fields in this browser?")) return;
+        localStorage.removeItem(storageKey);
+        fields.forEach((field) => {
+          field.value = "";
+        });
+        setStatus("Cleared.");
+      }
+
+      function setActive(target) {
+        tabs.forEach((tab) => {
+          tab.classList.toggle("active", tab.dataset.target === target);
+        });
+        sections.forEach((section) => {
+          section.classList.toggle("active", section.id === target);
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => setActive(tab.dataset.target));
+      });
+
+      fields.forEach((field) => {
+        field.addEventListener("input", () => {
+          localStorage.setItem(storageKey, JSON.stringify(collectDraft(), null, 2));
+          statusText.textContent = "Autosaved.";
+        });
+      });
+
+      document.querySelector("#saveDraft").addEventListener("click", saveDraft);
+      document.querySelector("#exportJson").addEventListener("click", exportJson);
+      document.querySelector("#printPage").addEventListener("click", () => window.print());
+      document.querySelector("#clearDraft").addEventListener("click", clearDraft);
+
+      loadDraft();
+    </script>
+  </body>
+</html>

@@ -191,6 +191,30 @@ export function Work() {
         transition={{ duration: 1.2, ease: "easeIn" }}
         className="mx-auto flex w-full max-w-6xl flex-col gap-24"
       >
+        <section className="max-w-3xl space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeIn" }}
+            className="space-y-7"
+          >
+            <SectionLabel>Work</SectionLabel>
+
+            <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+              Products that prove operations do not have to stay chaotic.
+            </h1>
+
+            <div className="h-px bg-foreground/10 w-28" />
+
+            <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
+              Here you will find the tools I am building and shaping. Some are
+              early, some are usable now, and each one starts from the same
+              belief: property management work should be easier to see,
+              explain, assign, and improve.
+            </p>
+          </motion.div>
+        </section>
+
         <section className="max-w-4xl space-y-9">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -200,10 +224,10 @@ export function Work() {
           >
             <SectionLabel>Work / Case Study 01</SectionLabel>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-wide leading-tight">
               PM Ops Map: a day-one operating system for new property
               management companies.
-            </h1>
+            </h2>
 
             <div className="h-px bg-foreground/10 w-28" />
 

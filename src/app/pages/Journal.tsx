@@ -22,33 +22,53 @@ import { motion } from "motion/react";
 
 const journalEntries = [
   {
-    title: "A system is calm when it knows what to ignore.",
-    readTime: "2 min",
-    type: "System",
+    title: "How do I know I am getting what I paid for?",
+    readTime: "Draft",
+    type: "Homeowner",
     date: "Field note 01",
     sections: [
-      "The best operating systems do not make every signal louder. They decide what deserves attention, what can wait, and what should disappear before it turns into noise.",
-      "That is the point of a calm command center: not more dashboards, not more urgency, just a place where the next useful move becomes easier to see.",
+      "A homeowner should not have to become a project manager just to know whether the work was done right. The first layer is proof: scope, photos, receipts, timeline, and a clear answer to what changed.",
+      "That is why I keep building around evidence. Good operations make the next question easier instead of forcing the client to chase the last one.",
     ],
   },
   {
-    title: "Thinking out loud before the work hardens.",
-    readTime: "3 min",
-    type: "Thought",
+    title: "How do I get the homeowner to trust the process?",
+    readTime: "Draft",
+    type: "PM Ops",
     date: "Field note 02",
     sections: [
-      "Writing is where rough systems get pressure-tested. If an idea cannot survive a quiet paragraph, it probably is not ready to become a workflow.",
-      "The journal is for that middle state: useful enough to keep, unfinished enough to keep shaping.",
+      "Trust does not come from saying everything is under control. It comes from showing the owner what is happening, what is waiting, what was approved, and why the next move makes sense.",
+      "The process has to be visible enough that people stop guessing. That is the difference between managing a home and constantly defending a mystery.",
     ],
   },
   {
-    title: "Lessons should leave handles.",
-    readTime: "2 min",
-    type: "Lesson",
+    title: "Own the outcome, not just the task.",
+    readTime: "Draft",
+    type: "Team",
     date: "Field note 03",
     sections: [
-      "A good lesson is not a quote to remember. It is a handle you can grab when the room gets loud and the work starts moving faster than your notes.",
-      "That is the standard here: entries should feel readable, but they should also leave something operational behind.",
+      "Teams get stuck when everyone technically did their task, but nobody owns whether the result made sense. That is where handoffs get weird and simple work gets heavy.",
+      "The better question is not only who touched it. It is who owns the outcome, what success looks like, and what signal tells us it is done.",
+    ],
+  },
+  {
+    title: "Why does a solid property still feel thin on cash flow?",
+    readTime: "Draft",
+    type: "Investor",
+    date: "Field note 04",
+    sections: [
+      "Sometimes the asset is not the problem. The leaks are hiding in turns, maintenance timing, unclear approvals, slow follow-up, poor vendor memory, and decisions that nobody turns into a clean system.",
+      "That is the kind of question I want the journal to hold before it becomes a tool, a checklist, or a consulting conversation.",
+    ],
+  },
+  {
+    title: "What work order deserves my time next?",
+    readTime: "Draft",
+    type: "PropTech",
+    date: "Field note 05",
+    sections: [
+      "Not every open work order deserves the same urgency, but most tools make them sit in the same noisy pile. Priority, owner sensitivity, tenant impact, vendor availability, age, and cost risk all matter.",
+      "I want to keep working through that problem here: less ambiguity, better triage, and a little room to say the quiet operational truth out loud.",
     ],
   },
 ];
@@ -65,11 +85,13 @@ export function Journal() {
         <header className="space-y-7 text-center">
           <p className="text-brand/60 text-sm tracking-widest uppercase">Journal</p>
           <h1 className="text-4xl font-bold tracking-wide leading-tight">
-            Thinking out loud.
+            Notes from the messy middle.
           </h1>
           <div className="h-px bg-foreground/10 w-24 mx-auto" />
           <p className="text-foreground/45 tracking-wide leading-[1.75]">
-            Writing on systems, operations, and building in public.
+            Writing about property management, operations, PropTech, tool
+            builds, lessons, and the occasional vent that might turn into a
+            case study.
           </p>
         </header>
 
