@@ -233,7 +233,7 @@ export function Lab() {
             <div className="space-y-5">
               <SectionLabel>02 / Tools</SectionLabel>
               <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-                A small product shelf, honestly labeled.
+                An experiment shelf, honestly labeled.
               </h2>
             </div>
 

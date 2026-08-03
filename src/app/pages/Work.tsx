@@ -3,17 +3,17 @@ import { motion } from "motion/react";
 const screenshots = [
   {
     title: "Guided dashboard on day one",
-    caption: "A new PMC can start with a guided command center instead of a blank project board.",
+    caption: "A new PMC gets structure immediately instead of staring at a blank board and guessing what should exist.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/02-dashboard.png",
   },
   {
     title: "Every task, owned and tracked",
-    caption: "260+ editable PM tasks across 17 departments, with ownership and status visible.",
+    caption: "260+ editable PM tasks across 17 departments, with ownership, priority, and status visible.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/03-tracking-tasks.png",
   },
   {
     title: "Workload and team assignment",
-    caption: "Role templates, auto-assign, and workload balancing keep responsibility from hiding.",
+    caption: "Role templates, auto-assign, and workload balancing help stop the sharpest teammate from silently carrying everything.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/05-team-manager.png",
   },
 ];
@@ -54,17 +54,17 @@ const links = [
 const meldSyncScreenshots = [
   {
     title: "Portfolio handoff hero",
-    caption: "A synthetic public-demo surface built for safe portfolio review.",
+    caption: "A synthetic public-demo surface that shows the concept without exposing real owner or maintenance records.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/m3ldSync/main/docs/portfolio/meldsync-portfolio-hero.png",
   },
   {
     title: "Follow-up signal",
-    caption: "Import comparison highlights what changed and what needs attention next.",
+    caption: "Import comparison highlights what changed, what aged, and what needs attention next.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/m3ldSync/main/docs/portfolio/meldsync-portfolio-follow-up-signal.png",
   },
   {
     title: "Sticky manual truth",
-    caption: "Manual corrections survive future imports instead of getting buried by fresh CSV data.",
+    caption: "Manual corrections survive future imports instead of getting buried by the next CSV.",
     src: "https://raw.githubusercontent.com/hypnoticdata777/m3ldSync/main/docs/portfolio/meldsync-portfolio-sticky-manual.png",
   },
 ];
@@ -121,8 +121,8 @@ const techSyncFeatures = [
 ];
 
 const techSyncProofPoints = [
-  "Backend API foundation is already organized around organizations, work orders, assignments, technicians, files, billing, and metrics.",
-  "The mobile direction is clear: technicians need a day/week/month field calendar, live job queue, updates, and proof collection.",
+  "The backend foundation is already organized around organizations, work orders, assignments, technicians, files, billing, and metrics.",
+  "The mobile direction is clear: technicians need a field calendar, live job queue, updates, and proof collection without extra chasing.",
   "The repo documents deferred production work openly: web admin, offline sync, PDF/email ingestion, mobile dependency audit, monitoring, and hosted staging.",
 ];
 
@@ -234,8 +234,8 @@ export function Work() {
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
               A free, open-source browser app that helps new PMCs set up
               departments, tasks, ownership, maintenance tracking, portfolio
-              records, and operations documentation without signup, backend
-              setup, or monthly software cost.
+              records, and operations documentation on day one without signup,
+              backend setup, or monthly software cost.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -294,10 +294,11 @@ export function Work() {
               follow-up before the operation has fully matured.
             </p>
             <p>
-              Most PM software assumes the company already has enough process,
-              volume, and budget to justify the platform. PM Ops Map starts
-              earlier. It gives owners and ops managers a practical operating
-              structure before work starts falling through the cracks.
+              Most PM software assumes the company already has the volume,
+              process, and budget to justify another platform. PM Ops Map
+              starts earlier. It answers the question a new owner or ops
+              manager is really asking: what am I supposed to be tracking in
+              the first place?
             </p>
           </div>
         </motion.section>
@@ -327,8 +328,9 @@ export function Work() {
               </p>
               <p className="text-foreground/90">
                 The product decision was simple: make the first useful version
-                frictionless. No login. No monthly fee. No guessing what basic
-                operations should be tracked.
+                frictionless. No login. No monthly fee. No blank-board panic.
+                The tool gives you a serious starting point and lets you edit
+                it into your own operation.
               </p>
             </div>
 
@@ -415,7 +417,8 @@ export function Work() {
             <p>
               PM Ops Map is my answer to that early-stage gap. It gives new
               owners, ops managers, coordinators, and PM teams a free guided
-              starting point before they are ready for heavier software.
+              starting point before they hire expensive consultants or commit
+              to heavier software.
             </p>
             <p className="text-foreground/90">
               Next up: stronger maintenance tracking, deeper vendor and work
@@ -441,7 +444,8 @@ export function Work() {
               A local browser proof-of-concept that turns repeated maintenance
               CSV exports into operational memory: what is new, what changed,
               what disappeared, what needs verification, and which properties
-              need attention first.
+              need attention first before the team wastes another hour hunting
+              through rows.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -497,7 +501,7 @@ export function Work() {
             <p>
               m3ldSync attacks the noise layer. Instead of treating every CSV
               export as a disconnected report, it compares repeated exports and
-              turns them into a working memory of changes, conflicts, stale
+              turns them into working memory: changes, conflicts, stale
               records, follow-up signals, and property-level risk.
             </p>
           </div>
@@ -526,10 +530,10 @@ export function Work() {
                 status into a Kanban triage board.
               </p>
               <p className="text-foreground/90">
-                It also separates the public demo from private owner use:
-                portfolio visitors see synthetic data and locked public views,
-                while real owner workflows remain local-only until backend auth
-                and protected storage are ready.
+                The important design choice is privacy. Portfolio visitors see
+                synthetic data and locked public views, while real owner
+                workflows stay local-only until backend auth and protected
+                storage are ready.
               </p>
             </div>
 
@@ -615,9 +619,8 @@ export function Work() {
             </p>
             <p>
               m3ldSync is still a POC, but the hard parts already have shape:
-              reconciliation, conflict visibility, local persistence,
-              synthetic public demo boundaries, and screenshot-ready portfolio
-              proof.
+              reconciliation, conflict visibility, local persistence, synthetic
+              demo boundaries, and screenshot-ready portfolio proof.
             </p>
             <p className="text-foreground/90">
               Next up: hosted public demo wiring, production authentication for
@@ -644,7 +647,8 @@ export function Work() {
               A multi-tenant SaaS POC for PMCs and field-service teams that
               need to ingest work orders, assign the right technician, keep
               client communication connected, and track progress through
-              completion proof instead of constant follow-up.
+              completion proof instead of running the day through constant
+              follow-up.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -701,8 +705,8 @@ export function Work() {
             <p>
               TechSync is aimed at that coordination layer: PMCs, field-service
               teams, technicians, vendors, and client-view users all need the
-              same work to move from request to assignment to completion without
-              the manager manually chasing every update.
+              same work to move from request to assignment to completion
+              without the manager manually chasing every update.
             </p>
           </div>
         </motion.section>
@@ -732,7 +736,7 @@ export function Work() {
               <p className="text-foreground/90">
                 The product ambition is bigger than a dispatch board. The
                 useful version should help a manager know what is urgent, which
-                technician fits the job, how the route should be planned, and
+                technician fits the job, how workload should be balanced, and
                 what proof came back from the field.
               </p>
             </div>
@@ -801,7 +805,7 @@ export function Work() {
               For the public portfolio, this belongs as an ambitious PMC SaaS
               POC: real architecture, meaningful tests, clear product
               direction, and honest boundaries around what still needs
-              production polish.
+              production polish before it carries a live operation.
             </p>
             <p className="text-foreground/90">
               Next up: portfolio-safe screenshots, hosted staging, admin web
@@ -829,7 +833,7 @@ export function Work() {
               A Firebase-backed MVP for homeowners and owner clients who need a
               calmer way to review turnover work, understand itemized estimates,
               watch approval status, and keep technician photo proof in one
-              shared maintenance record.
+              shared record without needing the whole PMC command center.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -887,8 +891,8 @@ export function Work() {
             <p>
               TurnFlow Home keeps that workflow intentionally smaller than
               TechSync Ops. It is not trying to run the entire PMC maintenance
-              department. It gives clients and homeowners a focused approval
-              and maintenance-history layer.
+              department. It gives clients and homeowners a focused approval,
+              visibility, and maintenance-history layer.
             </p>
           </div>
         </motion.section>
@@ -919,7 +923,7 @@ export function Work() {
               <p className="text-foreground/90">
                 The product direction is homeowner-friendly: fewer internal
                 controls, more clarity around what needs approval, what work was
-                completed, and what record should be kept after the job.
+                completed, and what record should be kept after the job is done.
               </p>
             </div>
 

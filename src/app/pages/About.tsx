@@ -20,9 +20,9 @@ const frictionPoints = [
 
 const principles = [
   "Accountability is the starting point, not a feature",
-  "Homeowners do not want cheap. They want clear and logical",
+  "Homeowners do not only want cheap. They want clear and logical",
   "Software only helps when the process has a spine",
-  "If a tool needs a ceremony to explain it, it is already in trouble",
+  "If a tool needs a ceremony before anyone can use it, it is already in trouble",
 ];
 
 const focusAreas = [
@@ -108,16 +108,16 @@ export function About() {
           <div className="space-y-5">
             <SectionNumber>01 / What PM Taught Me</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Too many hands in the cookie jar means no one gets a cookie.
+              When everyone owns a little piece, nobody owns the outcome.
             </h2>
           </div>
 
           <div className="space-y-8 text-lg leading-loose text-foreground/70">
             <p>Accountability needs to be clear.</p>
             <p>
-              Not because managers need control for the sake of control, but
-              because people do better work when they know what they own, what
-              they do not, and what success actually looks like.
+              Not because managers need control for the sake of control. People
+              do better work when they know what they own, what they do not,
+              and what success actually looks like.
             </p>
             <p className="text-foreground/90">
               Homeowners usually are not asking for cheap.
@@ -189,12 +189,12 @@ export function About() {
             <div className="space-y-5 text-lg leading-loose text-foreground/65">
               <p>
                 Software FOMO is real. A new platform will not solve team
-                anxiety, replace accountability, or make people aligned if the
-                company does not know what it wants.
+                anxiety, replace accountability, or align people if the company
+                has not defined what good work looks like.
               </p>
               <p className="text-foreground/90">
-                If the process is unclear, software usually just gives the
-                confusion a nicer dashboard.
+                If the process is unclear, software usually gives the confusion
+                a nicer dashboard.
               </p>
             </div>
           </div>
