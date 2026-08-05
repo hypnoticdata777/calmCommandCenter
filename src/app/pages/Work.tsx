@@ -855,12 +855,11 @@ export function Work() {
               TurnFlow Home: homeowner maintenance records with proof built in.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              A homeowner-first maintenance tracker for people who manage
-              repairs themselves and do not want to hand the whole process to a
-              property management company. TurnFlow Home keeps the repair
-              record in one place: what broke, what proof was collected, who
-              was invited, what was quoted, what changed, what was approved,
-              and what was finally completed.
+              A homeowner-first maintenance tracker for small landlords,
+              rental hosts, and owners who manage repairs themselves. TurnFlow
+              Home keeps each repair in one clear record: what broke, who was
+              invited, what was quoted, what changed, what was approved, what
+              proof came back, and what was finally completed.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -902,30 +901,29 @@ export function Work() {
           <div className="space-y-5">
             <SectionLabel>Problem</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Homeowners need a calmer way to manage repairs without hiring a
-              full property manager.
+              Repairs are easier to manage when the history stays in one place.
             </h2>
           </div>
 
           <div className="space-y-6 text-lg leading-loose text-foreground/70">
             <p>
-              Home repairs get messy fast. Photos live in texts. Quotes sit in
-              email threads. Receipts disappear into camera rolls. Status
-              updates come from different people at different times. A
-              homeowner may remember that something was fixed, but not who did
-              it, what it cost, what proof came back, or whether the same issue
-              has happened before.
+              When you manage repairs yourself, the hard part is not only
+              getting the work done. It is keeping the story straight. Photos
+              live in texts. Quotes sit in email threads. Receipts disappear
+              into camera rolls. Updates come from different people at
+              different times.
             </p>
             <p>
-              For small landlords, rental hosts, and homeowners managing aging
-              properties, that history matters. They need a simple system of
-              record for maintenance without adopting heavy property management
-              software or handing the whole process to a PMC.
+              Later, when the same issue comes back, the details matter: who
+              fixed it, what it cost, what was approved, what proof came back,
+              and whether the repair actually solved the problem. TurnFlow Home
+              gives that history a home without forcing the owner into heavy
+              property management software.
             </p>
             <p className="text-foreground/90">
-              TurnFlow Home is built around that smaller, clearer job: help a
-              homeowner document the issue, coordinate the repair, collect
-              proof, and preserve the record.
+              The job is intentionally simple: document the issue, coordinate
+              the repair, collect the proof, and preserve the record for the
+              next decision.
             </p>
           </div>
         </motion.section>
@@ -947,25 +945,23 @@ export function Work() {
           <div className="space-y-8">
             <div className="space-y-6 text-lg leading-loose text-foreground/70">
               <p>
-                TurnFlow Home lets an owner create a property, log a
-                maintenance issue, collect category-specific safety details,
-                attach photos, invite a vendor or collaborator, compare quotes,
-                track status changes, and close the request with final cost and
-                proof.
+                With TurnFlow Home, an owner can create a property, log a
+                maintenance issue, collect safety details, attach photos,
+                invite a vendor or collaborator, compare quotes, track status
+                changes, and close the request with final cost and proof.
               </p>
               <p className="text-foreground/90">
                 The product is intentionally focused. It is not trying to run a
-                maintenance company. It is not dispatch software. It is the
+                maintenance company, and it is not dispatch software. It is the
                 homeowner-facing layer for people who want confidence,
                 documentation, and continuity when repairs happen.
               </p>
               <p>
-                Owners can manage multiple properties, create repair requests,
-                upload before, after, and receipt photos, approve or decline
-                quotes, record costs, and download proof packets. Vendors get a
-                scoped portal showing only the jobs assigned to them.
-                Collaborators can view shared requests and post updates without
-                seeing the owner's whole account.
+                Owners can manage multiple properties, upload before, after,
+                and receipt photos, approve or decline quotes, record costs,
+                and download proof packets. Vendors get a scoped portal for
+                assigned jobs. Collaborators can view shared requests and post
+                updates without seeing the owner's whole account.
               </p>
             </div>
 
@@ -1048,12 +1044,11 @@ export function Work() {
               proof came back, and what record should be kept afterward.
             </p>
             <p>
-              That keeps it distinct from a PMC operations platform. A property
-              management company needs dispatch, routing, technician workload,
-              internal reporting, vendor management, and company controls. A
-              homeowner usually needs something calmer: a trusted repair
-              history and a clear way to coordinate work without losing the
-              thread.
+              That keeps it distinct from a PMC operations platform. PMCs need
+              dispatch, routing, technician workload, internal reporting,
+              vendor management, and company controls. This tool stays calmer:
+              trusted repair history, clear coordination, and less risk of
+              losing the thread.
             </p>
             <p>
               The next product phase is about turning the POC into a
