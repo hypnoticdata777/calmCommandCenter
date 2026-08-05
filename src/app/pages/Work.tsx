@@ -142,21 +142,47 @@ const techSyncLinks = [
 ];
 
 const turnFlowFacts = [
-  "Firebase-backed MVP",
-  "Role-based PM, tech, and client views",
-  "Technician photo proof",
-  "Itemized turnover estimates",
-  "Firestore security rules",
+  "SaaS POC in progress",
+  "Homeowner self-management workflow",
+  "Guided maintenance request intake",
+  "Vendor and collaborator invite flows",
+  "PDF proof packets and property history exports",
 ];
 
 const turnFlowFeatures = [
-  "Project lifecycle from Pending Approval to Approved to Sent",
-  "Itemized labor, rate, materials, and task-level estimate tracking",
-  "Technician before, after, and receipt photo uploads per task",
-  "Read-only client approval/status view",
-  "Contacts stored in Firestore for owner/client records",
-  "Chart.js stats for completed vs pending tasks and cost by property",
-  "Backup and restore through dated JSON exports",
+  "Guided request intake with category, urgency, and safety context",
+  "Multiple properties per owner with owner dashboard filtering",
+  "Vendor invite links with scoped vendor portal access",
+  "Collaborator sharing for household members or trusted helpers",
+  "Quote workspace with approval and decline states",
+  "Cost tracking across estimated, quoted, and final amounts",
+  "Append-only decision log for status and quote changes",
+  "Completion proof workflow with final cost and evidence capture",
+  "Photo uploads for before, after, receipt, and other evidence",
+  "Property document vault for receipts, warranties, manuals, invoices, and inspections",
+  "Recurring maintenance calendar with due-soon and overdue tracking",
+  "PDF proof packets plus PDF, CSV, and JSON export paths",
+];
+
+const turnFlowCurrentBuild = [
+  "Next.js App Router and TypeScript",
+  "Neon Postgres with Drizzle ORM",
+  "Auth.js / NextAuth credentials authentication",
+  "Server Actions with role and ownership checks",
+  "Vercel Blob for photo and document uploads",
+  "Resend-ready notification flow with delivery logging",
+  "Vercel Cron for recurring maintenance reminder digests",
+  "Owner, vendor, and collaborator portals",
+];
+
+const turnFlowNextSteps = [
+  "Public-safe hosted demo",
+  "Updated screenshots from the Next.js version",
+  "Self-serve onboarding for first property and first request",
+  "Production-ready database migration flow",
+  "Stronger server-side validation around completion proof and request status",
+  "Clearer SaaS positioning for homeowners who do not want a PMC",
+  "Early pricing test for small landlords and rental hosts",
 ];
 
 const turnFlowLinks = [
@@ -826,14 +852,15 @@ export function Work() {
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 04</SectionLabel>
             <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              TurnFlow Home: client-side maintenance approvals with proof built
-              in.
+              TurnFlow Home: homeowner maintenance records with proof built in.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              A Firebase-backed MVP for homeowners and owner clients who need a
-              calmer way to review turnover work, understand itemized estimates,
-              watch approval status, and keep technician photo proof in one
-              shared record without needing the whole PMC command center.
+              A homeowner-first maintenance tracker for people who manage
+              repairs themselves and do not want to hand the whole process to a
+              property management company. TurnFlow Home keeps the repair
+              record in one place: what broke, what proof was collected, who
+              was invited, what was quoted, what changed, what was approved,
+              and what was finally completed.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -875,24 +902,30 @@ export function Work() {
           <div className="space-y-5">
             <SectionLabel>Problem</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Clients need confidence without being pulled into the whole
-              operation.
+              Homeowners need a calmer way to manage repairs without hiring a
+              full property manager.
             </h2>
           </div>
 
           <div className="space-y-6 text-lg leading-loose text-foreground/70">
             <p>
-              Turnovers and repairs get hard for owners because approvals,
-              estimates, contacts, technician photos, receipts, and final status
-              often live in separate messages or spreadsheets. The client just
-              wants to know what is being proposed, what it costs, what was
-              approved, and what proof came back.
+              Home repairs get messy fast. Photos live in texts. Quotes sit in
+              email threads. Receipts disappear into camera rolls. Status
+              updates come from different people at different times. A
+              homeowner may remember that something was fixed, but not who did
+              it, what it cost, what proof came back, or whether the same issue
+              has happened before.
             </p>
             <p>
-              TurnFlow Home keeps that workflow intentionally smaller than
-              TechSync Ops. It is not trying to run the entire PMC maintenance
-              department. It gives clients and homeowners a focused approval,
-              visibility, and maintenance-history layer.
+              For small landlords, rental hosts, and homeowners managing aging
+              properties, that history matters. They need a simple system of
+              record for maintenance without adopting heavy property management
+              software or handing the whole process to a PMC.
+            </p>
+            <p className="text-foreground/90">
+              TurnFlow Home is built around that smaller, clearer job: help a
+              homeowner document the issue, coordinate the repair, collect
+              proof, and preserve the record.
             </p>
           </div>
         </motion.section>
@@ -907,23 +940,32 @@ export function Work() {
           <div className="space-y-5">
             <SectionLabel>Solution</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              A client-facing record for approvals, tasks, and photo evidence.
+              One shared repair record from issue to proof.
             </h2>
           </div>
 
           <div className="space-y-8">
             <div className="space-y-6 text-lg leading-loose text-foreground/70">
               <p>
-                The MVP uses Firebase Authentication, Firestore, Firebase
-                Storage, and role-based security rules so PM/admin users can
-                create turnover projects, technicians can upload proof, and
-                clients can safely view approval status without editing the
-                operation.
+                TurnFlow Home lets an owner create a property, log a
+                maintenance issue, collect category-specific safety details,
+                attach photos, invite a vendor or collaborator, compare quotes,
+                track status changes, and close the request with final cost and
+                proof.
               </p>
               <p className="text-foreground/90">
-                The product direction is homeowner-friendly: fewer internal
-                controls, more clarity around what needs approval, what work was
-                completed, and what record should be kept after the job is done.
+                The product is intentionally focused. It is not trying to run a
+                maintenance company. It is not dispatch software. It is the
+                homeowner-facing layer for people who want confidence,
+                documentation, and continuity when repairs happen.
+              </p>
+              <p>
+                Owners can manage multiple properties, create repair requests,
+                upload before, after, and receipt photos, approve or decline
+                quotes, record costs, and download proof packets. Vendors get a
+                scoped portal showing only the jobs assigned to them.
+                Collaborators can view shared requests and post updates without
+                seeing the owner's whole account.
               </p>
             </div>
 
@@ -948,26 +990,105 @@ export function Work() {
           className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
         >
           <div className="space-y-5">
+            <SectionLabel>Current Build</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              Rebuilt from a Firebase MVP into a full-stack SaaS-style POC.
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="space-y-6 text-lg leading-loose text-foreground/70">
+              <p>
+                The first version used Firebase Authentication, Firestore,
+                Firebase Storage, and Firestore security rules. That MVP proved
+                the workflow: role-based views, technician photo proof,
+                itemized estimates, client-facing approval status, and JSON
+                backup and restore.
+              </p>
+              <p className="text-foreground/90">
+                The current version moves the project closer to a real SaaS
+                foundation with stronger ownership checks, database-backed
+                records, file uploads, notification logging, recurring
+                reminders, and public-safe demo data.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {turnFlowCurrentBuild.map((item) => (
+                <p
+                  key={item}
+                  className="border-b border-foreground/10 pb-4 text-lg leading-relaxed text-foreground/75"
+                >
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
             <SectionLabel>Builder Notes</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              The client layer should feel simpler than the ops layer.
+              The product should feel lighter than property management
+              software.
             </h2>
           </div>
 
           <div className="space-y-6 text-lg leading-loose text-foreground/70">
             <p>
-              TurnFlow Home should stay focused on client and homeowner
-              confidence: approval clarity, cost context, maintenance records,
-              and proof. That keeps it distinct from TechSync Ops, which owns
-              dispatch, routing, workload, technician management, and company
-              reporting.
+              TurnFlow Home is strongest when it stays focused on homeowner
+              confidence: what happened, what it cost, who was involved, what
+              proof came back, and what record should be kept afterward.
             </p>
-            <p className="text-foreground/90">
-              Next up: public-safe screenshots, a hosted demo environment,
-              polished client approval screens, stronger owner-facing PDF
-              exports, notification flows, and a tighter split between
-              homeowner self-management and PMC-managed projects.
+            <p>
+              That keeps it distinct from a PMC operations platform. A property
+              management company needs dispatch, routing, technician workload,
+              internal reporting, vendor management, and company controls. A
+              homeowner usually needs something calmer: a trusted repair
+              history and a clear way to coordinate work without losing the
+              thread.
             </p>
+            <p>
+              The next product phase is about turning the POC into a
+              public-safe SaaS demo: stronger server-side guardrails, cleaner
+              first-run onboarding, a hosted demo environment, updated
+              screenshots, clearer homeowner positioning, and lightweight
+              pricing experiments for self-managing homeowners, small landlords,
+              and short-term rental hosts.
+            </p>
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-5">
+            <SectionLabel>Next Up</SectionLabel>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+              What has to happen before the public demo.
+            </h2>
+          </div>
+
+          <div className="grid gap-5">
+            {turnFlowNextSteps.map((step) => (
+              <p
+                key={step}
+                className="border-b border-foreground/10 pb-5 text-lg leading-loose text-foreground/72"
+              >
+                {step}
+              </p>
+            ))}
           </div>
         </motion.section>
       </motion.div>
