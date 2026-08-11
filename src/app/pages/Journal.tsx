@@ -16,7 +16,7 @@ import { motion } from "motion/react";
 const journalEntries = [
   {
     title: "How do I know I am getting what I paid for?",
-    readTime: "Draft",
+    readTime: "2 min read",
     type: "Homeowner",
     date: "Aug 11, 2026",
     sections: [
@@ -26,7 +26,7 @@ const journalEntries = [
   },
   {
     title: "How do I get the homeowner to trust the process?",
-    readTime: "Draft",
+    readTime: "2 min read",
     type: "PM Ops",
     date: "Aug 10, 2026",
     sections: [
@@ -36,7 +36,7 @@ const journalEntries = [
   },
   {
     title: "Own the outcome, not just the task.",
-    readTime: "Draft",
+    readTime: "2 min read",
     type: "Team",
     date: "Aug 9, 2026",
     sections: [
@@ -46,7 +46,7 @@ const journalEntries = [
   },
   {
     title: "Why does a solid property still feel thin on cash flow?",
-    readTime: "Draft",
+    readTime: "2 min read",
     type: "Investor",
     date: "Aug 8, 2026",
     sections: [
@@ -56,7 +56,7 @@ const journalEntries = [
   },
   {
     title: "What work order deserves my time next?",
-    readTime: "Draft",
+    readTime: "2 min read",
     type: "PropTech",
     date: "Aug 7, 2026",
     sections: [
