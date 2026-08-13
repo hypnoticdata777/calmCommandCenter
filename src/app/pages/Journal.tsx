@@ -70,6 +70,11 @@ const journalEntries = [
   },
 ];
 
+const journalSubheads = new Set([
+  "The chasm",
+  "What's actually landed since",
+]);
+
 export function Journal() {
   const [openEntry, setOpenEntry] = useState<string | null>(null);
 
@@ -166,14 +171,23 @@ export function Journal() {
                     className="overflow-hidden"
                   >
                     <div className="max-w-4xl space-y-9 pb-12 md:ml-[11rem]">
-                      {entry.sections.map((section) => (
-                        <p
-                          key={section}
-                          className="text-xl leading-[1.85] text-foreground/72 md:text-2xl"
-                        >
-                          {section}
-                        </p>
-                      ))}
+                      {entry.sections.map((section) =>
+                        journalSubheads.has(section) ? (
+                          <h3
+                            key={section}
+                            className="pt-5 font-display text-3xl font-bold leading-tight tracking-wide text-brand/85 md:text-4xl"
+                          >
+                            {section}
+                          </h3>
+                        ) : (
+                          <p
+                            key={section}
+                            className="text-xl leading-[1.85] text-foreground/72 md:text-2xl"
+                          >
+                            {section}
+                          </p>
+                        )
+                      )}
                     </div>
                   </motion.div>
                 )}
