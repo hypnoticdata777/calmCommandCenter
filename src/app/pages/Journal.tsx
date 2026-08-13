@@ -87,7 +87,7 @@ export function Journal() {
             Notes from the messy middle.
           </h1>
           <div className="h-px bg-foreground/10 w-28" />
-          <p className="max-w-2xl text-foreground/50 tracking-wide leading-[1.75]">
+          <p className="max-w-2xl text-lg leading-[1.8] tracking-wide text-foreground/55 md:text-xl">
             Writing about property management, operations, PropTech, tool
             builds, lessons, and the occasional vent that might turn into a
             case study.
@@ -165,11 +165,11 @@ export function Journal() {
                     transition={{ duration: 0.35, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="max-w-3xl space-y-7 pb-10 md:ml-[11rem]">
+                    <div className="max-w-4xl space-y-9 pb-12 md:ml-[11rem]">
                       {entry.sections.map((section) => (
                         <p
                           key={section}
-                          className="text-lg leading-[1.75] text-foreground/65"
+                          className="text-xl leading-[1.85] text-foreground/72 md:text-2xl"
                         >
                           {section}
                         </p>
