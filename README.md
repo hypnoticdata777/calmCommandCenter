@@ -55,14 +55,14 @@ The Work page now includes the third case study: **TechSync Ops: the PMC command
 
 TurnFlow Home is the fourth showcase tool featured on the site.
 
-- **Status:** MVP / Firebase-backed POC
-- **Type:** Client maintenance portal
-- **Audience:** Homeowners, owner clients, and invited technicians
+- **Status:** Launch-oriented SaaS POC candidate
+- **Type:** Homeowner maintenance workspace
+- **Audience:** Homeowners, small landlords, rental hosts, vendors, and trusted helpers
 - **Source:** [hypnoticdata777/turnflow-mvp](https://github.com/hypnoticdata777/turnflow-mvp)
-- **Docs:** [project workbook](https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md)
-- **Requirements:** [requirements](https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/REQUIREMENTS.md)
+- **Docs:** [README documentation](https://github.com/hypnoticdata777/turnflow-mvp#documentation)
+- **Readiness:** [current POC readiness](https://github.com/hypnoticdata777/turnflow-mvp#current-poc-readiness)
 
-The Work page now includes the fourth case study: **TurnFlow Home: client-side maintenance approvals with proof built in.**
+The Work page now includes the fourth case study: **TurnFlow Home: maintenance history for homeowners who want the proof.**
 
 ### Product Split Brief
 

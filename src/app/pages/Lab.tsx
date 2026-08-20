@@ -91,11 +91,11 @@ const tools = [
   },
   {
     name: "TurnFlow Home",
-    status: "MVP / Firebase-backed POC",
-    type: "Client maintenance portal",
-    audience: "Homeowners, owner clients, and invited technicians",
+    status: "Launch-oriented SaaS POC candidate",
+    type: "Homeowner maintenance workspace",
+    audience: "Homeowners, small landlords, rental hosts, vendors, and trusted helpers",
     description:
-      "A homeowner and owner-client maintenance companion for turnover and repair workflows. It helps clients track approvals, estimates, itemized tasks, technician photo proof, contacts, charts, and backup/restore records without needing a full PMC command system.",
+      "A homeowner-first system of record for repairs, proof, costs, documents, reminders, and scoped help. The original Firebase MVP has been rebuilt with Next.js, Postgres/Neon, Drizzle, Auth.js, Vercel Blob, owner/vendor/collaborator portals, readiness checks, and smoke scripts.",
     links: [
       {
         label: "Source",
@@ -103,10 +103,10 @@ const tools = [
       },
       {
         label: "Docs",
-        href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md",
+        href: "https://github.com/hypnoticdata777/turnflow-mvp#documentation",
       },
       {
-        label: "Demo coming soon",
+        label: "Hosted POC coming soon",
       },
     ],
   },

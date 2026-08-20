@@ -142,47 +142,48 @@ const techSyncLinks = [
 ];
 
 const turnFlowFacts = [
-  "SaaS POC in progress",
-  "Homeowner self-management workflow",
-  "Guided maintenance request intake",
-  "Vendor and collaborator invite flows",
-  "PDF proof packets and property history exports",
+  "Launch-oriented SaaS POC candidate",
+  "Homeowner-first maintenance workspace",
+  "Owner, vendor, and collaborator portals",
+  "Proof packets, vault docs, reminders, and billing records",
+  "Automated verification and route smoke scripts in place",
 ];
 
 const turnFlowFeatures = [
-  "Guided request intake with category, urgency, and safety context",
-  "Multiple properties per owner with owner dashboard filtering",
-  "Vendor invite links with scoped vendor portal access",
-  "Collaborator sharing for household members or trusted helpers",
-  "Quote workspace with approval and decline states",
-  "Cost tracking across estimated, quoted, and final amounts",
-  "Append-only decision log for status and quote changes",
-  "Completion proof workflow with final cost and evidence capture",
-  "Photo uploads for before, after, receipt, and other evidence",
-  "Property document vault for receipts, warranties, manuals, invoices, and inspections",
-  "Recurring maintenance calendar with due-soon and overdue tracking",
-  "PDF proof packets plus PDF, CSV, and JSON export paths",
+  "Homeowner signup, login, and first-run setup guidance",
+  "Multiple property records with care signals and dashboard filters",
+  "Guided maintenance intake with urgency, safety, access, and photo context",
+  "Owner request-detail rail for scope, cost, bids, help, proof, closeout, billing, and history",
+  "Scoped vendor and collaborator invite flows with pending access management",
+  "Vendor profiles, assigned-job queues, bid submission, and lifecycle tracking",
+  "Quote comparison with approve, decline, attachments, price cues, and decision history",
+  "Structured task checklists with expected proof types, costs, status, and owner acceptance",
+  "Completion gating for final cost, after-photo proof, assigned vendor, or explicit waiver",
+  "Work-session timeline, vendor closeout packets, owner approval, and change requests",
+  "Property vault, recurring maintenance calendar, reminder signals, and .ics export",
+  "PDF proof packets, property history rollups, CSV export, and JSON backup/restore",
 ];
 
 const turnFlowCurrentBuild = [
-  "Next.js App Router and TypeScript",
-  "Neon Postgres with Drizzle ORM",
-  "Auth.js / NextAuth credentials authentication",
-  "Server Actions with role and ownership checks",
-  "Vercel Blob for photo and document uploads",
-  "Resend-ready notification flow with delivery logging",
-  "Vercel Cron for recurring maintenance reminder digests",
-  "Owner, vendor, and collaborator portals",
+  "Next.js 16 App Router, TypeScript, Tailwind CSS v4, and Server Actions",
+  "Neon serverless Postgres with Drizzle ORM",
+  "Auth.js / NextAuth v5 credentials auth with JWT sessions",
+  "Server-side role and ownership checks for owner, vendor, and collaborator access",
+  "Vercel Blob for photos, quote attachments, and vault documents",
+  "Resend email notifications with log-only fallback and delivery-health guidance",
+  "Vercel Cron reminder digests plus public and protected health endpoints",
+  "Vitest unit coverage, Playwright smoke scripts, and poc:ready / verify checks",
 ];
 
 const turnFlowNextSteps = [
-  "Public-safe hosted demo",
-  "Updated screenshots from the Next.js version",
-  "Self-serve onboarding for first property and first request",
-  "Production-ready database migration flow",
-  "Stronger server-side validation around completion proof and request status",
-  "Clearer SaaS positioning for homeowners who do not want a PMC",
-  "Early pricing test for small landlords and rental hosts",
+  "Configure the real preview or production environment",
+  "Run poc:ready and verify against the hosted environment",
+  "Seed public-safe demo data",
+  "Run owner and helper smoke tests against the hosted URL",
+  "Refresh signed-in screenshots for the README, portfolio, and case study",
+  "Run a homeowner user-testing pass and log findings",
+  "Verify Resend deliverability, sender domain setup, and reminder cron behavior",
+  "Decide later layers for billing model, subscriptions, payments, analytics, and observability",
 ];
 
 const turnFlowLinks = [
@@ -192,11 +193,11 @@ const turnFlowLinks = [
   },
   {
     label: "Docs",
-    href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/WORKBOOK.md",
+    href: "https://github.com/hypnoticdata777/turnflow-mvp#documentation",
   },
   {
-    label: "Requirements",
-    href: "https://github.com/hypnoticdata777/turnflow-mvp/blob/main/docs/REQUIREMENTS.md",
+    label: "Readiness",
+    href: "https://github.com/hypnoticdata777/turnflow-mvp#current-poc-readiness",
   },
 ];
 
@@ -852,14 +853,15 @@ export function Work() {
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 04</SectionLabel>
             <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              TurnFlow Home: homeowner maintenance records with proof built in.
+              TurnFlow Home: maintenance history for homeowners who want the proof.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              A homeowner-first maintenance tracker for small landlords,
-              rental hosts, and owners who manage repairs themselves. TurnFlow
-              Home keeps each repair in one clear record: what broke, who was
-              invited, what was quoted, what changed, what was approved, what
-              proof came back, and what was finally completed.
+              A homeowner-first maintenance workspace for people who want to
+              manage repairs, proof, costs, documents, reminders, and scoped
+              help without handing the whole process to a property management
+              company. Each property gets one shared record for what broke, who
+              was invited, what was quoted, what changed, what proof came back,
+              and what needs attention next.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -875,7 +877,7 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                Screenshots coming soon
+                Signed-in screenshots need refresh
               </span>
             </div>
           </div>
@@ -917,13 +919,13 @@ export function Work() {
               Later, when the same issue comes back, the details matter: who
               fixed it, what it cost, what was approved, what proof came back,
               and whether the repair actually solved the problem. TurnFlow Home
-              gives that history a home without forcing the owner into heavy
-              property management software.
+              gives that history a home record without forcing the owner into
+              heavy property management software or a full PMC workflow.
             </p>
             <p className="text-foreground/90">
-              The job is intentionally simple: document the issue, coordinate
-              the repair, collect the proof, and preserve the record for the
-              next decision.
+              The product direction is intentionally focused: calmer ownership,
+              clearer coordination, exportable maintenance history, and better
+              recurring care before a small issue becomes a bigger repair.
             </p>
           </div>
         </motion.section>
@@ -946,22 +948,23 @@ export function Work() {
             <div className="space-y-6 text-lg leading-loose text-foreground/70">
               <p>
                 With TurnFlow Home, an owner can create a property, log a
-                maintenance issue, collect safety details, attach photos,
-                invite a vendor or collaborator, compare quotes, track status
-                changes, and close the request with final cost and proof.
+                maintenance issue, collect safety and access details, attach
+                photos, invite a vendor or trusted helper, compare quotes,
+                track status changes, and close the request with final cost,
+                proof, billing context, and exportable history.
               </p>
               <p className="text-foreground/90">
                 The product is intentionally focused. It is not trying to run a
                 maintenance company, and it is not dispatch software. It is the
-                homeowner-facing layer for people who want confidence,
-                documentation, and continuity when repairs happen.
+                homeowner-facing system of record for people who want
+                confidence, documentation, and continuity when repairs happen.
               </p>
               <p>
-                Owners can manage multiple properties, upload before, after,
-                and receipt photos, approve or decline quotes, record costs,
-                and download proof packets. Vendors get a scoped portal for
-                assigned jobs. Collaborators can view shared requests and post
-                updates without seeing the owner's whole account.
+                Owners can manage multiple properties, use care signals and
+                setup guidance, approve or decline bids, record costs, keep a
+                document vault, schedule recurring maintenance, and download
+                proof packets. Vendors and collaborators get scoped portals
+                that show only the work shared with them.
               </p>
             </div>
 
@@ -1003,9 +1006,10 @@ export function Work() {
               </p>
               <p className="text-foreground/90">
                 The current version moves the project closer to a real SaaS
-                foundation with stronger ownership checks, database-backed
-                records, file uploads, notification logging, recurring
-                reminders, and public-safe demo data.
+                foundation: Next.js, relational data, server-side authorization,
+                Blob-backed uploads, notification logging, reminder digests,
+                smoke scripts, health checks, and readiness verification before
+                the hosted POC invites external users.
               </p>
             </div>
 
@@ -1041,22 +1045,23 @@ export function Work() {
             <p>
               TurnFlow Home is strongest when it stays focused on homeowner
               confidence: what happened, what it cost, who was involved, what
-              proof came back, and what record should be kept afterward.
+              proof came back, what decision was made, and what record should
+              be kept afterward.
             </p>
             <p>
               That keeps it distinct from a PMC operations platform. PMCs need
               dispatch, routing, technician workload, internal reporting,
               vendor management, and company controls. This tool stays calmer:
-              trusted repair history, clear coordination, and less risk of
-              losing the thread.
+              trusted repair history, scoped help, clear coordination, and less
+              risk of losing the thread.
             </p>
             <p>
               The next product phase is about turning the POC into a
-              public-safe SaaS demo: stronger server-side guardrails, cleaner
-              first-run onboarding, a hosted demo environment, updated
-              screenshots, clearer homeowner positioning, and lightweight
-              pricing experiments for self-managing homeowners, small landlords,
-              and short-term rental hosts.
+              public-safe SaaS demo: a real hosted environment, seeded demo
+              data, signed-in screenshots, owner/helper smoke tests,
+              homeowner-user feedback, verified notifications, and eventually
+              the business layers around billing, subscriptions, payments,
+              analytics, and observability.
             </p>
           </div>
         </motion.section>
