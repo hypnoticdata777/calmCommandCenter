@@ -103,27 +103,28 @@ const meldSyncLinks = [
 ];
 
 const techSyncFacts = [
-  "Multi-tenant SaaS POC",
-  "React Native mobile app",
-  "FastAPI backend",
-  "Postgres tenant isolation",
-  "70 backend tests",
+  "Public POC and product-maturity build",
+  "Hosted Vercel web staging",
+  "FastAPI API with Neon demo data",
+  "Six role-aware work lanes",
+  "Synthetic-data testing only",
 ];
 
 const techSyncFeatures = [
-  "Work-order ingestion from CSV and webhook-style sources",
-  "Assignment logic based on priority, technician fit, proximity, and workload",
-  "Tenant-scoped organizations, roles, invitations, and onboarding",
-  "Technician mobile queue with status movement from assignment to completion",
-  "Attachment endpoints for before photos, completion proof, receipts, and field records",
-  "Dashboard metrics, billing endpoints, and admin-ready backend boundaries",
-  "Postgres row-level security backstop plus repository isolation tests",
+  "Role-aware workspaces for org admin, coordinator, technician, client, viewer, and vendor users",
+  "Work-order intake, assignment, status transitions, messages, approvals, proof, and closeout packages",
+  "Multi-tenant auth, organization onboarding, invitations, roles, and tenant-scoped access",
+  "Persistent Work Views rail, center queue/detail surface, and right-side Next Actions rail",
+  "Lane-aware search for request ID, address, status, dates, proof, approvals, and role context",
+  "Client and vendor visibility that stays scoped to linked work instead of internal operations",
+  "Dashboard metrics, dispatch board, operations report, closeout exports, and CSV exports",
+  "Synthetic seed/reset tooling plus documented hosted QA and evidence workflows",
 ];
 
 const techSyncProofPoints = [
-  "The backend foundation is already organized around organizations, work orders, assignments, technicians, files, billing, and metrics.",
-  "The mobile direction is clear: technicians need a field calendar, live job queue, updates, and proof collection without extra chasing.",
-  "The repo documents deferred production work openly: web admin, offline sync, PDF/email ingestion, mobile dependency audit, monitoring, and hosted staging.",
+  "The staged loop is live: Vercel hosts the Expo / React Native web client, Vercel hosts the FastAPI API, and Neon carries synthetic demo data for walkthroughs.",
+  "The repo has real product evidence behind it: backend pytest coverage, client Jest checks, GitHub Actions CI, Gitleaks config, seeded demo data, smoke helpers, and readiness documentation.",
+  "The boundary is honest: billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
 ];
 
 const techSyncLinks = [
@@ -133,11 +134,15 @@ const techSyncLinks = [
   },
   {
     label: "Docs",
-    href: "https://github.com/hypnoticdata777/Techsync#spec-coverage",
+    href: "https://github.com/hypnoticdata777/Techsync#documentation-index",
   },
   {
-    label: "Requirements",
-    href: "https://github.com/hypnoticdata777/Techsync/blob/main/Techsync_SaaS_Requirements.md",
+    label: "Staging App",
+    href: "https://techsync-ops-web.vercel.app",
+  },
+  {
+    label: "API Docs",
+    href: "https://techsync-ops-api-lyart.vercel.app/docs",
   },
 ];
 
@@ -671,11 +676,12 @@ export function Work() {
               proof.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              A multi-tenant SaaS POC for PMCs and field-service teams that
-              need to ingest work orders, assign the right technician, keep
-              client communication connected, and track progress through
-              completion proof instead of running the day through constant
-              follow-up.
+              A multi-tenant maintenance command center for PMCs and
+              field-service teams. TechSync Ops turns scattered maintenance
+              requests into role-specific work queues, dispatch decisions,
+              client and vendor updates, proof capture, closeout records, and
+              operational reporting without pretending the staged demo is
+              customer-production software yet.
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -691,7 +697,7 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                Screenshots coming soon
+                Role screenshot pass pending
               </span>
             </div>
           </div>
@@ -730,10 +736,11 @@ export function Work() {
               the proof made it back to the office.
             </p>
             <p>
-              TechSync is aimed at that coordination layer: PMCs, field-service
-              teams, technicians, vendors, and client-view users all need the
-              same work to move from request to assignment to completion
-              without the manager manually chasing every update.
+              TechSync is aimed at the handoffs where maintenance operations
+              usually break: unclear ownership, inconsistent proof, scoped
+              client visibility, vendor context without tenant-data leakage,
+              and managers rebuilding the story from messages, photos,
+              spreadsheets, and memory.
             </p>
           </div>
         </motion.section>
@@ -756,15 +763,17 @@ export function Work() {
             <div className="space-y-6 text-lg leading-loose text-foreground/70">
               <p>
                 The POC validates the core platform shape: a FastAPI backend,
-                multi-tenant organization model, Postgres-backed isolation,
-                work-order ingestion, assignment logic, technician workflows,
-                attachments, metrics, and billing-ready boundaries.
+                Expo / React Native web client, multi-tenant organization
+                model, Neon/Postgres demo database, JWT auth, tenant-scoped
+                repositories, work-order ingestion, role workspaces,
+                assignments, messages, approvals, proof, closeout exports, and
+                operations reporting.
               </p>
               <p className="text-foreground/90">
-                The product ambition is bigger than a dispatch board. The
-                useful version should help a manager know what is urgent, which
-                technician fits the job, how workload should be balanced, and
-                what proof came back from the field.
+                The product ambition is bigger than a dispatch board. Each user
+                gets a lane, each work order keeps its operating story, and the
+                tenant boundary stays explicit so internal operations can move
+                without overexposing client, vendor, or tenant context.
               </p>
             </div>
 
@@ -830,15 +839,15 @@ export function Work() {
             </p>
             <p>
               For the public portfolio, this belongs as an ambitious PMC SaaS
-              POC: real architecture, meaningful tests, clear product
-              direction, and honest boundaries around what still needs
-              production polish before it carries a live operation.
+              POC with real architecture, hosted staging, meaningful tests,
+              clear product direction, and honest boundaries around what still
+              needs production polish before it carries a live operation.
             </p>
             <p className="text-foreground/90">
-              Next up: portfolio-safe screenshots, hosted staging, admin web
-              views, Expo and React Native dependency upgrades, offline sync,
-              PDF/email ingestion, monitoring, and launch-ready security
-              configuration.
+              Next up: finish the role walkthrough, screenshot evidence,
+              small-width checks, accessibility notes, visual polish, staged
+              demo evidence, and clear limitation labels before public
+              promotion gets louder.
             </p>
           </div>
         </motion.section>

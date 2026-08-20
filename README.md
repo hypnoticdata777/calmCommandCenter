@@ -42,12 +42,13 @@ The Work page now includes the second case study: **m3ldSync: turning maintenanc
 
 TechSync Ops is the third showcase tool featured on the site.
 
-- **Status:** SaaS POC / backend + mobile foundation
+- **Status:** Hosted staging / synthetic-data POC
 - **Type:** PMC maintenance command platform
-- **Audience:** PMCs, coordinators, technicians, vendors, and client-view users
+- **Audience:** PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors
 - **Source:** [hypnoticdata777/Techsync](https://github.com/hypnoticdata777/Techsync)
-- **Docs:** [README documentation](https://github.com/hypnoticdata777/Techsync#spec-coverage)
-- **Requirements:** [Techsync SaaS requirements](https://github.com/hypnoticdata777/Techsync/blob/main/Techsync_SaaS_Requirements.md)
+- **Docs:** [README documentation](https://github.com/hypnoticdata777/Techsync#documentation-index)
+- **Staging app:** [techsync-ops-web.vercel.app](https://techsync-ops-web.vercel.app)
+- **API docs:** [techsync-ops-api-lyart.vercel.app/docs](https://techsync-ops-api-lyart.vercel.app/docs)
 
 The Work page now includes the third case study: **TechSync Ops: the PMC command layer for maintenance dispatch and proof.**
 
@@ -103,8 +104,9 @@ The repo also includes an interactive requirements brief that separates the two 
 
 - Add the next ready tools to Lab.
 - Write case studies for the remaining showcase-ready tools.
-- Replace "Demo coming soon" once PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home have hosted demo URLs.
-- Add portfolio-safe TechSync Ops and TurnFlow Home screenshots or staged demo walkthroughs.
+- Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TurnFlow Home have hosted demo URLs.
+- Finish the TechSync Ops role walkthrough, screenshot evidence, accessibility notes, and visual polish pass before treating its hosted staging loop as public promotion.
+- Add portfolio-safe TurnFlow Home screenshots or a staged demo walkthrough.
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.

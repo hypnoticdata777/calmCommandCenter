@@ -70,11 +70,11 @@ const tools = [
   },
   {
     name: "TechSync Ops",
-    status: "SaaS POC / Backend + mobile foundation",
+    status: "Hosted staging / Synthetic-data POC",
     type: "PMC maintenance command platform",
-    audience: "PMCs, coordinators, technicians, vendors, and client-view users",
+    audience: "PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors",
     description:
-      "A multi-tenant maintenance operations POC for PMCs and field-service teams. It ingests work orders, recommends technician assignment by priority, skills, proximity, and workload, and keeps client communication tied to field proof.",
+      "A multi-tenant maintenance command center that turns scattered requests into role-specific queues, dispatch decisions, client/vendor updates, proof capture, closeout records, and operations reporting. The current build has hosted Vercel web/API staging with Neon synthetic demo data, but it is not customer-production software yet.",
     links: [
       {
         label: "Source",
@@ -82,10 +82,15 @@ const tools = [
       },
       {
         label: "Docs",
-        href: "https://github.com/hypnoticdata777/Techsync#spec-coverage",
+        href: "https://github.com/hypnoticdata777/Techsync#documentation-index",
       },
       {
-        label: "Demo coming soon",
+        label: "Staging App",
+        href: "https://techsync-ops-web.vercel.app",
+      },
+      {
+        label: "API Docs",
+        href: "https://techsync-ops-api-lyart.vercel.app/docs",
       },
     ],
   },
