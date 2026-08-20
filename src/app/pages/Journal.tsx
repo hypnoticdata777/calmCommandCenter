@@ -207,6 +207,12 @@ const journalSubheads = new Set([
 export function Journal() {
   const [openEntry, setOpenEntry] = useState<string | null>(null);
 
+  function scrollToEntry(entryIndex: number) {
+    document
+      .getElementById(`journal-entry-${entryIndex}`)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <motion.section
@@ -235,6 +241,7 @@ export function Journal() {
 
             return (
               <motion.article
+                id={`journal-entry-${index}`}
                 key={entry.title}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -243,7 +250,7 @@ export function Journal() {
                   delay: 0.15 + index * 0.12,
                   ease: "easeIn",
                 }}
-                className={`border-b border-foreground/10 last:border-b-0 ${
+                className={`scroll-mt-24 border-b border-foreground/10 last:border-b-0 ${
                   isComingSoon ? "opacity-55" : ""
                 }`}
               >
@@ -294,12 +301,14 @@ export function Journal() {
 
                 {isOpen && (
                   <motion.div
+                    onClick={() => scrollToEntry(index)}
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="overflow-hidden"
+                    className="cursor-ns-resize overflow-hidden"
+                    title="Click anywhere in the article to return to its header."
                   >
-                    <div className="max-w-4xl space-y-7 pb-12 md:ml-[11rem]">
+                    <div className="max-w-5xl space-y-7 pb-12">
                       {entry.sections.map((section) =>
                         journalSubheads.has(section) ? (
                           <h3
