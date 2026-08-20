@@ -139,7 +139,7 @@ export default function App() {
                 text-white/80 = white at 80% opacity. */}
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
               <p className="italic">Vendor and maintenance chaos.</p>
-              <p className="italic">High tenant turnover and move-in friction.</p>
+              <p className="italic">Scattered requests, proof, and follow-ups.</p>
               <p className="italic">Tech gaps and manual admin overload.</p>
             </div>
           </div>
