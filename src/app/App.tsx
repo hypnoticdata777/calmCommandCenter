@@ -208,22 +208,22 @@ export default function App() {
         className="mt-32 flex flex-col items-center gap-5 relative z-10 w-full max-w-md"
       >
         <p className="text-foreground/45 tracking-wide leading-relaxed">
-          The work has the tools. The lab has the experiments. The journal has
-          the thinking, questions, and occasional useful vent.
+          The journal holds the thinking. The lab tests the experiments. Work
+          holds the tools that have earned a clearer case study.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 w-full">
           <Link
-            to="/lab"
+            to="/journal"
             className="px-6 py-2.5 bg-brand/10 border border-brand/30 text-brand rounded hover:bg-brand/20 transition-colors tracking-wide"
           >
-            Visit Lab
+            Read Journal
           </Link>
           <Link
-            to="/journal"
+            to="/lab"
             className="px-6 py-2.5 border border-foreground/15 text-foreground/70 rounded hover:border-foreground/30 hover:text-foreground transition-colors tracking-wide"
           >
-            Read Journal
+            Visit Lab
           </Link>
         </div>
       </motion.div>

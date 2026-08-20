@@ -21,7 +21,7 @@ import { NotFound }   from "./pages/NotFound";
 // 1. Why: Maps URLs to the correct screen so the SPA has predictable navigation.
 // 2. Who: Every visitor and every internal Link in the project.
 // 3. Main modules: Layout route wrapper, six content pages, and the 404 fallback.
-// 4. Screens: Home, Work, Lab, Journal, About, Contact, NotFound.
+// 4. Screens: Home, Journal, Lab, Work, About, Contact, NotFound.
 // 5. Data stored: No data; this file stores the route table as code.
 // 6. State tracked: React Router tracks the current location.
 // 7. User actions: Navigate by clicking links or loading a direct URL.

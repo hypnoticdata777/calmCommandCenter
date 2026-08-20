@@ -54,9 +54,9 @@ import { useTheme } from "next-themes";
 // Defined outside the component so this array is never recreated
 // on re-renders — it's a fixed list that never changes.
 const links = [
-  { label: "Work",    to: "/work"    },
-  { label: "Lab",     to: "/lab"     },
   { label: "Journal", to: "/journal" },
+  { label: "Lab",     to: "/lab"     },
+  { label: "Work",    to: "/work"    },
   { label: "About",   to: "/about"   },
   { label: "Contact", to: "/contact" },
 ];

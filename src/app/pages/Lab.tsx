@@ -14,31 +14,6 @@ import { motion } from "motion/react";
 
 const tools = [
   {
-    name: "PM Ops Map",
-    status: "Built / Open source",
-    type: "Browser app",
-    audience: "New PMCs, owners, and ops managers",
-    description:
-      "A free day-one operations map for property management companies. It gives new teams 260+ editable PM tasks across 17 departments, team assignment, workload balancing, maintenance work orders, portfolio tracking, handbook exports, backups, and optional self-hosted team sync.",
-    links: [
-      {
-        label: "Source",
-        href: "https://github.com/hypnoticdata777/pm-ops-map",
-      },
-      {
-        label: "Download",
-        href: "https://github.com/hypnoticdata777/pm-ops-map/releases/latest",
-      },
-      {
-        label: "Screenshots",
-        href: "https://github.com/hypnoticdata777/pm-ops-map/tree/master/docs/screenshots",
-      },
-      {
-        label: "Demo coming soon",
-      },
-    ],
-  },
-  {
     name: "m3ldSync",
     status: "Local POC / Public demo packaged",
     type: "CSV reconciliation tool",
@@ -68,59 +43,12 @@ const tools = [
       "A vendor memory layer for teams tired of managing contractors through screenshots, old texts, Facebook posts, Google searches, and pure hope. The smallest useful version captures vendor leads, tags trade and location, tracks quote requests, scores reliability, and remembers who actually worked out.",
     links: [{ label: "POC roadmap" }, { label: "Prototype notes" }],
   },
-  {
-    name: "TechSync Ops",
-    status: "Hosted staging / Synthetic-data POC",
-    type: "PMC maintenance command platform",
-    audience: "PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors",
-    description:
-      "A multi-tenant maintenance command center that turns scattered requests into role-specific queues, dispatch decisions, client/vendor updates, proof capture, closeout records, and operations reporting. The current build has hosted Vercel web/API staging with Neon synthetic demo data, but it is not customer-production software yet.",
-    links: [
-      {
-        label: "Source",
-        href: "https://github.com/hypnoticdata777/Techsync",
-      },
-      {
-        label: "Docs",
-        href: "https://github.com/hypnoticdata777/Techsync#documentation-index",
-      },
-      {
-        label: "Staging App",
-        href: "https://techsync-ops-web.vercel.app",
-      },
-      {
-        label: "API Docs",
-        href: "https://techsync-ops-api-lyart.vercel.app/docs",
-      },
-    ],
-  },
-  {
-    name: "TurnFlow Home",
-    status: "Launch-oriented SaaS POC candidate",
-    type: "Homeowner maintenance workspace",
-    audience: "Homeowners, small landlords, rental hosts, vendors, and trusted helpers",
-    description:
-      "A homeowner-first system of record for repairs, proof, costs, documents, reminders, and scoped help. The original Firebase MVP has been rebuilt with Next.js, Postgres/Neon, Drizzle, Auth.js, Vercel Blob, owner/vendor/collaborator portals, readiness checks, and smoke scripts.",
-    links: [
-      {
-        label: "Source",
-        href: "https://github.com/hypnoticdata777/turnflow-mvp",
-      },
-      {
-        label: "Docs",
-        href: "https://github.com/hypnoticdata777/turnflow-mvp#documentation",
-      },
-      {
-        label: "Hosted POC coming soon",
-      },
-    ],
-  },
 ];
 
 const buildNotes = [
-  "If it is in Work, it has at least reached proof-of-concept. If it is in Lab, it is still being shaped, tested, scoped, or argued with until the useful part shows up.",
-  "Some experiments will become open-source tools, some may become paid products, and some will stay as notes because the idea was useful even if the build was not.",
-  "The test is simple: if it does not make property management clearer, easier to manage, or easier to explain, it does not belong here.",
+  "The loop is simple: Journal captures the thought, Lab tests whether the idea still stands, and Work holds the tools that are strong enough to present as case studies.",
+  "Lab is allowed to be messy, but it should still be honest: status, audience, missing pieces, and why the experiment deserves another pass.",
+  "Some experiments will graduate to Work, some may become paid products, and some will stay here because the idea was useful even if the build is not ready.",
 ];
 
 function SectionLabel({ children }: { children: string }) {
@@ -152,20 +80,20 @@ export function Lab() {
             <SectionLabel>Lab</SectionLabel>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              Where friction, gaps, and future tool ideas get tested.
+              Where ideas get tested before they earn Work.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <div className="space-y-5 text-lg md:text-xl leading-loose text-foreground/65">
               <p>
-                This is where I bring problems, friction, gaps, suggestions,
-                and future concepts and put them to the test.
+                This is where journal thoughts, PM friction, product hunches,
+                and half-built tools get stress-tested against reality.
               </p>
               <p className="text-foreground/90">
-                Not all of them come to fruition, but all of them get captured.
-                Most ideas graduate here from the journal before they become
-                work items, case studies, or real products.
+                Not everything here needs to ship. The point is to capture the
+                experiment, test whether it still stands, and decide whether it
+                belongs in Work later.
               </p>
             </div>
           </motion.div>
@@ -178,9 +106,9 @@ export function Lab() {
           className="grid gap-10 border-t border-foreground/10 pt-12 lg:grid-cols-[0.85fr_1.15fr]"
         >
           <div className="space-y-5">
-            <SectionLabel>01 / Built</SectionLabel>
+            <SectionLabel>01 / Active Test</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              The free ops foundation.
+              The current experiment with the clearest shape.
             </h2>
           </div>
 
@@ -238,14 +166,14 @@ export function Lab() {
             <div className="space-y-5">
               <SectionLabel>02 / Tools</SectionLabel>
               <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-                An experiment shelf, honestly labeled.
+                The testing shelf, honestly labeled.
               </h2>
             </div>
 
             <p className="text-lg leading-loose text-foreground/65">
-              Ordered by maturity, not hype. Work is where usable tools and
-              proofs live. Lab is where I test the useful pieces before they
-              earn that spot.
+              Journal feeds Lab. Lab tests the useful pieces. Work is where
+              PM Ops Map, TechSync Ops, and TurnFlow Home live because they
+              have enough shape to stand as case studies.
             </p>
           </div>
 

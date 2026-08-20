@@ -4,13 +4,13 @@ A public portfolio site for `h777`, built to showcase property management tools,
 
 ## What It Is
 
-This is the portfolio shell for the h777 tool ecosystem. The main shape is in place: routing, layout, theme switching, animated background, responsive navigation, the home page, Lab, Work, Journal, About, Contact, and 404 handling.
+This is the portfolio shell for the h777 tool ecosystem. The main shape is in place: routing, layout, theme switching, animated background, responsive navigation, the home page, Journal, Lab, Work, About, Contact, and 404 handling.
 
-The site is now moving from shell to showcase. PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home are the first featured case studies and tool entries. The next step is replacing "coming soon" links with hosted demos and adding the remaining ready/semi-ready tools.
+The site now follows a simple maturity loop: Journal captures the thinking, Lab tests the ideas, and Work holds the tools that are strong enough to stand as case studies. PM Ops Map, TechSync Ops, and TurnFlow Home live in Work. m3ldSync and VendorRadar live in Lab until they earn that next step.
 
 The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
 
-## Current Showcase
+## Current Work
 
 ### PM Ops Map
 
@@ -25,22 +25,9 @@ PM Ops Map is the first flagship tool featured on the site.
 
 The Work page now includes the first real case study: **PM Ops Map: a day-one operating system for new property management companies.**
 
-### m3ldSync
-
-m3ldSync is the second showcase tool featured on the site.
-
-- **Status:** Local POC / public demo packaged
-- **Type:** CSV reconciliation and Kanban triage tool
-- **Audience:** Maintenance managers and busy PM operators
-- **Source:** [hypnoticdata777/m3ldSync](https://github.com/hypnoticdata777/m3ldSync)
-- **Portfolio assets:** [docs/portfolio](https://github.com/hypnoticdata777/m3ldSync/tree/main/docs/portfolio)
-- **Docs:** [README documentation](https://github.com/hypnoticdata777/m3ldSync#documentation)
-
-The Work page now includes the second case study: **m3ldSync: turning maintenance export noise into action.**
-
 ### TechSync Ops
 
-TechSync Ops is the third showcase tool featured on the site.
+TechSync Ops is the second Work case study featured on the site.
 
 - **Status:** Hosted staging / synthetic-data POC
 - **Type:** PMC maintenance command platform
@@ -50,11 +37,11 @@ TechSync Ops is the third showcase tool featured on the site.
 - **Staging app:** [techsync-ops-web.vercel.app](https://techsync-ops-web.vercel.app)
 - **API docs:** [techsync-ops-api-lyart.vercel.app/docs](https://techsync-ops-api-lyart.vercel.app/docs)
 
-The Work page now includes the third case study: **TechSync Ops: the PMC command layer for maintenance dispatch and proof.**
+The Work page now includes the second case study: **TechSync Ops: the PMC command layer for maintenance dispatch and proof.**
 
 ### TurnFlow Home
 
-TurnFlow Home is the fourth showcase tool featured on the site.
+TurnFlow Home is the third Work case study featured on the site.
 
 - **Status:** Launch-oriented SaaS POC candidate
 - **Type:** Homeowner maintenance workspace
@@ -63,7 +50,24 @@ TurnFlow Home is the fourth showcase tool featured on the site.
 - **Docs:** [README documentation](https://github.com/hypnoticdata777/turnflow-mvp#documentation)
 - **Readiness:** [current POC readiness](https://github.com/hypnoticdata777/turnflow-mvp#current-poc-readiness)
 
-The Work page now includes the fourth case study: **TurnFlow Home: maintenance history for homeowners who want the proof.**
+The Work page now includes the third case study: **TurnFlow Home: maintenance history for homeowners who want the proof.**
+
+## Current Lab
+
+### m3ldSync
+
+m3ldSync is an active Lab POC.
+
+- **Status:** Local POC / public demo packaged
+- **Type:** CSV reconciliation and Kanban triage tool
+- **Audience:** Maintenance managers and busy PM operators
+- **Source:** [hypnoticdata777/m3ldSync](https://github.com/hypnoticdata777/m3ldSync)
+- **Portfolio assets:** [docs/portfolio](https://github.com/hypnoticdata777/m3ldSync/tree/main/docs/portfolio)
+- **Docs:** [README documentation](https://github.com/hypnoticdata777/m3ldSync#documentation)
+
+### VendorRadar
+
+VendorRadar is an in-design Lab POC for vendor memory, quote history, and reliability signals.
 
 ### Product Split Brief
 
@@ -77,10 +81,10 @@ The repo also includes an interactive requirements brief that separates the two 
 
 | Route | Current status |
 |---|---|
-| `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Lab and Journal |
-| `/work` | Case studies shipped: PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home |
-| `/lab` | Tool shelf with PM Ops Map, m3ldSync, TechSync Ops, and TurnFlow Home as showcase entries |
-| `/journal` | Journal page with a few short field-note style entries |
+| `/` | Home page with brand intro, manifesto copy, three principles, and real CTAs into Journal and Lab |
+| `/journal` | Journal page with field-note entries that feed the lab loop |
+| `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
+| `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
 | `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Email-first contact page with GitHub as a secondary link |
 | `*` | 404 page for unknown routes |
@@ -93,17 +97,17 @@ The repo also includes an interactive requirements brief that separates the two 
 - **Theme toggle** - the site starts in dark mode, with a light/cyan version available from the nav.
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
-- **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Lab and Journal.
-- **Lab page** - a product shelf for tools, starting with PM Ops Map, m3ldSync, TechSync Ops, TurnFlow Home, and real outbound links.
-- **Work page** - the first four portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
+- **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Journal and Lab.
+- **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
+- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, not just placeholder cards.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
 
-- Add the next ready tools to Lab.
-- Write case studies for the remaining showcase-ready tools.
+- Add the next testing tools to Lab.
+- Promote tools from Lab to Work only after they have enough proof, screenshots, and public-safe positioning.
 - Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TurnFlow Home have hosted demo URLs.
 - Finish the TechSync Ops role walkthrough, screenshot evidence, accessibility notes, and visual polish pass before treating its hosted staging loop as public promotion.
 - Add portfolio-safe TurnFlow Home screenshots or a staged demo walkthrough.
@@ -116,14 +120,13 @@ The repo also includes an interactive requirements brief that separates the two 
 Short-term content plan:
 
 1. PM Ops Map case study - shipped.
-2. m3ldSync case study - shipped.
-3. TechSync Ops case study - shipped.
-4. TurnFlow Home case study - shipped.
-5. Add the next ready tools as Lab entries with source/demo/screenshot links where available.
-6. Add 3 semi-ready tools as clearly labeled in-progress entries.
-7. Write one Work case study for each showcase-ready tool.
-8. Host the portfolio and replace temporary demo placeholders with live URLs.
-9. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
+2. TechSync Ops case study - shipped.
+3. TurnFlow Home case study - shipped.
+4. Keep m3ldSync and VendorRadar in Lab until they have enough proof to graduate.
+5. Add the next testing tools as Lab entries with source/demo/screenshot links where available.
+6. Promote one Work case study only when the tool is ready to stand on its own.
+7. Replace temporary demo placeholders with live URLs as each tool is hosted.
+8. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
 
 ## Stack
 
