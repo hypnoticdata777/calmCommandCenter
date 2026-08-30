@@ -8,6 +8,7 @@
 
 import { motion } from "motion/react";
 import { Github, Mail } from "lucide-react";
+import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Contact
 // 1. Why: Gives visitors a real, low-friction path to reach or inspect the builder.
@@ -26,6 +27,11 @@ const email = "hypnoticdata777@gmail.com";
 export function Contact() {
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
+      <Seo
+        title="Contact | PMC Operations Consulting and Tool Scoping"
+        description="Contact Carlos Sanchez for PMC operations coaching, maintenance workflow cleanup, remote team systems, and property management tool scoping."
+        path="/contact"
+      />
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

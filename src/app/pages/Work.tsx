@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Seo } from "../components/Seo";
 
 const screenshots = [
   {
@@ -166,6 +167,47 @@ function SectionLabel({ children }: { children: string }) {
 export function Work() {
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
+      <Seo
+        title="Work | PM Ops Map, TechSync Ops, and TurnFlow Home"
+        description="Case studies for PM Ops Map, TechSync Ops, and TurnFlow Home: property management tools for maintenance proof, operations clarity, and better handoffs."
+        path="/work"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Work | PM Ops Map, TechSync Ops, and TurnFlow Home",
+          description:
+            "Case studies for property management tools focused on operations clarity, maintenance proof, and better handoffs.",
+          url: "https://h777.dev/work",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "h777",
+            url: "https://h777.dev",
+          },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "PM Ops Map",
+                url: "https://github.com/hypnoticdata777/pm-ops-map",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "TechSync Ops",
+                url: "https://github.com/hypnoticdata777/Techsync",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "TurnFlow Home",
+                url: "https://github.com/hypnoticdata777/turnflow-mvp",
+              },
+            ],
+          },
+        }}
+      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

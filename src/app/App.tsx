@@ -43,6 +43,7 @@
 // motion.div is an animatable <div>, motion.p is an animatable <p>, etc.
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { Seo } from "./components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Home
 // 1. Why: Introduces h777 and routes visitors into the real site sections.
@@ -73,6 +74,36 @@ export default function App() {
     // items-center  = everything centered horizontally
     // px-8 py-16    = horizontal padding 8, vertical padding 16
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16">
+      <Seo
+        title="h777 | Property Management Operations Tools"
+        description="h777 is a public portfolio for property management operations tools, field notes, workflow experiments, and PMC consulting by Carlos Sanchez."
+        path="/"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "h777",
+            url: "https://h777.dev",
+            description:
+              "Property management operations tools, field notes, workflow experiments, and PMC consulting.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Carlos Sanchez",
+            alternateName: "hypnoticdata777",
+            url: "https://h777.dev",
+            sameAs: ["https://github.com/hypnoticdata777"],
+            knowsAbout: [
+              "Property management operations",
+              "Maintenance workflows",
+              "PMC consulting",
+              "PropTech tools",
+              "Remote operations",
+            ],
+          },
+        ]}
+      />
 
       {/* ── HERO SECTION ──────────────────────────────────────────── */}
       {/* El fondo animado (BeatingBrain + heptágonos) está en Layout.tsx

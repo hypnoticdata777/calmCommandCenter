@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Lab
 // 1. Why: Shows tools, experiments, and workflow ideas without pretending all are shipped.
@@ -64,6 +65,11 @@ export function Lab() {
 
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
+      <Seo
+        title="Lab | h777 Property Management Tool Experiments"
+        description="The h777 lab tracks property management experiments, early PropTech ideas, m3ldSync, VendorRadar, and tools being tested before they become case studies."
+        path="/lab"
+      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

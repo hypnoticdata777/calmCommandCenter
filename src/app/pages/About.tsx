@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - About
 // 1. Why: Explains the operating philosophy behind h777 and the site.
@@ -50,6 +51,34 @@ function SectionNumber({ children }: { children: string }) {
 export function About() {
   return (
     <main className="min-h-screen text-foreground px-6 py-28 md:px-10 lg:px-16 relative z-10">
+      <Seo
+        title="About | Carlos Sanchez and h777"
+        description="About Carlos Sanchez, the operator and builder behind h777: property management operations, maintenance workflows, remote teams, and practical systems."
+        path="/about"
+        type="profile"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          name: "About Carlos Sanchez and h777",
+          description:
+            "Property management operations experience, workflow systems, consulting, and tool-building philosophy.",
+          url: "https://h777.dev/about",
+          mainEntity: {
+            "@type": "Person",
+            name: "Carlos Sanchez",
+            alternateName: "hypnoticdata777",
+            url: "https://h777.dev",
+            sameAs: ["https://github.com/hypnoticdata777"],
+            knowsAbout: [
+              "Property management operations",
+              "Maintenance workflows",
+              "Remote teams",
+              "PMC consulting",
+              "PropTech",
+            ],
+          },
+        }}
+      />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

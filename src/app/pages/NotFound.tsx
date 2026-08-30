@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - NotFound
 // 1. Why: Prevents invalid URLs from becoming blank or confusing screens.
@@ -16,6 +17,12 @@ import { Link } from "react-router-dom";
 export function NotFound() {
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
+      <Seo
+        title="404 | h777"
+        description="This h777 page does not exist."
+        path="/404"
+        robots="noindex, nofollow"
+      />
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

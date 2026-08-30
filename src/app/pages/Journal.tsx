@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Journal
 // 1. Why: Gives the site a place for field notes about systems and operations.
@@ -521,6 +522,36 @@ export function Journal() {
 
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
+      <Seo
+        title="Journal | Field Notes on PM Ops, PropTech, and Building"
+        description="Field notes from h777 on property management operations, PropTech builds, maintenance workflows, proof, handoffs, and lessons from the messy middle."
+        path="/journal"
+        type="article"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "h777 Journal",
+          description:
+            "Field notes on property management operations, PropTech builds, maintenance workflows, proof, and handoffs.",
+          url: "https://h777.dev/journal",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "h777",
+            url: "https://h777.dev",
+          },
+          blogPost: journalEntries
+            .filter((entry) => !entry.comingSoon)
+            .map((entry) => ({
+              "@type": "BlogPosting",
+              headline: entry.title,
+              datePublished: entry.date,
+              author: {
+                "@type": "Person",
+                name: "Carlos Sanchez",
+              },
+            })),
+        }}
+      />
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

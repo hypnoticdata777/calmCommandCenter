@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">h777 social preview card</title>
+  <desc id="desc">A dark branded card for h777 property management operations tools.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#7f1d1d" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0f0f0f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="grid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.01"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0f0f0f"/>
+  <path d="M0 80H1200M0 160H1200M0 240H1200M0 320H1200M0 400H1200M0 480H1200M0 560H1200M120 0V630M240 0V630M360 0V630M480 0V630M600 0V630M720 0V630M840 0V630M960 0V630M1080 0V630" stroke="url(#grid)" stroke-width="1"/>
+  <circle cx="640" cy="315" r="300" fill="url(#glow)"/>
+  <path d="M251 401 196 280 280 176 415 191 482 310 411 424Z" fill="none" stroke="#dc2626" stroke-opacity="0.48" stroke-width="10"/>
+  <circle cx="330" cy="423" r="15" fill="#ef2b2b"/>
+  <text x="120" y="180" fill="#f8fafc" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="700" letter-spacing="2">h777</text>
+  <text x="120" y="252" fill="#ef4444" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700">Property management tools and field notes.</text>
+  <text x="120" y="330" fill="#d1d5db" font-family="Georgia, 'Times New Roman', serif" font-size="34">Journal -> Lab -> Work</text>
+  <text x="120" y="388" fill="#9ca3af" font-family="Georgia, 'Times New Roman', serif" font-size="28">Maintenance proof. Cleaner handoffs. Less operational fog.</text>
+  <text x="120" y="500" fill="#ef4444" font-family="Georgia, 'Times New Roman', serif" font-size="24" letter-spacing="6">H777.DEV</text>
+</svg>
