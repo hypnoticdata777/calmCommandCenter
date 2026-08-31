@@ -81,18 +81,32 @@ Spot checks confirmed that the generated FN5 route includes:
 - `BlogPosting` structured data,
 - and `isRelatedTo` structured data.
 
+## Live Verification
+
+After the V8 commit deployed through Vercel, all 14 public sitemap routes were checked live on `https://h777.dev`.
+
+Confirmed for every route:
+
+- `200` response
+- route-specific `<title>`
+- route-specific canonical URL
+- static fallback content inside `#root`
+- JSON-LD structured data
+
+Representative live checks:
+
+| URL | Confirmed title |
+|---|---|
+| `https://h777.dev/journal/the-silent-killer-of-property-management-operations` | `Field Note 5: The Silent Killer of Property Management Operations \| h777 Journal` |
+| `https://h777.dev/work/techsync-ops` | `TechSync Ops Case Study \| Maintenance Dispatch and Proof \| h777 Work` |
+| `https://h777.dev/lab` | `Lab \| h777 Property Management Tool Experiments` |
+
 ## Important Note
 
-Vite preview still served the app shell for nested routes during local preview. That appears to be local preview fallback behavior, not proof that Vercel will ignore the generated files.
+Vite preview still served the app shell for nested routes during local preview. That was local preview fallback behavior, not production behavior.
 
-The project already has a Vercel SPA rewrite. Vercel gives filesystem routes precedence before rewrites, so the generated nested `index.html` files should be served in production before the catch-all app-shell fallback.
+Production Vercel now serves the generated nested `index.html` files before the catch-all app-shell fallback.
 
 ## V8 Verdict
 
-V8 is implemented locally and ready for deployment.
-
-Live V8 validation should happen after Vercel deploys the V8 commit. The check should confirm that direct requests to nested routes return route-specific static HTML, especially:
-
-- `https://h777.dev/journal/the-silent-killer-of-property-management-operations`
-- `https://h777.dev/work/techsync-ops`
-- `https://h777.dev/lab`
+V8 is implemented, deployed, and live-validated across all 14 sitemap routes.

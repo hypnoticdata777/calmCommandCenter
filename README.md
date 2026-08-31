@@ -24,7 +24,7 @@ The first eight SEO organization passes are complete.
 - **V7 live validation:** checked the deployed site for route health, sitemap availability, robots availability, share-card availability, live bundle freshness, and the remaining SPA metadata caveat.
 - **V8 static SEO prerender:** added a build-time route generator that creates static HTML files for all 14 public sitemap routes with route-specific metadata, canonical URLs, structured data, fallback content, and internal links before React loads.
 
-Current SEO caveat: V8 generates route-specific static HTML during the build, but live production validation still needs to confirm Vercel serves those nested files before the SPA fallback rewrite.
+Current SEO status: V8 is live. All 14 sitemap routes now return route-specific static HTML with their own titles, canonical URLs, fallback content, and structured data before React loads. The next SEO work is indexing requests, schema/social preview validation, and richer future content assets.
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), and [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
@@ -148,7 +148,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
-- High-grade SEO now has local static prerendering in the build. The next SEO check is confirming the route-specific HTML is served live after Vercel deploys V8, then adding richer breadcrumb schema and future screenshot refreshes as each tool matures.
+- High-grade SEO now has live static prerendering for all 14 sitemap routes. The next SEO work is requesting indexing, validating structured data and social previews, adding richer breadcrumb schema, and refreshing screenshots as each tool matures.
 
 ## Content Roadmap
 
