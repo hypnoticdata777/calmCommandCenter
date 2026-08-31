@@ -10,6 +10,18 @@ The site now follows a simple maturity loop: Journal captures the thinking, Lab 
 
 The default look is dark and editorial: serif type, red accents, soft glows, and slow geometric motion. There is also a light theme with cyan accents available from the nav.
 
+## SEO Progress
+
+The first three SEO organization passes are complete.
+
+- **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
+- **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
+- **V3 Work case study URLs:** PM Ops Map, TechSync Ops, and TurnFlow Home now have dedicated `/work/...` routes, case-study metadata, structured data, sitemap entries, and `Read case study` paths from the Work overview.
+
+Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
+
+See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md) for the completed SEO work, challenges, and next rollout steps.
+
 ## Current Work
 
 ### PM Ops Map
@@ -109,6 +121,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, screenshots where available, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, with a browsable index and dedicated URLs for each published Field Note.
+- **SEO foundation** - metadata helper, canonical URLs, sitemap, robots file, social preview asset, Journal article URLs, and Work case-study URLs.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
@@ -121,6 +134,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
+- High-grade SEO still needs prerendering/static HTML, stronger social preview images, optimized local screenshots, Search Console submission, and live metadata validation.
 
 ## Content Roadmap
 
@@ -233,7 +247,9 @@ src/
     AppRouter.tsx            # Route definitions
     Layout.tsx               # Shared navbar and animated background wrapper
     components/
+      JournalBody.tsx        # Shared Field Note body renderer
       Navbar.tsx             # Scroll-aware responsive navigation
+      Seo.tsx                # Route-aware metadata helper
       BeatingBrain.tsx       # Pulsing blob background
       RollingHeptagon.tsx    # Floating 7-sided animated shapes
       Spiral.tsx             # SVG icon component
@@ -242,12 +258,16 @@ src/
       ui/                    # shadcn/ui component library
     constants/
       heptagons.ts           # Shared animation config for heptagons
+    data/
+      workCaseStudies.ts     # Shared Work case-study data
     pages/
       About.tsx
       Contact.tsx
+      JournalEntry.tsx
       Journal.tsx
       Lab.tsx
       NotFound.tsx
+      WorkCaseStudy.tsx
       Work.tsx
   styles/
     fonts.css
