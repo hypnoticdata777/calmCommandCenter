@@ -11,24 +11,24 @@ export function JournalBody({
 }: JournalBodyProps) {
   return (
     <div className="max-w-5xl space-y-7 pb-12">
-      {sections.map((section) =>
+      {sections.map((section, index) =>
         subheads.has(section) ? (
           <h3
-            key={section}
+            key={`${index}-${section}`}
             className="pt-3 font-display text-3xl font-bold leading-tight tracking-wide text-brand/85 md:text-4xl"
           >
             {section}
           </h3>
         ) : strongLines.has(section) ? (
           <p
-            key={section}
+            key={`${index}-${section}`}
             className="text-xl font-bold leading-[1.75] text-foreground/90 md:text-2xl"
           >
             {section}
           </p>
         ) : (
           <p
-            key={section}
+            key={`${index}-${section}`}
             className="text-xl leading-[1.75] text-foreground/72 md:text-2xl"
           >
             {section}
@@ -38,4 +38,3 @@ export function JournalBody({
     </div>
   );
 }
-

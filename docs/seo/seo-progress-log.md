@@ -1,6 +1,6 @@
 # h777 SEO Progress Log
 
-Last updated: 2026-08-30
+Last updated: 2026-08-31
 
 ## Current Status
 
@@ -38,6 +38,7 @@ Built and shipped:
   - `/journal/the-api-went-dark`
   - `/journal/the-picture-frame-was-real`
   - `/journal/complete-is-an-astonishingly-ambitious-word`
+  - `/journal/the-silent-killer-of-property-management-operations`
 
 Commit: `cf8b2ea Add dedicated journal article routes`
 

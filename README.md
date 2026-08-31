@@ -108,6 +108,7 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/journal/the-api-went-dark` | Field Note 2 article page |
 | `/journal/the-picture-frame-was-real` | Field Note 3 article page |
 | `/journal/complete-is-an-astonishingly-ambitious-word` | Field Note 4 article page |
+| `/journal/the-silent-killer-of-property-management-operations` | Field Note 5 article page |
 | `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
 | `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
 | `/work/pm-ops-map` | PM Ops Map case study page |
