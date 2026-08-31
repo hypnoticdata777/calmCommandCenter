@@ -4,7 +4,7 @@ Last updated: 2026-08-30
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, and a reliable PNG social preview path.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, and local screenshot assets for the current Work case studies.
 
 ## Completed
 
@@ -73,19 +73,43 @@ Built and shipped:
 - Wired Work case-study pages with modified date, section, author, and case-study image alt text.
 - Added static WebSite and Person JSON-LD in `index.html` so the base identity is present even before the SPA route metadata runs.
 
+Commit: `c6cb543 Add SEO v4 social preview polish`
+
+### V5 - Local Screenshot SEO
+
+Built and shipped:
+
+- Added local Work screenshot folders under `public/images/work/`.
+- Copied PM Ops Map screenshots from the public source repo into the portfolio:
+  - `public/images/work/pm-ops-map/dashboard.png`
+  - `public/images/work/pm-ops-map/tracking-tasks.png`
+  - `public/images/work/pm-ops-map/team-manager.png`
+- Copied the strongest available local TechSync Ops proof screenshot into the portfolio:
+  - `public/images/work/techsync-ops/new-work-order.png`
+- Copied current TurnFlow Home POC screenshots into the portfolio:
+  - `public/images/work/turnflow-home/dashboard.png`
+  - `public/images/work/turnflow-home/new-request-checklist.png`
+  - `public/images/work/turnflow-home/request-detail.png`
+  - `public/images/work/turnflow-home/property-vault.png`
+- Replaced PM Ops Map remote GitHub raw screenshot URLs with local portfolio paths.
+- Added descriptive alt text, width, and height to Work case-study screenshot records.
+- Added width, height, and async decoding attributes to rendered screenshots to improve image stability.
+- Added screenshot URLs to case-study structured data.
+- Gave TechSync Ops and TurnFlow Home dedicated screenshot sections on their case-study pages using the local assets.
+
 ## Challenges
 
 - The site is a Vite single-page React app, so the browser initially receives one `index.html`. Route-specific metadata updates after React loads. This is useful, but not as strong as route-specific static HTML.
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
-- Tool screenshots are partly external GitHub raw URLs. Local optimized screenshots will give better control, speed, and image SEO.
+- The current Work screenshot set is now local, but TechSync Ops and TurnFlow Home should still receive refreshed public-demo screenshots once their walkthroughs and hosted demo states are final.
 
 ## Still Pending For High-Grade SEO
 
 1. Add prerendering or static HTML output so each route serves its own real HTML before JavaScript runs.
-2. Add local optimized screenshots for PM Ops Map, TechSync Ops, TurnFlow Home, and future Work case studies.
-3. Add specific share images for top case studies when public screenshots are ready.
+2. Refresh TechSync Ops and TurnFlow Home screenshot sets after their hosted demos are polished.
+3. Add specific share images for top case studies when public screenshots are final.
 4. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
 5. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.
 6. Add stronger internal links between Field Notes, Lab experiments, and Work case studies.
@@ -96,11 +120,11 @@ Built and shipped:
 
 ## Next Recommended SEO Version
 
-V5 should focus on screenshot and validation SEO:
+V6 should focus on live validation and index submission:
 
-- Start collecting or copying portfolio-safe screenshots into `public/`.
-- Give PM Ops Map the first local case-study image set because it already has screenshot proof.
 - Validate the deployed PNG social card in LinkedIn and other preview tools after Vercel finishes deploying.
+- Submit `https://h777.dev/sitemap.xml` in Google Search Console.
+- Run a live metadata/schema pass against the deployed routes.
 
 ## Operating Rule Going Forward
 

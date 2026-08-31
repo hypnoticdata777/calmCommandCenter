@@ -6,17 +6,26 @@ const screenshots = [
   {
     title: "Guided dashboard on day one",
     caption: "A new PMC gets structure immediately instead of staring at a blank board and guessing what should exist.",
-    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/02-dashboard.png",
+    src: "/images/work/pm-ops-map/dashboard.png",
+    alt: "PM Ops Map dashboard showing launch readiness, owned tasks, team roster, and open repairs.",
+    width: 1280,
+    height: 860,
   },
   {
     title: "Every task, owned and tracked",
     caption: "260+ editable PM tasks across 17 departments, with ownership, priority, and status visible.",
-    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/03-tracking-tasks.png",
+    src: "/images/work/pm-ops-map/tracking-tasks.png",
+    alt: "PM Ops Map task tracking view with department tasks, status labels, and role ownership.",
+    width: 900,
+    height: 900,
   },
   {
     title: "Workload and team assignment",
     caption: "Role templates, auto-assign, and workload balancing help stop the sharpest teammate from silently carrying everything.",
-    src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/05-team-manager.png",
+    src: "/images/work/pm-ops-map/team-manager.png",
+    alt: "PM Ops Map team manager view showing assignment and workload balancing controls.",
+    width: 1280,
+    height: 860,
   },
 ];
 
@@ -405,8 +414,11 @@ export function Work() {
                 <div className="overflow-hidden border border-foreground/10 bg-background/40">
                   <img
                     src={screenshot.src}
-                    alt={screenshot.title}
+                    alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
                     className="aspect-[16/11] w-full object-cover object-top"
+                    decoding="async"
                     loading="lazy"
                   />
                 </div>

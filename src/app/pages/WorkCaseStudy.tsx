@@ -45,9 +45,12 @@ export function WorkCaseStudy() {
         type="article"
         image={study.images?.[0]?.src}
         imageAlt={
-          study.images?.[0]?.title ??
+          study.images?.[0]?.alt ??
           `${study.name} case study from h777`
         }
+        imageWidth={study.images?.[0]?.width}
+        imageHeight={study.images?.[0]?.height}
+        imageType={study.images?.[0] ? "image/png" : undefined}
         modifiedTime={study.dateModified}
         section="Work case study"
         author="Carlos Sanchez"
@@ -68,6 +71,7 @@ export function WorkCaseStudy() {
             name: "h777",
             url: "https://h777.dev",
           },
+          image: study.images?.map((image) => `https://h777.dev${image.src}`),
           about: {
             "@type": "SoftwareApplication",
             name: study.name,
@@ -204,12 +208,15 @@ export function WorkCaseStudy() {
               {study.images.map((image) => (
                 <figure key={image.title} className="space-y-4">
                   <div className="overflow-hidden border border-foreground/10 bg-background/40">
-                    <img
-                      src={image.src}
-                      alt={image.title}
-                      className="aspect-[16/11] w-full object-cover object-top"
-                      loading="lazy"
-                    />
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={image.width}
+                    height={image.height}
+                    className="aspect-[16/11] w-full object-cover object-top"
+                    decoding="async"
+                    loading="lazy"
+                  />
                   </div>
                   <figcaption className="space-y-2">
                     <h3 className="text-xl font-bold tracking-wide">

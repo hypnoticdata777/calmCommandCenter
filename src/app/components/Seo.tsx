@@ -13,6 +13,9 @@ type SeoProps = {
   type?: "website" | "article" | "profile";
   image?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageType?: string;
   robots?: string;
   publishedTime?: string;
   modifiedTime?: string;
@@ -91,6 +94,9 @@ export function Seo({
   type = "website",
   image = DEFAULT_IMAGE,
   imageAlt = DEFAULT_IMAGE_ALT,
+  imageWidth,
+  imageHeight,
+  imageType,
   robots,
   publishedTime,
   modifiedTime,
@@ -102,6 +108,11 @@ export function Seo({
     const url = absoluteUrl(path);
     const imageUrl = absoluteUrl(image);
     const usesDefaultShareCard = image === DEFAULT_IMAGE;
+    const resolvedImageWidth = imageWidth ?? (usesDefaultShareCard ? 1200 : undefined);
+    const resolvedImageHeight =
+      imageHeight ?? (usesDefaultShareCard ? 630 : undefined);
+    const resolvedImageType =
+      imageType ?? (usesDefaultShareCard ? "image/png" : undefined);
     const routeSchema =
       schema ??
       {
@@ -135,10 +146,10 @@ export function Seo({
     setPropertyMeta("og:image", imageUrl);
     setPropertyMeta("og:image:secure_url", imageUrl);
     setPropertyMeta("og:image:alt", imageAlt);
-    if (usesDefaultShareCard) {
-      setPropertyMeta("og:image:width", "1200");
-      setPropertyMeta("og:image:height", "630");
-      setPropertyMeta("og:image:type", "image/png");
+    if (resolvedImageWidth && resolvedImageHeight && resolvedImageType) {
+      setPropertyMeta("og:image:width", String(resolvedImageWidth));
+      setPropertyMeta("og:image:height", String(resolvedImageHeight));
+      setPropertyMeta("og:image:type", resolvedImageType);
     } else {
       removePropertyMeta("og:image:width");
       removePropertyMeta("og:image:height");
@@ -183,6 +194,9 @@ export function Seo({
     description,
     image,
     imageAlt,
+    imageHeight,
+    imageType,
+    imageWidth,
     modifiedTime,
     path,
     publishedTime,

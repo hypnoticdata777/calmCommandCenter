@@ -7,6 +7,9 @@ export type CaseStudyImage = {
   title: string;
   caption: string;
   src: string;
+  alt: string;
+  width: number;
+  height: number;
 };
 
 export type CaseStudySection = {
@@ -73,19 +76,28 @@ export const workCaseStudies: WorkCaseStudy[] = [
         title: "Guided dashboard on day one",
         caption:
           "A new PMC gets structure immediately instead of staring at a blank board and guessing what should exist.",
-        src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/02-dashboard.png",
+        src: "/images/work/pm-ops-map/dashboard.png",
+        alt: "PM Ops Map dashboard showing launch readiness, owned tasks, team roster, and open repairs.",
+        width: 1280,
+        height: 860,
       },
       {
         title: "Every task, owned and tracked",
         caption:
           "260+ editable PM tasks across 17 departments, with ownership, priority, and status visible.",
-        src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/03-tracking-tasks.png",
+        src: "/images/work/pm-ops-map/tracking-tasks.png",
+        alt: "PM Ops Map task tracking view with department tasks, status labels, and role ownership.",
+        width: 900,
+        height: 900,
       },
       {
         title: "Workload and team assignment",
         caption:
           "Role templates, auto-assign, and workload balancing help stop the sharpest teammate from silently carrying everything.",
-        src: "https://raw.githubusercontent.com/hypnoticdata777/pm-ops-map/master/docs/screenshots/05-team-manager.png",
+        src: "/images/work/pm-ops-map/team-manager.png",
+        alt: "PM Ops Map team manager view showing assignment and workload balancing controls.",
+        width: 1280,
+        height: 860,
       },
     ],
     sections: [
@@ -161,6 +173,17 @@ export const workCaseStudies: WorkCaseStudy[] = [
       {
         label: "API Docs",
         href: "https://techsync-ops-api-lyart.vercel.app/docs",
+      },
+    ],
+    images: [
+      {
+        title: "Work order intake with PMC context",
+        caption:
+          "The staged admin flow links a new work order to client, property, and vendor context before the job moves downstream.",
+        src: "/images/work/techsync-ops/new-work-order.png",
+        alt: "TechSync Ops new work order screen with title, description, client, property, and vendor linking controls.",
+        width: 1883,
+        height: 934,
       },
     ],
     sections: [
@@ -244,6 +267,44 @@ export const workCaseStudies: WorkCaseStudy[] = [
         href: "https://github.com/hypnoticdata777/turnflow-mvp#current-poc-readiness",
       },
     ],
+    images: [
+      {
+        title: "Owner maintenance dashboard",
+        caption:
+          "The homeowner workspace surfaces repair readiness, proof-backed records, shared help, and preventive care from one view.",
+        src: "/images/work/turnflow-home/dashboard.png",
+        alt: "TurnFlow Home dashboard showing maintenance requests, homeowner value cards, filters, and repair status.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Guided repair intake",
+        caption:
+          "The intake flow separates required information from helpful context so a request can start simple and get stronger over time.",
+        src: "/images/work/turnflow-home/new-request-checklist.png",
+        alt: "TurnFlow Home new maintenance request screen with readiness checklist and owner-controlled draft guidance.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Proof gaps are visible",
+        caption:
+          "The request detail view shows what is complete, what proof is missing, and what context the owner can still add.",
+        src: "/images/work/turnflow-home/request-detail.png",
+        alt: "TurnFlow Home repair record showing proof gaps, cost clarity, completion status, and proof packet actions.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Property vault for the record",
+        caption:
+          "Receipts, warranties, manuals, invoices, and inspection documents stay tied to the property instead of disappearing into messages.",
+        src: "/images/work/turnflow-home/property-vault.png",
+        alt: "TurnFlow Home property vault showing saved records, repair-linked documents, and document upload controls.",
+        width: 1440,
+        height: 900,
+      },
+    ],
     sections: [
       {
         label: "Problem",
@@ -315,4 +376,3 @@ export const workCaseStudies: WorkCaseStudy[] = [
     ],
   },
 ];
-
