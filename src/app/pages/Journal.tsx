@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
+import { JournalBody } from "../components/JournalBody";
 import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Journal
@@ -14,13 +16,17 @@ import { Seo } from "../components/Seo";
 // 9. Outside tools: Motion for reveal timing.
 // 10. Smallest version: One entry with title, type, read time, and body copy.
 
-const journalEntries = [
+export const journalEntries = [
   {
     label: "Field Note 1",
+    slug: "the-hackathon-blew-a-gasket",
     title: "The Hackathon Blew a Gasket. Page Seven Performed the Autopsy.",
     readTime: "6 min read",
     type: "Builder",
     date: "Aug 12, 2026",
+    dateISO: "2026-08-12",
+    excerpt:
+      "A field note about an ambitious hackathon build, scope creep, requirements, and the moment h777 started becoming a serious tool portfolio.",
     comingSoon: false,
     sections: [
       "May 20th, 12:00 UTC. The daily.dev Public API Hackathon opened, five days, fully async, build something for developers from developers. I picked my idea fast: a VS Code extension called daily context. Highlight any code snippet, get instantly matched, relevant developer articles pulled straight from daily.dev's API, right there in the sidebar. No commands. No shortcuts. Just highlight and read.",
@@ -53,10 +59,14 @@ const journalEntries = [
   },
   {
     label: "Field Note 2",
+    slug: "the-api-went-dark",
     title: "The API Went Dark For a Minute. Then It Said 'I Was Here The Whole Time.'",
     readTime: "8 min read",
     type: "Builder",
     date: "Aug 19, 2026",
+    dateISO: "2026-08-19",
+    excerpt:
+      "A field note about TechSync leaving localhost, staging exposing the truth, and why deployed software teaches different lessons than a local build.",
     comingSoon: false,
     sections: [
       "TechSync finally escaped localhost. Naturally, its first act in the outside world was to pretend it did not exist.",
@@ -183,10 +193,14 @@ const journalEntries = [
   },
   {
     label: "Field Note 3",
+    slug: "the-picture-frame-was-real",
     title: "The Picture Frame Was Real. The Picture Wasn't.",
     readTime: "7 min read",
     type: "Builder",
     date: "Aug 22, 2026",
+    dateISO: "2026-08-22",
+    excerpt:
+      "A field note about TurnFlow Home, missing screenshots, proof, transparency, and the difference between a frame around a thing and the thing itself.",
     comingSoon: false,
     sections: [
       "TurnFlow Home finally had a proper public homepage.",
@@ -320,10 +334,14 @@ const journalEntries = [
   },
   {
     label: "Field Note 4",
+    slug: "complete-is-an-astonishingly-ambitious-word",
     title: "Complete Is an Astonishingly Ambitious Word.",
     readTime: "6 min read",
     type: "Builder",
     date: "Aug 26, 2026",
+    dateISO: "2026-08-26",
+    excerpt:
+      "A field note about TurnFlow Home, maintenance proof, remote ownership, receipts, and why complete should mean the work can survive being looked at.",
     comingSoon: false,
     sections: [
       "There are very few words in property maintenance doing more unpaid labor than complete.",
@@ -484,7 +502,7 @@ const journalEntries = [
   },
 ];
 
-const journalSubheads = new Set([
+export const journalSubheads = new Set([
   "The chasm",
   "What's actually landed since",
   "A Few Months Earlier",
@@ -507,7 +525,7 @@ const journalSubheads = new Set([
   "The Point",
 ]);
 
-const journalStrongLines = new Set([
+export const journalStrongLines = new Set([
   "The point, if you do not feel like scrolling through a full six-minute essay with me: complete should mean the work can survive being looked at.",
 ]);
 
@@ -544,7 +562,8 @@ export function Journal() {
             .map((entry) => ({
               "@type": "BlogPosting",
               headline: entry.title,
-              datePublished: entry.date,
+              datePublished: entry.dateISO,
+              url: `https://h777.dev/journal/${entry.slug}`,
               author: {
                 "@type": "Person",
                 name: "Carlos Sanchez",
@@ -591,50 +610,64 @@ export function Journal() {
                   isComingSoon ? "opacity-55" : ""
                 }`}
               >
-                <button
-                  type="button"
-                  disabled={isComingSoon}
-                  aria-expanded={isOpen}
-                  onClick={() =>
-                    setOpenEntry(isOpen ? null : entry.title)
-                  }
-                  className={`group grid w-full gap-5 py-7 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 md:grid-cols-[11rem_1fr_6rem] ${
+                <div
+                  className={`grid w-full gap-5 py-7 text-left md:grid-cols-[11rem_1fr_8rem] ${
                     isComingSoon ? "cursor-default" : ""
                   }`}
                 >
-                  <div className="space-y-2">
-                    <p className="text-sm tracking-widest uppercase text-brand/55">
-                      {entry.label}
-                      {entry.date ? ` / ${entry.date}` : ""}
-                    </p>
-                    <p className="text-xs uppercase tracking-[0.24em] text-foreground/35">
-                      {entry.type}
-                    </p>
-                  </div>
+                  <button
+                    type="button"
+                    disabled={isComingSoon}
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenEntry(isOpen ? null : entry.title)}
+                    className="group grid gap-5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 md:col-span-2 md:grid-cols-[11rem_1fr]"
+                  >
+                    <div className="space-y-2">
+                      <p className="text-sm tracking-widest uppercase text-brand/55">
+                        {entry.label}
+                        {entry.date ? ` / ${entry.date}` : ""}
+                      </p>
+                      <p className="text-xs uppercase tracking-[0.24em] text-foreground/35">
+                        {entry.type}
+                      </p>
+                    </div>
 
-                  <div className="space-y-3">
-                    <h2
-                      className={`text-2xl sm:text-3xl font-bold leading-snug tracking-wide transition-colors ${
-                        isComingSoon
-                          ? "text-foreground/45"
-                          : "text-foreground group-hover:text-brand"
-                      }`}
-                    >
-                      {entry.title}
-                    </h2>
-                    <p className="text-sm uppercase tracking-[0.24em] text-foreground/35">
-                      {entry.readTime}
-                    </p>
-                  </div>
+                    <div className="space-y-3">
+                      <h2
+                        className={`text-2xl sm:text-3xl font-bold leading-snug tracking-wide transition-colors ${
+                          isComingSoon
+                            ? "text-foreground/45"
+                            : "text-foreground group-hover:text-brand"
+                        }`}
+                      >
+                        {entry.title}
+                      </h2>
+                      <p className="text-sm uppercase tracking-[0.24em] text-foreground/35">
+                        {entry.readTime}
+                      </p>
+                    </div>
+                  </button>
 
-                  <div className="flex items-start justify-start md:justify-end">
+                  <div className="flex flex-wrap items-start gap-2 md:justify-end">
                     {!isComingSoon && (
-                      <span className="border border-foreground/15 px-3 py-1 font-display text-sm tracking-wide text-foreground/45">
-                        {isOpen ? "Close" : "Open"}
-                      </span>
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => setOpenEntry(isOpen ? null : entry.title)}
+                          className="border border-foreground/15 px-3 py-1 font-display text-sm tracking-wide text-foreground/45 transition-colors hover:border-foreground/30 hover:text-foreground/70"
+                        >
+                          {isOpen ? "Close" : "Preview"}
+                        </button>
+                        <Link
+                          to={`/journal/${entry.slug}`}
+                          className="border border-brand/25 px-3 py-1 font-display text-sm tracking-wide text-brand/75 transition-colors hover:bg-brand/10 hover:text-brand"
+                        >
+                          Read
+                        </Link>
+                      </>
                     )}
                   </div>
-                </button>
+                </div>
 
                 {isOpen && (
                   <motion.div
@@ -645,32 +678,11 @@ export function Journal() {
                     className="cursor-ns-resize overflow-hidden"
                     title="Click anywhere in the article to return to its header."
                   >
-                    <div className="max-w-5xl space-y-7 pb-12">
-                      {entry.sections.map((section) =>
-                        journalSubheads.has(section) ? (
-                          <h3
-                            key={section}
-                            className="pt-3 font-display text-3xl font-bold leading-tight tracking-wide text-brand/85 md:text-4xl"
-                          >
-                            {section}
-                          </h3>
-                        ) : journalStrongLines.has(section) ? (
-                          <p
-                            key={section}
-                            className="text-xl font-bold leading-[1.75] text-foreground/90 md:text-2xl"
-                          >
-                            {section}
-                          </p>
-                        ) : (
-                          <p
-                            key={section}
-                            className="text-xl leading-[1.75] text-foreground/72 md:text-2xl"
-                          >
-                            {section}
-                          </p>
-                        )
-                      )}
-                    </div>
+                    <JournalBody
+                      sections={entry.sections}
+                      subheads={journalSubheads}
+                      strongLines={journalStrongLines}
+                    />
                   </motion.div>
                 )}
               </motion.article>

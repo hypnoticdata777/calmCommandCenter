@@ -13,6 +13,7 @@ import App            from "./App";
 import { Work }       from "./pages/Work";
 import { Lab }        from "./pages/Lab";
 import { Journal }    from "./pages/Journal";
+import { JournalEntry } from "./pages/JournalEntry";
 import { About }      from "./pages/About";
 import { Contact }    from "./pages/Contact";
 import { NotFound }   from "./pages/NotFound";
@@ -38,6 +39,7 @@ export function AppRouter() {
         <Route path="/work"    element={<Work />}     />
         <Route path="/lab"     element={<Lab />}      />
         <Route path="/journal" element={<Journal />}  />
+        <Route path="/journal/:slug" element={<JournalEntry />} />
         <Route path="/about"   element={<About />}    />
         <Route path="/contact" element={<Contact />}  />
         {/* Catch-all: cualquier ruta no reconocida muestra NotFound */}
