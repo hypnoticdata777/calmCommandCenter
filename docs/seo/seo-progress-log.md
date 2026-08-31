@@ -4,7 +4,7 @@ Last updated: 2026-08-31
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, live-validated static SEO HTML for all 14 public sitemap routes, and a repeatable live SEO validator.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, live-validated static SEO HTML for all 14 public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
 
 ## Completed
 
@@ -186,6 +186,33 @@ Built and shipped:
 
 Commit: `Add SEO v9 validation checks`
 
+### V10 - Breadcrumb Schema And Performance Baseline
+
+Built and shipped:
+
+- Added `BreadcrumbList` structured data support to `src/app/components/Seo.tsx`.
+- Added client-side breadcrumb schema to Journal, Field Notes, Lab, Work, Work case studies, About, and Contact.
+- Added matching static breadcrumb schema generation to `scripts/prerender-seo.mjs`.
+- Upgraded `scripts/validate-seo.mjs` to require breadcrumb schema on every non-home sitemap route.
+- Added breadcrumb quality checks for item count, first item, sequential positions, absolute URLs, and current-page final item.
+- Added `scripts/validate-performance.mjs` as a repeatable performance budget baseline.
+- Added the `validate:performance` npm script.
+- Added `docs/seo/content-release-checklist.md` for future Field Notes, Lab experiments, and Work case studies.
+- Added the V10 record at `docs/seo/performance-and-breadcrumbs-2026-08-31.md`.
+- Confirmed local build passes and still prerenders 14 SEO route files.
+- Confirmed generated static HTML includes breadcrumb schema for representative Journal and Work detail routes.
+- Confirmed the performance budget passes.
+
+Local performance snapshot:
+
+- Main JS: `469.3 KB` raw / `143.4 KB` gzip.
+- Main CSS: `107.3 KB` raw / `16.5 KB` gzip.
+- JS/CSS total: `576.6 KB` raw / `159.9 KB` gzip.
+- Work images: `16` files / `1593.0 KB` total.
+- Largest Work image: `public/images/work/pm-ops-map/dashboard.png` at `254.5 KB`.
+
+Commit: `Add SEO v10 breadcrumbs and performance budget`
+
 ## Challenges
 
 - The site is still a Vite single-page React app for the user experience, but V8 now gives every public sitemap route its own static SEO HTML before hydration.
@@ -198,27 +225,27 @@ Commit: `Add SEO v9 validation checks`
 - V8 local preview through Vite still returned the app shell for nested routes, but Vercel production correctly served the generated nested `index.html` files before the catch-all app fallback.
 - Search Console indexing requests are partially manual because URL Inspection actions happen inside the verified Google account. The homepage request is complete; priority inner pages should be requested next.
 - The repo validator checks schema presence and parseability, but external rich-result tools should still be used for Google's final interpretation.
+- Real Core Web Vitals field data cannot be forced from the repo. The new performance validator is a build-budget guardrail, and Search Console or browser lab tooling should still be used for LCP, INP, and CLS.
 
 ## Still Pending For High-Grade SEO
 
 1. Request indexing for the highest-priority non-home pages in Google Search Console: Journal, Work, FN5, TechSync Ops, and TurnFlow Home.
 2. Check LinkedIn and X/Twitter share previews from their external preview tools or by posting private/test links where available.
 3. Run external rich-result/schema checks against representative Journal and Work pages.
-4. Add richer breadcrumb schema for Journal entries and Work case studies.
-5. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
-6. Add specific share images for top case studies when public screenshots are final.
-7. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-8. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-9. Run a Core Web Vitals and mobile performance pass after local images are added.
+4. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
+5. Add specific share images for top case studies when public screenshots are final.
+6. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+7. Run Search Console Core Web Vitals and mobile performance checks after Google has enough field data.
+8. Consider browser lab tooling for LCP, INP, CLS, and bundle attribution.
 
 ## Next Recommended SEO Version
 
-V10 should focus on performance and richer schema:
+V11 should focus on external validation and content-source cleanup:
 
-- Add breadcrumb structured data to Journal entries and Work case studies.
-- Run Core Web Vitals and mobile performance checks.
-- Review image weight, loading behavior, and first-load JavaScript cost.
-- Create a repeatable checklist for every new Field Note, Work case study, and Lab promotion.
+- Finish manual indexing requests for priority inner pages.
+- Run external rich-result and social preview checks.
+- Consider a shared content manifest so sitemap, prerender metadata, page content, and validators all pull from one source.
+- Review Core Web Vitals in Search Console once field data is available.
 
 ## Operating Rule Going Forward
 

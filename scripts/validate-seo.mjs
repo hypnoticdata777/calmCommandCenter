@@ -1,25 +1,31 @@
 import { readFile } from "node:fs/promises";
 
 const expectedTypesByPath = new Map([
-  ["/journal", ["WebSite", "Person", "Blog"]],
-  ["/journal/the-hackathon-blew-a-gasket", ["WebSite", "Person", "BlogPosting"]],
-  ["/journal/the-api-went-dark", ["WebSite", "Person", "BlogPosting"]],
-  ["/journal/the-picture-frame-was-real", ["WebSite", "Person", "BlogPosting"]],
+  ["/journal", ["WebSite", "Person", "Blog", "BreadcrumbList"]],
+  [
+    "/journal/the-hackathon-blew-a-gasket",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
+  ["/journal/the-api-went-dark", ["WebSite", "Person", "BlogPosting", "BreadcrumbList"]],
+  [
+    "/journal/the-picture-frame-was-real",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
   [
     "/journal/complete-is-an-astonishingly-ambitious-word",
-    ["WebSite", "Person", "BlogPosting"],
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
   ],
   [
     "/journal/the-silent-killer-of-property-management-operations",
-    ["WebSite", "Person", "BlogPosting"],
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
   ],
-  ["/lab", ["WebSite", "Person", "CollectionPage"]],
-  ["/work", ["WebSite", "Person", "CollectionPage"]],
-  ["/work/pm-ops-map", ["WebSite", "Person", "Article"]],
-  ["/work/techsync-ops", ["WebSite", "Person", "Article"]],
-  ["/work/turnflow-home", ["WebSite", "Person", "Article"]],
-  ["/about", ["WebSite", "Person", "ProfilePage"]],
-  ["/contact", ["WebSite", "Person", "ContactPage"]],
+  ["/lab", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
+  ["/work", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
+  ["/work/pm-ops-map", ["WebSite", "Person", "Article", "BreadcrumbList"]],
+  ["/work/techsync-ops", ["WebSite", "Person", "Article", "BreadcrumbList"]],
+  ["/work/turnflow-home", ["WebSite", "Person", "Article", "BreadcrumbList"]],
+  ["/about", ["WebSite", "Person", "ProfilePage", "BreadcrumbList"]],
+  ["/contact", ["WebSite", "Person", "ContactPage", "BreadcrumbList"]],
   ["/", ["WebSite", "Person"]],
 ]);
 
@@ -41,11 +47,24 @@ function findAllJsonLd(html) {
     .map((raw) => JSON.parse(raw));
 }
 
+function flattenSchemaRecords(jsonLd) {
+  return jsonLd.flatMap((entry) => entry["@graph"] ?? [entry]);
+}
+
 function flattenSchemaTypes(jsonLd) {
-  const records = jsonLd.flatMap((entry) => entry["@graph"] ?? [entry]);
+  const records = flattenSchemaRecords(jsonLd);
   return records.flatMap((record) => {
     const type = record["@type"];
     return Array.isArray(type) ? type : [type];
+  });
+}
+
+function findSchemaRecord(jsonLd, type) {
+  return flattenSchemaRecords(jsonLd).find((record) => {
+    const recordType = record["@type"];
+    return Array.isArray(recordType)
+      ? recordType.includes(type)
+      : recordType === type;
   });
 }
 
@@ -106,6 +125,7 @@ async function validateRoute(url) {
   const expectedTypes = expectedTypesByPath.get(pathname) ?? ["WebSite", "Person"];
   const jsonLd = findAllJsonLd(html);
   const schemaTypes = flattenSchemaTypes(jsonLd);
+  const breadcrumb = findSchemaRecord(jsonLd, "BreadcrumbList");
 
   assert(response.status === 200, `Expected 200, received ${response.status}`, issues);
   assert(meta.title.length > 10, "Missing or weak title", issues);
@@ -131,6 +151,47 @@ async function validateRoute(url) {
       `Missing structured data type: ${expectedType}`,
       issues
     );
+  }
+
+  if (pathname === "/") {
+    assert(!breadcrumb, "Home page should not emit a single-item breadcrumb", issues);
+  } else {
+    const items = Array.isArray(breadcrumb?.itemListElement)
+      ? breadcrumb.itemListElement
+      : [];
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+
+    assert(items.length >= 2, "BreadcrumbList needs at least two ListItems", issues);
+    assert(firstItem?.position === 1, "Breadcrumb first item position must be 1", issues);
+    assert(firstItem?.name === "h777", "Breadcrumb first item should be h777", issues);
+    assert(
+      firstItem?.item === `${siteUrl}/`,
+      `Breadcrumb first item should point to home: ${firstItem?.item}`,
+      issues
+    );
+    assert(
+      lastItem?.item === url,
+      `Breadcrumb last item should point to current URL: ${lastItem?.item}`,
+      issues
+    );
+    items.forEach((item, index) => {
+      assert(
+        item.position === index + 1,
+        `Breadcrumb item ${index + 1} has incorrect position ${item.position}`,
+        issues
+      );
+      assert(
+        typeof item.name === "string" && item.name.length > 1,
+        `Breadcrumb item ${index + 1} is missing a name`,
+        issues
+      );
+      assert(
+        typeof item.item === "string" && item.item.startsWith(siteUrl),
+        `Breadcrumb item ${index + 1} is missing an absolute site URL`,
+        issues
+      );
+    });
   }
 
   return {

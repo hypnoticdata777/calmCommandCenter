@@ -56,6 +56,10 @@ export function About() {
         description="About Carlos Sanchez, the operator and builder behind h777: property management operations, maintenance workflows, remote teams, and practical systems."
         path="/about"
         type="profile"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "About", path: "/about" },
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "ProfilePage",

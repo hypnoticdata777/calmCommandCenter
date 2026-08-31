@@ -31,6 +31,10 @@ export function Contact() {
         title="Contact | PMC Operations Consulting and Tool Scoping"
         description="Contact Carlos Sanchez for PMC operations coaching, maintenance workflow cleanup, remote team systems, and property management tool scoping."
         path="/contact"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]}
       />
       <motion.div
         initial={{ opacity: 0, y: 16 }}

@@ -60,6 +60,11 @@ export function WorkCaseStudy() {
         modifiedTime={study.dateModified}
         section="Work case study"
         author="Carlos Sanchez"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Work", path: "/work" },
+          { name: study.name, path: canonicalPath },
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "Article",

@@ -88,6 +88,10 @@ export function Lab() {
         title="Lab | h777 Property Management Tool Experiments"
         description="The h777 lab tracks property management experiments, early PropTech ideas, m3ldSync, VendorRadar, and tools being tested before they become case studies."
         path="/lab"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Lab", path: "/lab" },
+        ]}
       />
       <motion.div
         initial={{ opacity: 0 }}

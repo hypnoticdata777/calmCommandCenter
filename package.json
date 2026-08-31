@@ -18,6 +18,7 @@
     "serve": "npm run preview",
     "start": "npm run dev:local",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "validate:performance": "node scripts/validate-performance.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {

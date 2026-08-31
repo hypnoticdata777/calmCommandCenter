@@ -22,6 +22,10 @@ type SeoProps = {
   section?: string;
   author?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  breadcrumbs?: {
+    name: string;
+    path: string;
+  }[];
 };
 
 function absoluteUrl(path: string) {
@@ -87,6 +91,29 @@ function setStructuredData(schema: Record<string, unknown> | Record<string, unkn
   tag.textContent = JSON.stringify(schema);
 }
 
+function stripContext(schema: Record<string, unknown>) {
+  const { "@context": _context, ...schemaWithoutContext } = schema;
+  return schemaWithoutContext;
+}
+
+function normalizeSchema(schema: Record<string, unknown> | Record<string, unknown>[]) {
+  return (Array.isArray(schema) ? schema : [schema]).map(stripContext);
+}
+
+function buildBreadcrumbSchema(
+  breadcrumbs: NonNullable<SeoProps["breadcrumbs"]>
+) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: breadcrumb.name,
+      item: absoluteUrl(breadcrumb.path),
+    })),
+  };
+}
+
 export function Seo({
   title,
   description,
@@ -103,6 +130,7 @@ export function Seo({
   section,
   author,
   schema,
+  breadcrumbs,
 }: SeoProps) {
   useEffect(() => {
     const url = absoluteUrl(path);
@@ -113,7 +141,7 @@ export function Seo({
       imageHeight ?? (usesDefaultShareCard ? 630 : undefined);
     const resolvedImageType =
       imageType ?? (usesDefaultShareCard ? "image/png" : undefined);
-    const routeSchema =
+    const baseRouteSchema =
       schema ??
       {
         "@context": "https://schema.org",
@@ -127,6 +155,16 @@ export function Seo({
           url: SITE_URL,
         },
       };
+    const routeSchema =
+      breadcrumbs && breadcrumbs.length >= 2
+        ? {
+            "@context": "https://schema.org",
+            "@graph": [
+              ...normalizeSchema(baseRouteSchema),
+              buildBreadcrumbSchema(breadcrumbs),
+            ],
+          }
+        : baseRouteSchema;
 
     document.title = title;
     setCanonical(url);
@@ -205,6 +243,7 @@ export function Seo({
     section,
     title,
     type,
+    breadcrumbs,
   ]);
 
   return null;

@@ -260,6 +260,10 @@ export function Work() {
         title="Work | PM Ops Map, TechSync Ops, and TurnFlow Home"
         description="Case studies for PM Ops Map, TechSync Ops, and TurnFlow Home: property management tools for maintenance proof, operations clarity, and better handoffs."
         path="/work"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Work", path: "/work" },
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",

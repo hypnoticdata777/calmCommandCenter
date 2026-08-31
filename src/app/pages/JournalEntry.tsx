@@ -49,6 +49,11 @@ export function JournalEntry() {
         modifiedTime={entry.dateISO}
         section={entry.type}
         author="Carlos Sanchez"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Journal", path: "/journal" },
+          { name: entry.title, path: `/journal/${entry.slug}` },
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",

@@ -426,6 +426,59 @@ function absoluteUrl(value) {
   return new URL(value, siteUrl).toString();
 }
 
+function buildBreadcrumbs(route) {
+  if (route.path === "/") {
+    return [];
+  }
+
+  if (route.path.startsWith("/journal/")) {
+    return [
+      { name: siteName, path: "/" },
+      { name: "Journal", path: "/journal" },
+      { name: route.headline, path: route.path },
+    ];
+  }
+
+  if (route.path.startsWith("/work/")) {
+    return [
+      { name: siteName, path: "/" },
+      { name: "Work", path: "/work" },
+      { name: route.headline.split(":")[0], path: route.path },
+    ];
+  }
+
+  const sectionNames = {
+    "/journal": "Journal",
+    "/lab": "Lab",
+    "/work": "Work",
+    "/about": "About",
+    "/contact": "Contact",
+  };
+
+  return [
+    { name: siteName, path: "/" },
+    { name: sectionNames[route.path] ?? route.section ?? route.headline, path: route.path },
+  ];
+}
+
+function breadcrumbSchemaForRoute(route) {
+  const breadcrumbs = buildBreadcrumbs(route);
+
+  if (breadcrumbs.length < 2) {
+    return null;
+  }
+
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((breadcrumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: breadcrumb.name,
+      item: absoluteUrl(breadcrumb.path),
+    })),
+  };
+}
+
 function extractAssetHead(template) {
   const head = template.match(/<head>([\s\S]*?)<\/head>/)?.[1] ?? "";
   const assetTags = [
@@ -451,9 +504,15 @@ function renderHead(route, assetHead) {
   const imageWidth = route.imageWidth ?? (route.image ? undefined : 1200);
   const imageHeight = route.imageHeight ?? (route.image ? undefined : 630);
   const imageType = route.imageType ?? "image/png";
+  const breadcrumbSchema = breadcrumbSchemaForRoute(route);
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [websiteSchema, personSchema, ...(route.schema ?? [])],
+    "@graph": [
+      websiteSchema,
+      personSchema,
+      ...(route.schema ?? []),
+      ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ],
   };
 
   const optionalImageDimensions =

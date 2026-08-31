@@ -794,6 +794,10 @@ export function Journal() {
         description="Field notes from h777 on property management operations, PropTech builds, maintenance workflows, proof, handoffs, and lessons from the messy middle."
         path="/journal"
         type="article"
+        breadcrumbs={[
+          { name: "h777", path: "/" },
+          { name: "Journal", path: "/journal" },
+        ]}
         schema={{
           "@context": "https://schema.org",
           "@type": "Blog",
