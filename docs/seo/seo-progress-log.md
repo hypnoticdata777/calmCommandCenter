@@ -4,7 +4,7 @@ Last updated: 2026-08-31
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, and a live validation record.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, and build-time static SEO HTML for the 14 public sitemap routes.
 
 ## Completed
 
@@ -132,41 +132,61 @@ Built and shipped:
 - Confirmed `robots.txt` allows crawling and points to `https://h777.dev/sitemap.xml`.
 - Confirmed `https://h777.dev/og.png` is live as `image/png`.
 - Confirmed the deployed JavaScript bundle contains FN5, V6 related-link copy, Work relationship copy, listen-mode copy, and TechSync Ops case-study copy.
+- Verified `h777.dev` ownership in Google Search Console through Namecheap DNS.
+- Submitted `https://h777.dev/sitemap.xml` in Google Search Console and confirmed `Success` with 14 discovered pages.
 - Documented the important limitation that direct nested-route HTML still serves the same React/Vite app shell before route-specific metadata is applied client-side.
 - Added the full validation record at `docs/seo/live-validation-2026-08-31.md`.
 
 Commit: `Add SEO v7 live validation log`
 
+### V8 - Static SEO Prerender
+
+Built and shipped:
+
+- Added `scripts/prerender-seo.mjs` as a build-time static route generator.
+- Added the `prerender:seo` npm script.
+- Updated the normal production build so it runs Vite first, then generates route-specific HTML files.
+- Generated static `index.html` files for all 14 public sitemap routes.
+- Added route-specific titles, descriptions, canonical URLs, Open Graph metadata, X/Twitter metadata, article metadata, JSON-LD structured data, fallback readable body content, and related internal links before React loads.
+- Included Field Note article routes, Work case-study routes, Journal, Lab, Work, About, Contact, and Home.
+- Kept the existing React/Vite user experience intact while giving crawlers and social preview tools stronger first-response HTML.
+- Preserved production asset links from the Vite build and added font preconnect hints to generated route files.
+- Local build check passed and confirmed `Prerendered 14 SEO route files.`
+- Spot checks confirmed the generated FN5 route contains the correct route title, canonical URL, fallback content, `BlogPosting` structured data, and `isRelatedTo` relationship hints.
+
+Commit: `Add SEO v8 static prerender`
+
 ## Challenges
 
-- The site is a Vite single-page React app, so the browser initially receives one `index.html`. Route-specific metadata updates after React loads. This is useful, but not as strong as route-specific static HTML.
+- The site is a Vite single-page React app, so the browser experience still hydrates through one React app after load. V8 now gives public routes stronger static HTML first, but live production validation still needs to confirm Vercel serves those nested files before the catch-all app fallback.
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
 - The current Work screenshot set is now local. TechSync Ops and TurnFlow Home now match their latest README screenshot sets.
 - V6 added meaningful internal routes, but live crawler validation still needs to happen after deploy because the app remains client-rendered.
-- V7 confirmed the deployment is healthy, but it also confirmed that route-specific metadata is not present in the first HTML response for nested routes.
+- V7 confirmed the deployment is healthy, but it also confirmed that route-specific metadata was not present in the first HTML response for nested routes before V8.
+- V8 local preview through Vite still returned the app shell for nested routes, which appears to be local preview fallback behavior. The important confirmation now is the live Vercel response after the V8 deployment.
 
 ## Still Pending For High-Grade SEO
 
-1. Add prerendering or static HTML output so each route serves its own real HTML before JavaScript runs.
-2. Submit `https://h777.dev/sitemap.xml` in Google Search Console from the verified site-owner account.
-3. Request indexing for the home page, Journal, Work, and the latest Field Note.
-4. Validate live rendered metadata using Google Search Console and social preview/debug tools.
-5. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
-6. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
-7. Add specific share images for top case studies when public screenshots are final.
-8. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-9. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-10. Run a Core Web Vitals and mobile performance pass after local images are added.
+1. Validate live V8 nested-route HTML after Vercel deploys the prerender build.
+2. Request indexing for the home page, Journal, Work, and the latest Field Note in Google Search Console.
+3. Validate live rendered metadata using Google Search Console and social preview/debug tools.
+4. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
+5. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
+6. Add specific share images for top case studies when public screenshots are final.
+7. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+8. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
+9. Run a Core Web Vitals and mobile performance pass after local images are added.
 
 ## Next Recommended SEO Version
 
-V8 should focus on prerendering or static HTML output:
+V9 should focus on live V8 validation and indexing:
 
-- Generate real route-specific HTML for Home, Journal, Field Notes, Lab, Work, case studies, About, and Contact.
-- Make direct HTML responses carry the correct title, description, canonical, Open Graph, article metadata, and structured data before React runs.
-- Keep the existing React experience, but make crawlers and social preview tools see the right page content immediately.
+- Confirm production nested routes return their own static titles, descriptions, canonicals, Open Graph tags, and structured data before React loads.
+- Use Search Console URL Inspection for the home page, Journal, Work, and the latest Field Note.
+- Run rich-results/schema checks against representative Journal and Work pages.
+- Check LinkedIn and X/Twitter previews after the V8 deployment has settled.
 
 ## Operating Rule Going Forward
 

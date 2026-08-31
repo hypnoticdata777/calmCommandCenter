@@ -9,10 +9,11 @@
     "npm": ">=10"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && npm run prerender:seo",
     "build:check": "npm run typecheck && npm run build",
     "dev": "vite",
     "dev:local": "vite --host 127.0.0.1 --open /",
+    "prerender:seo": "node scripts/prerender-seo.mjs",
     "preview": "vite preview --host 127.0.0.1 --open /",
     "serve": "npm run preview",
     "start": "npm run dev:local",

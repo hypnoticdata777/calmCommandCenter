@@ -12,7 +12,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## SEO Progress
 
-The first seven SEO organization passes are complete.
+The first eight SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
@@ -22,10 +22,11 @@ The first seven SEO organization passes are complete.
 - **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.
 - **V6 internal linking:** connected Field Notes, Lab experiments, and Work case studies with related-link sections plus related-page schema hints so visitors and crawlers can follow the Journal -> Lab -> Work loop.
 - **V7 live validation:** checked the deployed site for route health, sitemap availability, robots availability, share-card availability, live bundle freshness, and the remaining SPA metadata caveat.
+- **V8 static SEO prerender:** added a build-time route generator that creates static HTML files for all 14 public sitemap routes with route-specific metadata, canonical URLs, structured data, fallback content, and internal links before React loads.
 
-Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
+Current SEO caveat: V8 generates route-specific static HTML during the build, but live production validation still needs to confirm Vercel serves those nested files before the SPA fallback rewrite.
 
-See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md) and [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
+See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), and [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
 ## Current Work
 
@@ -147,7 +148,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
-- High-grade SEO still needs prerendering/static HTML, Search Console submission, live metadata validation, richer breadcrumb schema, and future screenshot refreshes as each tool matures.
+- High-grade SEO now has local static prerendering in the build. The next SEO check is confirming the route-specific HTML is served live after Vercel deploys V8, then adding richer breadcrumb schema and future screenshot refreshes as each tool matures.
 
 ## Content Roadmap
 

@@ -83,18 +83,22 @@ This is acceptable for the current stage, but it is not the highest-grade SEO sh
 
 ## Search Console Status
 
-Google Search Console submission still needs account access from the site owner.
+Google Search Console owner verification and sitemap submission were completed from the site-owner account.
 
-Recommended owner steps:
+Verified owner steps completed:
 
-1. Open Google Search Console.
-2. Add or verify the `https://h777.dev` property.
-3. Submit `https://h777.dev/sitemap.xml`.
-4. Request indexing for the home page, Journal, Work, and the latest Field Note.
-5. Recheck coverage after Google processes the sitemap.
+1. Verified `h777.dev` through Namecheap DNS using Google's TXT record.
+2. Submitted `https://h777.dev/sitemap.xml` in Google Search Console.
+3. Confirmed Search Console status: `Success`.
+4. Confirmed discovered pages: `14`.
+5. Confirmed last read date: `2026-08-31`.
+
+Recommended remaining owner step:
+
+1. Use URL Inspection to request indexing for the home page, Journal, Work, and the latest Field Note.
 
 ## V7 Verdict
 
-V7 passed for live route health, sitemap availability, robots availability, share-card availability, and deployed bundle freshness.
+V7 passed for live route health, sitemap availability, robots availability, share-card availability, deployed bundle freshness, Google Search Console ownership verification, and sitemap submission.
 
-V7 did not eliminate the SPA metadata limitation. That should become V8.
+V7 did not eliminate the SPA metadata limitation. V8 addresses that locally with static route HTML; the next step is confirming the same route-specific HTML is served live after deployment.
