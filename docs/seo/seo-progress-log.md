@@ -4,7 +4,7 @@ Last updated: 2026-08-31
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, and internal links that connect Journal, Lab, and Work.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, and a live validation record.
 
 ## Completed
 
@@ -122,6 +122,21 @@ Built and shipped:
 
 Commit: `Add SEO v6 internal links`
 
+### V7 - Live Validation
+
+Built and shipped:
+
+- Checked the deployed `https://h777.dev` site after the V6 internal-linking pass.
+- Confirmed live `200` responses for Home, Journal, FN5, Work, TechSync Ops, Lab, sitemap, robots, and the PNG social card.
+- Confirmed the live sitemap contains 14 public URLs.
+- Confirmed `robots.txt` allows crawling and points to `https://h777.dev/sitemap.xml`.
+- Confirmed `https://h777.dev/og.png` is live as `image/png`.
+- Confirmed the deployed JavaScript bundle contains FN5, V6 related-link copy, Work relationship copy, listen-mode copy, and TechSync Ops case-study copy.
+- Documented the important limitation that direct nested-route HTML still serves the same React/Vite app shell before route-specific metadata is applied client-side.
+- Added the full validation record at `docs/seo/live-validation-2026-08-31.md`.
+
+Commit: `Add SEO v7 live validation log`
+
 ## Challenges
 
 - The site is a Vite single-page React app, so the browser initially receives one `index.html`. Route-specific metadata updates after React loads. This is useful, but not as strong as route-specific static HTML.
@@ -130,26 +145,28 @@ Commit: `Add SEO v6 internal links`
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
 - The current Work screenshot set is now local. TechSync Ops and TurnFlow Home now match their latest README screenshot sets.
 - V6 added meaningful internal routes, but live crawler validation still needs to happen after deploy because the app remains client-rendered.
+- V7 confirmed the deployment is healthy, but it also confirmed that route-specific metadata is not present in the first HTML response for nested routes.
 
 ## Still Pending For High-Grade SEO
 
 1. Add prerendering or static HTML output so each route serves its own real HTML before JavaScript runs.
-2. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
-3. Add specific share images for top case studies when public screenshots are final.
-4. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
-5. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.
-6. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
-7. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-8. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-9. Run a Core Web Vitals and mobile performance pass after local images are added.
+2. Submit `https://h777.dev/sitemap.xml` in Google Search Console from the verified site-owner account.
+3. Request indexing for the home page, Journal, Work, and the latest Field Note.
+4. Validate live rendered metadata using Google Search Console and social preview/debug tools.
+5. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
+6. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
+7. Add specific share images for top case studies when public screenshots are final.
+8. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+9. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
+10. Run a Core Web Vitals and mobile performance pass after local images are added.
 
 ## Next Recommended SEO Version
 
-V7 should focus on live validation and index submission:
+V8 should focus on prerendering or static HTML output:
 
-- Validate the deployed PNG social card in LinkedIn and other preview tools after Vercel finishes deploying.
-- Submit `https://h777.dev/sitemap.xml` in Google Search Console.
-- Run a live metadata/schema pass against the deployed routes, including the new internal related-link sections.
+- Generate real route-specific HTML for Home, Journal, Field Notes, Lab, Work, case studies, About, and Contact.
+- Make direct HTML responses carry the correct title, description, canonical, Open Graph, article metadata, and structured data before React runs.
+- Keep the existing React experience, but make crawlers and social preview tools see the right page content immediately.
 
 ## Operating Rule Going Forward
 

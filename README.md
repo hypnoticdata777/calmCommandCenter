@@ -12,7 +12,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## SEO Progress
 
-The first six SEO organization passes are complete.
+The first seven SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
@@ -21,10 +21,11 @@ The first six SEO organization passes are complete.
 - **V4 social preview polish:** added a reliable `1200x630` PNG share card, wired Open Graph/X image metadata with alt text, width, height, and type where appropriate, added article metadata for Field Notes and case studies, and added a small branded favicon.
 - **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.
 - **V6 internal linking:** connected Field Notes, Lab experiments, and Work case studies with related-link sections plus related-page schema hints so visitors and crawlers can follow the Journal -> Lab -> Work loop.
+- **V7 live validation:** checked the deployed site for route health, sitemap availability, robots availability, share-card availability, live bundle freshness, and the remaining SPA metadata caveat.
 
 Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
 
-See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md) for the completed SEO work, challenges, and next rollout steps.
+See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md) and [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
 ## Current Work
 
