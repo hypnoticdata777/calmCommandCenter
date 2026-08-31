@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link, useParams } from "react-router-dom";
+import { ArticleListenControls } from "../components/ArticleListenControls";
 import { JournalBody } from "../components/JournalBody";
 import { Seo } from "../components/Seo";
 import { NotFound } from "./NotFound";
@@ -98,6 +99,12 @@ export function JournalEntry() {
           <p className="max-w-3xl text-lg leading-[1.8] text-foreground/60 md:text-xl">
             {entry.excerpt}
           </p>
+
+          <ArticleListenControls
+            title={entry.title}
+            readTime={entry.readTime}
+            sections={entry.sections}
+          />
         </header>
 
         <JournalBody

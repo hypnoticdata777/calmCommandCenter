@@ -16,6 +16,7 @@ The first five SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
+- **Journal listen mode:** published Field Notes include browser-powered Listen, Pause, Resume, Restart, and Stop controls on the article route and expanded Journal preview.
 - **V3 Work case study URLs:** PM Ops Map, TechSync Ops, and TurnFlow Home now have dedicated `/work/...` routes, case-study metadata, structured data, sitemap entries, and `Read case study` paths from the Work overview.
 - **V4 social preview polish:** added a reliable `1200x630` PNG share card, wired Open Graph/X image metadata with alt text, width, height, and type where appropriate, added article metadata for Field Notes and case studies, and added a small branded favicon.
 - **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.

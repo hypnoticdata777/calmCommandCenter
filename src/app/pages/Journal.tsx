@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { ArticleListenControls } from "../components/ArticleListenControls";
 import { JournalBody } from "../components/JournalBody";
 import { Seo } from "../components/Seo";
 
@@ -837,9 +838,14 @@ export function Journal() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.35, ease: "easeInOut" }}
-                    className="cursor-ns-resize overflow-hidden"
+                    className="cursor-ns-resize space-y-8 overflow-hidden"
                     title="Click anywhere in the article to return to its header."
                   >
+                    <ArticleListenControls
+                      title={entry.title}
+                      readTime={entry.readTime}
+                      sections={entry.sections}
+                    />
                     <JournalBody
                       sections={entry.sections}
                       subheads={journalSubheads}
