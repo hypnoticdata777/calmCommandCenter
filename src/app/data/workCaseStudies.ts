@@ -177,13 +177,40 @@ export const workCaseStudies: WorkCaseStudy[] = [
     ],
     images: [
       {
-        title: "Earlier work-order intake proof",
+        title: "Admin workspace",
         caption:
-          "This earlier staged capture shows client, property, and vendor context being attached before work moves downstream. The latest README references a newer role-workspace screenshot set that still needs to be added to the portfolio assets.",
-        src: "/images/work/techsync-ops/new-work-order.png",
-        alt: "TechSync Ops new work order screen with title, description, client, property, and vendor linking controls.",
-        width: 1883,
-        height: 934,
+          "Org admins get full tenant command: Work Views, search, work-order cards, risk signals, and Next Actions.",
+        src: "/images/work/techsync-ops/admin-workspace.png",
+        alt: "TechSync Ops admin workspace with Work Views, Search, work-order cards, and Next Actions.",
+        width: 1600,
+        height: 920,
+      },
+      {
+        title: "Client portal",
+        caption:
+          "Clients see scoped request status, proof readiness, updates, and next steps without internal operations context.",
+        src: "/images/work/techsync-ops/client-portal.png",
+        alt: "TechSync Ops client portal with client-safe request cards and next steps.",
+        width: 1600,
+        height: 920,
+      },
+      {
+        title: "Viewer snapshot",
+        caption:
+          "Read-only users can inspect linked status, risk, and proof without dispatch, edit, upload, or approval controls.",
+        src: "/images/work/techsync-ops/viewer-snapshot.png",
+        alt: "TechSync Ops viewer snapshot with read-only work visibility.",
+        width: 1600,
+        height: 920,
+      },
+      {
+        title: "Vendor desk",
+        caption:
+          "Vendors see assigned jobs, proof state, blockers, and scope-focused actions without unrelated tenant or client data.",
+        src: "/images/work/techsync-ops/vendor-desk.png",
+        alt: "TechSync Ops vendor desk with assigned jobs, proof state, and scope-focused actions.",
+        width: 1600,
+        height: 920,
       },
     ],
     sections: [

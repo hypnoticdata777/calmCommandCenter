@@ -70,6 +70,45 @@ const techSyncFacts = [
   "Synthetic-data testing only",
 ];
 
+const techSyncScreenshots = [
+  {
+    title: "Admin workspace",
+    caption:
+      "Full tenant command: Work Views, search, work-order cards, risk signals, and Next Actions.",
+    src: "/images/work/techsync-ops/admin-workspace.png",
+    alt: "TechSync Ops admin workspace with Work Views, Search, work-order cards, and Next Actions.",
+    width: 1600,
+    height: 920,
+  },
+  {
+    title: "Client portal",
+    caption:
+      "Scoped request status, proof readiness, visible updates, and next steps without internal operations context.",
+    src: "/images/work/techsync-ops/client-portal.png",
+    alt: "TechSync Ops client portal with client-safe request cards and next steps.",
+    width: 1600,
+    height: 920,
+  },
+  {
+    title: "Viewer snapshot",
+    caption:
+      "Read-only visibility into linked status, risk, and proof without dispatch, upload, or approval controls.",
+    src: "/images/work/techsync-ops/viewer-snapshot.png",
+    alt: "TechSync Ops viewer snapshot with read-only work visibility.",
+    width: 1600,
+    height: 920,
+  },
+  {
+    title: "Vendor desk",
+    caption:
+      "Assigned jobs, proof state, blockers, and scope-focused actions without unrelated tenant or client data.",
+    src: "/images/work/techsync-ops/vendor-desk.png",
+    alt: "TechSync Ops vendor desk with assigned jobs, proof state, and scope-focused actions.",
+    width: 1600,
+    height: 920,
+  },
+];
+
 const techSyncFeatures = [
   "Role-aware workspaces for org admin, coordinator, technician, client, viewer, and vendor users",
   "Work-order intake, assignment, status transitions, messages, approvals, proof, and closeout packages",
@@ -515,11 +554,11 @@ export function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.9, ease: "easeIn" }}
-          className="space-y-12 border-t border-foreground/10 pt-16"
+          className="grid gap-10 border-t border-foreground/10 pt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-start"
         >
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 02</SectionLabel>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+            <h2 className="text-4xl font-bold tracking-wide leading-tight md:text-5xl xl:text-6xl">
               TechSync Ops: the PMC command center for maintenance handoffs.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
@@ -550,12 +589,38 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                New README screenshots pending upload
+                Current README screenshots
               </span>
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-5">
+          <div className="grid gap-5 sm:grid-cols-2">
+            {techSyncScreenshots.map((screenshot) => (
+              <figure key={screenshot.title} className="space-y-3">
+                <div className="overflow-hidden border border-foreground/10 bg-background/40">
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
+                    className="aspect-[16/11] w-full object-cover object-top"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="space-y-1">
+                  <h3 className="text-base font-bold tracking-wide">
+                    {screenshot.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-foreground/55">
+                    {screenshot.caption}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-5 lg:col-span-2">
             {techSyncFacts.map((fact) => (
               <div key={fact} className="border-l border-brand/35 pl-4">
                 <p className="text-lg leading-relaxed text-foreground/80">

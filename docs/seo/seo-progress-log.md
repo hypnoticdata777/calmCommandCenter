@@ -84,8 +84,11 @@ Built and shipped:
   - `public/images/work/pm-ops-map/dashboard.png`
   - `public/images/work/pm-ops-map/tracking-tasks.png`
   - `public/images/work/pm-ops-map/team-manager.png`
-- Copied the strongest available local TechSync Ops proof screenshot into the portfolio:
-  - `public/images/work/techsync-ops/new-work-order.png`
+- Copied the current TechSync Ops README screenshot set into the portfolio:
+  - `public/images/work/techsync-ops/admin-workspace.png`
+  - `public/images/work/techsync-ops/client-portal.png`
+  - `public/images/work/techsync-ops/viewer-snapshot.png`
+  - `public/images/work/techsync-ops/vendor-desk.png`
 - Copied the current TurnFlow Home README screenshot set into the portfolio:
   - `public/images/work/turnflow-home/login.png`
   - `public/images/work/turnflow-home/dashboard.png`
@@ -102,12 +105,8 @@ Built and shipped:
 - Gave TechSync Ops and TurnFlow Home dedicated screenshot sections on their case-study pages using the local assets.
 - Aligned TurnFlow Home case-study image titles, captions, alt text, and ordering with the latest README screenshot evidence.
 - Added a compact TurnFlow Home screenshot cluster to the main Work overview intro so the Work page itself shows visual proof instead of only the dedicated case-study page.
+- Added a compact TechSync Ops screenshot cluster to the main Work overview intro so its current role-lane screenshots are visible before the problem section.
 - Aligned TechSync Ops copy with the latest README positioning: hosted Vercel web/API staging, Neon Postgres demo data, six role-aware lanes, scoped visibility, proof capture, closeout records, and explicit synthetic-data POC boundaries.
-- Verified the four newest TechSync README screenshot paths are not yet available in this portfolio checkout:
-  - `techsync-readme-admin-workspace.png`
-  - `techsync-readme-client-portal.png`
-  - `techsync-readme-viewer-snapshot.png`
-  - `techsync-readme-vendor-desk.png`
 
 ## Challenges
 
@@ -115,12 +114,12 @@ Built and shipped:
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
-- The current Work screenshot set is now local, and TurnFlow Home now matches its latest README screenshot set. TechSync Ops copy now matches the latest README, but the four current role-workspace screenshot files still need to be uploaded or copied in before the image set can be refreshed.
+- The current Work screenshot set is now local. TechSync Ops and TurnFlow Home now match their latest README screenshot sets.
 
 ## Still Pending For High-Grade SEO
 
 1. Add prerendering or static HTML output so each route serves its own real HTML before JavaScript runs.
-2. Add the four current TechSync Ops role-workspace screenshots, then refresh TurnFlow Home screenshots again after its hosted demo is polished.
+2. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
 3. Add specific share images for top case studies when public screenshots are final.
 4. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
 5. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.

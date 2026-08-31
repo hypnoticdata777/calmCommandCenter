@@ -18,7 +18,7 @@ The first five SEO organization passes are complete.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
 - **V3 Work case study URLs:** PM Ops Map, TechSync Ops, and TurnFlow Home now have dedicated `/work/...` routes, case-study metadata, structured data, sitemap entries, and `Read case study` paths from the Work overview.
 - **V4 social preview polish:** added a reliable `1200x630` PNG share card, wired Open Graph/X image metadata with alt text, width, height, and type where appropriate, added article metadata for Field Notes and case studies, and added a small branded favicon.
-- **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TurnFlow Home with the current README screenshot set.
+- **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.
 
 Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
 
@@ -41,7 +41,7 @@ The Work page now includes the first real case study: **PM Ops Map: a day-one op
 
 ### TechSync Ops
 
-TechSync Ops is the second Work case study featured on the site. Its portfolio copy is aligned with the latest README positioning: staged synthetic-data POC, hosted web/API loop, six role lanes, scoped visibility, proof capture, and clear production boundaries.
+TechSync Ops is the second Work case study featured on the site. Its portfolio copy and screenshots are aligned with the latest README positioning: staged synthetic-data POC, hosted web/API loop, six role lanes, scoped visibility, proof capture, and clear production boundaries.
 
 - **Status:** Hosted staging / synthetic-data POC
 - **Type:** PMC maintenance command platform
@@ -53,12 +53,12 @@ TechSync Ops is the second Work case study featured on the site. Its portfolio c
 
 The Work page now includes the second case study: **TechSync Ops: the PMC command center for maintenance handoffs.**
 
-The newest TechSync README references four current role-workspace screenshots under `docs/screenshots/`, but those PNG files are not yet present in this portfolio checkout. Needed for the next screenshot refresh:
+The current TechSync README screenshot set is now copied into the portfolio:
 
-- `techsync-readme-admin-workspace.png`
-- `techsync-readme-client-portal.png`
-- `techsync-readme-viewer-snapshot.png`
-- `techsync-readme-vendor-desk.png`
+- `public/images/work/techsync-ops/admin-workspace.png`
+- `public/images/work/techsync-ops/client-portal.png`
+- `public/images/work/techsync-ops/viewer-snapshot.png`
+- `public/images/work/techsync-ops/vendor-desk.png`
 
 ### TurnFlow Home
 
@@ -127,7 +127,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Journal and Lab.
 - **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
-- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots for PM Ops Map and TurnFlow Home, and dedicated case-study URLs.
+- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots for PM Ops Map, TechSync Ops, and TurnFlow Home, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, with a browsable index and dedicated URLs for each published Field Note.
 - **SEO foundation** - metadata helper, canonical URLs, sitemap, robots file, social preview asset, Journal article URLs, and Work case-study URLs.
@@ -138,7 +138,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Add the next testing tools to Lab.
 - Promote tools from Lab to Work only after they have enough proof, screenshots, and public-safe positioning.
 - Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TurnFlow Home have hosted demo URLs.
-- Finish the TechSync Ops role walkthrough, add the four current README screenshot files to the portfolio, complete accessibility notes, and finish the visual polish pass before treating its hosted staging loop as public promotion.
+- Finish TechSync Ops accessibility notes and visual polish before treating its hosted staging loop as public promotion.
 - Refresh TurnFlow Home screenshots again after the public hosted demo is final, even though the current case-study page now matches the latest README screenshot set.
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
