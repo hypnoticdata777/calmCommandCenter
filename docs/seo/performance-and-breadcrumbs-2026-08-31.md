@@ -142,8 +142,29 @@ Spot checks confirmed `BreadcrumbList` in generated static HTML for:
 - `dist/journal/the-silent-killer-of-property-management-operations/index.html`
 - `dist/work/techsync-ops/index.html`
 
+## Live Verification
+
+After the V10 commit deployed through Vercel, the stricter SEO validator passed against the live site:
+
+```txt
+npm run validate:seo
+```
+
+Production validation confirmed:
+
+- 14 sitemap routes checked,
+- 4 unique social images checked,
+- every non-home route includes `BreadcrumbList`,
+- Field Notes include `BlogPosting` plus `BreadcrumbList`,
+- Work case studies include `Article` plus `BreadcrumbList`,
+- Journal includes `Blog` plus `BreadcrumbList`,
+- Lab and Work include `CollectionPage` plus `BreadcrumbList`,
+- About includes `ProfilePage` plus `BreadcrumbList`,
+- Contact includes `ContactPage` plus `BreadcrumbList`,
+- and the home page correctly avoids a one-item breadcrumb.
+
 ## V10 Verdict
 
-V10 is implemented locally.
+V10 is implemented, deployed, and live-validated.
 
-The V10 commit should be deployed through Vercel, then `npm run validate:seo` should be run again against the live site to confirm production breadcrumb schema is present across all 14 sitemap routes.
+The site now has route-specific static HTML, schema validation, breadcrumb schema, and performance budget checks in place.

@@ -202,6 +202,9 @@ Built and shipped:
 - Confirmed local build passes and still prerenders 14 SEO route files.
 - Confirmed generated static HTML includes breadcrumb schema for representative Journal and Work detail routes.
 - Confirmed the performance budget passes.
+- Pushed the V10 build to GitHub and let Vercel deploy it.
+- Live-validated all 14 sitemap routes with the stricter breadcrumb-aware SEO validator.
+- Confirmed every non-home production route includes valid `BreadcrumbList` structured data.
 
 Local performance snapshot:
 
