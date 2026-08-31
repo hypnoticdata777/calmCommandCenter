@@ -12,7 +12,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## SEO Progress
 
-The first eight SEO organization passes are complete.
+The first nine SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
@@ -23,10 +23,11 @@ The first eight SEO organization passes are complete.
 - **V6 internal linking:** connected Field Notes, Lab experiments, and Work case studies with related-link sections plus related-page schema hints so visitors and crawlers can follow the Journal -> Lab -> Work loop.
 - **V7 live validation:** checked the deployed site for route health, sitemap availability, robots availability, share-card availability, live bundle freshness, and the remaining SPA metadata caveat.
 - **V8 static SEO prerender:** added a build-time route generator that creates static HTML files for all 14 public sitemap routes with route-specific metadata, canonical URLs, structured data, fallback content, and internal links before React loads.
+- **V9 metadata validation:** added a reusable live SEO validator, confirmed all 14 sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
 
-Current SEO status: V8 is live. All 14 sitemap routes now return route-specific static HTML with their own titles, canonical URLs, fallback content, and structured data before React loads. The next SEO work is indexing requests, schema/social preview validation, and richer future content assets.
+Current SEO status: V9 is passing on the automated side. All 14 sitemap routes now return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, and social metadata before React loads. The remaining indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages.
 
-See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), and [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
+See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), and [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
 ## Current Work
 
@@ -148,7 +149,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
-- High-grade SEO now has live static prerendering for all 14 sitemap routes. The next SEO work is requesting indexing, validating structured data and social previews, adding richer breadcrumb schema, and refreshing screenshots as each tool matures.
+- High-grade SEO now has live static prerendering and repeatable metadata validation for all 14 sitemap routes. The next SEO work is finishing owner-side indexing requests, adding richer breadcrumb schema, refreshing screenshots as each tool matures, and running a Core Web Vitals/performance pass.
 
 ## Content Roadmap
 
@@ -248,6 +249,7 @@ npm run dev
 npm start
 npm run build:check
 npm run build
+npm run validate:seo
 npm run serve
 npm run typecheck
 ```

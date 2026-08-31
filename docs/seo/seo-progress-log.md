@@ -4,7 +4,7 @@ Last updated: 2026-08-31
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, and live-validated static SEO HTML for all 14 public sitemap routes.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, live-validated static SEO HTML for all 14 public sitemap routes, and a repeatable live SEO validator.
 
 ## Completed
 
@@ -159,6 +159,33 @@ Built and shipped:
 
 Commit: `Add SEO v8 static prerender`
 
+### V9 - Metadata And Structured-Data Validation
+
+Built and shipped:
+
+- Added `scripts/validate-seo.mjs` as a repeatable live SEO validator.
+- Added the `validate:seo` npm script.
+- Validated the live sitemap URL count and checked for duplicate sitemap URLs.
+- Confirmed live `robots.txt` responds and points to `https://h777.dev/sitemap.xml`.
+- Confirmed live `sitemap.xml` responds as valid-looking XML.
+- Validated all 14 live sitemap routes on `https://h777.dev`.
+- Confirmed every route returns a `200`.
+- Confirmed every route has a route-specific title, meta description, canonical URL, indexable robots tag, Open Graph metadata, X/Twitter metadata, static fallback content, and parseable JSON-LD.
+- Confirmed expected schema types by page family:
+  - Home: `WebSite`, `Person`
+  - Journal index: `Blog`
+  - Field Notes: `BlogPosting`
+  - Lab and Work: `CollectionPage`
+  - Work case studies: `Article`
+  - About: `ProfilePage`
+  - Contact: `ContactPage`
+- Confirmed 4 unique social images are live and return image content.
+- Confirmed the homepage is indexed in Google Search Console.
+- Logged the owner-side indexing request for `https://h777.dev/`.
+- Added the V9 validation record at `docs/seo/metadata-validation-2026-08-31.md`.
+
+Commit: `Add SEO v9 validation checks`
+
 ## Challenges
 
 - The site is still a Vite single-page React app for the user experience, but V8 now gives every public sitemap route its own static SEO HTML before hydration.
@@ -169,25 +196,29 @@ Commit: `Add SEO v8 static prerender`
 - V6 added meaningful internal routes, but live crawler validation still needs to happen after deploy because the app remains client-rendered.
 - V7 confirmed the deployment is healthy, but it also confirmed that route-specific metadata was not present in the first HTML response for nested routes before V8.
 - V8 local preview through Vite still returned the app shell for nested routes, but Vercel production correctly served the generated nested `index.html` files before the catch-all app fallback.
+- Search Console indexing requests are partially manual because URL Inspection actions happen inside the verified Google account. The homepage request is complete; priority inner pages should be requested next.
+- The repo validator checks schema presence and parseability, but external rich-result tools should still be used for Google's final interpretation.
 
 ## Still Pending For High-Grade SEO
 
-1. Request indexing for the home page, Journal, Work, and the latest Field Note in Google Search Console.
-2. Validate live rendered metadata using Google Search Console and social preview/debug tools.
-3. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
-4. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
-5. Add specific share images for top case studies when public screenshots are final.
-6. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-7. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-8. Run a Core Web Vitals and mobile performance pass after local images are added.
+1. Request indexing for the highest-priority non-home pages in Google Search Console: Journal, Work, FN5, TechSync Ops, and TurnFlow Home.
+2. Check LinkedIn and X/Twitter share previews from their external preview tools or by posting private/test links where available.
+3. Run external rich-result/schema checks against representative Journal and Work pages.
+4. Add richer breadcrumb schema for Journal entries and Work case studies.
+5. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
+6. Add specific share images for top case studies when public screenshots are final.
+7. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+8. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
+9. Run a Core Web Vitals and mobile performance pass after local images are added.
 
 ## Next Recommended SEO Version
 
-V9 should focus on indexing and structured-data validation:
+V10 should focus on performance and richer schema:
 
-- Use Search Console URL Inspection for the home page, Journal, Work, and the latest Field Note.
-- Run rich-results/schema checks against representative Journal and Work pages.
-- Check LinkedIn and X/Twitter previews after the V8 deployment has settled.
+- Add breadcrumb structured data to Journal entries and Work case studies.
+- Run Core Web Vitals and mobile performance checks.
+- Review image weight, loading behavior, and first-load JavaScript cost.
+- Create a repeatable checklist for every new Field Note, Work case study, and Lab promotion.
 
 ## Operating Rule Going Forward
 

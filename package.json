@@ -17,7 +17,8 @@
     "preview": "vite preview --host 127.0.0.1 --open /",
     "serve": "npm run preview",
     "start": "npm run dev:local",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "validate:seo": "node scripts/validate-seo.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.3",
