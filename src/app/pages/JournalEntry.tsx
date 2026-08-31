@@ -38,6 +38,10 @@ export function JournalEntry() {
         description={entry.excerpt}
         path={`/journal/${entry.slug}`}
         type="article"
+        publishedTime={entry.dateISO}
+        modifiedTime={entry.dateISO}
+        section={entry.type}
+        author="Carlos Sanchez"
         schema={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
@@ -137,4 +141,3 @@ export function JournalEntry() {
     </main>
   );
 }
-

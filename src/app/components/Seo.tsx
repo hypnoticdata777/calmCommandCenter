@@ -2,7 +2,9 @@ import { useEffect } from "react";
 
 const SITE_URL = "https://h777.dev";
 const SITE_NAME = "h777";
-const DEFAULT_IMAGE = "/og-card.svg";
+const DEFAULT_IMAGE = "/og.png";
+const DEFAULT_IMAGE_ALT =
+  "h777 property management operations tools and field notes";
 
 type SeoProps = {
   title: string;
@@ -10,7 +12,12 @@ type SeoProps = {
   path: string;
   type?: "website" | "article" | "profile";
   image?: string;
+  imageAlt?: string;
   robots?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  author?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
 };
 
@@ -42,6 +49,12 @@ function setPropertyMeta(property: string, content: string) {
   }
 
   tag.setAttribute("content", content);
+}
+
+function removePropertyMeta(property: string) {
+  document
+    .querySelector<HTMLMetaElement>(`meta[property="${property}"]`)
+    ?.remove();
 }
 
 function setCanonical(url: string) {
@@ -77,12 +90,18 @@ export function Seo({
   path,
   type = "website",
   image = DEFAULT_IMAGE,
+  imageAlt = DEFAULT_IMAGE_ALT,
   robots,
+  publishedTime,
+  modifiedTime,
+  section,
+  author,
   schema,
 }: SeoProps) {
   useEffect(() => {
     const url = absoluteUrl(path);
     const imageUrl = absoluteUrl(image);
+    const usesDefaultShareCard = image === DEFAULT_IMAGE;
     const routeSchema =
       schema ??
       {
@@ -107,17 +126,72 @@ export function Seo({
     setNamedMeta("twitter:title", title);
     setNamedMeta("twitter:description", description);
     setNamedMeta("twitter:image", imageUrl);
+    setNamedMeta("twitter:image:alt", imageAlt);
 
     setPropertyMeta("og:type", type);
     setPropertyMeta("og:title", title);
     setPropertyMeta("og:description", description);
     setPropertyMeta("og:url", url);
     setPropertyMeta("og:image", imageUrl);
+    setPropertyMeta("og:image:secure_url", imageUrl);
+    setPropertyMeta("og:image:alt", imageAlt);
+    if (usesDefaultShareCard) {
+      setPropertyMeta("og:image:width", "1200");
+      setPropertyMeta("og:image:height", "630");
+      setPropertyMeta("og:image:type", "image/png");
+    } else {
+      removePropertyMeta("og:image:width");
+      removePropertyMeta("og:image:height");
+      removePropertyMeta("og:image:type");
+    }
     setPropertyMeta("og:site_name", SITE_NAME);
     setPropertyMeta("og:locale", "en_US");
+    if (type === "article") {
+      if (publishedTime) {
+        setPropertyMeta("article:published_time", publishedTime);
+      } else {
+        removePropertyMeta("article:published_time");
+      }
+
+      if (modifiedTime) {
+        setPropertyMeta("article:modified_time", modifiedTime);
+      } else {
+        removePropertyMeta("article:modified_time");
+      }
+
+      if (section) {
+        setPropertyMeta("article:section", section);
+      } else {
+        removePropertyMeta("article:section");
+      }
+
+      if (author) {
+        setPropertyMeta("article:author", author);
+      } else {
+        removePropertyMeta("article:author");
+      }
+    } else {
+      removePropertyMeta("article:published_time");
+      removePropertyMeta("article:modified_time");
+      removePropertyMeta("article:section");
+      removePropertyMeta("article:author");
+    }
 
     setStructuredData(routeSchema);
-  }, [description, image, path, robots, schema, title, type]);
+  }, [
+    author,
+    description,
+    image,
+    imageAlt,
+    modifiedTime,
+    path,
+    publishedTime,
+    robots,
+    schema,
+    section,
+    title,
+    type,
+  ]);
 
   return null;
 }

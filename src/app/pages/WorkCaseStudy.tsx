@@ -44,6 +44,13 @@ export function WorkCaseStudy() {
         path={canonicalPath}
         type="article"
         image={study.images?.[0]?.src}
+        imageAlt={
+          study.images?.[0]?.title ??
+          `${study.name} case study from h777`
+        }
+        modifiedTime={study.dateModified}
+        section="Work case study"
+        author="Carlos Sanchez"
         schema={{
           "@context": "https://schema.org",
           "@type": "Article",

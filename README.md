@@ -12,11 +12,12 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## SEO Progress
 
-The first three SEO organization passes are complete.
+The first four SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
 - **V3 Work case study URLs:** PM Ops Map, TechSync Ops, and TurnFlow Home now have dedicated `/work/...` routes, case-study metadata, structured data, sitemap entries, and `Read case study` paths from the Work overview.
+- **V4 social preview polish:** added a reliable `1200x630` PNG share card, wired Open Graph/X image metadata with alt text, width, height, and type where appropriate, added article metadata for Field Notes and case studies, and added a small branded favicon.
 
 Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
 
@@ -134,7 +135,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
-- High-grade SEO still needs prerendering/static HTML, stronger social preview images, optimized local screenshots, Search Console submission, and live metadata validation.
+- High-grade SEO still needs prerendering/static HTML, optimized local screenshots, Search Console submission, and live metadata validation.
 
 ## Content Roadmap
 

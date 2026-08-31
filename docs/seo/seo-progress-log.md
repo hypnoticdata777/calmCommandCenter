@@ -4,7 +4,7 @@ Last updated: 2026-08-30
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL and route-aware metadata.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, and a reliable PNG social preview path.
 
 ## Completed
 
@@ -58,36 +58,49 @@ Built and shipped:
 
 Commit: `72c3321 Add dedicated Work case study routes`
 
+### V4 - Social Preview And Article Metadata Polish
+
+Built and shipped:
+
+- Added `public/og.png` as a reliable `1200x630` PNG social preview card for LinkedIn, X/Twitter, Slack, text previews, and other share surfaces.
+- Kept `public/og-card.svg` as the editable/source-style preview asset, but changed the live metadata default to the PNG card.
+- Added `public/favicon.svg` for small browser, bookmark, and tab identity.
+- Updated `index.html` so crawlers and preview tools see the PNG preview before React loads.
+- Added Open Graph image alt text, secure image URL, width, height, and PNG type for the default share card.
+- Added X/Twitter image alt text.
+- Added route-aware article metadata support for published time, modified time, section, and author.
+- Wired Field Note pages with article published/modified dates, section, and author.
+- Wired Work case-study pages with modified date, section, author, and case-study image alt text.
+- Added static WebSite and Person JSON-LD in `index.html` so the base identity is present even before the SPA route metadata runs.
+
 ## Challenges
 
 - The site is a Vite single-page React app, so the browser initially receives one `index.html`. Route-specific metadata updates after React loads. This is useful, but not as strong as route-specific static HTML.
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
-- Social previews currently use an SVG card. It works as a first asset, but PNG/JPG is safer across LinkedIn, texts, Discord, Slack, and other preview systems.
+- Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
 - Tool screenshots are partly external GitHub raw URLs. Local optimized screenshots will give better control, speed, and image SEO.
 
 ## Still Pending For High-Grade SEO
 
 1. Add prerendering or static HTML output so each route serves its own real HTML before JavaScript runs.
-2. Replace `public/og-card.svg` with a polished `public/og.png` or `public/og.jpg`.
-3. Add local optimized screenshots for PM Ops Map, TechSync Ops, TurnFlow Home, and future Work case studies.
-4. Add specific share images for top case studies when public screenshots are ready.
-5. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
-6. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.
-7. Add stronger internal links between Field Notes, Lab experiments, and Work case studies.
-8. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, and SoftwareApplication records.
-9. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-10. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-11. Run a Core Web Vitals and mobile performance pass after local images are added.
+2. Add local optimized screenshots for PM Ops Map, TechSync Ops, TurnFlow Home, and future Work case studies.
+3. Add specific share images for top case studies when public screenshots are ready.
+4. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
+5. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.
+6. Add stronger internal links between Field Notes, Lab experiments, and Work case studies.
+7. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, and SoftwareApplication records.
+8. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+9. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
+10. Run a Core Web Vitals and mobile performance pass after local images are added.
 
 ## Next Recommended SEO Version
 
-V4 should focus on social and image SEO:
+V5 should focus on screenshot and validation SEO:
 
-- Create a safer PNG/JPG social preview image.
-- Wire that image as the default Open Graph and X/Twitter image.
 - Start collecting or copying portfolio-safe screenshots into `public/`.
 - Give PM Ops Map the first local case-study image set because it already has screenshot proof.
+- Validate the deployed PNG social card in LinkedIn and other preview tools after Vercel finishes deploying.
 
 ## Operating Rule Going Forward
 
