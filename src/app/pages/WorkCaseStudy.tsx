@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link, useParams } from "react-router-dom";
+import { RelatedLinks } from "../components/RelatedLinks";
 import { Seo } from "../components/Seo";
 import { workCaseStudies } from "../data/workCaseStudies";
 import { NotFound } from "./NotFound";
@@ -35,6 +36,11 @@ export function WorkCaseStudy() {
   const { previous, next } = getPreviousAndNext(study.slug);
   const canonicalPath = `/work/${study.slug}`;
   const caseStudyUrl = `https://h777.dev${canonicalPath}`;
+  const relatedSchema = study.relatedLinks?.map((link) => ({
+    "@type": "WebPage",
+    name: link.title,
+    url: `https://h777.dev${link.href}`,
+  }));
 
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
@@ -86,6 +92,7 @@ export function WorkCaseStudy() {
             "@type": "WebPage",
             "@id": caseStudyUrl,
           },
+          ...(relatedSchema ? { isRelatedTo: relatedSchema } : {}),
         }}
       />
 
@@ -230,6 +237,14 @@ export function WorkCaseStudy() {
               ))}
             </div>
           </motion.section>
+        )}
+
+        {study.relatedLinks && (
+          <RelatedLinks
+            eyebrow="Related thinking"
+            title="How this connects to the rest of h777"
+            links={study.relatedLinks}
+          />
         )}
 
         <footer className="grid gap-4 border-t border-foreground/10 pt-8 sm:grid-cols-2">

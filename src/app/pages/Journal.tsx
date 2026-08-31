@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArticleListenControls } from "../components/ArticleListenControls";
 import { JournalBody } from "../components/JournalBody";
+import { RelatedLinks } from "../components/RelatedLinks";
 import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Journal
@@ -56,6 +57,23 @@ export const journalEntries = [
       "But the tools are serious now.",
       "And so, apparently, am I.",
       "More soon.",
+    ],
+    relatedLinks: [
+      {
+        label: "Work",
+        title: "TechSync Ops: the PMC command center for maintenance handoffs",
+        href: "/work/techsync-ops",
+      },
+      {
+        label: "Work",
+        title: "TurnFlow Home: maintenance history for homeowners",
+        href: "/work/turnflow-home",
+      },
+      {
+        label: "Lab",
+        title: "The testing shelf before ideas earn Work",
+        href: "/lab",
+      },
     ],
   },
   {
@@ -190,6 +208,23 @@ export const journalEntries = [
       "Sometimes it is staring at a screen that says Not Found, knowing something is wrong, and trusting yourself enough to go looking.",
       "The API eventually came back.",
       "I'm still not entirely convinced it ever left.",
+    ],
+    relatedLinks: [
+      {
+        label: "Work",
+        title: "Read the TechSync Ops case study",
+        href: "/work/techsync-ops",
+      },
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
+      },
+      {
+        label: "Lab",
+        title: "Where maintenance ideas get stress-tested",
+        href: "/lab",
+      },
     ],
   },
   {
@@ -331,6 +366,23 @@ export const journalEntries = [
       "I wanted to see what happened if we built the opposite.",
       "Turns out complete is an astonishingly ambitious word.",
       "More on that next.",
+    ],
+    relatedLinks: [
+      {
+        label: "Work",
+        title: "Read the TurnFlow Home case study",
+        href: "/work/turnflow-home",
+      },
+      {
+        label: "Journal",
+        title: "Complete Is an Astonishingly Ambitious Word",
+        href: "/journal/complete-is-an-astonishingly-ambitious-word",
+      },
+      {
+        label: "Work",
+        title: "See the full Work shelf",
+        href: "/work",
+      },
     ],
   },
   {
@@ -500,6 +552,23 @@ export const journalEntries = [
       "Don't trust me.",
       "Look.",
     ],
+    relatedLinks: [
+      {
+        label: "Work",
+        title: "TurnFlow Home: maintenance history for homeowners",
+        href: "/work/turnflow-home",
+      },
+      {
+        label: "Work",
+        title: "TechSync Ops: proof and maintenance handoffs",
+        href: "/work/techsync-ops",
+      },
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
+      },
+    ],
   },
   {
     label: "Field Note 5",
@@ -647,6 +716,23 @@ export const journalEntries = [
       `An owner. A resident. A court. A ledger.`,
       `By then, the question is no longer operational.`,
       `It is expensive.`,
+    ],
+    relatedLinks: [
+      {
+        label: "Work",
+        title: "TechSync Ops: the PMC command center for maintenance handoffs",
+        href: "/work/techsync-ops",
+      },
+      {
+        label: "Work",
+        title: "TurnFlow Home: maintenance records with proof",
+        href: "/work/turnflow-home",
+      },
+      {
+        label: "Work",
+        title: "PM Ops Map: a day-one operating system",
+        href: "/work/pm-ops-map",
+      },
     ],
   },
 ];
@@ -851,6 +937,13 @@ export function Journal() {
                       subheads={journalSubheads}
                       strongLines={journalStrongLines}
                     />
+                    {entry.relatedLinks && (
+                      <RelatedLinks
+                        eyebrow="Keep following the thread"
+                        title="Related notes and tools"
+                        links={entry.relatedLinks}
+                      />
+                    )}
                   </motion.div>
                 )}
               </motion.article>

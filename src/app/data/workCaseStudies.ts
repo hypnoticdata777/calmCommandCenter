@@ -19,6 +19,12 @@ export type CaseStudySection = {
   items?: string[];
 };
 
+export type CaseStudyRelatedLink = {
+  label: string;
+  title: string;
+  href: string;
+};
+
 export type WorkCaseStudy = {
   label: string;
   slug: string;
@@ -34,6 +40,7 @@ export type WorkCaseStudy = {
   links: CaseStudyLink[];
   images?: CaseStudyImage[];
   sections: CaseStudySection[];
+  relatedLinks?: CaseStudyRelatedLink[];
 };
 
 export const workCaseStudies: WorkCaseStudy[] = [
@@ -134,6 +141,23 @@ export const workCaseStudies: WorkCaseStudy[] = [
           "PM Ops Map is my answer to that early-stage gap. It gives new owners, ops managers, coordinators, and PM teams a free guided starting point before they hire expensive consultants or commit to heavier software.",
           "Next up: stronger maintenance tracking, deeper vendor and work order tools, owner-ready reports, import presets, and better Team Sync conflict handling.",
         ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
+      },
+      {
+        label: "Lab",
+        title: "How ideas move from Journal to Lab to Work",
+        href: "/lab",
+      },
+      {
+        label: "Work",
+        title: "TechSync Ops: maintenance handoffs after the company grows",
+        href: "/work/techsync-ops",
       },
     ],
   },
@@ -258,6 +282,23 @@ export const workCaseStudies: WorkCaseStudy[] = [
           "For the public portfolio, this belongs as an ambitious PMC SaaS POC with real architecture, hosted staging, meaningful tests, clear product direction, and honest boundaries around what still needs production polish before it carries a live operation.",
           "Next up: finish the public UX polish pass across role lanes, complete the current role-walkthrough screenshot set, check small screens and accessibility notes, keep client/vendor/technician actions practical, and keep staged synthetic testing separate from real customer onboarding.",
         ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Journal",
+        title: "The API Went Dark For a Minute",
+        href: "/journal/the-api-went-dark",
+      },
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
+      },
+      {
+        label: "Work",
+        title: "TurnFlow Home: the homeowner-side proof record",
+        href: "/work/turnflow-home",
       },
     ],
   },
@@ -436,6 +477,23 @@ export const workCaseStudies: WorkCaseStudy[] = [
           "Verify Resend deliverability, sender domain setup, and reminder cron behavior",
           "Decide later layers for billing model, subscriptions, payments, analytics, and observability",
         ],
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "Journal",
+        title: "The Picture Frame Was Real. The Picture Wasn't.",
+        href: "/journal/the-picture-frame-was-real",
+      },
+      {
+        label: "Journal",
+        title: "Complete Is an Astonishingly Ambitious Word",
+        href: "/journal/complete-is-an-astonishingly-ambitious-word",
+      },
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
       },
     ],
   },

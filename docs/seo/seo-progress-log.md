@@ -4,7 +4,7 @@ Last updated: 2026-08-31
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, and local screenshot assets for the current Work case studies.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. The site is not yet at the highest possible SEO grade because it still serves one app shell before React renders each route, but the public structure is now much stronger: every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, and internal links that connect Journal, Lab, and Work.
 
 ## Completed
 
@@ -109,6 +109,19 @@ Built and shipped:
 - Added a compact TechSync Ops screenshot cluster to the main Work overview intro so its current role-lane screenshots are visible before the problem section.
 - Aligned TechSync Ops copy with the latest README positioning: hosted Vercel web/API staging, Neon Postgres demo data, six role-aware lanes, scoped visibility, proof capture, closeout records, and explicit synthetic-data POC boundaries.
 
+### V6 - Internal Linking And Content Relationships
+
+Built and shipped:
+
+- Added `src/app/components/RelatedLinks.tsx` as a shared related-link section for internal content paths.
+- Added related links to every published Field Note so each article points toward the matching tools, follow-up notes, Lab, or Work shelf.
+- Added related links to each Work case study so PM Ops Map, TechSync Ops, and TurnFlow Home point back to the Field Notes that explain the operating philosophy behind them.
+- Added a Lab pathway section that connects the Journal -> Lab -> Work loop directly from the Lab page.
+- Added `isRelatedTo` structured data hints on Journal article routes and Work case-study routes.
+- Updated sitemap `lastmod` values for the routes whose visible internal-linking content changed.
+
+Commit: `Add SEO v6 internal links`
+
 ## Challenges
 
 - The site is a Vite single-page React app, so the browser initially receives one `index.html`. Route-specific metadata updates after React loads. This is useful, but not as strong as route-specific static HTML.
@@ -116,6 +129,7 @@ Built and shipped:
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
 - The current Work screenshot set is now local. TechSync Ops and TurnFlow Home now match their latest README screenshot sets.
+- V6 added meaningful internal routes, but live crawler validation still needs to happen after deploy because the app remains client-rendered.
 
 ## Still Pending For High-Grade SEO
 
@@ -124,19 +138,18 @@ Built and shipped:
 3. Add specific share images for top case studies when public screenshots are final.
 4. Submit `https://h777.dev/sitemap.xml` in Google Search Console.
 5. Validate live metadata after Vercel deploys using Google Search Console and social preview/debug tools.
-6. Add stronger internal links between Field Notes, Lab experiments, and Work case studies.
-7. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, and SoftwareApplication records.
-8. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
-9. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
-10. Run a Core Web Vitals and mobile performance pass after local images are added.
+6. Add schema validation checks for WebSite, Person, BlogPosting, Article, CollectionPage, SoftwareApplication, and related-page records.
+7. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+8. Add a content-update checklist for every new Field Note and Work case study: slug, title, excerpt, ISO date, route, metadata, structured data, sitemap entry, and internal links.
+9. Run a Core Web Vitals and mobile performance pass after local images are added.
 
 ## Next Recommended SEO Version
 
-V6 should focus on live validation and index submission:
+V7 should focus on live validation and index submission:
 
 - Validate the deployed PNG social card in LinkedIn and other preview tools after Vercel finishes deploying.
 - Submit `https://h777.dev/sitemap.xml` in Google Search Console.
-- Run a live metadata/schema pass against the deployed routes.
+- Run a live metadata/schema pass against the deployed routes, including the new internal related-link sections.
 
 ## Operating Rule Going Forward
 

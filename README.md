@@ -12,7 +12,7 @@ The default look is dark and editorial: serif type, red accents, soft glows, and
 
 ## SEO Progress
 
-The first five SEO organization passes are complete.
+The first six SEO organization passes are complete.
 
 - **V1 metadata foundation:** route-aware SEO helper, page-specific titles and descriptions, canonical URLs, default social metadata, structured data, `robots.txt`, `sitemap.xml`, and a first branded social preview asset.
 - **V2 Journal URLs:** each published Field Note now has a dedicated `/journal/...` route, article metadata, excerpt, ISO date, canonical URL, structured data, sitemap entry, and a `Read` path from the Journal index.
@@ -20,6 +20,7 @@ The first five SEO organization passes are complete.
 - **V3 Work case study URLs:** PM Ops Map, TechSync Ops, and TurnFlow Home now have dedicated `/work/...` routes, case-study metadata, structured data, sitemap entries, and `Read case study` paths from the Work overview.
 - **V4 social preview polish:** added a reliable `1200x630` PNG share card, wired Open Graph/X image metadata with alt text, width, height, and type where appropriate, added article metadata for Field Notes and case studies, and added a small branded favicon.
 - **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.
+- **V6 internal linking:** connected Field Notes, Lab experiments, and Work case studies with related-link sections plus related-page schema hints so visitors and crawlers can follow the Journal -> Lab -> Work loop.
 
 Current SEO caveat: this is still a React/Vite single-page app. The site now has much better public structure and route metadata once the app loads, but the later high-grade SEO step is prerendering or static HTML output so each route serves fully route-specific HTML immediately.
 
@@ -131,8 +132,8 @@ The repo also includes an interactive requirements brief that separates the two 
 - **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
 - **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots for PM Ops Map, TechSync Ops, and TurnFlow Home, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
-- **Journal page** - real written content, with a browsable index and dedicated URLs for each published Field Note.
-- **SEO foundation** - metadata helper, canonical URLs, sitemap, robots file, social preview asset, Journal article URLs, and Work case-study URLs.
+- **Journal page** - real written content, with a browsable index, dedicated URLs, listen controls, and related links for each published Field Note.
+- **SEO foundation** - metadata helper, canonical URLs, sitemap, robots file, social preview asset, Journal article URLs, Work case-study URLs, screenshots, and internal related-link paths.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
 
 ## Still In Progress
@@ -145,7 +146,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.
 - The repo includes a larger shadcn/ui component set than the site currently uses.
-- High-grade SEO still needs prerendering/static HTML, Search Console submission, live metadata validation, and future screenshot refreshes as each tool matures.
+- High-grade SEO still needs prerendering/static HTML, Search Console submission, live metadata validation, richer breadcrumb schema, and future screenshot refreshes as each tool matures.
 
 ## Content Roadmap
 

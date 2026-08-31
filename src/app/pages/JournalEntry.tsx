@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Link, useParams } from "react-router-dom";
 import { ArticleListenControls } from "../components/ArticleListenControls";
 import { JournalBody } from "../components/JournalBody";
+import { RelatedLinks } from "../components/RelatedLinks";
 import { Seo } from "../components/Seo";
 import { NotFound } from "./NotFound";
 import { journalEntries, journalStrongLines, journalSubheads } from "./Journal";
@@ -31,6 +32,11 @@ export function JournalEntry() {
 
   const { previous, next } = getPreviousAndNext(entry.slug);
   const articleUrl = `https://h777.dev/journal/${entry.slug}`;
+  const relatedSchema = entry.relatedLinks?.map((link) => ({
+    "@type": "WebPage",
+    name: link.title,
+    url: `https://h777.dev${link.href}`,
+  }));
 
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
@@ -66,6 +72,7 @@ export function JournalEntry() {
             "@type": "WebPage",
             "@id": articleUrl,
           },
+          ...(relatedSchema ? { isRelatedTo: relatedSchema } : {}),
         }}
       />
 
@@ -112,6 +119,14 @@ export function JournalEntry() {
           subheads={journalSubheads}
           strongLines={journalStrongLines}
         />
+
+        {entry.relatedLinks && (
+          <RelatedLinks
+            eyebrow="Keep following the thread"
+            title="Related notes and tools"
+            links={entry.relatedLinks}
+          />
+        )}
 
         <footer className="grid gap-4 border-t border-foreground/10 pt-8 sm:grid-cols-2">
           {previous ? (

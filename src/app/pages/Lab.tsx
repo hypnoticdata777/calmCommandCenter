@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { RelatedLinks } from "../components/RelatedLinks";
 import { Seo } from "../components/Seo";
 
 // PROJECT COMMAND STRUCTURE - Lab
@@ -50,6 +51,24 @@ const buildNotes = [
   "The loop is simple: Journal captures the thought, Lab tests whether the idea still stands, and Work holds the tools that are strong enough to present as case studies.",
   "Lab is allowed to be messy, but it should still be honest: status, audience, missing pieces, and why the experiment deserves another pass.",
   "Some experiments will graduate to Work, some may become paid products, and some will stay here because the idea was useful even if the build is not ready.",
+];
+
+const labPathways = [
+  {
+    label: "Journal",
+    title: "The Silent Killer of Property Management Operations",
+    href: "/journal/the-silent-killer-of-property-management-operations",
+  },
+  {
+    label: "Work",
+    title: "PM Ops Map: the day-one operating map",
+    href: "/work/pm-ops-map",
+  },
+  {
+    label: "Work",
+    title: "TechSync Ops and TurnFlow Home after Lab",
+    href: "/work",
+  },
 ];
 
 function SectionLabel({ children }: { children: string }) {
@@ -104,6 +123,12 @@ export function Lab() {
             </div>
           </motion.div>
         </section>
+
+        <RelatedLinks
+          eyebrow="The loop"
+          title="Start with the idea, test the tool, then show the proof"
+          links={labPathways}
+        />
 
         <motion.section
           initial={{ opacity: 0, y: 18 }}
