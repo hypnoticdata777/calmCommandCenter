@@ -271,36 +271,72 @@ export const workCaseStudies: WorkCaseStudy[] = [
       {
         title: "Owner maintenance dashboard",
         caption:
-          "The homeowner workspace surfaces repair readiness, proof-backed records, shared help, and preventive care from one view.",
+          "Status filters, request counts, homeowner-value cards, and next actions show what each home repair record needs now.",
         src: "/images/work/turnflow-home/dashboard.png",
         alt: "TurnFlow Home dashboard showing maintenance requests, homeowner value cards, filters, and repair status.",
         width: 1440,
         height: 900,
       },
       {
-        title: "Guided repair intake",
+        title: "Guided intake with safety checklist",
         caption:
-          "The intake flow separates required information from helpful context so a request can start simple and get stronger over time.",
+          "The intake flow separates required fields from helpful context so owners can save a private record first, then strengthen the vendor handoff.",
         src: "/images/work/turnflow-home/new-request-checklist.png",
         alt: "TurnFlow Home new maintenance request screen with readiness checklist and owner-controlled draft guidance.",
         width: 1440,
         height: 900,
       },
       {
-        title: "Proof gaps are visible",
+        title: "Request detail with cost and decision context",
         caption:
-          "The request detail view shows what is complete, what proof is missing, and what context the owner can still add.",
+          "Quotes, cost clarity, proof gaps, shared help, and decision history stay attached to the repair instead of scattering across messages.",
         src: "/images/work/turnflow-home/request-detail.png",
         alt: "TurnFlow Home repair record showing proof gaps, cost clarity, completion status, and proof packet actions.",
         width: 1440,
         height: 900,
       },
       {
-        title: "Property vault for the record",
+        title: "Property records",
+        caption:
+          "Each property anchors its requests, documents, reminders, and exportable maintenance history.",
+        src: "/images/work/turnflow-home/properties.png",
+        alt: "TurnFlow Home properties screen showing property records, request counts, documents, reminders, and export actions.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Property document vault",
         caption:
           "Receipts, warranties, manuals, invoices, and inspection documents stay tied to the property instead of disappearing into messages.",
         src: "/images/work/turnflow-home/property-vault.png",
         alt: "TurnFlow Home property vault showing saved records, repair-linked documents, and document upload controls.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Maintenance calendar",
+        caption:
+          "Recurring care, due-soon work, overdue signals, and calendar export turn preventive maintenance into a visible routine.",
+        src: "/images/work/turnflow-home/maintenance-calendar.png",
+        alt: "TurnFlow Home maintenance calendar showing preventive care metrics, recurring reminders, overdue items, and calendar export.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Vendor portal",
+        caption:
+          "Vendors see only the assigned requests and next actions they need for bids, work progress, proof, closeout, and owner review.",
+        src: "/images/work/turnflow-home/vendor-portal.png",
+        alt: "TurnFlow Home vendor portal showing assigned requests, vendor next step guidance, work queue, and profile readiness.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        title: "Sign in",
+        caption:
+          "The public auth entry point frames TurnFlow Home as repair records, scoped sharing, and proof that survives the job.",
+        src: "/images/work/turnflow-home/login.png",
+        alt: "TurnFlow Home sign-in screen with product positioning and owner workspace login form.",
         width: 1440,
         height: 900,
       },

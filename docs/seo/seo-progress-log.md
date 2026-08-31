@@ -86,16 +86,21 @@ Built and shipped:
   - `public/images/work/pm-ops-map/team-manager.png`
 - Copied the strongest available local TechSync Ops proof screenshot into the portfolio:
   - `public/images/work/techsync-ops/new-work-order.png`
-- Copied current TurnFlow Home POC screenshots into the portfolio:
+- Copied the current TurnFlow Home README screenshot set into the portfolio:
+  - `public/images/work/turnflow-home/login.png`
   - `public/images/work/turnflow-home/dashboard.png`
   - `public/images/work/turnflow-home/new-request-checklist.png`
   - `public/images/work/turnflow-home/request-detail.png`
+  - `public/images/work/turnflow-home/properties.png`
   - `public/images/work/turnflow-home/property-vault.png`
+  - `public/images/work/turnflow-home/maintenance-calendar.png`
+  - `public/images/work/turnflow-home/vendor-portal.png`
 - Replaced PM Ops Map remote GitHub raw screenshot URLs with local portfolio paths.
 - Added descriptive alt text, width, and height to Work case-study screenshot records.
 - Added width, height, and async decoding attributes to rendered screenshots to improve image stability.
 - Added screenshot URLs to case-study structured data.
 - Gave TechSync Ops and TurnFlow Home dedicated screenshot sections on their case-study pages using the local assets.
+- Aligned TurnFlow Home case-study image titles, captions, alt text, and ordering with the latest README screenshot evidence.
 
 ## Challenges
 
@@ -103,7 +108,7 @@ Built and shipped:
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
 - The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
-- The current Work screenshot set is now local, but TechSync Ops and TurnFlow Home should still receive refreshed public-demo screenshots once their walkthroughs and hosted demo states are final.
+- The current Work screenshot set is now local, and TurnFlow Home now matches its latest README screenshot set. TechSync Ops still needs a fuller screenshot pass once its walkthrough and hosted demo state are final.
 
 ## Still Pending For High-Grade SEO
 

@@ -706,7 +706,7 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                Signed-in screenshots need refresh
+                README screenshot set added
               </span>
             </div>
           </div>
@@ -887,7 +887,7 @@ export function Work() {
             <p>
               The next product phase is about turning the POC into a
               public-safe SaaS demo: a real hosted environment, seeded demo
-              data, signed-in screenshots, owner/helper smoke tests,
+              data, refreshed public-demo screenshots, owner/helper smoke tests,
               homeowner-user feedback, verified notifications, and eventually
               the business layers around billing, subscriptions, payments,
               analytics, and observability.
