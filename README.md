@@ -127,7 +127,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Journal and Lab.
 - **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
-- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots where available, and dedicated case-study URLs.
+- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots for PM Ops Map and TurnFlow Home, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, with a browsable index and dedicated URLs for each published Field Note.
 - **SEO foundation** - metadata helper, canonical URLs, sitemap, robots file, social preview asset, Journal article URLs, and Work case-study URLs.

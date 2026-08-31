@@ -101,6 +101,7 @@ Built and shipped:
 - Added screenshot URLs to case-study structured data.
 - Gave TechSync Ops and TurnFlow Home dedicated screenshot sections on their case-study pages using the local assets.
 - Aligned TurnFlow Home case-study image titles, captions, alt text, and ordering with the latest README screenshot evidence.
+- Added a compact TurnFlow Home screenshot row to the main Work overview so the Work page itself shows visual proof instead of only the dedicated case-study page.
 - Aligned TechSync Ops copy with the latest README positioning: hosted Vercel web/API staging, Neon Postgres demo data, six role-aware lanes, scoped visibility, proof capture, closeout records, and explicit synthetic-data POC boundaries.
 - Verified the four newest TechSync README screenshot paths are not yet available in this portfolio checkout:
   - `techsync-readme-admin-workspace.png`

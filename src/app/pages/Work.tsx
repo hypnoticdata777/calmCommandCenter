@@ -115,6 +115,45 @@ const turnFlowFacts = [
   "Automated verification and route smoke scripts in place",
 ];
 
+const turnFlowScreenshots = [
+  {
+    title: "Owner maintenance dashboard",
+    caption:
+      "Open requests, homeowner value cards, filters, and repair status in one owner-facing workspace.",
+    src: "/images/work/turnflow-home/dashboard.png",
+    alt: "TurnFlow Home dashboard showing maintenance requests, homeowner value cards, filters, and repair status.",
+    width: 1920,
+    height: 1080,
+  },
+  {
+    title: "Guided request intake",
+    caption:
+      "A readiness checklist helps the owner capture the right issue, safety, access, and photo context before the request moves.",
+    src: "/images/work/turnflow-home/new-request-checklist.png",
+    alt: "TurnFlow Home new maintenance request screen with readiness checklist and owner-controlled draft guidance.",
+    width: 1920,
+    height: 1080,
+  },
+  {
+    title: "Repair record and proof",
+    caption:
+      "The request detail view keeps scope, cost, bids, status, proof gaps, and packet actions tied to the same repair story.",
+    src: "/images/work/turnflow-home/request-detail.png",
+    alt: "TurnFlow Home repair record showing proof gaps, cost clarity, completion status, and proof packet actions.",
+    width: 1920,
+    height: 1080,
+  },
+  {
+    title: "Property vault",
+    caption:
+      "Documents, repair-linked records, reminders, and exportable property history stay attached to the property.",
+    src: "/images/work/turnflow-home/property-vault.png",
+    alt: "TurnFlow Home property vault showing saved records, repair-linked documents, and document upload controls.",
+    width: 1920,
+    height: 1080,
+  },
+];
+
 const turnFlowFeatures = [
   "Homeowner signup, login, and first-run setup guidance",
   "Multiple property records with care signals and dashboard filters",
@@ -721,6 +760,55 @@ export function Work() {
                   {fact}
                 </p>
               </div>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.9, ease: "easeIn" }}
+          className="space-y-10 border-t border-foreground/10 pt-12"
+        >
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="space-y-5">
+              <SectionLabel>TurnFlow Screenshots</SectionLabel>
+              <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
+                Homeowner maintenance proof, visible.
+              </h2>
+            </div>
+
+            <p className="text-lg leading-loose text-foreground/65">
+              A few views from the current README set: owner dashboard, guided
+              request intake, repair record, and property vault. The full
+              screenshot set lives in the dedicated case study.
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {turnFlowScreenshots.map((screenshot) => (
+              <figure key={screenshot.title} className="space-y-4">
+                <div className="overflow-hidden border border-foreground/10 bg-background/40">
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
+                    className="aspect-[16/11] w-full object-cover object-top"
+                    decoding="async"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="space-y-2">
+                  <h3 className="text-lg font-bold tracking-wide">
+                    {screenshot.title}
+                  </h3>
+                  <p className="leading-relaxed text-foreground/55">
+                    {screenshot.caption}
+                  </p>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </motion.section>
