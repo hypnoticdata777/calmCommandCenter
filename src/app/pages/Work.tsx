@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Seo } from "../components/Seo";
 
 const screenshots = [
@@ -190,19 +191,19 @@ export function Work() {
                 "@type": "ListItem",
                 position: 1,
                 name: "PM Ops Map",
-                url: "https://github.com/hypnoticdata777/pm-ops-map",
+                url: "https://h777.dev/work/pm-ops-map",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "TechSync Ops",
-                url: "https://github.com/hypnoticdata777/Techsync",
+                url: "https://h777.dev/work/techsync-ops",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "TurnFlow Home",
-                url: "https://github.com/hypnoticdata777/turnflow-mvp",
+                url: "https://h777.dev/work/turnflow-home",
               },
             ],
           },
@@ -262,6 +263,12 @@ export function Work() {
             </p>
 
             <div className="flex flex-wrap gap-3">
+              <Link
+                to="/work/pm-ops-map"
+                className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+              >
+                Read case study
+              </Link>
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -474,6 +481,12 @@ export function Work() {
             </p>
 
             <div className="flex flex-wrap gap-3">
+              <Link
+                to="/work/techsync-ops"
+                className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+              >
+                Read case study
+              </Link>
               {techSyncLinks.map((link) => (
                 <a
                   key={link.label}
@@ -663,6 +676,12 @@ export function Work() {
             </p>
 
             <div className="flex flex-wrap gap-3">
+              <Link
+                to="/work/turnflow-home"
+                className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+              >
+                Read case study
+              </Link>
               {turnFlowLinks.map((link) => (
                 <a
                   key={link.label}

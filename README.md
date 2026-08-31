@@ -89,6 +89,9 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/journal/complete-is-an-astonishingly-ambitious-word` | Field Note 4 article page |
 | `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
 | `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
+| `/work/pm-ops-map` | PM Ops Map case study page |
+| `/work/techsync-ops` | TechSync Ops case study page |
+| `/work/turnflow-home` | TurnFlow Home case study page |
 | `/about` | Developed about page explaining the thinking behind the site |
 | `/contact` | Email-first contact page with GitHub as a secondary link |
 | `*` | 404 page for unknown routes |
@@ -103,7 +106,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Journal and Lab.
 - **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
-- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, and screenshots where available.
+- **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, screenshots where available, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, with a browsable index and dedicated URLs for each published Field Note.
 - **ImageWithFallback** - a small utility for handling broken image URLs cleanly.
@@ -129,7 +132,7 @@ Short-term content plan:
 4. Keep m3ldSync and VendorRadar in Lab until they have enough proof to graduate.
 5. Add the next Field Notes as individual article URLs and include them in the sitemap.
 6. Add the next testing tools as Lab entries with source/demo/screenshot links where available.
-7. Promote one Work case study only when the tool is ready to stand on its own.
+7. Promote one Work case study only when the tool is ready to stand on its own and give it a dedicated `/work/...` URL.
 8. Replace temporary demo placeholders with live URLs as each tool is hosted.
 9. Keep screenshots close to the source project repos when possible, then reference them from portfolio case studies.
 

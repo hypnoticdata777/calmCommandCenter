@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import { Layout }     from "./Layout";
 import App            from "./App";
 import { Work }       from "./pages/Work";
+import { WorkCaseStudy } from "./pages/WorkCaseStudy";
 import { Lab }        from "./pages/Lab";
 import { Journal }    from "./pages/Journal";
 import { JournalEntry } from "./pages/JournalEntry";
@@ -37,6 +38,7 @@ export function AppRouter() {
       <Route element={<Layout />}>
         <Route path="/"        element={<App />}      />
         <Route path="/work"    element={<Work />}     />
+        <Route path="/work/:slug" element={<WorkCaseStudy />} />
         <Route path="/lab"     element={<Lab />}      />
         <Route path="/journal" element={<Journal />}  />
         <Route path="/journal/:slug" element={<JournalEntry />} />
