@@ -713,11 +713,11 @@ export function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.9, ease: "easeIn" }}
-          className="space-y-12 border-t border-foreground/10 pt-16"
+          className="grid gap-10 border-t border-foreground/10 pt-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-start"
         >
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 03</SectionLabel>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
+            <h2 className="text-4xl font-bold tracking-wide leading-tight md:text-5xl xl:text-6xl">
               TurnFlow Home: maintenance history for homeowners who want the proof.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
@@ -748,47 +748,14 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                README screenshot set added
+                Current README screenshots
               </span>
             </div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-5">
-            {turnFlowFacts.map((fact) => (
-              <div key={fact} className="border-l border-brand/35 pl-4">
-                <p className="text-lg leading-relaxed text-foreground/80">
-                  {fact}
-                </p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        <motion.section
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.9, ease: "easeIn" }}
-          className="space-y-10 border-t border-foreground/10 pt-12"
-        >
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="space-y-5">
-              <SectionLabel>TurnFlow Screenshots</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-                Homeowner maintenance proof, visible.
-              </h2>
-            </div>
-
-            <p className="text-lg leading-loose text-foreground/65">
-              A few views from the current README set: owner dashboard, guided
-              request intake, repair record, and property vault. The full
-              screenshot set lives in the dedicated case study.
-            </p>
-          </div>
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2">
             {turnFlowScreenshots.map((screenshot) => (
-              <figure key={screenshot.title} className="space-y-4">
+              <figure key={screenshot.title} className="space-y-3">
                 <div className="overflow-hidden border border-foreground/10 bg-background/40">
                   <img
                     src={screenshot.src}
@@ -800,15 +767,25 @@ export function Work() {
                     loading="lazy"
                   />
                 </div>
-                <figcaption className="space-y-2">
-                  <h3 className="text-lg font-bold tracking-wide">
+                <figcaption className="space-y-1">
+                  <h3 className="text-base font-bold tracking-wide">
                     {screenshot.title}
                   </h3>
-                  <p className="leading-relaxed text-foreground/55">
+                  <p className="text-sm leading-relaxed text-foreground/55">
                     {screenshot.caption}
                   </p>
                 </figcaption>
               </figure>
+            ))}
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-5 lg:col-span-2">
+            {turnFlowFacts.map((fact) => (
+              <div key={fact} className="border-l border-brand/35 pl-4">
+                <p className="text-lg leading-relaxed text-foreground/80">
+                  {fact}
+                </p>
+              </div>
             ))}
           </div>
         </motion.section>
