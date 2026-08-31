@@ -142,18 +142,18 @@ export const workCaseStudies: WorkCaseStudy[] = [
     slug: "techsync-ops",
     name: "TechSync Ops",
     title:
-      "TechSync Ops: the PMC command layer for maintenance dispatch and proof.",
+      "TechSync Ops: the PMC command center for maintenance handoffs.",
     seoTitle: "TechSync Ops Case Study | Maintenance Dispatch and Proof",
     description:
-      "A staged multi-tenant maintenance command center for PMCs and field-service teams, focused on work queues, dispatch, proof, closeout, and reporting.",
+      "A staged multi-tenant maintenance command center for PMCs and field-service teams, focused on role lanes, dispatch, proof, closeout, and scoped visibility.",
     status: "Hosted staging / synthetic-data POC",
     type: "PMC maintenance command platform",
     audience: "PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors",
     dateModified: "2026-08-30",
     facts: [
       "Public POC and product-maturity build",
-      "Hosted Vercel web staging",
-      "FastAPI API with Neon demo data",
+      "Hosted Vercel web and API staging",
+      "FastAPI with Neon Postgres demo data",
       "Six role-aware work lanes",
       "Synthetic-data testing only",
     ],
@@ -177,9 +177,9 @@ export const workCaseStudies: WorkCaseStudy[] = [
     ],
     images: [
       {
-        title: "Work order intake with PMC context",
+        title: "Earlier work-order intake proof",
         caption:
-          "The staged admin flow links a new work order to client, property, and vendor context before the job moves downstream.",
+          "This earlier staged capture shows client, property, and vendor context being attached before work moves downstream. The latest README references a newer role-workspace screenshot set that still needs to be added to the portfolio assets.",
         src: "/images/work/techsync-ops/new-work-order.png",
         alt: "TechSync Ops new work order screen with title, description, client, property, and vendor linking controls.",
         width: 1883,
@@ -189,18 +189,18 @@ export const workCaseStudies: WorkCaseStudy[] = [
     sections: [
       {
         label: "Problem",
-        heading: "Field work breaks when dispatch has no shared operating memory.",
+        heading: "Maintenance breaks when every handoff lives in a different place.",
         body: [
-          "Maintenance work orders arrive from scattered exports, calls, messages, portals, spreadsheets, and follow-up threads. The real cost is not just intake. It is figuring out what should go first, who should take it, what the technician actually did, and whether the proof made it back to the office.",
-          "TechSync is aimed at the handoffs where maintenance operations usually break: unclear ownership, inconsistent proof, scoped client visibility, vendor context without tenant-data leakage, and managers rebuilding the story from messages, photos, spreadsheets, and memory.",
+          "Maintenance work orders arrive from scattered exports, calls, messages, portals, spreadsheets, and follow-up threads. The real cost is not just intake. It is figuring out who owns the next step, what changed, what the technician actually did, and whether the proof made it back to the office.",
+          "TechSync is aimed at the handoffs where maintenance operations usually break: unclear ownership, inconsistent proof, clients needing visibility without internal notes, vendors needing enough context without unrelated tenant data, and managers rebuilding the story from messages, photos, spreadsheets, and memory.",
         ],
       },
       {
         label: "Solution",
-        heading: "A SaaS foundation for dispatch, technician flow, and job proof.",
+        heading: "A role-lane workspace for dispatch, updates, proof, and closeout.",
         body: [
           "The POC validates the core platform shape: a FastAPI backend, Expo / React Native web client, multi-tenant organization model, Neon/Postgres demo database, JWT auth, tenant-scoped repositories, work-order ingestion, role workspaces, assignments, messages, approvals, proof, closeout exports, and operations reporting.",
-          "The product ambition is bigger than a dispatch board. Each user gets a lane, each work order keeps its operating story, and the tenant boundary stays explicit so internal operations can move without overexposing client, vendor, or tenant context.",
+          "The product direction is a calmer SaaS console: a left Work Views rail, a center queue or detail record, and a right Next Actions rail. Each user gets a lane, each work order keeps its operating story, and the tenant boundary stays explicit so internal operations can move without overexposing client, vendor, or tenant context.",
         ],
         items: [
           "Role-aware workspaces for org admin, coordinator, technician, client, viewer, and vendor users",
@@ -208,6 +208,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
           "Multi-tenant auth, organization onboarding, invitations, roles, and tenant-scoped access",
           "Persistent Work Views rail, center queue/detail surface, and right-side Next Actions rail",
           "Lane-aware search for request ID, address, status, dates, proof, approvals, and role context",
+          "Compact help bubbles that explain role guidance without turning the workspace into a wall of instructions",
           "Client and vendor visibility that stays scoped to linked work instead of internal operations",
           "Dashboard metrics, dispatch board, operations report, closeout exports, and CSV exports",
           "Synthetic seed/reset tooling plus documented hosted QA and evidence workflows",
@@ -219,7 +220,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
         body: [
           "The staged loop is live: Vercel hosts the Expo / React Native web client, Vercel hosts the FastAPI API, and Neon carries synthetic demo data for walkthroughs.",
           "The repo has real product evidence behind it: backend pytest coverage, client Jest checks, GitHub Actions CI, Gitleaks config, seeded demo data, smoke helpers, and readiness documentation.",
-          "The boundary is honest: billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
+          "The boundary is honest: real billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
         ],
       },
       {
@@ -228,7 +229,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
         body: [
           "The pain behind TechSync is familiar: a manager should not have to keep asking technicians for updates, photos, receipts, materials, and completion status just to know whether the work is moving.",
           "For the public portfolio, this belongs as an ambitious PMC SaaS POC with real architecture, hosted staging, meaningful tests, clear product direction, and honest boundaries around what still needs production polish before it carries a live operation.",
-          "Next up: finish the role walkthrough, screenshot evidence, small-width checks, accessibility notes, visual polish, staged demo evidence, and clear limitation labels before public promotion gets louder.",
+          "Next up: finish the public UX polish pass across role lanes, complete the current role-walkthrough screenshot set, check small screens and accessibility notes, keep client/vendor/technician actions practical, and keep staged synthetic testing separate from real customer onboarding.",
         ],
       },
     ],

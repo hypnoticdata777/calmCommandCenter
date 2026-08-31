@@ -41,7 +41,7 @@ The Work page now includes the first real case study: **PM Ops Map: a day-one op
 
 ### TechSync Ops
 
-TechSync Ops is the second Work case study featured on the site.
+TechSync Ops is the second Work case study featured on the site. Its portfolio copy is aligned with the latest README positioning: staged synthetic-data POC, hosted web/API loop, six role lanes, scoped visibility, proof capture, and clear production boundaries.
 
 - **Status:** Hosted staging / synthetic-data POC
 - **Type:** PMC maintenance command platform
@@ -51,7 +51,14 @@ TechSync Ops is the second Work case study featured on the site.
 - **Staging app:** [techsync-ops-web.vercel.app](https://techsync-ops-web.vercel.app)
 - **API docs:** [techsync-ops-api-lyart.vercel.app/docs](https://techsync-ops-api-lyart.vercel.app/docs)
 
-The Work page now includes the second case study: **TechSync Ops: the PMC command layer for maintenance dispatch and proof.**
+The Work page now includes the second case study: **TechSync Ops: the PMC command center for maintenance handoffs.**
+
+The newest TechSync README references four current role-workspace screenshots under `docs/screenshots/`, but those PNG files are not yet present in this portfolio checkout. Needed for the next screenshot refresh:
+
+- `techsync-readme-admin-workspace.png`
+- `techsync-readme-client-portal.png`
+- `techsync-readme-viewer-snapshot.png`
+- `techsync-readme-vendor-desk.png`
 
 ### TurnFlow Home
 
@@ -131,7 +138,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - Add the next testing tools to Lab.
 - Promote tools from Lab to Work only after they have enough proof, screenshots, and public-safe positioning.
 - Replace "Demo coming soon" once PM Ops Map, m3ldSync, and TurnFlow Home have hosted demo URLs.
-- Finish the TechSync Ops role walkthrough, broader screenshot evidence, accessibility notes, and visual polish pass before treating its hosted staging loop as public promotion.
+- Finish the TechSync Ops role walkthrough, add the four current README screenshot files to the portfolio, complete accessibility notes, and finish the visual polish pass before treating its hosted staging loop as public promotion.
 - Refresh TurnFlow Home screenshots again after the public hosted demo is final, even though the current case-study page now matches the latest README screenshot set.
 - Contact is intentionally email-first for v1; LinkedIn or a form can be added later.
 - Newsletter-style plumbing is intentionally minimal until there is a real service behind it.

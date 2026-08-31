@@ -64,8 +64,8 @@ const links = [
 
 const techSyncFacts = [
   "Public POC and product-maturity build",
-  "Hosted Vercel web staging",
-  "FastAPI API with Neon demo data",
+  "Hosted Vercel web and API staging",
+  "FastAPI with Neon Postgres demo data",
   "Six role-aware work lanes",
   "Synthetic-data testing only",
 ];
@@ -76,6 +76,7 @@ const techSyncFeatures = [
   "Multi-tenant auth, organization onboarding, invitations, roles, and tenant-scoped access",
   "Persistent Work Views rail, center queue/detail surface, and right-side Next Actions rail",
   "Lane-aware search for request ID, address, status, dates, proof, approvals, and role context",
+  "Compact help bubbles that explain role guidance without turning the workspace into a wall of instructions",
   "Client and vendor visibility that stays scoped to linked work instead of internal operations",
   "Dashboard metrics, dispatch board, operations report, closeout exports, and CSV exports",
   "Synthetic seed/reset tooling plus documented hosted QA and evidence workflows",
@@ -84,7 +85,7 @@ const techSyncFeatures = [
 const techSyncProofPoints = [
   "The staged loop is live: Vercel hosts the Expo / React Native web client, Vercel hosts the FastAPI API, and Neon carries synthetic demo data for walkthroughs.",
   "The repo has real product evidence behind it: backend pytest coverage, client Jest checks, GitHub Actions CI, Gitleaks config, seeded demo data, smoke helpers, and readiness documentation.",
-  "The boundary is honest: billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
+  "The boundary is honest: real billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
 ];
 
 const techSyncLinks = [
@@ -480,8 +481,7 @@ export function Work() {
           <div className="max-w-4xl space-y-8">
             <SectionLabel>Work / Case Study 02</SectionLabel>
             <h2 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              TechSync Ops: the PMC command layer for maintenance dispatch and
-              proof.
+              TechSync Ops: the PMC command center for maintenance handoffs.
             </h2>
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
               A multi-tenant maintenance command center for PMCs and
@@ -511,7 +511,7 @@ export function Work() {
                 </a>
               ))}
               <span className="border border-foreground/15 px-4 py-2 font-display text-sm tracking-wide text-foreground/45">
-                Role screenshot pass pending
+                New README screenshots pending upload
               </span>
             </div>
           </div>
@@ -537,7 +537,7 @@ export function Work() {
           <div className="space-y-5">
             <SectionLabel>Problem</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Field work breaks when dispatch has no shared operating memory.
+              Maintenance breaks when every handoff lives in a different place.
             </h2>
           </div>
 
@@ -545,16 +545,16 @@ export function Work() {
             <p>
               Maintenance work orders arrive from scattered exports, calls,
               messages, portals, spreadsheets, and follow-up threads. The real
-              cost is not just intake. It is figuring out what should go first,
-              who should take it, what the technician actually did, and whether
+              cost is not just intake. It is figuring out who owns the next
+              step, what changed, what the technician actually did, and whether
               the proof made it back to the office.
             </p>
             <p>
               TechSync is aimed at the handoffs where maintenance operations
-              usually break: unclear ownership, inconsistent proof, scoped
-              client visibility, vendor context without tenant-data leakage,
-              and managers rebuilding the story from messages, photos,
-              spreadsheets, and memory.
+              usually break: unclear ownership, inconsistent proof, clients
+              needing visibility without internal notes, vendors needing enough
+              context without unrelated tenant data, and managers rebuilding
+              the story from messages, photos, spreadsheets, and memory.
             </p>
           </div>
         </motion.section>
@@ -569,7 +569,7 @@ export function Work() {
           <div className="space-y-5">
             <SectionLabel>Solution</SectionLabel>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              A SaaS foundation for dispatch, technician flow, and job proof.
+              A role-lane workspace for dispatch, updates, proof, and closeout.
             </h2>
           </div>
 
@@ -584,10 +584,12 @@ export function Work() {
                 operations reporting.
               </p>
               <p className="text-foreground/90">
-                The product ambition is bigger than a dispatch board. Each user
-                gets a lane, each work order keeps its operating story, and the
-                tenant boundary stays explicit so internal operations can move
-                without overexposing client, vendor, or tenant context.
+                The product direction is a calmer SaaS console: a left Work
+                Views rail, a center queue or detail record, and a right Next
+                Actions rail. Each user gets a lane, each work order keeps its
+                operating story, and the tenant boundary stays explicit so
+                internal operations can move without overexposing client,
+                vendor, or tenant context.
               </p>
             </div>
 
@@ -658,10 +660,11 @@ export function Work() {
               needs production polish before it carries a live operation.
             </p>
             <p className="text-foreground/90">
-              Next up: finish the role walkthrough, screenshot evidence,
-              small-width checks, accessibility notes, visual polish, staged
-              demo evidence, and clear limitation labels before public
-              promotion gets louder.
+              Next up: finish the public UX polish pass across role lanes,
+              complete the current role-walkthrough screenshot set, check small
+              screens and accessibility notes, keep client/vendor/technician
+              actions practical, and keep staged synthetic testing separate from
+              real customer onboarding.
             </p>
           </div>
         </motion.section>
