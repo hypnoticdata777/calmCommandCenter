@@ -791,6 +791,7 @@ export const journalEntries = [
       `It is me.`,
       `So I did what any rational developer would do when faced with a bloated, legacy architecture.`,
       `I deleted my evening schedule, opened a blank text file, and started rewriting myself from scratch.`,
+      `Next Field Note: The build looked fine from my desk. Unfortunately, the work was happening somewhere else.`,
     ],
     relatedLinks: [
       {
@@ -863,6 +864,7 @@ export const journalStrongLines = new Set([
   "The source of bad code is undocumented requirements. And the source of a miserable Thursday is not the job. It is the undocumented, undisciplined habits we let run wild in our own lives.",
   "The most complicated system I am trying to engineer is not TechSync.",
   "It is me.",
+  "Next Field Note: The build looked fine from my desk. Unfortunately, the work was happening somewhere else.",
 ]);
 
 export function Journal() {
