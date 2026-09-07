@@ -22,11 +22,11 @@ The first ten SEO organization passes are complete.
 - **V5 screenshot SEO:** copied portfolio-safe Work screenshots into `public/images/work/...`, replaced external PM Ops Map screenshot URLs with local assets, added image alt text and dimensions, and aligned TechSync Ops and TurnFlow Home with their current README screenshot sets.
 - **V6 internal linking:** connected Field Notes, Lab experiments, and Work case studies with related-link sections plus related-page schema hints so visitors and crawlers can follow the Journal -> Lab -> Work loop.
 - **V7 live validation:** checked the deployed site for route health, sitemap availability, robots availability, share-card availability, live bundle freshness, and the remaining SPA metadata caveat.
-- **V8 static SEO prerender:** added a build-time route generator that creates static HTML files for all 14 public sitemap routes with route-specific metadata, canonical URLs, structured data, fallback content, and internal links before React loads.
-- **V9 metadata validation:** added a reusable live SEO validator, confirmed all 14 sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
+- **V8 static SEO prerender:** added a build-time route generator that creates static HTML files for all public sitemap routes with route-specific metadata, canonical URLs, structured data, fallback content, and internal links before React loads.
+- **V9 metadata validation:** added a reusable live SEO validator, confirmed all sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
 - **V10 breadcrumbs and performance:** added BreadcrumbList structured data across non-home routes, upgraded the live SEO validator to enforce breadcrumb quality, added a performance budget script, and created a public content release checklist.
 
-Current SEO status: V10 is live. All 14 sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages.
+Current SEO status: V10 is live and the current content set now targets 15 sitemap routes after Field Note 6. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md), [`docs/seo/performance-and-breadcrumbs-2026-08-31.md`](docs/seo/performance-and-breadcrumbs-2026-08-31.md), and [`docs/seo/content-release-checklist.md`](docs/seo/content-release-checklist.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
@@ -115,6 +115,7 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/journal/the-picture-frame-was-real` | Field Note 3 article page |
 | `/journal/complete-is-an-astonishingly-ambitious-word` | Field Note 4 article page |
 | `/journal/the-silent-killer-of-property-management-operations` | Field Note 5 article page |
+| `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom` | Field Note 6 article page |
 | `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
 | `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
 | `/work/pm-ops-map` | PM Ops Map case study page |

@@ -19,6 +19,10 @@ const expectedTypesByPath = new Map([
     "/journal/the-silent-killer-of-property-management-operations",
     ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
   ],
+  [
+    "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
   ["/lab", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
   ["/work", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
   ["/work/pm-ops-map", ["WebSite", "Person", "Article", "BreadcrumbList"]],
@@ -222,7 +226,7 @@ async function main() {
   const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
   const sitemapIssues = [];
 
-  assert(urls.length === 14, `Expected 14 sitemap URLs, found ${urls.length}`, sitemapIssues);
+  assert(urls.length === 15, `Expected 15 sitemap URLs, found ${urls.length}`, sitemapIssues);
   assert(new Set(urls).size === urls.length, "Sitemap contains duplicate URLs", sitemapIssues);
 
   const robots = await fetchText(`${siteUrl}/robots.txt`);

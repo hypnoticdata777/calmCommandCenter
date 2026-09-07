@@ -117,6 +117,23 @@ const journalEntries = [
       "/work/pm-ops-map",
     ],
   },
+  {
+    label: "Field Note 6",
+    path: "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
+    title:
+      "Field Note 6: Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom | h777 Journal",
+    headline: "Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom",
+    description:
+      "A field note about TechSync role polish, requirements discipline, Git friction, and the uncomfortable realization that the hardest legacy system to refactor might be yourself.",
+    section: "Builder",
+    date: "2026-09-07",
+    related: [
+      "/work/techsync-ops",
+      "/journal/the-api-went-dark",
+      "/journal/the-silent-killer-of-property-management-operations",
+      "/lab",
+    ],
+  },
 ];
 
 const workStudies = [

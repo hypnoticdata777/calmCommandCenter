@@ -1,10 +1,10 @@
 # h777 SEO Progress Log
 
-Last updated: 2026-08-31
+Last updated: 2026-09-07
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, live-validated static SEO HTML for all 14 public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, static SEO HTML generation for all 15 current public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
 
 ## Completed
 
@@ -39,6 +39,7 @@ Built and shipped:
   - `/journal/the-picture-frame-was-real`
   - `/journal/complete-is-an-astonishingly-ambitious-word`
   - `/journal/the-silent-killer-of-property-management-operations`
+  - `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom`
 
 Commit: `cf8b2ea Add dedicated journal article routes`
 
@@ -215,6 +216,18 @@ Local performance snapshot:
 - Largest Work image: `public/images/work/pm-ops-map/dashboard.png` at `254.5 KB`.
 
 Commit: `Add SEO v10 breadcrumbs and performance budget`
+
+### 2026-09-07 - Field Note 6 Content Release
+
+Built and prepared:
+
+- Added Field Note 6, `Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom`, as a published Journal entry.
+- Added the dedicated route `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom`.
+- Added article metadata, `BlogPosting` structured data, breadcrumb coverage, listen-control support, and related links through the existing Journal system.
+- Added the new URL to `public/sitemap.xml`.
+- Updated `scripts/prerender-seo.mjs` so the static SEO build emits route-specific HTML for the new article.
+- Updated `scripts/validate-seo.mjs` so the live validator expects 15 sitemap routes and validates the new Field Note route.
+- Updated README route documentation.
 
 ## Challenges
 
