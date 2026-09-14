@@ -1,10 +1,10 @@
 # h777 SEO Progress Log
 
-Last updated: 2026-09-07
+Last updated: 2026-09-14
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, static SEO HTML generation for all 15 current public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
+The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, static SEO HTML generation for all 16 current public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
 
 ## Completed
 
@@ -40,6 +40,7 @@ Built and shipped:
   - `/journal/complete-is-an-astonishingly-ambitious-word`
   - `/journal/the-silent-killer-of-property-management-operations`
   - `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom`
+  - `/journal/the-ghost-house-and-the-math-boogeyman`
 
 Commit: `cf8b2ea Add dedicated journal article routes`
 
@@ -227,6 +228,19 @@ Built and prepared:
 - Added the new URL to `public/sitemap.xml`.
 - Updated `scripts/prerender-seo.mjs` so the static SEO build emits route-specific HTML for the new article.
 - Updated `scripts/validate-seo.mjs` so the live validator expects 15 sitemap routes and validates the new Field Note route.
+- Updated README route documentation.
+
+### 2026-09-14 - Field Note 7 Content Release
+
+Built and prepared:
+
+- Added Field Note 7, `The Ghost House and the Math Boogeyman`, as a published Journal entry.
+- Added the dedicated route `/journal/the-ghost-house-and-the-math-boogeyman`.
+- Preserved the supplied article wording while fitting it into the existing Journal page structure, excerpt model, emphasis treatment, listen-control support, and related-link system.
+- Added article metadata, `BlogPosting` structured data, breadcrumb coverage, and related links through the existing Journal system.
+- Added the new URL to `public/sitemap.xml` and updated the Journal index `lastmod`.
+- Updated `scripts/prerender-seo.mjs` so the static SEO build emits route-specific HTML for the new article.
+- Updated `scripts/validate-seo.mjs` so the live validator expects 16 sitemap routes and validates the new Field Note route.
 - Updated README route documentation.
 
 ## Challenges

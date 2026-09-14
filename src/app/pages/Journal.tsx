@@ -816,6 +816,60 @@ export const journalEntries = [
       },
     ],
   },
+  {
+    label: "Field Note 7",
+    slug: "the-ghost-house-and-the-math-boogeyman",
+    title: "The Ghost House and the Math Boogeyman",
+    readTime: "4 min read",
+    type: "Builder",
+    date: "Sep 14, 2026",
+    dateISO: "2026-09-14",
+    excerpt:
+      "The build looked fine from my desk. Fortunately, as you'll see, the real work was happening somewhere else entirely.",
+    comingSoon: false,
+    sections: [
+      `The build looked fine from my desk. Fortunately, as you'll see, the real work was happening somewhere else entirely.`,
+      `Nine fourmesters into Computer Systems Engineering, and if I'm being honest, this has been the recurring theme of the whole run. Term after term, I've had to sit down and stare directly into the abyss. Why, you ask? Weeell... because of numbers. High-level math, to be exact.`,
+      `There's a rule in personal development I find genuinely useful: if your goals don't terrify you at least a little, they aren't big enough. I knew becoming a top-tier systems engineer meant facing the one subject I'd been quietly avoiding for years.`,
+      `So there I've been, fourmester after fourmester: a guy in his thirties, raising his hand in class to ask the kind of painfully obvious questions that make you want to evaporate on the spot.`,
+      `But somewhere in the sheer repetition, one problem, then the next, then the next, term after term, a veil started to lift.`,
+      `I realized I wasn't just looking at math. I was looking at life.`,
+      `You don't solve a complex equation by panicking. You break it down. You sort the noise into buckets. You grab the edges of the problem and iterate your way to zero.`,
+      `Suddenly, the math looked exactly like the operational bottlenecks I fix at work. Which perfectly explains what came out of my last build session with the \`h777.dev\` portfolio.`,
+      `My website was a React Single Page Application. To a human, it looked fantastic. To a search engine? It was like a homeowner trying to sell a beautiful, fully-furnished house, except the house is invisible from the street and the address is written in invisible ink.`,
+      `Google would show up, look around, shrug, and leave.`,
+      `If you want a clean system, you have to clean while you cook. So that's what the session turned into: building the SEO foundation.`,
+      `We un-stapled the Journal page and gave every Field Note its own apartment, mailbox, and doorbell. We stopped relying on a generic social preview and built a proper Open Graph image, because when you introduce yourself to the internet, you should probably wear a tailored suit, not a temporary jacket.`,
+      `React SEO is like a restaurant where the food is Michelin-star quality, but the waiter doesn't hand you the menu until you've already been sitting there for ten minutes. We needed to put the menu on the table first.`,
+      `And that's when it really hit me: iterating a website's architecture is exactly like iterating your own beliefs. You break them down, you test the edges, and you slowly work your way toward the truth.`,
+      `You break down the code. You break down the math. But the real product you're iterating is your own mind.`,
+      `I'm getting decent grades, and the site is finally indexing. But the most important build in this whole stretch didn't happen in VS Code. It happened in my head.`,
+      `I'm not just engineering a portfolio. I'm engineering my own capacity to handle the unknown.`,
+      `Next week: the stomach-trembling weeks. The ones where nobody can tell you if you're moving forward or just moving. Spoiler, headcount won't tell you either.`,
+    ],
+    relatedLinks: [
+      {
+        label: "Journal",
+        title: "Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom",
+        href: "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
+      },
+      {
+        label: "Work",
+        title: "TechSync Ops: the PMC command center for maintenance handoffs",
+        href: "/work/techsync-ops",
+      },
+      {
+        label: "Journal",
+        title: "The Silent Killer of Property Management Operations",
+        href: "/journal/the-silent-killer-of-property-management-operations",
+      },
+      {
+        label: "Lab",
+        title: "Where experiments get stress-tested",
+        href: "/lab",
+      },
+    ],
+  },
 ];
 
 export const journalSubheads = new Set([
@@ -865,6 +919,10 @@ export const journalStrongLines = new Set([
   "The most complicated system I am trying to engineer is not TechSync.",
   "It is me.",
   "Next Field Note: The build looked fine from my desk. Unfortunately, the work was happening somewhere else.",
+  "The build looked fine from my desk. Fortunately, as you'll see, the real work was happening somewhere else entirely.",
+  "You break down the code. You break down the math. But the real product you're iterating is your own mind.",
+  "I'm not just engineering a portfolio. I'm engineering my own capacity to handle the unknown.",
+  "Next week: the stomach-trembling weeks. The ones where nobody can tell you if you're moving forward or just moving. Spoiler, headcount won't tell you either.",
 ]);
 
 export function Journal() {

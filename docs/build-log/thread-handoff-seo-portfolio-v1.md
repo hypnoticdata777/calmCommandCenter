@@ -83,6 +83,10 @@ Published notes:
    - Core idea: role design, requirements discipline, and Git friction all point back to the harder personal system underneath the build.
    - Route: `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom`
 
+7. Field Note 7: The Ghost House and the Math Boogeyman
+   - Core idea: math, SEO architecture, and personal growth all become the same iteration loop: break down the unknown, test the edges, and build capacity.
+   - Route: `/journal/the-ghost-house-and-the-math-boogeyman`
+
 The arc so far:
 
 - FN1: building is messy and humbling.
@@ -91,6 +95,7 @@ The arc so far:
 - FN4: completion requires inspection.
 - FN5: operations break when unverified information travels as truth.
 - FN6: disciplined systems start with clearer requirements, role boundaries, and personal operating habits.
+- FN7: the same decomposition pattern shows up in math, SEO, and the internal work of becoming the kind of builder who can face unknown systems.
 
 ## Voice Rules
 
@@ -218,7 +223,7 @@ Commits:
 
 ## Current Public Routes In Sitemap
 
-The sitemap currently contains 15 public routes:
+The sitemap currently contains 16 public routes:
 
 - `/`
 - `/journal`
@@ -228,6 +233,7 @@ The sitemap currently contains 15 public routes:
 - `/journal/complete-is-an-astonishingly-ambitious-word`
 - `/journal/the-silent-killer-of-property-management-operations`
 - `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom`
+- `/journal/the-ghost-house-and-the-math-boogeyman`
 - `/lab`
 - `/work`
 - `/work/pm-ops-map`

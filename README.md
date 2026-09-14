@@ -26,7 +26,7 @@ The first ten SEO organization passes are complete.
 - **V9 metadata validation:** added a reusable live SEO validator, confirmed all sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
 - **V10 breadcrumbs and performance:** added BreadcrumbList structured data across non-home routes, upgraded the live SEO validator to enforce breadcrumb quality, added a performance budget script, and created a public content release checklist.
 
-Current SEO status: V10 is live and the current content set now targets 15 sitemap routes after Field Note 6. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
+Current SEO status: V10 is live and the current content set now targets 16 sitemap routes after Field Note 7. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md), [`docs/seo/performance-and-breadcrumbs-2026-08-31.md`](docs/seo/performance-and-breadcrumbs-2026-08-31.md), and [`docs/seo/content-release-checklist.md`](docs/seo/content-release-checklist.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
@@ -116,6 +116,7 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/journal/complete-is-an-astonishingly-ambitious-word` | Field Note 4 article page |
 | `/journal/the-silent-killer-of-property-management-operations` | Field Note 5 article page |
 | `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom` | Field Note 6 article page |
+| `/journal/the-ghost-house-and-the-math-boogeyman` | Field Note 7 article page |
 | `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
 | `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
 | `/work/pm-ops-map` | PM Ops Map case study page |

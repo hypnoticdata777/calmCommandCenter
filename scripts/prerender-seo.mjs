@@ -134,6 +134,22 @@ const journalEntries = [
       "/lab",
     ],
   },
+  {
+    label: "Field Note 7",
+    path: "/journal/the-ghost-house-and-the-math-boogeyman",
+    title: "Field Note 7: The Ghost House and the Math Boogeyman | h777 Journal",
+    headline: "The Ghost House and the Math Boogeyman",
+    description:
+      "The build looked fine from my desk. Fortunately, as you'll see, the real work was happening somewhere else entirely.",
+    section: "Builder",
+    date: "2026-09-14",
+    related: [
+      "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
+      "/work/techsync-ops",
+      "/journal/the-silent-killer-of-property-management-operations",
+      "/lab",
+    ],
+  },
 ];
 
 const workStudies = [
