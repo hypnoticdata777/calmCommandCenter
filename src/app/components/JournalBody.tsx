@@ -11,6 +11,8 @@ export function JournalBody({
 }: JournalBodyProps) {
   return (
     <div className="max-w-5xl space-y-7 pb-12">
+      {/* The article body stays as plain string content. The two Sets decide
+          which exact lines become headings or emphasized paragraphs. */}
       {sections.map((section, index) =>
         subheads.has(section) ? (
           <h3

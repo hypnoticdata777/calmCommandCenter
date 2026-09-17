@@ -27,6 +27,8 @@ function getPreviousAndNext(slug: string) {
 
 export function WorkCaseStudy() {
   const { slug } = useParams();
+  // Case studies are data-driven: the route slug chooses which Work record
+  // populates the reusable page template.
   const study = workCaseStudies.find((candidate) => candidate.slug === slug);
 
   if (!study) {
@@ -36,6 +38,7 @@ export function WorkCaseStudy() {
   const { previous, next } = getPreviousAndNext(study.slug);
   const canonicalPath = `/work/${study.slug}`;
   const caseStudyUrl = `https://h777.dev${canonicalPath}`;
+  // The visible related links double as SEO relationship hints.
   const relatedSchema = study.relatedLinks?.map((link) => ({
     "@type": "WebPage",
     name: link.title,

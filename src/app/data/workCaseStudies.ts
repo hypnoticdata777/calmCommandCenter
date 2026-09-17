@@ -43,6 +43,9 @@ export type WorkCaseStudy = {
   relatedLinks?: CaseStudyRelatedLink[];
 };
 
+// Source of truth for dedicated /work/:slug pages. Keeping each case study as
+// structured data lets one template render consistent facts, links, sections,
+// screenshots, related links, and SEO metadata.
 export const workCaseStudies: WorkCaseStudy[] = [
   {
     label: "Work / Case Study 01",

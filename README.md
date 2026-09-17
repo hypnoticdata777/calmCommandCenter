@@ -30,6 +30,8 @@ Current SEO status: V10 is live and the current content set now targets 16 sitem
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md), [`docs/seo/performance-and-breadcrumbs-2026-08-31.md`](docs/seo/performance-and-breadcrumbs-2026-08-31.md), and [`docs/seo/content-release-checklist.md`](docs/seo/content-release-checklist.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
+For a plain-English technical walkthrough, start with [`docs/architecture/site-walkthrough.md`](docs/architecture/site-walkthrough.md). For operators, React hooks, route parameters, structured data, and common JavaScript/TypeScript patterns used in this repo, use [`docs/architecture/code-glossary.md`](docs/architecture/code-glossary.md). To practice explaining the repo out loud, use [`docs/architecture/explain-the-code-practice-guide.md`](docs/architecture/explain-the-code-practice-guide.md).
+
 ## Current Work
 
 ### PM Ops Map

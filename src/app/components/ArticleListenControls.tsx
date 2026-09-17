@@ -24,6 +24,8 @@ export function ArticleListenControls({
 }: ArticleListenControlsProps) {
   const [status, setStatus] = useState<ListenStatus>("idle");
   const [currentChunk, setCurrentChunk] = useState(0);
+  // Speech synthesis reads one chunk at a time. Chunking by title/section makes
+  // pause, stop, and progress more reliable than sending one giant string.
   const chunks = useMemo(
     () => [title, ...sections].map(normalizeSpeechText).filter(Boolean),
     [sections, title]

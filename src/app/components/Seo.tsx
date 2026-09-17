@@ -6,6 +6,8 @@ const DEFAULT_IMAGE = "/og.png";
 const DEFAULT_IMAGE_ALT =
   "h777 property management operations tools and field notes";
 
+// Central contract for page metadata. Every route tells Seo what the browser,
+// social previews, and search engines should know about the current page.
 type SeoProps = {
   title: string;
   description: string;
@@ -32,6 +34,8 @@ function absoluteUrl(path: string) {
   return new URL(path, SITE_URL).toString();
 }
 
+// These helpers update existing tags when they exist and create them when they
+// do not, so client-side route changes keep metadata in sync without duplicates.
 function setNamedMeta(name: string, content: string) {
   let tag = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);
 
@@ -100,6 +104,8 @@ function normalizeSchema(schema: Record<string, unknown> | Record<string, unknow
   return (Array.isArray(schema) ? schema : [schema]).map(stripContext);
 }
 
+// Breadcrumb schema is built from the same page hierarchy used by the UI.
+// The live validator checks this so nested routes stay understandable to Google.
 function buildBreadcrumbSchema(
   breadcrumbs: NonNullable<SeoProps["breadcrumbs"]>
 ) {
@@ -132,6 +138,8 @@ export function Seo({
   schema,
   breadcrumbs,
 }: SeoProps) {
+  // React changes screens without a full page reload, so metadata has to be
+  // refreshed as a side effect whenever the route props change.
   useEffect(() => {
     const url = absoluteUrl(path);
     const imageUrl = absoluteUrl(image);

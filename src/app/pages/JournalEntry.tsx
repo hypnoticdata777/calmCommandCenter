@@ -22,6 +22,8 @@ function getPreviousAndNext(slug: string) {
 
 export function JournalEntry() {
   const { slug } = useParams();
+  // The URL slug is the lookup key. This keeps one reusable route component
+  // serving every published Field Note instead of creating a file per article.
   const entry = journalEntries.find(
     (candidate) => candidate.slug === slug && !candidate.comingSoon
   );
@@ -32,6 +34,8 @@ export function JournalEntry() {
 
   const { previous, next } = getPreviousAndNext(entry.slug);
   const articleUrl = `https://h777.dev/journal/${entry.slug}`;
+  // Related links are useful for readers, and the same relationships are also
+  // emitted as structured data so crawlers can see the content graph.
   const relatedSchema = entry.relatedLinks?.map((link) => ({
     "@type": "WebPage",
     name: link.title,
