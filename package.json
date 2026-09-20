@@ -13,10 +13,12 @@
     "build:check": "npm run typecheck && npm run build",
     "dev": "vite",
     "dev:local": "vite --host 127.0.0.1 --open /",
+    "lint": "node scripts/lint-source.mjs",
     "prerender:seo": "node scripts/prerender-seo.mjs",
     "preview": "vite preview --host 127.0.0.1 --open /",
     "serve": "npm run preview",
     "start": "npm run dev:local",
+    "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.node.json --noEmit",
     "validate:performance": "node scripts/validate-performance.mjs",
     "validate:seo": "node scripts/validate-seo.mjs"
