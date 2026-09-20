@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createServer } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -34,192 +35,65 @@ const websiteSchema = {
     "Property management operations tools, field notes, workflow experiments, and PMC consulting.",
 };
 
-const journalEntries = [
-  {
-    label: "Field Note 1",
-    path: "/journal/the-hackathon-blew-a-gasket",
-    title:
-      "Field Note 1: The Hackathon Blew a Gasket. Page Seven Performed the Autopsy. | h777 Journal",
-    headline:
-      "The Hackathon Blew a Gasket. Page Seven Performed the Autopsy.",
-    description:
-      "A field note about an ambitious hackathon build, scope creep, requirements, and the moment h777 started becoming a serious tool portfolio.",
-    section: "Builder",
-    date: "2026-08-12",
-    related: [
-      "/work/techsync-ops",
-      "/work/turnflow-home",
-      "/lab",
-    ],
-  },
-  {
-    label: "Field Note 2",
-    path: "/journal/the-api-went-dark",
-    title:
-      "Field Note 2: The API Went Dark For a Minute. Then It Said 'I Was Here The Whole Time.' | h777 Journal",
-    headline:
-      "The API Went Dark For a Minute. Then It Said 'I Was Here The Whole Time.'",
-    description:
-      "A field note about TechSync leaving localhost, staging exposing the truth, and why deployed software teaches different lessons than a local build.",
-    section: "Builder",
-    date: "2026-08-19",
-    related: [
-      "/work/techsync-ops",
-      "/journal/the-silent-killer-of-property-management-operations",
-      "/lab",
-    ],
-  },
-  {
-    label: "Field Note 3",
-    path: "/journal/the-picture-frame-was-real",
-    title:
-      "Field Note 3: The Picture Frame Was Real. The Picture Wasn't. | h777 Journal",
-    headline: "The Picture Frame Was Real. The Picture Wasn't.",
-    description:
-      "A field note about TurnFlow Home, missing screenshots, proof, transparency, and the difference between a frame around a thing and the thing itself.",
-    section: "Builder",
-    date: "2026-08-22",
-    related: [
-      "/work/turnflow-home",
-      "/journal/complete-is-an-astonishingly-ambitious-word",
-      "/work",
-    ],
-  },
-  {
-    label: "Field Note 4",
-    path: "/journal/complete-is-an-astonishingly-ambitious-word",
-    title:
-      "Field Note 4: Complete Is an Astonishingly Ambitious Word. | h777 Journal",
-    headline: "Complete Is an Astonishingly Ambitious Word.",
-    description:
-      "A field note about TurnFlow Home, maintenance proof, remote ownership, receipts, and why complete should mean the work can survive being looked at.",
-    section: "Builder",
-    date: "2026-08-26",
-    related: [
-      "/work/turnflow-home",
-      "/work/techsync-ops",
-      "/journal/the-silent-killer-of-property-management-operations",
-    ],
-  },
-  {
-    label: "Field Note 5",
-    path: "/journal/the-silent-killer-of-property-management-operations",
-    title:
-      "Field Note 5: The Silent Killer of Property Management Operations | h777 Journal",
-    headline: "The Silent Killer of Property Management Operations",
-    description:
-      "A field note about unverified information becoming operational truth, why property management handoffs drift, and how to make truth checkable before it travels.",
-    section: "Operations",
-    date: "2026-08-31",
-    related: [
-      "/work/techsync-ops",
-      "/work/turnflow-home",
-      "/work/pm-ops-map",
-    ],
-  },
-  {
-    label: "Field Note 6",
-    path: "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
-    title:
-      "Field Note 6: Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom | h777 Journal",
-    headline: "Thursday Night Chaos, Git Bouncers, and the Illusion of Freedom",
-    description:
-      "A field note about TechSync role polish, requirements discipline, Git friction, and the uncomfortable realization that the hardest legacy system to refactor might be yourself.",
-    section: "Builder",
-    date: "2026-09-07",
-    related: [
-      "/work/techsync-ops",
-      "/journal/the-api-went-dark",
-      "/journal/the-silent-killer-of-property-management-operations",
-      "/lab",
-    ],
-  },
-  {
-    label: "Field Note 7",
-    path: "/journal/the-ghost-house-and-the-math-boogeyman",
-    title: "Field Note 7: The Ghost House and the Math Boogeyman | h777 Journal",
-    headline: "The Ghost House and the Math Boogeyman",
-    description:
-      "The build looked fine from my desk. Fortunately, as you'll see, the real work was happening somewhere else entirely.",
-    section: "Builder",
-    date: "2026-09-14",
-    related: [
-      "/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom",
-      "/work/techsync-ops",
-      "/journal/the-silent-killer-of-property-management-operations",
-      "/lab",
-    ],
-  },
-];
+let routes = [];
 
-const workStudies = [
-  {
-    path: "/work/pm-ops-map",
-    title: "PM Ops Map Case Study | Property Management Operations Setup | h777 Work",
-    headline:
-      "PM Ops Map: a day-one operating system for new property management companies.",
-    description:
-      "A free, open-source browser app that helps new property management companies set up departments, tasks, ownership, maintenance tracking, and operations documentation on day one.",
-    type: "Browser app",
-    audience: "New PMCs, owners, and operations managers",
-    image: "/images/work/pm-ops-map/dashboard.png",
-    imageAlt:
-      "PM Ops Map dashboard showing launch readiness, owned tasks, team roster, and open repairs.",
-    imageWidth: 1280,
-    imageHeight: 860,
-    dateModified: "2026-08-31",
-    related: [
-      "/journal/the-silent-killer-of-property-management-operations",
-      "/lab",
-      "/work/techsync-ops",
-    ],
-  },
-  {
-    path: "/work/techsync-ops",
-    title: "TechSync Ops Case Study | Maintenance Dispatch and Proof | h777 Work",
-    headline: "TechSync Ops: the PMC command center for maintenance handoffs.",
-    description:
-      "A staged multi-tenant maintenance command center for PMCs and field-service teams, focused on role lanes, dispatch, proof, closeout, and scoped visibility.",
-    type: "PMC maintenance command platform",
-    audience:
-      "PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors",
-    image: "/images/work/techsync-ops/admin-workspace.png",
-    imageAlt:
-      "TechSync Ops admin workspace with Work Views, Search, work-order cards, and Next Actions.",
-    imageWidth: 1600,
-    imageHeight: 920,
-    dateModified: "2026-08-31",
-    related: [
-      "/journal/the-api-went-dark",
-      "/journal/the-silent-killer-of-property-management-operations",
-      "/work/turnflow-home",
-    ],
-  },
-  {
-    path: "/work/turnflow-home",
-    title: "TurnFlow Home Case Study | Homeowner Maintenance Records | h777 Work",
-    headline:
-      "TurnFlow Home: maintenance history for homeowners who want the proof.",
-    description:
-      "A homeowner-first maintenance workspace for repair history, proof, costs, documents, reminders, scoped help, and clearer property care records.",
-    type: "Homeowner maintenance workspace",
-    audience:
-      "Homeowners, small landlords, rental hosts, vendors, and trusted helpers",
-    image: "/images/work/turnflow-home/dashboard.png",
-    imageAlt:
-      "TurnFlow Home dashboard showing maintenance requests, homeowner value cards, filters, and repair status.",
-    imageWidth: 1440,
-    imageHeight: 900,
-    dateModified: "2026-08-31",
-    related: [
-      "/journal/the-picture-frame-was-real",
-      "/journal/complete-is-an-astonishingly-ambitious-word",
-      "/journal/the-silent-killer-of-property-management-operations",
-    ],
-  },
-];
+async function loadAppData() {
+  const vite = await createServer({
+    appType: "custom",
+    logLevel: "error",
+    server: { middlewareMode: true },
+  });
 
-const routes = [
+  try {
+    const [{ journalEntries }, { workCaseStudies }] = await Promise.all([
+      vite.ssrLoadModule("/src/app/pages/Journal.tsx"),
+      vite.ssrLoadModule("/src/app/data/workCaseStudies.ts"),
+    ]);
+
+    return { journalEntries, workCaseStudies };
+  } finally {
+    await vite.close();
+  }
+}
+
+function buildJournalRoutes(journalEntries) {
+  return journalEntries
+    .filter((entry) => !entry.comingSoon)
+    .map((entry) => ({
+      label: entry.label,
+      path: `/journal/${entry.slug}`,
+      title: `${entry.label}: ${entry.title} | h777 Journal`,
+      headline: entry.title,
+      description: entry.excerpt,
+      section: entry.type,
+      date: entry.dateISO,
+      related: (entry.relatedLinks ?? []).map((link) => link.href),
+    }));
+}
+
+function buildWorkRoutes(workCaseStudies) {
+  return workCaseStudies.map((study) => {
+    const heroImage = study.images?.[0];
+
+    return {
+      path: `/work/${study.slug}`,
+      title: `${study.seoTitle} | h777 Work`,
+      headline: study.title,
+      description: study.description,
+      type: study.type,
+      audience: study.audience,
+      image: heroImage?.src,
+      imageAlt: heroImage?.alt,
+      imageWidth: heroImage?.width,
+      imageHeight: heroImage?.height,
+      dateModified: study.dateModified,
+      related: (study.relatedLinks ?? []).map((link) => link.href),
+    };
+  });
+}
+
+function buildRoutes(journalEntries, workStudies) {
+  return [
   {
     path: "/",
     title: "h777 | Property Management Operations Tools",
@@ -440,7 +314,8 @@ const routes = [
       },
     ],
   },
-];
+  ];
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -666,6 +541,12 @@ function renderRouteHtml(template, route, assetHead) {
 }
 
 async function main() {
+  const { journalEntries, workCaseStudies } = await loadAppData();
+  routes = buildRoutes(
+    buildJournalRoutes(journalEntries),
+    buildWorkRoutes(workCaseStudies)
+  );
+
   const templatePath = path.join(distDir, "index.html");
   const template = await readFile(templatePath, "utf8");
   const assetHead = extractAssetHead(template);
