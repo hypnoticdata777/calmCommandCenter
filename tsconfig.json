@@ -1,119 +1,23 @@
-// ============================================================================
-// QUICK REFERENCE: TYPESCRIPT COMPILER CONFIGURATION
-// ============================================================================
-// | SYNTAX / KEY            | DESCRIPTION                                                                 |
-// |-------------------------|-----------------------------------------------------------------------------|
-// | target                  | The JavaScript version the source code is transpiled into (e.g., ES2020).    |
-// | lib                     | Built-in API definitions available during development (Browser vs Node).    |
-// | module                  | The module system used for imports/exports (e.g., ESNext for Vite).         |
-// | skipLibCheck            | Skips type-checking of .d.ts files in node_modules to speed up builds.      |
-// | moduleResolution        | The algorithm used to locate modules; "bundler" is optimized for Vite/Web.  |
-// | noEmit                  | Ensures TS only handles type checking, leaving file generation to Vite.     |
-// | jsx                     | Configures how JSX/TSX files are transformed into standard JavaScript.      |
-// | strict                  | Enables a suite of type-checking behaviors for maximum code reliability.    |
-// | paths                   | Configures "Aliases" to avoid messy relative imports (../../).              |
-// | include                 | Specifies which directories the TypeScript compiler should monitor.          |
-// | references              | Links to other tsconfig files for project-specific environments.            |
-// ============================================================================
-
-// ============================================================================
-// FILE DOCUMENTATION: tsconfig.json
-// ============================================================================
-// FILE NAME: tsconfig.json
-//
-// WHAT THIS FILE DOES:
-// This is the core configuration for the TypeScript compiler (tsc). It defines 
-// the rules, constraints, and environment for your application's source code. 
-// It acts as the "source of truth" for how types are validated in the /src folder.
-//
-// WHAT THE USER SEES / WHAT THE SYSTEM USES IT FOR:
-// - The Developer (Carlos): Sees real-time error underlining in the IDE (VS Code).
-// - The System (Vite): Uses these settings to understand how to process TSX/TS 
-//   files before bundling them for the browser.
-//
-// EXECUTION FLOW:
-// 1. IDE/Compiler initializes and reads this configuration.
-// 2. It scans the files defined in "include".
-// 3. It applies strictness rules and path mappings to resolve imports.
-// 4. If errors are found, the build process (or IDE) alerts the developer.
-//
-// MAIN SECTIONS:
-// - compilerOptions: Detailed technical settings for the TS engine.
-// - include: Boundary setting for the compiler's scope.
-// - references: Environment isolation (linking Node-specific configs).
-// ============================================================================
-
 {
-  // ============================================================
-  // SECTION: COMPILER OPTIONS
-  // ============================================================
+  // PROJECT BEACON
+  // TypeScript checks only src/. Vite still owns the browser build.
+  // Keep this alias paired with vite.config.ts so "@" always means src/.
   "compilerOptions": {
-    // target: a qué versión de JavaScript se convierte el código.
-    // ES2020 es compatible con todos los navegadores modernos.
     "target": "ES2020",
-
-    // Usa la forma moderna de definir propiedades en clases JavaScript.
-    // Necesario para compatibilidad con el estándar ES2022+.
     "useDefineForClassFields": true,
-
-    // lib: qué APIs del entorno puede usar el código.
-    // ES2020 = métodos modernos de JS (Promise, Array, etc.)
-    // DOM = APIs del navegador (document, window, fetch, etc.)
-    // DOM.Iterable = permite recorrer con for...of elementos del DOM
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-
-    // module: qué sistema de módulos usar para import/export.
-    // ESNext = la sintaxis más moderna (import/export nativo).
     "module": "ESNext",
-
-    // Omite la verificación de tipos en librerías externas (.d.ts).
-    // Acelera mucho la compilación sin sacrificar seguridad en tu código.
     "skipLibCheck": true,
-
-    // Cómo TypeScript busca los archivos al hacer un import.
-    // "bundler" = modo optimizado para Vite y otros bundlers modernos.
     "moduleResolution": "bundler",
-
-    // Permite escribir import "./archivo.tsx" con extensión explícita.
-    // Requerido cuando se usa moduleResolution: bundler.
     "allowImportingTsExtensions": true,
-
-    // Cada archivo se trata como módulo independiente.
-    // Necesario para que Vite pueda transpilar archivos uno por uno.
     "isolatedModules": true,
-
-    // "force" hace que TypeScript trate todos los archivos como módulos
-    // (con import/export), incluso si un archivo no tiene ninguno.
     "moduleDetection": "force",
-
-    // TypeScript solo revisa tipos — NO genera archivos JavaScript.
-    // Vite se encarga de la compilación real. TypeScript = solo revisor.
     "noEmit": true,
-
-    // Cómo transformar la sintaxis JSX (el HTML-dentro-de-JS de React).
-    // "react-jsx" usa la transformación moderna de React 17+ que no
-    // requiere escribir "import React from 'react'" en cada archivo.
     "jsx": "react-jsx",
-
-    // Activa todas las verificaciones estrictas de TypeScript.
-    // Detecta más errores potenciales. Muy recomendado en proyectos serios.
     "strict": true,
-
-    // ============================================================
-    // SECTION: PATH ALIASES (SHORTCUTS)
-    // ============================================================
-    // Atajos de importación (deben coincidir con el alias de vite.config.ts).
-    // "@/*" mapea a "./src/*" — así "@/components/Button" encuentra
-    // el archivo en src/components/Button sin importar desde dónde importes.
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-
-  // ============================================================
-  // SECTION: PROJECT SCOPE & REFERENCES
-  // ============================================================
-
-  // include: qué carpetas analiza TypeScript. Solo revisa "src/".
   "include": ["src"]
 }

@@ -5,6 +5,10 @@ import { Seo } from "../components/Seo";
 import { workCaseStudies } from "../data/workCaseStudies";
 import { NotFound } from "./NotFound";
 
+// PROJECT BEACON
+// Route: "/work/:slug" renders one record from data/workCaseStudies.ts.
+// Previous/next links keep the case-study shelf connected.
+// RelatedLinks points back to the Journal/Lab context that produced the work.
 function SectionLabel({ children }: { children: string }) {
   return (
     <p className="text-brand/60 text-sm tracking-widest uppercase">
@@ -27,8 +31,6 @@ function getPreviousAndNext(slug: string) {
 
 export function WorkCaseStudy() {
   const { slug } = useParams();
-  // Case studies are data-driven: the route slug chooses which Work record
-  // populates the reusable page template.
   const study = workCaseStudies.find((candidate) => candidate.slug === slug);
 
   if (!study) {

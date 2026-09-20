@@ -7,6 +7,10 @@ import { Seo } from "../components/Seo";
 import { NotFound } from "./NotFound";
 import { journalEntries, journalStrongLines, journalSubheads } from "./Journal";
 
+// PROJECT BEACON
+// Route: "/journal/:slug" reuses data exported by Journal.tsx.
+// Previous/next links keep readers moving through the field-note sequence.
+// RelatedLinks sends article context toward Lab experiments or Work case studies.
 function getPreviousAndNext(slug: string) {
   const publishedEntries = journalEntries.filter((entry) => !entry.comingSoon);
   const currentIndex = publishedEntries.findIndex((entry) => entry.slug === slug);
@@ -22,8 +26,6 @@ function getPreviousAndNext(slug: string) {
 
 export function JournalEntry() {
   const { slug } = useParams();
-  // The URL slug is the lookup key. This keeps one reusable route component
-  // serving every published Field Note instead of creating a file per article.
   const entry = journalEntries.find(
     (candidate) => candidate.slug === slug && !candidate.comingSoon
   );

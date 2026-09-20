@@ -3,6 +3,9 @@ export type CaseStudyLink = {
   href: string;
 };
 
+// PROJECT BEACON
+// Shared Work data for both "/work" references and "/work/:slug" detail pages.
+// Each relatedLinks entry should point back into Journal, Lab, or another Work case.
 export type CaseStudyImage = {
   title: string;
   caption: string;

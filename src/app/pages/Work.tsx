@@ -2,6 +2,10 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Seo } from "../components/Seo";
 
+// PROJECT BEACON
+// Route: "/work" is the proof shelf after Journal thinking and Lab testing.
+// Dedicated case-study pages live at "/work/:slug" and use workCaseStudies.ts.
+// This overview is intentionally more editorial and keeps the portfolio loop visible.
 const screenshots = [
   {
     title: "Guided dashboard on day one",
