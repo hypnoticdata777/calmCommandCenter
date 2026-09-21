@@ -45,12 +45,17 @@ async function loadAppData() {
   });
 
   try {
-    const [{ journalEntries }, { workCaseStudies }] = await Promise.all([
+    const [
+      { journalEntries },
+      { workCaseStudies },
+      { spanishSiteCopy },
+    ] = await Promise.all([
       vite.ssrLoadModule("/src/app/pages/Journal.tsx"),
       vite.ssrLoadModule("/src/app/data/workCaseStudies.ts"),
+      vite.ssrLoadModule("/src/app/data/spanishSiteCopy.ts"),
     ]);
 
-    return { journalEntries, workCaseStudies };
+    return { journalEntries, workCaseStudies, spanishSiteCopy };
   } finally {
     await vite.close();
   }
@@ -92,7 +97,7 @@ function buildWorkRoutes(workCaseStudies) {
   });
 }
 
-function buildRoutes(journalEntries, workStudies) {
+function buildRoutes(journalEntries, workStudies, spanishSiteCopy) {
   return [
   {
     path: "/",
@@ -107,6 +112,34 @@ function buildRoutes(journalEntries, workStudies) {
       "The journal holds the thinking. The lab tests the experiments. Work holds the tools that have earned a clearer case study.",
     ],
     links: ["/journal", "/lab", "/work", "/contact"],
+    alternates: {
+      en: "/",
+      esMx: "/es",
+    },
+  },
+  {
+    path: "/es",
+    title: spanishSiteCopy.home.seoTitle,
+    headline: spanishSiteCopy.home.headline,
+    description: spanishSiteCopy.home.seoDescription,
+    type: "website",
+    section: "Español",
+    locale: "es_MX",
+    paragraphs: [spanishSiteCopy.home.intro, spanishSiteCopy.home.proof],
+    links: ["/es/contacto", "/work"],
+    alternates: {
+      en: "/",
+      esMx: "/es",
+    },
+    schema: [
+      {
+        "@type": "WebPage",
+        name: spanishSiteCopy.home.seoTitle,
+        description: spanishSiteCopy.home.seoDescription,
+        url: `${siteUrl}/es`,
+        inLanguage: "es-MX",
+      },
+    ],
   },
   {
     path: "/journal",
@@ -303,6 +336,10 @@ function buildRoutes(journalEntries, workStudies) {
       "Email Carlos Sanchez for help organizing PMC operations, cleaning up maintenance workflows, scoping a tool, or getting a fresh set of experienced eyes on a process that keeps slipping.",
     ],
     links: ["/about", "/work", "/journal"],
+    alternates: {
+      en: "/contact",
+      esMx: "/es/contacto",
+    },
     schema: [
       {
         "@type": "ContactPage",
@@ -310,6 +347,31 @@ function buildRoutes(journalEntries, workStudies) {
         description:
           "Contact page for PMC operations consulting, workflow cleanup, and property management tool scoping.",
         url: `${siteUrl}/contact`,
+        mainEntity: personSchema,
+      },
+    ],
+  },
+  {
+    path: "/es/contacto",
+    title: spanishSiteCopy.contact.seoTitle,
+    headline: spanishSiteCopy.contact.headline,
+    description: spanishSiteCopy.contact.seoDescription,
+    type: "website",
+    section: "Contacto",
+    locale: "es_MX",
+    paragraphs: [spanishSiteCopy.contact.intro, spanishSiteCopy.contact.context],
+    links: ["/es", "/work"],
+    alternates: {
+      en: "/contact",
+      esMx: "/es/contacto",
+    },
+    schema: [
+      {
+        "@type": "ContactPage",
+        name: spanishSiteCopy.contact.seoTitle,
+        description: spanishSiteCopy.contact.seoDescription,
+        url: `${siteUrl}/es/contacto`,
+        inLanguage: "es-MX",
         mainEntity: personSchema,
       },
     ],
@@ -361,6 +423,8 @@ function buildBreadcrumbs(route) {
     "/work": "Work",
     "/about": "About",
     "/contact": "Contact",
+    "/es": "Español",
+    "/es/contacto": "Contacto",
   };
 
   return [
@@ -412,6 +476,21 @@ function renderHead(route, assetHead) {
   const imageWidth = route.imageWidth ?? (route.image ? undefined : 1200);
   const imageHeight = route.imageHeight ?? (route.image ? undefined : 630);
   const imageType = route.imageType ?? "image/png";
+  const locale = route.locale ?? "en_US";
+  const alternateTags = route.alternates
+    ? `
+    ${
+      route.alternates.en
+        ? `<link rel="alternate" href="${absoluteUrl(route.alternates.en)}" hreflang="en" />
+    <link rel="alternate" href="${absoluteUrl(route.alternates.en)}" hreflang="x-default" />`
+        : ""
+    }
+    ${
+      route.alternates.esMx
+        ? `<link rel="alternate" href="${absoluteUrl(route.alternates.esMx)}" hreflang="es-MX" />`
+        : ""
+    }`
+    : "";
   const breadcrumbSchema = breadcrumbSchemaForRoute(route);
   const graph = {
     "@context": "https://schema.org",
@@ -455,7 +534,7 @@ function renderHead(route, assetHead) {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href="${url}" />
+    <link rel="canonical" href="${url}" />${alternateTags}
     <meta property="og:type" content="${route.type ?? "website"}" />
     <meta property="og:title" content="${escapeHtml(route.title)}" />
     <meta property="og:description" content="${escapeHtml(route.description)}" />
@@ -465,7 +544,7 @@ function renderHead(route, assetHead) {
     <meta property="og:image:type" content="${imageType}" />${optionalImageDimensions}
     <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
     <meta property="og:site_name" content="${siteName}" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="${locale}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(route.title)}" />
     <meta name="twitter:description" content="${escapeHtml(route.description)}" />
@@ -536,15 +615,21 @@ function renderRouteHtml(template, route, assetHead) {
   const fallback = renderFallback(route);
 
   return template
+    .replace(
+      /<html([^>]*)lang="[^"]*"/,
+      `<html$1lang="${route.locale === "es_MX" ? "es-MX" : "en"}"`
+    )
     .replace(/<head>[\s\S]*?<\/head>/, `<head>${head}\n  </head>`)
     .replace(/<div id="root"><\/div>/, `<div id="root">${fallback}</div>`);
 }
 
 async function main() {
-  const { journalEntries, workCaseStudies } = await loadAppData();
+  const { journalEntries, workCaseStudies, spanishSiteCopy } =
+    await loadAppData();
   routes = buildRoutes(
     buildJournalRoutes(journalEntries),
-    buildWorkRoutes(workCaseStudies)
+    buildWorkRoutes(workCaseStudies),
+    spanishSiteCopy
   );
 
   const templatePath = path.join(distDir, "index.html");

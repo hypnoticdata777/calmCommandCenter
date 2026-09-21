@@ -16,6 +16,24 @@ const links = [
   { label: "Contact", to: "/contact" },
 ];
 
+const spanishLinks = [
+  { label: "Notas", to: "/journal" },
+  { label: "Laboratorio", to: "/lab" },
+  { label: "Proyectos", to: "/work" },
+  { label: "Acerca", to: "/about" },
+  { label: "Contacto", to: "/es/contacto" },
+];
+
+const spanishRouteMap: Record<string, string> = {
+  "/": "/es",
+  "/contact": "/es/contacto",
+};
+
+const englishRouteMap: Record<string, string> = {
+  "/es": "/",
+  "/es/contacto": "/contact",
+};
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -23,6 +41,10 @@ export function Navbar() {
   const [mounted, setMounted] = useState(false);
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const isSpanishRoute = location.pathname === "/es" || location.pathname.startsWith("/es/");
+  const activeLinks = isSpanishRoute ? spanishLinks : links;
+  const spanishPath = spanishRouteMap[location.pathname] ?? "/es";
+  const englishPath = englishRouteMap[location.pathname] ?? "/";
 
   useEffect(() => setMounted(true), []);
 
@@ -43,6 +65,24 @@ export function Navbar() {
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   const ThemeIcon = mounted ? (theme === "dark" ? Sun : Moon) : null;
+  const isActive = (path: string) => location.pathname === path;
+  const renderLanguageToggle = () => (
+    <div className="flex items-center gap-2 font-display text-xs tracking-widest text-foreground/45">
+      <Link
+        to={englishPath}
+        className={!isSpanishRoute ? "text-brand" : "hover:text-foreground"}
+      >
+        EN
+      </Link>
+      <span aria-hidden="true">/</span>
+      <Link
+        to={spanishPath}
+        className={isSpanishRoute ? "text-brand" : "hover:text-foreground"}
+      >
+        ES
+      </Link>
+    </div>
+  );
 
   return (
     <>
@@ -65,12 +105,12 @@ export function Navbar() {
               </Link>
 
               <div className="flex items-center gap-8">
-                {links.map((link) => (
+                {activeLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     className={`text-sm tracking-wider transition-colors ${
-                      location.pathname === link.to
+                      isActive(link.to)
                         ? "text-brand"
                         : "text-foreground/60 hover:text-foreground"
                     }`}
@@ -78,6 +118,8 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
+
+                {renderLanguageToggle()}
 
                 {ThemeIcon && (
                   <button
@@ -112,12 +154,12 @@ export function Navbar() {
               <div className="h-px bg-foreground/10 w-full" />
 
               <div className="flex flex-col items-end gap-4 pt-1">
-                {links.map((link) => (
+                {activeLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     className={`text-sm tracking-wider transition-colors ${
-                      location.pathname === link.to
+                      isActive(link.to)
                         ? "text-brand"
                         : "text-foreground/60 hover:text-foreground"
                     }`}
@@ -126,6 +168,8 @@ export function Navbar() {
                   </Link>
                 ))}
               </div>
+
+              {renderLanguageToggle()}
 
               {ThemeIcon && (
                 <button
@@ -192,7 +236,7 @@ export function Navbar() {
                 h777
               </Link>
 
-              {links.map((link, i) => (
+              {activeLinks.map((link, i) => (
                 <motion.div
                   key={link.to}
                   initial={{ opacity: 0, y: 16 }}
@@ -202,7 +246,7 @@ export function Navbar() {
                   <Link
                     to={link.to}
                     className={`text-xl tracking-wider transition-colors sm:text-2xl ${
-                      location.pathname === link.to
+                      isActive(link.to)
                         ? "text-brand"
                         : "text-foreground/70 hover:text-foreground"
                     }`}
@@ -211,6 +255,18 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: activeLinks.length * 0.07,
+                  duration: 0.3,
+                }}
+                className="pt-2"
+              >
+                {renderLanguageToggle()}
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

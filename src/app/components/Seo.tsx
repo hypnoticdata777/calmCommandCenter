@@ -28,6 +28,11 @@ type SeoProps = {
     name: string;
     path: string;
   }[];
+  locale?: "en_US" | "es_MX";
+  alternates?: {
+    en?: string;
+    esMx?: string;
+  };
 };
 
 function absoluteUrl(path: string) {
@@ -78,6 +83,27 @@ function setCanonical(url: string) {
   }
 
   tag.setAttribute("href", url);
+}
+
+function setAlternate(hreflang: string, href: string) {
+  let tag = document.querySelector<HTMLLinkElement>(
+    `link[rel="alternate"][hreflang="${hreflang}"]`
+  );
+
+  if (!tag) {
+    tag = document.createElement("link");
+    tag.setAttribute("rel", "alternate");
+    tag.setAttribute("hreflang", hreflang);
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute("href", href);
+}
+
+function removeAlternates() {
+  document
+    .querySelectorAll<HTMLLinkElement>('link[rel="alternate"][hreflang]')
+    .forEach((tag) => tag.remove());
 }
 
 function setStructuredData(schema: Record<string, unknown> | Record<string, unknown>[]) {
@@ -137,6 +163,8 @@ export function Seo({
   author,
   schema,
   breadcrumbs,
+  locale = "en_US",
+  alternates,
 }: SeoProps) {
   // React changes screens without a full page reload, so metadata has to be
   // refreshed as a side effect whenever the route props change.
@@ -175,7 +203,18 @@ export function Seo({
         : baseRouteSchema;
 
     document.title = title;
+    document.documentElement.lang = locale === "es_MX" ? "es-MX" : "en";
     setCanonical(url);
+    removeAlternates();
+
+    if (alternates?.en) {
+      setAlternate("en", absoluteUrl(alternates.en));
+      setAlternate("x-default", absoluteUrl(alternates.en));
+    }
+
+    if (alternates?.esMx) {
+      setAlternate("es-MX", absoluteUrl(alternates.esMx));
+    }
 
     setNamedMeta("description", description);
     setNamedMeta("robots", robots ?? "index, follow");
@@ -202,7 +241,7 @@ export function Seo({
       removePropertyMeta("og:image:type");
     }
     setPropertyMeta("og:site_name", SITE_NAME);
-    setPropertyMeta("og:locale", "en_US");
+    setPropertyMeta("og:locale", locale);
     if (type === "article") {
       if (publishedTime) {
         setPropertyMeta("article:published_time", publishedTime);
@@ -252,6 +291,8 @@ export function Seo({
     title,
     type,
     breadcrumbs,
+    locale,
+    alternates,
   ]);
 
   return null;
