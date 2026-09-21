@@ -34,7 +34,7 @@ Esa es la versión más clara del problema operativo: funcionó cuando lo tocó 
 
 Eso es lo que realmente significa "en mi máquina sí funciona". No significa que el sistema esté terminado. Significa que el sistema está pidiendo prestada la memoria de una persona.
 
-Los equipos de property management hacen esto todo el tiempo. La tarea "funciona" cuando el coordinador recuerda que el dueño le escribió directo. La tarea "funciona" cuando el admin sabe qué ajuste está escondido detrás de qué login. La tarea "funciona" cuando la persona que estuvo en la llamada el jueves recuerda que el vendor estaba esperando acceso, no aprobación.
+Después de años en property management, este es el patrón operativo que sigo reconociendo. La tarea "funciona" cuando el coordinador recuerda que el dueño le escribió directo. La tarea "funciona" cuando el admin sabe qué ajuste está escondido detrás de qué login. La tarea "funciona" cuando la persona que estuvo en la llamada el jueves recuerda que el vendor estaba esperando acceso, no aprobación.
 
 Pero si la siguiente persona tiene que preguntar alrededor para saber dónde quedó todo, el sistema todavía no está corriendo de verdad.
 
@@ -100,7 +100,7 @@ Un chat grupal no es una base de datos. Es una conversación con buscador y mala
 
 El tiempo de esperar aparece cuando el trabajo ya sabe cuál es el siguiente paso, pero el sistema depende de una sola persona para desbloquearlo.
 
-Lo he visto muchas veces en property management. Dueños que escriben directo a una persona en vez del inbox compartido. Un cambio rutinario de workspace que espera a la única persona con las llaves correctas. Un plan con vendor descrito en chat, pero sin dueño ni fecha.
+Este es un patrón conocido de property management, no una lección nueva. Dueños que escriben directo a una persona en vez del inbox compartido. Un cambio rutinario de workspace que espera a la única persona con las llaves correctas. Un plan con vendor descrito en chat, pero sin dueño ni fecha.
 
 Una reparación sencilla de bomba muestra la diferencia.
 

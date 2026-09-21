@@ -1,6 +1,6 @@
 # LinkedIn Post For Field Note 8
 
-I used to think "we need more people" was mostly a capacity question.
+One of the easiest traps in operations is treating "we need more people" as the whole capacity question.
 
 More work means more hours.
 
@@ -10,7 +10,7 @@ Simple, right?
 
 Not always.
 
-This week, my code gave me a very clean operations lesson.
+This week, my code gave me a clean technical mirror for an operations pattern I have been watching for years.
 
 The project passed 286 tests. Then I tried to install it on a fresh server, which is basically a clean machine with none of my laptop's memory or accidental help.
 
@@ -20,7 +20,7 @@ Not because the app was broken.
 
 Because my laptop had been quietly remembering things the project had not written down.
 
-That is the same thing I have seen in property management teams:
+That mirrors a long-running property-management pattern:
 
 The task "works" because one coordinator remembers the owner texted directly.
 

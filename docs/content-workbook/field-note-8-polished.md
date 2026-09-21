@@ -34,7 +34,7 @@ That is the cleanest version of the operations problem I know: it worked when th
 
 That is what "works on my machine" really means. It does not mean the system is finished. It means the system is borrowing memory from one person.
 
-Property teams do this all the time. The task "works" when the coordinator remembers the owner texted them directly. The task "works" when the admin knows which workspace setting is hidden behind which login. The task "works" when the person who was on the phone last Thursday remembers that the vendor was waiting on access, not approval.
+After years in property management, this is the operating pattern I keep recognizing. The task "works" when the coordinator remembers the owner texted them directly. The task "works" when the admin knows which workspace setting is hidden behind which login. The task "works" when the person who was on the phone last Thursday remembers that the vendor was waiting on access, not approval.
 
 But if the next person has to ask around to figure out where things stand, the system is not really running yet.
 
@@ -100,7 +100,7 @@ A group chat is not a database. It is a conversation with a search bar and a bad
 
 Waiting time is what happens when the work knows the next move, but the system is waiting on one person to unlock it.
 
-I have seen this in property operations again and again. Owners email one person directly instead of the shared inbox. A routine workspace setting waits on the only person with the right keys. A vendor plan gets described in chat, but nobody owns the next dated step.
+This is a familiar property-management pattern, not a new lesson. Owners email one person directly instead of the shared inbox. A routine workspace setting waits on the only person with the right keys. A vendor plan gets described in chat, but nobody owns the next dated step.
 
 A simple pump repair shows the difference.
 
