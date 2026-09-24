@@ -9,7 +9,7 @@ import {
 } from "../data/workCaseStudies";
 
 // PROJECT BEACON
-// Route: "/work" is the proof shelf after Journal thinking and Lab testing.
+// Route: "/work" is the case-study shelf after Journal thinking and Lab testing.
 // The facts below come from data/workCaseStudies.ts, which also powers "/work/:slug".
 // Keep page-specific layout here; keep case-study content in the shared data file.
 const workStudiesBySlug = Object.fromEntries(
@@ -32,12 +32,12 @@ const overviewCopy: Record<
   "techsync-ops": {
     badge: "Staged demo",
     description:
-      "A staged PMC maintenance command center for role-aware dispatch, work-order context, proof, closeout, and scoped visibility across admins, coordinators, technicians, clients, viewers, and vendors.",
+      "A staged PMC maintenance command center that turns one messy maintenance pile into role-aware lanes for admins, coordinators, technicians, clients, viewers, and vendors.",
   },
   "turnflow-home": {
     badge: "Current README screenshots",
     description:
-      "A homeowner-first maintenance workspace for people who want to manage repairs, proof, costs, documents, reminders, and scoped help without handing the whole process to a property management company. Each property gets one shared record for what broke, who was invited, what was quoted, what changed, what proof came back, and what needs attention next.",
+      "A homeowner-first maintenance workspace for people who want the repair story in one place: what broke, who was invited, what was quoted, what changed, what came back, and what needs attention next.",
     imageTitles: [
       "Owner maintenance dashboard",
       "Guided intake with safety checklist",
@@ -176,7 +176,7 @@ function ScreenshotFigure({ image }: { image: CaseStudyImage }) {
   );
 }
 
-function ProofScreenshots({ images }: { images: CaseStudyImage[] }) {
+function ProductScreenshots({ images }: { images: CaseStudyImage[] }) {
   if (!images.length) {
     return null;
   }
@@ -193,13 +193,14 @@ function ProofScreenshots({ images }: { images: CaseStudyImage[] }) {
         <div className="space-y-5">
           <SectionLabel>Screenshots</SectionLabel>
           <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-            Proof from the build.
+            What the product feels like.
           </h2>
         </div>
 
         <p className="text-lg leading-loose text-foreground/65">
-          Product screenshots give the case study visible evidence, not just a
-          nice paragraph saying the tool exists.
+          The Lab explains the logic. Work lets the interface carry the idea:
+          what the user sees, what they can do, and what becomes easier to
+          understand.
         </p>
       </div>
 
@@ -289,7 +290,7 @@ export function Work() {
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <Seo
         title="Work | PM Ops Map, TechSync Ops, and TurnFlow Home"
-        description="Case studies for PM Ops Map, TechSync Ops, and TurnFlow Home: property management tools for maintenance proof, operations clarity, and better handoffs."
+        description="Case studies for PM Ops Map, TechSync Ops, and TurnFlow Home: property management tools for maintenance records, operations clarity, and better handoffs."
         path="/work"
         breadcrumbs={[
           { name: "h777", path: "/" },
@@ -300,7 +301,7 @@ export function Work() {
           "@type": "CollectionPage",
           name: "Work | PM Ops Map, TechSync Ops, and TurnFlow Home",
           description:
-            "Case studies for property management tools focused on operations clarity, maintenance proof, and better handoffs.",
+            "Case studies for property management tools focused on operations clarity, maintenance records, and better handoffs.",
           url: "https://h777.dev/work",
           isPartOf: {
             "@type": "WebSite",
@@ -334,16 +335,16 @@ export function Work() {
             <SectionLabel>Work</SectionLabel>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              Products that prove operations do not have to stay chaotic.
+              Tools for making operational mess easier to see.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              Here you will find the tools that have graduated from the lab
-              into clearer case studies, stronger proof, or public-ready
-              direction. The journal holds the thinking, the lab tests the
-              idea, and Work is where the useful pieces stand on their own.
+              Work is where the screenshots, product story, and case-study
+              version live. The Journal carries the lesson, the Lab shows the
+              algorithm, and Work shows what the idea looks like once it has a
+              real interface.
             </p>
           </motion.div>
         </section>
@@ -367,7 +368,7 @@ export function Work() {
           <StudySection key={section.label} section={section} />
         ))}
 
-        <ProofScreenshots images={getOverviewImages(pmOpsMap)} />
+        <ProductScreenshots images={getOverviewImages(pmOpsMap)} />
 
         {pmOpsMap.sections.slice(2).map((section) => (
           <StudySection key={section.label} section={section} />

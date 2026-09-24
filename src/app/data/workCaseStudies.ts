@@ -175,7 +175,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
       "TechSync Ops: the PMC command center for maintenance handoffs.",
     seoTitle: "TechSync Ops Case Study | Maintenance Dispatch and Proof",
     description:
-      "A staged multi-tenant maintenance command center for PMCs and field-service teams, focused on role lanes, dispatch, proof, closeout, and scoped visibility.",
+      "A staged multi-tenant maintenance command center for PMCs and field-service teams, focused on role lanes, dispatch, closeout evidence, and scoped visibility.",
     status: "Hosted staging / synthetic-data POC",
     type: "PMC maintenance command platform",
     audience: "PMCs, field-service teams, coordinators, technicians, clients, viewers, and vendors",
@@ -188,14 +188,6 @@ export const workCaseStudies: WorkCaseStudy[] = [
       "Synthetic-data testing only",
     ],
     links: [
-      {
-        label: "Source",
-        href: "https://github.com/hypnoticdata777/Techsync",
-      },
-      {
-        label: "Docs",
-        href: "https://github.com/hypnoticdata777/Techsync#documentation-index",
-      },
       {
         label: "Staging App",
         href: "https://techsync-ops-web.vercel.app",
@@ -272,11 +264,11 @@ export const workCaseStudies: WorkCaseStudy[] = [
         ],
       },
       {
-        label: "Technical Proof",
-        heading: "Strong enough to show, still labeled as a POC.",
+        label: "Build Status",
+        heading: "Built enough to explain, still labeled as a POC.",
         body: [
           "The staged loop is live: Vercel hosts the Expo / React Native web client, Vercel hosts the FastAPI API, and Neon carries synthetic demo data for walkthroughs.",
-          "The repo has real product evidence behind it: backend pytest coverage, client Jest checks, GitHub Actions CI, Gitleaks config, seeded demo data, smoke helpers, and readiness documentation.",
+          "The build has real product structure behind it: backend pytest coverage, client Jest checks, GitHub Actions CI, Gitleaks config, seeded demo data, smoke helpers, and readiness documentation.",
           "The boundary is honest: real billing, SMTP, object storage, customer onboarding, offline mobile sync, and app-store release are still deferred before real customer production.",
         ],
       },
@@ -302,9 +294,9 @@ export const workCaseStudies: WorkCaseStudy[] = [
         href: "/journal/the-silent-killer-of-property-management-operations",
       },
       {
-        label: "Work",
-        title: "TurnFlow Home: the homeowner-side proof record",
-        href: "/work/turnflow-home",
+        label: "Lab",
+        title: "Role-aware maintenance lanes algorithm",
+        href: "/lab",
       },
     ],
   },
@@ -471,12 +463,12 @@ export const workCaseStudies: WorkCaseStudy[] = [
         label: "Next Up",
         heading: "What has to happen before the public demo.",
         body: [
-          "The next product phase is about turning the POC into a public-safe SaaS demo: a real hosted environment, seeded demo data, signed-in screenshots, owner/helper smoke tests, homeowner-user feedback, verified notifications, and eventually the business layers around billing, subscriptions, payments, analytics, and observability.",
+          "The next product phase is about turning the POC into a hosted SaaS demo: a real environment, seeded demo data, signed-in screenshots, owner/helper smoke tests, homeowner-user feedback, verified notifications, and eventually the business layers around billing, subscriptions, payments, analytics, and observability.",
         ],
         items: [
           "Configure the real preview or production environment",
           "Run poc:ready and verify against the hosted environment",
-          "Seed public-safe demo data",
+          "Seed demo data that is safe to show in public",
           "Run owner and helper smoke tests against the hosted URL",
           "Refresh signed-in screenshots for the README, portfolio, and case study",
           "Run a homeowner user-testing pass and log findings",
