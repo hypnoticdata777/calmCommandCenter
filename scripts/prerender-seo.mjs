@@ -161,14 +161,14 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
   },
   {
     path: "/journal",
-    title: "Journal | Field Notes on PM Ops, PropTech, and Building",
-    headline: "Notes from the messy middle.",
+    title: "Journal | Remote Operations, Software Builds, and Field Notes",
+    headline: "Field notes from the messy middle.",
     description:
-      "Field notes from h777 on property management operations, PropTech builds, maintenance workflows, proof, handoffs, and lessons from the messy middle.",
+      "Field notes from h777 on remote operations, workflow software, PropTech builds, handoffs, proof, and lessons from the messy middle.",
     type: "website",
     section: "Journal",
     paragraphs: [
-      "Writing about property management, operations, PropTech, tool builds, lessons, and the occasional vent that might turn into a case study.",
+      "Writing about remote operations, high-stakes handoffs, PropTech, tool builds, lessons from shipping, and the occasional vent that becomes a case study.",
     ],
     links: journalEntries.map((entry) => entry.path),
     schema: [
@@ -176,7 +176,7 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
         "@type": "Blog",
         name: "h777 Journal",
         description:
-          "Field notes on property management operations, PropTech builds, maintenance workflows, proof, handoffs, and lessons from the messy middle.",
+          "Field notes on remote operations, workflow software, PropTech builds, handoffs, proof, and lessons from the messy middle.",
         url: `${siteUrl}/journal`,
         author: personSchema,
         blogPost: journalEntries.map((entry) => ({

@@ -5,6 +5,7 @@ node_modules/
 # Build output
 dist/
 dist-ssr/
+outputs/
 
 # Variables de entorno (nunca subir al repo)
 .env

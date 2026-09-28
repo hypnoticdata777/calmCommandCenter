@@ -1239,8 +1239,8 @@ export function Journal() {
   return (
     <main className="min-h-screen text-foreground px-6 py-28 sm:px-8 sm:py-32 relative z-10">
       <Seo
-        title="Journal | Field Notes on PM Ops, PropTech, and Building"
-        description="Field notes from h777 on property management operations, PropTech builds, maintenance workflows, proof, handoffs, and lessons from the messy middle."
+        title="Journal | Remote Operations, Software Builds, and Field Notes"
+        description="Field notes from h777 on remote operations, workflow software, PropTech builds, handoffs, proof, and lessons from the messy middle."
         path="/journal"
         type="article"
         breadcrumbs={[
@@ -1252,7 +1252,7 @@ export function Journal() {
           "@type": "Blog",
           name: "h777 Journal",
           description:
-            "Field notes on property management operations, PropTech builds, maintenance workflows, proof, and handoffs.",
+            "Field notes on remote operations, workflow software, PropTech builds, handoffs, proof, and lessons from the messy middle.",
           url: "https://h777.dev/journal",
           isPartOf: {
             "@type": "WebSite",
@@ -1282,13 +1282,13 @@ export function Journal() {
         <header className="max-w-3xl space-y-7 text-left">
           <p className="text-brand/60 text-sm tracking-widest uppercase">Journal</p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-            Notes from the messy middle.
+            Field notes from the messy middle.
           </h1>
           <div className="h-px bg-foreground/10 w-28" />
           <p className="max-w-2xl text-lg leading-[1.8] tracking-wide text-foreground/55 md:text-xl">
-            Writing about property management, operations, PropTech, tool
-            builds, lessons, and the occasional vent that might turn into a
-            case study.
+            Writing about remote operations, high-stakes handoffs, PropTech,
+            tool builds, lessons from shipping, and the occasional vent that
+            becomes a case study.
           </p>
         </header>
 
