@@ -10,8 +10,8 @@ export default function App() {
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16">
       <Seo
-        title="h777 | Property Management Operations Tools"
-        description="h777 is a public portfolio for property management operations tools, field notes, workflow experiments, and PMC consulting by Carlos Sanchez."
+        title="h777 | Remote Operations Software and Workflow Tools"
+        description="h777 is a public portfolio for remote operations software, workflow tools, field notes, and practical systems by Carlos Sanchez."
         path="/"
         schema={[
           {
@@ -20,7 +20,7 @@ export default function App() {
             name: "h777",
             url: "https://h777.dev",
             description:
-              "Property management operations tools, field notes, workflow experiments, and PMC consulting.",
+              "Remote operations software, workflow tools, field notes, and practical systems.",
           },
           {
             "@context": "https://schema.org",
@@ -30,11 +30,13 @@ export default function App() {
             url: "https://h777.dev",
             sameAs: ["https://github.com/hypnoticdata777"],
             knowsAbout: [
-              "Property management operations",
-              "Maintenance workflows",
-              "PMC consulting",
-              "PropTech tools",
               "Remote operations",
+              "Workflow software",
+              "Service operations",
+              "High-stakes handoffs",
+              "Maintenance workflows",
+              "PropTech tools",
+              "Property management operations",
             ],
           },
         ]}
@@ -62,8 +64,8 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            Creating, iterating, and leading frictionless operations, systems,
-            and tools toward better property management experiences.
+            Building software and systems for remote operations, service
+            workflows, and high-stakes handoffs.
           </motion.p>
         </div>
 
@@ -81,9 +83,9 @@ export default function App() {
             </h2>
 
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
-              <p className="italic">Vendor and maintenance chaos.</p>
+              <p className="italic">People, tools, clients, vendors, and timing.</p>
               <p className="italic">Scattered requests, proof, and follow-ups.</p>
-              <p className="italic">Tech gaps and manual admin overload.</p>
+              <p className="italic">Work that needs to be visible and explainable.</p>
             </div>
           </div>
 
@@ -91,16 +93,15 @@ export default function App() {
 
           <div className="space-y-6">
             <p className="text-foreground/90 leading-loose text-lg">
-              I have spent 7+ years inside property management operations,
-              managed 250+ client accounts remotely, led small remote teams,
-              and spent more than 10 years working across service, systems,
-              clients, and distributed operations.
+              I have worked remotely since 2013 across service, operations,
+              leadership, client communication, project coordination, and
+              high-stakes follow-up.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              Now I am turning that experience into open-source tools,
-              workflow experiments, practical systems, and consulting support
-              for owners, investors, managers, admins, and teams trying to make
-              property management less painful.
+              Property management sharpened the pattern: when the handoff
+              breaks, everything downstream gets louder. Now I turn that
+              operating experience into tools, workflow experiments, and
+              practical systems for the messy middle of real work.
             </p>
           </div>
         </motion.div>

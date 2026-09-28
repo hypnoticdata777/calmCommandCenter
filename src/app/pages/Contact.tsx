@@ -28,8 +28,8 @@ export function Contact() {
   return (
     <div className="min-h-screen text-foreground flex flex-col items-center justify-center px-8 py-16 relative z-10">
       <Seo
-        title="Contact | PMC Operations Consulting and Tool Scoping"
-        description="Contact Carlos Sanchez for PMC operations coaching, maintenance workflow cleanup, remote team systems, and property management tool scoping."
+        title="Contact | Remote Operations, Workflow Tools, and Software Scoping"
+        description="Contact Carlos Sanchez for remote operations cleanup, workflow design, software scoping, team systems, and practical tool-building."
         path="/contact"
         breadcrumbs={[
           { name: "h777", path: "/" },
@@ -49,9 +49,9 @@ export function Contact() {
         <div className="h-px bg-foreground/10 w-24 mx-auto" />
         <div className="space-y-5">
           <p className="text-foreground/50 tracking-wide leading-relaxed">
-            Email me if you want help organizing PMC operations, cleaning up
-            maintenance workflows, scoping a tool, or getting a fresh set of
-            experienced eyes on a process that keeps slipping.
+            Email me if you want help clarifying a messy operation, designing a
+            workflow, scoping an internal tool, improving remote handoffs, or
+            turning repeated operational pain into practical software.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -75,9 +75,9 @@ export function Contact() {
           </div>
 
           <p className="mx-auto max-w-lg text-sm leading-loose text-foreground/40">
-            Helpful context: what is messy, what you have already tried, what
-            tools or process you use now, who is involved, and what outcome you
-            want.
+            Useful starting points: what keeps repeating, what keeps getting
+            lost, who needs visibility, and what outcome would make the work
+            feel calmer.
           </p>
         </div>
       </motion.div>

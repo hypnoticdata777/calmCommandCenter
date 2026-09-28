@@ -4,7 +4,7 @@ const SITE_URL = "https://h777.dev";
 const SITE_NAME = "h777";
 const DEFAULT_IMAGE = "/og.png";
 const DEFAULT_IMAGE_ALT =
-  "h777 property management operations tools and field notes";
+  "h777 remote operations software, workflow tools, and field notes";
 
 // Central contract for page metadata. Every route tells Seo what the browser,
 // social previews, and search engines should know about the current page.

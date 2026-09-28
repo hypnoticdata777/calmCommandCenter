@@ -10,7 +10,7 @@ const siteUrl = "https://h777.dev";
 const siteName = "h777";
 const defaultImage = "/og.png";
 const defaultImageAlt =
-  "h777 property management operations tools and field notes";
+  "h777 remote operations software, workflow tools, and field notes";
 
 const personSchema = {
   "@type": "Person",
@@ -19,11 +19,13 @@ const personSchema = {
   url: `${siteUrl}/about`,
   sameAs: ["https://github.com/hypnoticdata777"],
   knowsAbout: [
-    "Property management operations",
-    "Maintenance workflows",
-    "PMC consulting",
-    "PropTech tools",
     "Remote operations",
+    "Workflow software",
+    "Service operations",
+    "High-stakes handoffs",
+    "Maintenance workflows",
+    "PropTech tools",
+    "Property management operations",
   ],
 };
 
@@ -32,7 +34,7 @@ const websiteSchema = {
   name: siteName,
   url: siteUrl,
   description:
-    "Property management operations tools, field notes, workflow experiments, and PMC consulting.",
+    "Remote operations software, workflow tools, field notes, and practical systems.",
 };
 
 let routes = [];
@@ -117,14 +119,14 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
   return [
   {
     path: "/",
-    title: "h777 | Property Management Operations Tools",
+    title: "h777 | Remote Operations Software and Workflow Tools",
     headline: "Making messy operations behave themselves.",
     description:
-      "h777 is a public portfolio for property management operations tools, field notes, workflow experiments, and PMC consulting by Carlos Sanchez.",
+      "h777 is a public portfolio for remote operations software, workflow tools, field notes, and practical systems by Carlos Sanchez.",
     type: "website",
     section: "Home",
     paragraphs: [
-      "Creating, iterating, and leading frictionless operations, systems, and tools toward better property management experiences.",
+      "Building software and systems for remote operations, service workflows, and high-stakes handoffs.",
       "The journal holds the thinking. The lab tests the experiments. Work holds the tools that have earned a clearer case study.",
     ],
     links: ["/journal", "/lab", "/work", "/contact"],
@@ -392,11 +394,11 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
     title: "About | Carlos Sanchez and h777",
     headline: "An opinionated operator with a systems brain.",
     description:
-      "About Carlos Sanchez, the operator and builder behind h777: property management operations, maintenance workflows, remote teams, and practical systems.",
+      "About Carlos Sanchez, the operator and builder behind h777: remote operations, workflow software, service systems, and practical tools.",
     type: "profile",
     section: "About",
     paragraphs: [
-      "Carlos Sanchez has spent 7+ years inside property management operations and more than 10 years across remote service, leadership, systems, and client-facing work.",
+      "Carlos Sanchez has worked remotely since 2013 across service, operations, leadership, systems, project coordination, and client-facing work.",
     ],
     links: ["/work", "/journal", "/contact"],
     schema: [
@@ -404,7 +406,7 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
         "@type": "ProfilePage",
         name: "About Carlos Sanchez and h777",
         description:
-          "Property management operations experience, workflow systems, consulting, and tool-building philosophy.",
+          "Remote operations experience, workflow software, service systems, consulting, and tool-building philosophy.",
         url: `${siteUrl}/about`,
         mainEntity: personSchema,
       },
@@ -412,14 +414,14 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
   },
   {
     path: "/contact",
-    title: "Contact | PMC Operations Consulting and Tool Scoping",
+    title: "Contact | Remote Operations, Workflow Tools, and Software Scoping",
     headline: "Bring me the messy part.",
     description:
-      "Contact Carlos Sanchez for PMC operations coaching, maintenance workflow cleanup, remote team systems, and property management tool scoping.",
+      "Contact Carlos Sanchez for remote operations cleanup, workflow design, software scoping, team systems, and practical tool-building.",
     type: "website",
     section: "Contact",
     paragraphs: [
-      "Email Carlos Sanchez for help organizing PMC operations, cleaning up maintenance workflows, scoping a tool, or getting a fresh set of experienced eyes on a process that keeps slipping.",
+      "Email Carlos Sanchez for help clarifying a messy operation, designing a workflow, scoping an internal tool, improving remote handoffs, or turning repeated operational pain into practical software.",
     ],
     links: ["/about", "/work", "/journal"],
     alternates: {
@@ -431,7 +433,7 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
         "@type": "ContactPage",
         name: "Contact Carlos Sanchez",
         description:
-          "Contact page for PMC operations consulting, workflow cleanup, and property management tool scoping.",
+          "Contact page for remote operations cleanup, workflow design, software scoping, and practical tool-building.",
         url: `${siteUrl}/contact`,
         mainEntity: personSchema,
       },

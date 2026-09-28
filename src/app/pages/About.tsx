@@ -21,21 +21,21 @@ const frictionPoints = [
 
 const principles = [
   "Accountability is the starting point, not a feature",
-  "Homeowners do not only want cheap. They want clear and logical",
+  "People do not just want faster. They want clear, logical, and honest",
   "Software only helps when the process has a spine",
   "If a tool needs a ceremony before anyone can use it, it is already in trouble",
 ];
 
 const focusAreas = [
-  "Open-source tools for property management teams",
+  "Software tools for remote operations and service workflows",
   "Workflow experiments for remote operations",
-  "Vendor follow-up and triage systems",
-  "Clearer handoffs for owners, managers, and admins",
+  "Vendor, client, and homeowner coordination systems",
+  "Clearer handoffs for operators, founders, remote teams, and service owners",
 ];
 
 const consultingOffers = [
-  "PMC operations cleanup and accountability mapping",
-  "Maintenance workflow, handoff, and follow-up design",
+  "Operations cleanup and accountability mapping",
+  "Workflow, handoff, and follow-up design",
   "Remote team rhythms, training structure, and workload clarity",
   "Tool selection, process setup, and custom tool scoping",
 ];
@@ -53,7 +53,7 @@ export function About() {
     <main className="min-h-screen text-foreground px-6 py-28 md:px-10 lg:px-16 relative z-10">
       <Seo
         title="About | Carlos Sanchez and h777"
-        description="About Carlos Sanchez, the operator and builder behind h777: property management operations, maintenance workflows, remote teams, and practical systems."
+        description="About Carlos Sanchez, the operator and builder behind h777: remote operations, workflow software, service systems, and practical tools."
         path="/about"
         type="profile"
         breadcrumbs={[
@@ -65,7 +65,7 @@ export function About() {
           "@type": "ProfilePage",
           name: "About Carlos Sanchez and h777",
           description:
-            "Property management operations experience, workflow systems, consulting, and tool-building philosophy.",
+            "Remote operations experience, workflow software, service systems, consulting, and tool-building philosophy.",
           url: "https://h777.dev/about",
           mainEntity: {
             "@type": "Person",
@@ -74,11 +74,14 @@ export function About() {
             url: "https://h777.dev",
             sameAs: ["https://github.com/hypnoticdata777"],
             knowsAbout: [
-              "Property management operations",
+              "Remote operations",
+              "Workflow software",
+              "Service operations",
+              "High-stakes communication",
               "Maintenance workflows",
               "Remote teams",
-              "PMC consulting",
               "PropTech",
+              "Property management operations",
             ],
           },
         }}
@@ -108,9 +111,9 @@ export function About() {
 
             <div className="space-y-5 text-lg md:text-xl leading-loose text-foreground/70">
               <p>
-                I have spent 7+ years inside property management operations,
-                and more than 10 years across remote service, leadership,
-                systems, and client-facing work.
+                I have worked remotely since 2013 across service, operations,
+                leadership, systems, project coordination, and client-facing
+                work.
               </p>
               <p>
                 I am trying to leave places better than I found them. That has
@@ -122,9 +125,9 @@ export function About() {
                 That kind of work teaches you things quickly.
               </p>
               <p className="text-foreground/90">
-                Most PM problems are not just software problems.
+                Most operational problems are not just software problems.
                 <br />
-                They are accountability, handoff, training, billing, and
+                They are accountability, handoff, training, timing, trust, and
                 clarity problems.
               </p>
             </div>
@@ -139,7 +142,7 @@ export function About() {
           className="grid gap-12 border-t border-foreground/10 pt-12 lg:grid-cols-[0.9fr_1.1fr]"
         >
           <div className="space-y-5">
-            <SectionNumber>01 / What PM Taught Me</SectionNumber>
+            <SectionNumber>01 / What Operations Taught Me</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
               When everyone owns a little piece, nobody owns the outcome.
             </h2>
@@ -153,14 +156,14 @@ export function About() {
               and what success actually looks like.
             </p>
             <p className="text-foreground/90">
-              Homeowners usually are not asking for cheap.
+              People usually are not asking for another noisy tool.
               <br />
-              They are asking for clear, logical, honest service.
+              They are asking for work that is clear, logical, and honest.
             </p>
             <p>
-              They want billing they can understand, updates they can trust,
-              and a system that does not make them feel like they have to chase
-              the company they hired.
+              They want updates they can trust, decisions they can understand,
+              and a system that does not make them chase the work they already
+              asked for.
             </p>
 
             <div className="grid gap-4 sm:grid-cols-3">
@@ -250,8 +253,8 @@ export function About() {
           <div className="space-y-8">
             <p className="text-lg leading-loose text-foreground/70">
               I am currently finishing Computer Systems Engineering, and I am
-              using that technical background alongside my property management
-              experience to build:
+              using that technical background alongside years of remote
+              operations experience to build:
             </p>
 
             <div className="grid gap-4 md:grid-cols-2">
@@ -268,7 +271,7 @@ export function About() {
             </div>
 
             <p className="text-xl leading-loose text-foreground/90">
-              The goal is simple: make property management less painful.
+              The goal is simple: make messy work easier to see.
               <br />
               Not with more noise, but with clearer tools around the work
               people already do every day.
@@ -286,17 +289,17 @@ export function About() {
           <div className="space-y-5">
             <SectionNumber>04 / Consulting</SectionNumber>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-wide">
-              Available for PMC ops coaching, cleanup, and tool-minded
-              consulting.
+              Available for operations cleanup, workflow design, and
+              tool-minded consulting.
             </h2>
           </div>
 
           <div className="space-y-8">
             <div className="space-y-6 text-lg leading-loose text-foreground/70">
               <p>
-                If you are a property manager, homeowner, investor, operator,
-                or remote team tired of chaos and nonstop decision calls, I can
-                help organize the messy part.
+                If you are an operator, founder, homeowner, remote team, or
+                service business tired of chaos and nonstop decision calls, I
+                can help organize the messy part.
               </p>
               <p>
                 That can mean clarifying accountability across departments,
@@ -351,13 +354,13 @@ export function About() {
                 <span>honesty</span>
                 <span>clarity</span>
                 <span>useful software</span>
-                <span>cleaner PM operations</span>
+                <span>calmer operations</span>
               </div>
 
               <p>
-                If you are building something useful, trying to make PM
-                operations cleaner, or looking for someone who understands both
-                the business pain and the technical side, we will probably get
+                If you are building something useful, trying to make operations
+                calmer, or looking for someone who understands both the
+                business pain and the technical side, we will probably get
                 along.
               </p>
             </div>
