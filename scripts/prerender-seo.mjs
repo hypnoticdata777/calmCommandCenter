@@ -49,13 +49,15 @@ async function loadAppData() {
       { journalEntries },
       { workCaseStudies },
       { spanishSiteCopy },
+      { spanishJournalEntries },
     ] = await Promise.all([
       vite.ssrLoadModule("/src/app/pages/Journal.tsx"),
       vite.ssrLoadModule("/src/app/data/workCaseStudies.ts"),
       vite.ssrLoadModule("/src/app/data/spanishSiteCopy.ts"),
+      vite.ssrLoadModule("/src/app/data/spanishJournal.ts"),
     ]);
 
-    return { journalEntries, workCaseStudies, spanishSiteCopy };
+    return { journalEntries, workCaseStudies, spanishSiteCopy, spanishJournalEntries };
   } finally {
     await vite.close();
   }
@@ -74,6 +76,20 @@ function buildJournalRoutes(journalEntries) {
       date: entry.dateISO,
       related: (entry.relatedLinks ?? []).map((link) => link.href),
     }));
+}
+
+function buildSpanishJournalRoutes(spanishJournalEntries) {
+  return spanishJournalEntries.map((entry) => ({
+    label: entry.label,
+    path: `/es/notas/${entry.slug}`,
+    title: `${entry.label}: ${entry.title} | h777 Notas`,
+    headline: entry.title,
+    description: entry.excerpt,
+    section: entry.type,
+    date: entry.dateISO,
+    related: (entry.relatedLinks ?? []).map((link) => link.href),
+    locale: "es_MX",
+  }));
 }
 
 function buildWorkRoutes(workCaseStudies) {
@@ -97,7 +113,7 @@ function buildWorkRoutes(workCaseStudies) {
   });
 }
 
-function buildRoutes(journalEntries, workStudies, spanishSiteCopy) {
+function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJournalEntries) {
   return [
   {
     path: "/",
@@ -191,6 +207,76 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy) {
         datePublished: entry.date,
         dateModified: entry.date,
         articleSection: entry.section,
+        author: personSchema,
+        publisher: {
+          "@type": "Organization",
+          name: siteName,
+          url: siteUrl,
+        },
+        isRelatedTo: entry.related.map((href) => ({
+          "@type": "WebPage",
+          url: `${siteUrl}${href}`,
+        })),
+      },
+    ],
+  })),
+  {
+    path: "/es/notas",
+    title: "Notas | Operaciones inmobiliarias, PropTech y sistemas",
+    headline: "Notas para ordenar el caos operativo.",
+    description:
+      "Notas en espanol sobre operaciones inmobiliarias, mantenimiento, postventa, software interno, PropTech y equipos remotos.",
+    type: "website",
+    section: "Notas",
+    locale: "es_MX",
+    paragraphs: [
+      "Ideas sobre inmobiliarias, mantenimiento, postventa, sistemas internos y equipos remotos que ya no pueden depender de memoria, WhatsApp y suerte.",
+    ],
+    links: spanishJournalEntries.map((entry) => entry.path),
+    alternates: {
+      en: "/journal",
+      esMx: "/es/notas",
+    },
+    schema: [
+      {
+        "@type": "Blog",
+        name: "h777 Notas",
+        description:
+          "Notas en espanol sobre operaciones inmobiliarias, mantenimiento, postventa, software interno, PropTech y equipos remotos.",
+        url: `${siteUrl}/es/notas`,
+        inLanguage: "es-MX",
+        author: personSchema,
+        blogPost: spanishJournalEntries.map((entry) => ({
+          "@type": "BlogPosting",
+          headline: entry.headline,
+          url: `${siteUrl}${entry.path}`,
+          datePublished: entry.date,
+          dateModified: entry.date,
+          articleSection: entry.section,
+          author: personSchema,
+        })),
+      },
+    ],
+  },
+  ...spanishJournalEntries.map((entry) => ({
+    ...entry,
+    type: "article",
+    paragraphs: [entry.description],
+    links: entry.related,
+    image: defaultImage,
+    imageAlt: defaultImageAlt,
+    publishedTime: entry.date,
+    modifiedTime: entry.date,
+    schema: [
+      {
+        "@type": "BlogPosting",
+        headline: entry.headline,
+        description: entry.description,
+        url: `${siteUrl}${entry.path}`,
+        datePublished: entry.date,
+        dateModified: entry.date,
+        articleSection: entry.section,
+        inLanguage: "es-MX",
         author: personSchema,
         publisher: {
           "@type": "Organization",
@@ -409,6 +495,14 @@ function buildBreadcrumbs(route) {
     ];
   }
 
+  if (route.path.startsWith("/es/notas/")) {
+    return [
+      { name: siteName, path: "/" },
+      { name: "Notas", path: "/es/notas" },
+      { name: route.headline, path: route.path },
+    ];
+  }
+
   if (route.path.startsWith("/work/")) {
     return [
       { name: siteName, path: "/" },
@@ -424,6 +518,7 @@ function buildBreadcrumbs(route) {
     "/about": "About",
     "/contact": "Contact",
     "/es": "Español",
+    "/es/notas": "Notas",
     "/es/contacto": "Contacto",
   };
 
@@ -624,12 +719,13 @@ function renderRouteHtml(template, route, assetHead) {
 }
 
 async function main() {
-  const { journalEntries, workCaseStudies, spanishSiteCopy } =
+  const { journalEntries, workCaseStudies, spanishSiteCopy, spanishJournalEntries } =
     await loadAppData();
   routes = buildRoutes(
     buildJournalRoutes(journalEntries),
     buildWorkRoutes(workCaseStudies),
-    spanishSiteCopy
+    spanishSiteCopy,
+    buildSpanishJournalRoutes(spanishJournalEntries)
   );
 
   const templatePath = path.join(distDir, "index.html");

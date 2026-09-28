@@ -17,7 +17,7 @@ const links = [
 ];
 
 const spanishLinks = [
-  { label: "Notas", to: "/journal" },
+  { label: "Notas", to: "/es/notas" },
   { label: "Laboratorio", to: "/lab" },
   { label: "Proyectos", to: "/work" },
   { label: "Acerca", to: "/about" },
@@ -27,11 +27,17 @@ const spanishLinks = [
 const spanishRouteMap: Record<string, string> = {
   "/": "/es",
   "/contact": "/es/contacto",
+  "/journal": "/es/notas",
+  "/journal/a-dashboard-hoards-data-a-command-center-assigns-reality":
+    "/es/notas/un-dashboard-acumula-datos-un-centro-de-comando-asigna-realidad",
 };
 
 const englishRouteMap: Record<string, string> = {
   "/es": "/",
   "/es/contacto": "/contact",
+  "/es/notas": "/journal",
+  "/es/notas/un-dashboard-acumula-datos-un-centro-de-comando-asigna-realidad":
+    "/journal/a-dashboard-hoards-data-a-command-center-assigns-reality",
 };
 
 export function Navbar() {

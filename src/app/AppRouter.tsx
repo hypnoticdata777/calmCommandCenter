@@ -11,6 +11,8 @@ import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { SpanishHome } from "./pages/es/SpanishHome";
 import { SpanishContact } from "./pages/es/SpanishContact";
+import { SpanishJournal } from "./pages/es/SpanishJournal";
+import { SpanishJournalEntry } from "./pages/es/SpanishJournalEntry";
 
 // PROJECT BEACON
 // Entry from main.tsx. Layout wraps every route with Navbar/background.
@@ -31,6 +33,8 @@ export function AppRouter() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/es" element={<SpanishHome />} />
         <Route path="/es/contacto" element={<SpanishContact />} />
+        <Route path="/es/notas" element={<SpanishJournal />} />
+        <Route path="/es/notas/:slug" element={<SpanishJournalEntry />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
