@@ -8,8 +8,11 @@ import { Seo } from "../components/Seo";
 // Journal tells the story, Lab shows the logic, and Work shows the tool in action.
 
 type LabAlgorithm = {
+  slug: string;
   eyebrow: string;
+  status: string;
   title: string;
+  fit: string;
   plainProblem: string;
   analogy: string;
   algorithm: string[];
@@ -54,8 +57,11 @@ const loopSteps = [
 
 const algorithms: LabAlgorithm[] = [
   {
+    slug: "role-aware-maintenance-lanes",
     eyebrow: "Tool logic / TechSync Ops",
+    status: "Work-backed",
     title: "Role-aware maintenance lanes",
+    fit: "Different people need different views of the same operational truth.",
     plainProblem:
       "Maintenance work gets messy when everybody sees the same giant pile. A manager, a client, a vendor, and a read-only viewer do not need the same controls. They need the same work translated into their lane.",
     analogy:
@@ -96,8 +102,11 @@ const algorithms: LabAlgorithm[] = [
     workHref: "/work/techsync-ops",
   },
   {
+    slug: "m3ldsync-reconciliation",
     eyebrow: "Lab POC / m3ldSync",
+    status: "POC",
     title: "CSV reconciliation as an operations memory tool",
+    fit: "Messy exports become triage lanes instead of another spreadsheet burden.",
     plainProblem:
       "Remote operators inherit exports, spreadsheets, screenshots, and status lists that were never designed to agree with each other. The hard part is not opening a CSV. It is finding what changed, what needs triage, and what deserves a human decision before the next handoff.",
     analogy:
@@ -147,8 +156,11 @@ const algorithms: LabAlgorithm[] = [
     ],
   },
   {
+    slug: "vendorradar-memory",
     eyebrow: "In design / VendorRadar",
+    status: "Designing",
     title: "Vendor memory instead of a vendor list",
+    fit: "Vendor decisions need recent context, not just contact information.",
     plainProblem:
       "A vendor list can say who exists, but operations need to remember what happened the last time work was trusted to that vendor: scope, quote behavior, response time, proof quality, approvals, blockers, and whether the handoff stayed clean.",
     analogy:
@@ -188,8 +200,11 @@ const algorithms: LabAlgorithm[] = [
       "VendorRadar stays in Lab until the signal model is sharper. The idea is not to rank people casually; it is to make vendor trust specific, current, and backed by work history.",
   },
   {
+    slug: "journal-lab-work-system",
     eyebrow: "Site logic / h777 portfolio",
+    status: "System",
     title: "Journal to Lab to Work",
+    fit: "Ideas need a place to mature before they become public case studies.",
     plainProblem:
       "The site can easily become a pile of smart notes, screenshots, code logs, and half-finished ideas. The system needs to tell visitors where each thing belongs.",
     analogy:
@@ -317,6 +332,7 @@ function CodeBlock({ title, lines }: { title: string; lines: string[] }) {
 function AlgorithmPanel({ item }: { item: LabAlgorithm }) {
   return (
     <motion.article
+      id={item.slug}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-120px" }}
@@ -480,19 +496,44 @@ export function Lab() {
           </motion.div>
         </section>
 
-        <section className="space-y-6 border-t border-foreground/10 pt-12">
-          <SectionLabel>The loop</SectionLabel>
-          <FlowChart
-            steps={[
-              "Problem",
-              "Algorithm",
-              "Pseudocode / Flowchart",
-              "Code",
-              "Lab",
-              "Work",
-              "Next problem",
-            ]}
-          />
+        <section className="border-t border-foreground/10 pt-12">
+          <div className="grid gap-8 lg:grid-cols-[0.58fr_1.42fr] lg:items-start">
+            <div className="space-y-5">
+              <SectionLabel>On the bench</SectionLabel>
+              <h2 className="text-3xl font-bold leading-tight tracking-wide md:text-4xl">
+                What is being tested right now.
+              </h2>
+              <p className="text-lg leading-loose text-foreground/64">
+                The Lab is a shelf for product logic before it becomes a
+                polished case study. Each thread below has a different job:
+                prove the workflow, sharpen the model, or explain how the site
+                itself connects the thinking.
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {algorithms.map((item) => (
+                <a
+                  key={item.slug}
+                  href={`#${item.slug}`}
+                  className="group border border-brand/20 bg-brand/5 p-5 transition-colors hover:border-brand/45 hover:bg-brand/10"
+                >
+                  <p className="text-xs uppercase tracking-[0.22em] text-brand/60">
+                    {item.status}
+                  </p>
+                  <h3 className="mt-4 font-display text-xl leading-snug text-foreground/88">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/56">
+                    {item.fit}
+                  </p>
+                  <span className="mt-5 inline-flex font-display text-sm tracking-wide text-brand/75 transition-transform group-hover:translate-x-1">
+                    Open thread -&gt;
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
         </section>
 
         {algorithms.map((item) => (
