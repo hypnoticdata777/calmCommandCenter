@@ -18,6 +18,10 @@ type LabAlgorithm = {
   code: string[];
   outcome: string;
   workHref?: string;
+  links?: {
+    label: string;
+    href: string;
+  }[];
 };
 
 const loopSteps = [
@@ -90,6 +94,98 @@ const algorithms: LabAlgorithm[] = [
     outcome:
       "The product starts selling the idea that clarity is not one dashboard for everyone. Clarity is the right amount of information for the person holding the next step.",
     workHref: "/work/techsync-ops",
+  },
+  {
+    eyebrow: "Lab POC / m3ldSync",
+    title: "CSV reconciliation as an operations memory tool",
+    plainProblem:
+      "Remote operators inherit exports, spreadsheets, screenshots, and status lists that were never designed to agree with each other. The hard part is not opening a CSV. It is finding what changed, what needs triage, and what deserves a human decision before the next handoff.",
+    analogy:
+      "Think of it like matching receipts after a long shift. The point is not the paper. The point is spotting the missing line, the duplicate charge, and the item that needs someone to say what happens next.",
+    algorithm: [
+      "Load two operational lists.",
+      "Normalize the fields that should describe the same work.",
+      "Compare records by stable identifiers and useful fallbacks.",
+      "Sort differences into matched, missing, changed, and needs-review lanes.",
+      "Turn each difference into a triage card instead of a hidden spreadsheet row.",
+      "Export or carry forward the decisions so the next operator can continue.",
+    ],
+    pseudocode: [
+      "when operator imports files",
+      "  leftRows = normalize(firstFile)",
+      "  rightRows = normalize(secondFile)",
+      "  matches = reconcile(leftRows, rightRows)",
+      "  cards = buildTriageCards(matches)",
+      "  show lanes by status and risk",
+      "  save decisions for the next pass",
+    ],
+    flow: [
+      "Import CSVs",
+      "Normalize fields",
+      "Match records",
+      "Find changes",
+      "Triage cards",
+      "Export decisions",
+    ],
+    code: [
+      "const left = normalizeRows(sourceA);",
+      "const right = normalizeRows(sourceB);",
+      "const diff = reconcileByKey(left, right);",
+      "return buildKanbanLanes(diff, decisions);",
+    ],
+    outcome:
+      "m3ldSync stays in Lab because the product question is still being tested: can reconciliation feel like operational triage instead of spreadsheet punishment?",
+    links: [
+      {
+        label: "Source",
+        href: "https://github.com/hypnoticdata777/m3ldSync",
+      },
+      {
+        label: "Portfolio assets",
+        href: "https://github.com/hypnoticdata777/m3ldSync/tree/main/docs/portfolio",
+      },
+    ],
+  },
+  {
+    eyebrow: "In design / VendorRadar",
+    title: "Vendor memory instead of a vendor list",
+    plainProblem:
+      "A vendor list can say who exists, but operations need to remember what happened the last time work was trusted to that vendor: scope, quote behavior, response time, proof quality, approvals, blockers, and whether the handoff stayed clean.",
+    analogy:
+      "Think of it like caller ID with a memory. A name and phone number help you call someone. The useful part is knowing what usually happens after they answer.",
+    algorithm: [
+      "Start with a vendor and a completed work history.",
+      "Group jobs by category, property context, urgency, and outcome.",
+      "Capture quote, proof, invoice, communication, and closeout signals.",
+      "Score reliability by recent evidence instead of reputation alone.",
+      "Surface warnings, strengths, and context before the next assignment.",
+      "Keep the record scoped so trust is earned, current, and explainable.",
+    ],
+    pseudocode: [
+      "when assigning work",
+      "  vendor = loadVendorProfile(id)",
+      "  history = loadRecentWork(vendor)",
+      "  signals = summarizeReliability(history)",
+      "  risks = findOpenPatterns(signals)",
+      "  show vendor memory before assignment",
+      "  log new outcome after closeout",
+    ],
+    flow: [
+      "Vendor profile",
+      "Work history",
+      "Reliability signals",
+      "Risk context",
+      "Assignment decision",
+      "New memory",
+    ],
+    code: [
+      "const history = loadVendorHistory(vendorId);",
+      "const signals = scoreReliability(history);",
+      "const context = explainVendorFit(signals, workOrder);",
+      "return <VendorMemory vendor={vendor} context={context} />;",
+    ],
+    outcome:
+      "VendorRadar stays in Lab until the signal model is sharper. The idea is not to rank people casually; it is to make vendor trust specific, current, and backed by work history.",
   },
   {
     eyebrow: "Site logic / h777 portfolio",
@@ -288,6 +384,31 @@ function AlgorithmPanel({ item }: { item: LabAlgorithm }) {
             >
               See it in Work
             </Link>
+          </div>
+        )}
+        {item.links && (
+          <div className="border border-foreground/10 p-5">
+            <p className="text-xs uppercase tracking-[0.22em] text-brand/55">
+              Lab proof
+            </p>
+            <p className="mt-4 text-lg leading-loose text-foreground/68">
+              This experiment is still earning its case-study shape. These
+              links show the current public source or supporting material
+              without promoting it to Work yet.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {item.links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-brand/30 px-4 py-2 font-display text-sm tracking-wide text-brand/85 transition-colors hover:bg-brand/10"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>

@@ -31,6 +31,16 @@ const expectedTypesByPath = new Map([
     "/journal/dont-hire-another-laptop-fix-the-lockfile",
     ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
   ],
+  [
+    "/journal/a-dashboard-hoards-data-a-command-center-assigns-reality",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
+  ["/es", ["WebSite", "Person", "WebPage", "BreadcrumbList"]],
+  ["/es/notas", ["WebSite", "Person", "Blog", "BreadcrumbList"]],
+  [
+    "/es/notas/un-dashboard-acumula-datos-un-centro-de-comando-asigna-realidad",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
   ["/lab", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
   ["/work", ["WebSite", "Person", "CollectionPage", "BreadcrumbList"]],
   ["/work/pm-ops-map", ["WebSite", "Person", "Article", "BreadcrumbList"]],
@@ -38,6 +48,7 @@ const expectedTypesByPath = new Map([
   ["/work/turnflow-home", ["WebSite", "Person", "Article", "BreadcrumbList"]],
   ["/about", ["WebSite", "Person", "ProfilePage", "BreadcrumbList"]],
   ["/contact", ["WebSite", "Person", "ContactPage", "BreadcrumbList"]],
+  ["/es/contacto", ["WebSite", "Person", "ContactPage", "BreadcrumbList"]],
   ["/", ["WebSite", "Person"]],
 ]);
 
@@ -234,8 +245,21 @@ async function main() {
   const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
   const sitemapIssues = [];
 
-  assert(urls.length === 17, `Expected 17 sitemap URLs, found ${urls.length}`, sitemapIssues);
+  assert(
+    urls.length === expectedTypesByPath.size,
+    `Expected ${expectedTypesByPath.size} sitemap URLs, found ${urls.length}`,
+    sitemapIssues
+  );
   assert(new Set(urls).size === urls.length, "Sitemap contains duplicate URLs", sitemapIssues);
+
+  const sitemapPaths = new Set(urls.map(pathFromUrl));
+  for (const expectedPath of expectedTypesByPath.keys()) {
+    assert(
+      sitemapPaths.has(expectedPath),
+      `Expected route missing from sitemap: ${expectedPath}`,
+      sitemapIssues
+    );
+  }
 
   const robots = await fetchText(`${siteUrl}/robots.txt`);
   assert(robots.response.status === 200, "robots.txt did not return 200", sitemapIssues);

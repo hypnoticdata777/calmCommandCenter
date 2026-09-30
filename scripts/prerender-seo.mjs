@@ -294,14 +294,14 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
   })),
   {
     path: "/lab",
-    title: "Lab | h777 Property Management Tool Experiments",
+    title: "Lab | h777 Algorithms and Build Thinking",
     headline: "Where ideas get tested before they earn Work.",
     description:
-      "The h777 lab tracks property management experiments, early PropTech ideas, m3ldSync, VendorRadar, and tools being tested before they become case studies.",
+      "The h777 Lab explains how product ideas move from problem to algorithm, pseudocode, flowchart, code, and Work case study.",
     type: "website",
     section: "Lab",
     paragraphs: [
-      "Journal thoughts, PM friction, product hunches, and half-built tools get stress-tested against reality here.",
+      "Journal thoughts, remote operations patterns, product hunches, and half-built tools get stress-tested against reality here.",
       "Not everything here needs to ship. The point is to capture the experiment, test whether it still stands, and decide whether it belongs in Work later.",
     ],
     links: [
@@ -312,9 +312,9 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
     schema: [
       {
         "@type": "CollectionPage",
-        name: "Lab | h777 Property Management Tool Experiments",
+        name: "Lab | h777 Algorithms and Build Thinking",
         description:
-          "Property management experiments, early PropTech ideas, m3ldSync, VendorRadar, and tools being tested before case-study readiness.",
+          "Remote operations experiments, early PropTech ideas, m3ldSync, VendorRadar, and tools being tested before case-study readiness.",
         url: `${siteUrl}/lab`,
       },
     ],

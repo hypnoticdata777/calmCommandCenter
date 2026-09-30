@@ -26,7 +26,7 @@ The first ten SEO organization passes are complete.
 - **V9 metadata validation:** added a reusable live SEO validator, confirmed all sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
 - **V10 breadcrumbs and performance:** added BreadcrumbList structured data across non-home routes, upgraded the live SEO validator to enforce breadcrumb quality, added a performance budget script, and created a public content release checklist.
 
-Current SEO status: V10 is live and the current content set now targets 16 sitemap routes after Field Note 7. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
+Current SEO status: V10 is live and the current content set now targets 22 sitemap routes after the Spanish first-pass routes and Field Note 9. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md), [`docs/seo/performance-and-breadcrumbs-2026-08-31.md`](docs/seo/performance-and-breadcrumbs-2026-08-31.md), and [`docs/seo/content-release-checklist.md`](docs/seo/content-release-checklist.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
@@ -137,7 +137,7 @@ The repo also includes an interactive requirements brief that separates the two 
 - **BeatingBrain** - blurred background blobs that pulse at different speeds.
 - **RollingHeptagon** - three animated 7-sided shapes that drift around the screen, each with a small moving dot inside.
 - **Home page** - the `h777` mark, main positioning copy, three principles, and real CTAs into Journal and Lab.
-- **Lab page** - a testing shelf for m3ldSync, VendorRadar, and ideas that still need more proof.
+- **Lab page** - a testing shelf for role-aware workflow logic, m3ldSync, VendorRadar, and ideas that still need more proof.
 - **Work page** - three portfolio case studies, with positioning, links, problem/solution copy, builder notes, local screenshots for PM Ops Map, TechSync Ops, and TurnFlow Home, and dedicated case-study URLs.
 - **Product requirements brief** - an interactive HTML split between TurnFlow Home and TechSync Ops.
 - **Journal page** - real written content, with a browsable index, dedicated URLs, listen controls, and related links for each published Field Note.
