@@ -467,8 +467,8 @@ export function Lab() {
             <div className="h-px w-28 bg-foreground/10" />
 
             <p className="max-w-3xl text-lg leading-loose text-foreground/70 md:text-xl">
-              This page is where I slow the work down and make the thinking
-              inspectable. Before an idea becomes a polished tool, I want to
+              This page is where I slow the work down and make the build
+              logic inspectable. Before an idea becomes a polished tool, I want to
               know the problem, the algorithm, the pseudocode, the flowchart,
               and the first piece of code that proves the shape makes sense.
             </p>
