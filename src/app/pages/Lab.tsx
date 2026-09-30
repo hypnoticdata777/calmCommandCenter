@@ -504,7 +504,7 @@ export function Lab() {
                 What is being tested right now.
               </h2>
               <p className="text-lg leading-loose text-foreground/64">
-                The Lab is a shelf for product logic before it becomes a
+                The Lab is a workbench for product logic before it becomes a
                 polished case study. Each thread below has a different job:
                 prove the workflow, sharpen the model, or turn field pressure
                 into something another operator can understand.
