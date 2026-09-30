@@ -506,8 +506,8 @@ export function Lab() {
               <p className="text-lg leading-loose text-foreground/64">
                 The Lab is a shelf for product logic before it becomes a
                 polished case study. Each thread below has a different job:
-                prove the workflow, sharpen the model, or explain how the site
-                itself connects the thinking.
+                prove the workflow, sharpen the model, or turn field pressure
+                into something another operator can understand.
               </p>
             </div>
 
