@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Page Editing Workshop</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1f2a2f;
+        --muted: #66757b;
+        --line: #d7e0e1;
+        --paper: #f8fbfa;
+        --card: #ffffff;
+        --accent: #137d98;
+        --accent-soft: #e7f5f7;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.65;
+      }
+
+      header,
+      main {
+        width: min(1080px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      header { padding: 64px 0 36px; }
+
+      .eyebrow,
+      .label {
+        color: var(--accent);
+        font-family: Arial, sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin: 12px 0 16px;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        line-height: 1.03;
+        letter-spacing: -0.04em;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.7rem, 3vw, 2.5rem);
+        line-height: 1.1;
+      }
+
+      h3 { margin: 0 0 8px; font-size: 1.35rem; }
+
+      .intro {
+        max-width: 780px;
+        color: var(--muted);
+        font-size: 1.2rem;
+      }
+
+      .notice {
+        margin-top: 24px;
+        padding: 18px 20px;
+        border-left: 4px solid var(--accent);
+        background: var(--accent-soft);
+        font-size: 1.05rem;
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px 0;
+        background: color-mix(in srgb, var(--paper) 92%, transparent);
+        backdrop-filter: blur(8px);
+      }
+
+      button {
+        border: 1px solid var(--accent);
+        padding: 10px 15px;
+        background: var(--accent);
+        color: white;
+        cursor: pointer;
+        font: 600 0.88rem Arial, sans-serif;
+      }
+
+      button.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .project {
+        margin: 54px 0;
+        padding: 30px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        box-shadow: 0 12px 32px rgba(26, 56, 61, 0.05);
+      }
+
+      .project > .project-note {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+
+      .field {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .current {
+        margin: 12px 0 16px;
+        padding: 16px 18px;
+        background: #f1f5f4;
+        color: #536267;
+        white-space: pre-wrap;
+      }
+
+      .prompt {
+        margin: 12px 0;
+        color: var(--accent);
+        font-style: italic;
+      }
+
+      textarea {
+        display: block;
+        width: 100%;
+        min-height: 150px;
+        resize: vertical;
+        border: 1px solid #b9cacc;
+        padding: 15px;
+        background: #fff;
+        color: var(--ink);
+        font: 1rem/1.6 Georgia, "Times New Roman", serif;
+      }
+
+      textarea:focus {
+        outline: 3px solid #bce6ed;
+        border-color: var(--accent);
+      }
+
+      .small textarea { min-height: 90px; }
+
+      footer {
+        padding: 20px 0 70px;
+        color: var(--muted);
+        font: 0.9rem/1.5 Arial, sans-serif;
+      }
+
+      @media (max-width: 680px) {
+        header, main { width: min(100% - 24px, 1080px); }
+        header { padding-top: 38px; }
+        .project { padding: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="eyebrow">h777 / Work page workshop</div>
+      <h1>Help me make this page sound like you.</h1>
+      <p class="intro">
+        Use the boxes below to write the version you would actually say to a
+        person who asked what you have been building. Short, imperfect notes
+        are welcome. We can polish them together afterward.
+      </p>
+      <div class="notice">
+        A useful test: would you say this out loud to another builder, operator,
+        or curious friend? If it sounds like a status report, investor deck, or
+        agency handoff, make it more specific and more personal.
+      </div>
+    </header>
+
+    <main>
+      <div class="toolbar">
+        <button id="save">Save on this device</button>
+        <button id="export" class="secondary">Export my edits</button>
+        <button id="clear" class="secondary">Clear my edits</button>
+        <span id="status" aria-live="polite"></span>
+      </div>
+
+      <section class="project">
+        <div class="label">Page opening</div>
+        <h2>How do you want to introduce your work?</h2>
+        <p class="project-note">This replaces the current generic Work-page introduction.</p>
+
+        <div class="field small">
+          <h3>Headline</h3>
+          <div class="current">Tools for making operational mess easier to see.</div>
+          <p class="prompt">What is the clearest thing you want people to understand about the kind of things you build?</p>
+          <textarea data-name="page-headline" placeholder="Write your version here..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Opening paragraph</h3>
+          <div class="current">Work is where the screenshots, product story, and case-study version live. The Journal carries the lesson, the Lab shows the algorithm, and Work shows what the idea looks like once it has a real interface.</div>
+          <p class="prompt">Why do you build these things? What do you want someone to notice when they look through them?</p>
+          <textarea data-name="page-intro" placeholder="Write the version you would say out loud..."></textarea>
+        </div>
+      </section>
+
+      <section class="project">
+        <div class="label">Project 01 / PM Ops Map</div>
+        <h2>How should you describe the first thing you built?</h2>
+        <p class="project-note">You do not need to explain every feature. What problem made you start it?</p>
+
+        <div class="field">
+          <h3>Short description</h3>
+          <div class="current">A free, open-source browser app that helps new PMCs set up departments, tasks, ownership, maintenance tracking, portfolio records, and operations documentation on day one without signup, backend setup, or monthly software cost.</div>
+          <p class="prompt">Who is this for, and what does it help them stop feeling or guessing?</p>
+          <textarea data-name="pm-description" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Problem</h3>
+          <div class="current">New PMCs do not always know what needs to exist yet.</div>
+          <p class="prompt">What did you keep seeing in real operations that made you think, “there should be a better starting point for this”?</p>
+          <textarea data-name="pm-problem" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Solution</h3>
+          <div class="current">A guided workspace instead of an empty board.</div>
+          <p class="prompt">What does PM Ops Map give someone on day one that they would otherwise have to assemble themselves?</p>
+          <textarea data-name="pm-solution" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Builder notes</h3>
+          <div class="current">Built from real PM operations pain.</div>
+          <p class="prompt">What part of your own experience is inside this project? Why did you care enough to build it?</p>
+          <textarea data-name="pm-builder" placeholder="Your version..."></textarea>
+        </div>
+      </section>
+
+      <section class="project">
+        <div class="label">Project 02 / TechSync Ops</div>
+        <h2>How do you want to show the thing you are actively pushing forward?</h2>
+        <p class="project-note">This is the strongest connection to Field Note 9 and the “command center” idea.</p>
+
+        <div class="field">
+          <h3>Short description</h3>
+          <div class="current">A staged PMC maintenance command center that turns one messy maintenance pile into role-aware lanes for admins, coordinators, technicians, clients, viewers, and vendors.</div>
+          <p class="prompt">What is TechSync trying to make easier for the people who have to keep maintenance moving?</p>
+          <textarea data-name="tech-description" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Problem</h3>
+          <div class="current">Maintenance breaks when every handoff lives in a different place.</div>
+          <p class="prompt">What does the messy version look like in real life? Include one specific moment you have seen.</p>
+          <textarea data-name="tech-problem" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Solution</h3>
+          <div class="current">A role-lane workspace for dispatch, updates, proof, and closeout.</div>
+          <p class="prompt">What should each person know or be able to do when they open the product?</p>
+          <textarea data-name="tech-solution" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Build status</h3>
+          <div class="current">Built enough to explain, still labeled as a POC.</div>
+          <p class="prompt">What is genuinely working today, and what are you deliberately not claiming yet?</p>
+          <textarea data-name="tech-status" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Builder notes</h3>
+          <div class="current">Built around the follow-up problem.</div>
+          <p class="prompt">What personal frustration or experience keeps you coming back to this problem?</p>
+          <textarea data-name="tech-builder" placeholder="Your version..."></textarea>
+        </div>
+      </section>
+
+      <section class="project">
+        <div class="label">Project 03 / TurnFlow Home</div>
+        <h2>How should you talk about the product that is closest to a person’s daily life?</h2>
+        <p class="project-note">The goal is to make this feel like a product you care about, not a feature inventory.</p>
+
+        <div class="field">
+          <h3>Short description</h3>
+          <div class="current">A homeowner-first maintenance workspace for people who want the repair story in one place: what broke, who was invited, what was quoted, what changed, what came back, and what needs attention next.</div>
+          <p class="prompt">What would make a homeowner say, “yes, I wish I had that during my last repair”?</p>
+          <textarea data-name="turn-description" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Problem</h3>
+          <div class="current">Repairs are easier to manage when the history stays in one place.</div>
+          <p class="prompt">What gets lost between texts, photos, quotes, receipts, and memory?</p>
+          <textarea data-name="turn-problem" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Solution</h3>
+          <div class="current">One shared repair record from issue to proof.</div>
+          <p class="prompt">What does the product help the homeowner remember, decide, or prove?</p>
+          <textarea data-name="turn-solution" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>Current build</h3>
+          <div class="current">Rebuilt from a Firebase MVP into a full-stack SaaS-style POC.</div>
+          <p class="prompt">What changed as you rebuilt it, and what did that teach you about the product?</p>
+          <textarea data-name="turn-build" placeholder="Your version..."></textarea>
+        </div>
+
+        <div class="field">
+          <h3>What I’m working on next</h3>
+          <div class="current">What has to happen before the public demo.</div>
+          <p class="prompt">What are you personally excited or curious to try next? Write this like you are telling a friend, not filing a release plan.</p>
+          <textarea data-name="turn-next" placeholder="Your version..."></textarea>
+        </div>
+      </section>
+
+      <section class="project">
+        <div class="label">Voice check</div>
+        <h2>Anything else you want the page to sound like?</h2>
+        <p class="project-note">Use this for words, phrases, or ideas you want to keep—or definitely remove.</p>
+        <textarea data-name="voice-notes" placeholder="Examples: more direct, less polished, keep the humor, avoid startup language, mention my property-management background..."></textarea>
+      </section>
+
+      <footer>
+        Save your work as you go. When you are ready, use “Export my edits” and send the downloaded text file back in this chat.
+      </footer>
+    </main>
+
+    <script>
+      const fields = [...document.querySelectorAll("textarea[data-name]")];
+      const status = document.querySelector("#status");
+      const key = "h777-work-page-editing-workshop";
+
+      function save() {
+        const values = Object.fromEntries(fields.map((field) => [field.dataset.name, field.value]));
+        localStorage.setItem(key, JSON.stringify(values));
+        status.textContent = "Saved on this device.";
+        setTimeout(() => { status.textContent = ""; }, 2200);
+      }
+
+      function load() {
+        try {
+          const values = JSON.parse(localStorage.getItem(key) || "{}");
+          fields.forEach((field) => { field.value = values[field.dataset.name] || ""; });
+        } catch {
+          status.textContent = "Could not load the saved draft.";
+        }
+      }
+
+      function exportEdits() {
+        const lines = ["# Work Page Editing Workshop", ""];
+        fields.forEach((field) => {
+          lines.push(`## ${field.dataset.name}`, "", field.value || "[No edit written]", "");
+        });
+        const blob = new Blob([lines.join("\n")], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "work-page-edits.md";
+        link.click();
+        URL.revokeObjectURL(url);
+        status.textContent = "Exported work-page-edits.md.";
+        setTimeout(() => { status.textContent = ""; }, 2600);
+      }
+
+      document.querySelector("#save").addEventListener("click", save);
+      document.querySelector("#export").addEventListener("click", exportEdits);
+      document.querySelector("#clear").addEventListener("click", () => {
+        if (confirm("Clear all of your edits on this device?")) {
+          localStorage.removeItem(key);
+          fields.forEach((field) => { field.value = ""; });
+          status.textContent = "Edits cleared.";
+        }
+      });
+      fields.forEach((field) => field.addEventListener("input", () => {
+        status.textContent = "Unsaved changes";
+      }));
+      load();
+    </script>
+  </body>
+</html>

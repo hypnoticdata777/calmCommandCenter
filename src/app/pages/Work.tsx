@@ -27,7 +27,7 @@ const overviewCopy: Record<
   "pm-ops-map": {
     badge: "Demo coming soon",
     description:
-      "A free, open-source browser app that helps new PMCs set up departments, tasks, ownership, maintenance tracking, portfolio records, and operations documentation on day one without signup, backend setup, or monthly software cost.",
+      "A free, open-source browser app for new property managers, founders, operations managers, single-property owners, and anyone who suddenly finds themselves responsible for running a property.",
   },
   "techsync-ops": {
     badge: "Staged demo",
@@ -335,16 +335,18 @@ export function Work() {
             <SectionLabel>Work</SectionLabel>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-wide leading-tight">
-              Tools for making operational mess easier to see.
+              Clear, honest work shouldn’t feel this difficult.
             </h1>
 
             <div className="h-px bg-foreground/10 w-28" />
 
             <p className="max-w-3xl text-lg md:text-xl leading-loose text-foreground/70">
-              Work is where the screenshots, product story, and case-study
-              version live. The Journal carries the lesson, the Lab shows the
-              algorithm, and Work shows what the idea looks like once it has a
-              real interface.
+              I’ve spent years working around property management, operations,
+              owners, vendors, and the small details that make a business either
+              move smoothly or quietly fall apart. Now I’m combining that
+              experience with software and systems thinking. The Journal holds
+              the lessons, the Lab helps me work through the logic, and Work is
+              where those ideas become usable tools.
             </p>
           </motion.div>
         </section>

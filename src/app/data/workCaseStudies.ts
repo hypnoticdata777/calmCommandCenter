@@ -55,7 +55,7 @@ export const workCaseStudies: WorkCaseStudy[] = [
     slug: "pm-ops-map",
     name: "PM Ops Map",
     title:
-      "PM Ops Map: a day-one operating system for new property management companies.",
+      "PM Ops Map: a practical starting point for property managers who don’t want to guess what they’re missing.",
     seoTitle: "PM Ops Map Case Study | Property Management Operations Setup",
     description:
       "A free, open-source browser app that helps new property management companies set up departments, tasks, ownership, maintenance tracking, and operations documentation on day one.",
@@ -116,18 +116,19 @@ export const workCaseStudies: WorkCaseStudy[] = [
     sections: [
       {
         label: "Problem",
-        heading: "New PMCs do not always know what needs to exist yet.",
+        heading: "Important work fails when nobody realizes it needs to exist.",
         body: [
-          "A beginning property management company has to track departments, recurring tasks, ownership, handoffs, maintenance intake, vendors, tenant records, lease dates, delinquency, SOPs, and follow-up before the operation has fully matured.",
-          "Most PM software assumes the company already has the volume, process, and budget to justify another platform. PM Ops Map starts earlier. It answers the question a new owner or ops manager is really asking: what am I supposed to be tracking in the first place?",
+          "I kept seeing important work fail to happen—not because people were careless, but because nobody realized the work needed to exist in the first place.",
+          "That is how the small surprises begin. A task gets missed. A responsibility is unclear. A document is not created. A vendor detail lives in someone’s memory. Three years later, those innocent gaps have become a long list of expensive operational paper cuts.",
+          "When you are starting out, you usually have to pay for almost everything. A free guide that helps you see the work earlier can make a real difference.",
         ],
       },
       {
         label: "Solution",
-        heading: "A guided workspace instead of an empty board.",
+        heading: "A map for the work instead of a blank screen.",
         body: [
-          "PM Ops Map opens with a structured operating map: 260+ standard PM tasks across 17 departments, all editable to fit the company. Teams can assign owners, balance workload, track work orders, manage portfolio records, export handbooks, and keep backups without sending data to a server by default.",
-          "The product decision was simple: make the first useful version frictionless. No login. No monthly fee. No blank-board panic. The tool gives you a serious starting point and lets you edit it into your own operation.",
+          "PM Ops Map gives you a practical list of what to track, what needs an owner, and what should be completed or accounted for.",
+          "It is not trying to run the whole company for you. It gives you a map so you can stop guessing where to begin. You can use it as a starting point, adapt it to your operation, and build from there.",
         ],
         items: [
           "Guided launch dashboard for new companies",
@@ -141,11 +142,11 @@ export const workCaseStudies: WorkCaseStudy[] = [
       },
       {
         label: "Builder Notes",
-        heading: "Built from real PM operations pain.",
+        heading: "Built from too many ‘I didn’t think about that’ moments.",
         body: [
-          "After 7+ years inside property management operations, I kept seeing the same pattern: work goes missing when ownership is unclear, and the sharpest teammate often ends up carrying too much invisible work.",
-          "PM Ops Map is my answer to that early-stage gap. It gives new owners, ops managers, coordinators, and PM teams a free guided starting point before they hire expensive consultants or commit to heavier software.",
-          "Next up: stronger maintenance tracking, deeper vendor and work order tools, owner-ready reports, import presets, and better Team Sync conflict handling.",
+          "I’ve lived through the endless stream of ‘I didn’t think about that’ problems—the innocent mistakes, missing steps, and surprise responsibilities that appear once the operation is already moving.",
+          "The hard part is getting over that first hump. After that, you start seeing the patterns clearly. You want to document them, improve them, and make sure the next person does not have to learn everything through pain.",
+          "That is what PM Ops Map is for: a quick, free manual for understanding the recurring work a property needs, whether you are building a company, joining one, or managing a property on your own.",
         ],
       },
     ],
