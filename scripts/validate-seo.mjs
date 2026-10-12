@@ -35,6 +35,10 @@ const expectedTypesByPath = new Map([
     "/journal/a-dashboard-hoards-data-a-command-center-assigns-reality",
     ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
   ],
+  [
+    "/journal/emailvault-needed-boundaries",
+    ["WebSite", "Person", "BlogPosting", "BreadcrumbList"],
+  ],
   ["/es", ["WebSite", "Person", "WebPage", "BreadcrumbList"]],
   ["/es/notas", ["WebSite", "Person", "Blog", "BreadcrumbList"]],
   [
