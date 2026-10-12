@@ -1133,7 +1133,7 @@ export const journalEntries = [
     ],
   },
   {
-    label: "Field Note 11",
+    label: "Field Note 10",
     slug: "emailvault-needed-boundaries",
     title: "I Thought EmailVault Needed API Keys. It Needed Boundaries.",
     readTime: "7 min read",
