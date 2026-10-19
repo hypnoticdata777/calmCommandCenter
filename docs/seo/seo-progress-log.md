@@ -243,6 +243,16 @@ Built and prepared:
 - Updated `scripts/validate-seo.mjs` so the live validator expects 16 sitemap routes and validates the new Field Note route.
 - Updated README route documentation.
 
+### 2026-10-18 — Spanish Nota 2: EmailVault
+
+- Added `/es/notas/emailvault-necesitaba-fronteras` to the Spanish notes index and article data using the supplied Spanish copy.
+- Preserved the exact Morse-code link and transcribed the supplied workflow image into an accessible local SVG; removed the private Gmail attachment dependency.
+- Added limited safe body link/image rendering and Spanish speech language selection.
+- Paired the Navbar language switch with English Field Note 10.
+- Added sitemap coverage, updated the Spanish index date, and registered expected live SEO schemas. Automatic prerender discovery now produces 24 pages.
+- Updated README, architecture guidance, and the content release checklist.
+- See [the release record](nota-2-emailvault-2026-10-18.md) for validation and post-deployment steps. These changes do not establish a live deployment.
+
 ## Challenges
 
 - The site is still a Vite single-page React app for the user experience, but V8 now gives every public sitemap route its own static SEO HTML before hydration.

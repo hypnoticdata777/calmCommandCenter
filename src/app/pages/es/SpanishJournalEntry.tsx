@@ -103,6 +103,7 @@ export function SpanishJournalEntry() {
           </p>
 
           <ArticleListenControls
+            lang="es-MX"
             title={entry.title}
             readTime={entry.readTime}
             sections={entry.sections}

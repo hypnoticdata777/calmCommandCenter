@@ -25,6 +25,7 @@ const spanishLinks = [
 ];
 
 const spanishRouteMap: Record<string, string> = {
+  "/journal/emailvault-needed-boundaries": "/es/notas/emailvault-necesitaba-fronteras",
   "/": "/es",
   "/contact": "/es/contacto",
   "/journal": "/es/notas",
@@ -33,6 +34,7 @@ const spanishRouteMap: Record<string, string> = {
 };
 
 const englishRouteMap: Record<string, string> = {
+  "/es/notas/emailvault-necesitaba-fronteras": "/journal/emailvault-needed-boundaries",
   "/es": "/",
   "/es/contacto": "/contact",
   "/es/notas": "/journal",

@@ -512,3 +512,13 @@ The first Spanish polish is complete when:
 - [ ] `npm test` passes.
 - [ ] `npm run build:check` passes.
 
+
+## Implementation update — October 18, 2026
+
+The Spanish home, contact, notes index, and dedicated note routes are implemented.
+The notes index now includes Nota 2, the Spanish adaptation of EmailVault Field
+Note 10, with a paired Navbar language switch, local workflow diagram, preserved
+Morse-code link, Spanish narration language, and static SEO metadata. Earlier
+phases above remain the original planning record, not a current completion checklist.
+See [the release record](../seo/nota-2-emailvault-2026-10-18.md) and
+[content release checklist](../seo/content-release-checklist.md) for the current workflow.

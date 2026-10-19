@@ -7,10 +7,12 @@ type ArticleListenControlsProps = {
   title: string;
   readTime: string;
   sections: string[];
+  lang?: string;
 };
 
 function normalizeSpeechText(value: string) {
   return value
+    .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/[“”]/g, '"')
     .replace(/[‘’]/g, "'")
     .replace(/\s+/g, " ")
@@ -21,6 +23,7 @@ export function ArticleListenControls({
   title,
   readTime,
   sections,
+  lang,
 }: ArticleListenControlsProps) {
   const [status, setStatus] = useState<ListenStatus>("idle");
   const [currentChunk, setCurrentChunk] = useState(0);
@@ -74,6 +77,7 @@ export function ArticleListenControls({
     }
 
     const utterance = new window.SpeechSynthesisUtterance(nextText);
+    if (lang) utterance.lang = lang;
     utterance.rate = 0.95;
     utterance.pitch = 1;
 

@@ -1,5 +1,85 @@
 export const spanishJournalEntries = [
   {
+    "label": "Nota 2",
+    "slug": "emailvault-necesitaba-fronteras",
+    "title": "Pensé que EmailVault Necesitaba API Keys. Lo que Necesitaba Eran Fronteras.",
+    "readTime": "7 min de lectura",
+    "type": "Constructor",
+    "date": "18 Oct 2026",
+    "dateISO": "2026-10-18",
+    "excerpt": "Una nota técnica sobre EmailVault, Gmail OAuth, cómo respaldar correos para que sigan sirviendo en 20 años, y por qué la función más crítica de un software es saber exactamente qué órdenes rechaza.",
+    "sections": [
+      "Empecé a programar EmailVault con la seguridad inflada de quien nunca se había sentado a negociar en serio con los permisos y la seguridad de OAuth (el protocolo que te pide autorizar accesos con tu cuenta de Google).",
+      "La meta sonaba directa: tengo correos valiosos acumulados en la bandeja de entrada. Quiero sacarlos del ecosistema cerrado de Google, guardarlos bajo mi propio techo, organizarlos con rigor y tenerlos listos para motores de búsqueda locales, archivado seguro y futuros proyectos de análisis o inteligencia artificial personal.",
+      "En ese momento, mi mente técnica tomó el camino ingenuo:",
+      "“¿Qué tan complicado puede ser? Configuro un par de claves de acceso (API keys), compilo el asunto y listo.”",
+      "Qué ternura de optimismo.",
+      "El correo electrónico moderno no es simplemente un montón de texto inofensivo metido en una tabla. Es comprobación de identidad, cadenas enteras de mensajes encadenados, código HTML viejo y desordenado, archivos adjuntos de procedencia dudosa, permisos estrictos en la nube y aproximadamente diecisiete maneras distintas de convertir una tarde tranquila de código en una brecha de seguridad seria.",
+      "EmailVault nació como una herramienta para rescatar correos hilo por hilo. La idea básica era abrir una conversación crítica en Gmail, guardarla en una carpeta bajo mi control total y asegurar que Google no fuera el único guardián de esa información. Mi objetivo nunca fue alimentar un modelo masivo de inteligencia artificial con todo mi historial para que luego invente respuestas; no tiene sentido regalarle datos privados a la máquina sin necesidad.",
+      "La meta siempre fue la utilidad práctica y a largo plazo: lograr que los datos operativos sigan sirviendo décadas después. Un boletín técnico con un análisis de arquitectura que quieres repasar con calma. Un recibo que te va a salvar la vida cuando toque declarar impuestos. El hilo de un proyecto clave que servirá de contexto para un asistente local en tu computadora. En términos sencillos, buscaba una capa de datos portátil y soberana (es decir, archivos estándar que abres donde sea sin depender de pagarle una suscripción eterna a una sola empresa).",
+      "Al mismo tiempo quería bajarle al  [-.. . ... -- .- -.. .-. ](https://morsecodetranslator.com/es/?c=-..+.+...+--+.-+-..+.-.+.) del almacenamiento. Pero aquí aprendí un detalle técnico que de seguro engaña a mas de uno: cuando presionas \"Archivar\" en Gmail, el sistema no libera ni un solo kilobyte de espacio en disco. Lo único que hace es quitar el mensaje de tu vista principal y ocultarlo. Para recuperar espacio real hay que mandar el correo a la papelera y purgarlo por completo, una operación peligrosa donde un error de código borra datos importantes sin vuelta atrás.",
+      "Ese fue el primer choque de realidad. El segundo involucró el almacenamiento.",
+      "EmailVault sigue una filosofía \"local-first\" (prioriza guardar primero en tu propia máquina). El sistema escribe directamente en el disco duro, en una memoria USB o en una carpeta de tu computadora que esté vinculada a OneDrive. Darle al usuario el control de la ruta de destino es una buena práctica. Sin embargo, guardar archivos dentro de una carpeta sincronizada en el escritorio no equivale a programar una integración directa con la nube de Microsoft.",
+      "Escribir en una carpeta local es fácil porque el sistema operativo hace el trabajo sucio. En cambio, conectarse de forma nativa a la nube implica autenticarse contra Microsoft Graph (la interfaz de servicios de Microsoft), subir datos por bloques, vigilar caídas de conexión, renovar permisos y resolver conflictos cuando dos archivos se modifican a la vez. Una carpeta en el escritorio es un destino práctico para guardar cosas; no es un puente automático con la nube.",
+      "Y después llegó la conexión con Google.",
+      "Tener la arquitectura preparada para recibir permisos no significa que el sistema ya esté leyendo la bandeja de entrada en vivo. Hoy, EmailVault cuenta con parámetros protegidos, firmas de seguridad para evitar suplantaciones en el navegador, almacenamiento local cifrado para las credenciales de acceso y pruebas estrictas que vigilan el entorno privado. Es trabajo de ingeniería disciplinado. Pero la tarea de listar e importar hilos reales directo desde la API de Gmail sigue siendo el siguiente paso en la lista. Decir esto suena menos espectacular que anunciar una \"revolución de IA para tu correo\", pero tiene una ventaja superior: es la verdad.",
+      "Todo el diseño actual se rige bajo una regla operativa:",
+      "No toques Gmail hasta que la copia exportada esté guardada, cerrada y matemáticamente comprobada.",
+      "El proceso funciona como una cadena de pasos ordenados y desconfiados:",
+      "![Hilo de Gmail → Validar la identidad y los permisos → Clasificar el contenido → Limpiar el código peligroso → Generar los archivos universales → Escribir en la carpeta elegida → Validar los hashes de integridad (el \"checksum\", una huella digital matemática para confirmar que no se perdió ni un byte) → Registrar el historial de la operación → Y solo al final, decidir qué hacer con el correo original en la nube.](/images/journal/emailvault-flujo.svg)",
+      "Cada paquete que el sistema guarda contiene:",
+      "- El archivo crudo original (.eml, el formato estándar que entiende cualquier programa de correo desde hace 30 años).",
+      "- El texto plano y limpio.",
+      "- Los datos del mensaje ordenados en un JSON (remitente, fecha, destinatarios).",
+      "- Un manifiesto con las huellas digitales (hashes) de cada archivo.",
+      "- Una versión legible para humanos.",
+      "- Copias de los archivos adjuntos (únicamente cuando los datos se pudieron descargar y verificar en su totalidad).",
+      "Elegir el formato .eml y acompañarlo con un manifiesto de seguridad es el corazón del proyecto. Significa que, si el día de mañana abandono este software o la aplicación deja de existir, tus correos se pueden abrir en cualquier lector estándar sin quedar atrapados en una base de datos rara que nadie puede descifrar.",
+      "Además, antes de que el código HTML de un correo se muestre en pantalla, el sistema lo desinfecta por completo: elimina píxeles invisibles de rastreo publicitario, borra scripts ocultos y bloquea la descarga de estilos externos. Los nombres de los archivos adjuntos se tratan con extrema cautela para evitar que sobreescriban carpetas del sistema operativo. Una vez que todo está limpio, se escribe en el disco, se coteja que el peso coincida de forma exacta y solo entonces se da por cerrado el respaldo.",
+      "Incluso después de confirmar que el archivo está a salvo, alterar o borrar el correo original en Gmail sigue siendo un paso independiente.",
+      "Eso le permite al sistema garantizar con total honestidad:",
+      "“Aseguramos una copia local íntegra y verificada.”",
+      "Esto evita asumir compromisos falsos como asegurar que ya se limpió la nube, se vació espacio o se borró el origen. Son acciones con riesgos distintos, permisos separados y consecuencias que jamás deben mezclarse en un solo botón.",
+      "Lo verdaderamente interesante de este desarrollo no es que las cosas funcionen bien cuando la conexión es rápida y no hay errores.",
+      "La verdadera ingeniería está en las órdenes que el software se niega tajantemente a cumplir:",
+      "- Se niega a dar por bueno un respaldo si el disco no confirma que el tamaño del archivo y su huella digital coinciden.",
+      "- Se niega a confiar en un archivo adjunto que no haya podido verificar completo.",
+      "- Se niega a procesar limpieza o borrado en correos que no tengan una categoría clara.",
+      "- Se niega a borrar correos automáticamente solo para liberar espacio a la fuerza.",
+      "- Se niega a realizar cambios en la cuenta de Gmail mientras la copia local esté pendiente de validación.",
+      "Estas negativas no representan funciones incompletas; son el escudo de seguridad del sistema.",
+      "Para reforzar esto, el software incluye un planificador de revisiones de prueba (lo que en desarrollo llamamos dry-run o simulación en seco). Antes de hacer un solo movimiento real, el programa te muestra en pantalla qué categoría le asignó al correo, quién lo mandó, a qué carpeta propone guardarlo, qué sugiere hacer en Gmail y si considera obligatorio que un humano revise el caso antes de proceder. Actúa menos como una automatización ciega y más como un asistente cauteloso que prefiere pedir confirmación antes de tocar nada delicado.",
+      "La demostración pública del proyecto funciona exclusivamente con correos de prueba inventados ([example.com](https://example.com/)). No hay tokens de acceso expuestos, ni credenciales privadas, ni correos reales en riesgo. A través de la terminal o de la interfaz web local, se puede ver cómo clasifica, cómo empaqueta y cómo calcula las sumas de verificación sin comprometer datos auténticos.",
+      "En resumen, conviene tener claridad sobre el alcance:",
+      "- No es un servicio de respaldo masivo empresarial en tiempo real.",
+      "- No es un sistema de resguardo con validez jurídica o legal.",
+      "- No es un conector directo a los servidores de Microsoft 365.",
+      "- No es una plataforma para entrenar modelos de inteligencia artificial.",
+      "Es un motor de seguridad diseñado para capturar, verificar y blindar correos valiosos antes de que cualquier proceso de limpieza tenga permiso de correr.",
+      "Es una meta mucho más aterrizada que las promesas infladas a las que nos acostumbra la industria. Pero también es infinitamente más confiable.",
+      "El verdadero reto en el desarrollo de software nunca fue pegar credenciales en un archivo de configuración y cruzar los dedos para que todo salga bien. El reto real consistió en enseñarle al sistema a frenar en seco hasta demostrar, con certeza matemática, que la información importante quedó a salvo.",
+      "EmailVault no busca desaparecer tus correos.",
+      "Busca hacer que tus datos críticos te pertenezcan de verdad… antes de que el servidor de una empresa sea el único sitio donde todavía existen."
+    ],
+    "relatedLinks": [
+      {
+        "label": "En inglés",
+        "title": "I Thought EmailVault Needed API Keys. It Needed Boundaries.",
+        "href": "/journal/emailvault-needed-boundaries"
+      },
+      {
+        "label": "Laboratorio",
+        "title": "Ideas y herramientas en prueba",
+        "href": "/lab"
+      },
+      {
+        "label": "Contacto",
+        "title": "Hablemos de tu operación",
+        "href": "/es/contacto"
+      }
+    ]
+  },
+  {
     label: "Nota 1",
     slug: "un-dashboard-acumula-datos-un-centro-de-comando-asigna-realidad",
     title: "Un Dashboard Acumula Datos. Un Centro De Comando Asigna Realidad.",
@@ -99,6 +179,8 @@ export const spanishJournalSubheads = new Set([
 ]);
 
 export const spanishJournalStrongLines = new Set([
+  "No toques Gmail hasta que la copia exportada esté guardada, cerrada y matemáticamente comprobada.",
+  "EmailVault no busca desaparecer tus correos.",
   "El texto enruta el trabajo.",
   "Las malas etiquetas inventan juntas de 30 minutos.",
   "Las buenas etiquetas las eliminan.",

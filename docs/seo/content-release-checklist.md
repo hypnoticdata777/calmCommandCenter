@@ -18,6 +18,20 @@ Use this every time a new Field Note, Lab experiment, or Work case study becomes
 - After deploy, run `npm run validate:seo`.
 - Request indexing in Google Search Console when the note is important enough to push quickly.
 
+## Spanish Nota
+
+- Add the entry to `src/app/data/spanishJournal.ts`; `/es/notas` and `/es/notas/:slug` consume it automatically.
+- Preserve the supplied Spanish accents, paragraphs, date, label, category, excerpt, and reading time.
+- Use the existing emphasis sets for key lines. Body strings support `[label](https://...)` links and `![descriptive alt](/images/journal/name.svg)` local images; raw HTML is never interpreted.
+- Store public diagrams under `public/images/journal/`, with descriptive alt text. Never publish private Gmail attachment URLs.
+- Add the URL and date to `public/sitemap.xml`; update the Spanish index `lastmod`.
+- Add expected article and breadcrumb schemas to `scripts/validate-seo.mjs`. The prerender script discovers Spanish entries automatically.
+- When an English counterpart exists, connect both directions in the Navbar language maps.
+- Spanish listen controls request `es-MX`; available voices depend on the browser. Markdown links read their labels and images read their alt text.
+- Update the README route inventory and SEO progress log, and add a release record.
+- Run tests, lint, `build:check`, and `validate:performance`. Inspect generated canonical metadata, `BlogPosting`, breadcrumbs, and sitemap inclusion.
+- After deployment, run `validate:seo` and check both language-switch directions, narration, diagram, and external links in a browser.
+
 ## Work Case Study
 
 - Add or update the case-study data in `src/app/data/workCaseStudies.ts`.
