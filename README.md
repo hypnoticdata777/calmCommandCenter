@@ -26,7 +26,7 @@ The first ten SEO organization passes are complete.
 - **V9 metadata validation:** added a reusable live SEO validator, confirmed all sitemap routes, verified route-specific metadata and structured data, checked social image availability, and logged the first Search Console indexing request.
 - **V10 breadcrumbs and performance:** added BreadcrumbList structured data across non-home routes, upgraded the live SEO validator to enforce breadcrumb quality, added a performance budget script, and created a public content release checklist.
 
-Current SEO status: V10 is live and the current content set now targets 23 sitemap routes after the Spanish first-pass routes and Field Note 10. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
+Current SEO status: V10 is live and the current content set now targets 24 sitemap routes after the Spanish first-pass routes, Field Note 10, and Spanish Nota 2. Public sitemap routes return route-specific static HTML with their own titles, canonical URLs, fallback content, structured data, social metadata, and breadcrumb schema before React loads. The remaining owner-side indexing work is inside Google Search Console: repeat URL Inspection and Request Indexing for the highest-priority non-home pages after new posts deploy.
 
 See [`docs/seo/seo-progress-log.md`](docs/seo/seo-progress-log.md), [`docs/seo/live-validation-2026-08-31.md`](docs/seo/live-validation-2026-08-31.md), [`docs/seo/static-prerender-2026-08-31.md`](docs/seo/static-prerender-2026-08-31.md), [`docs/seo/metadata-validation-2026-08-31.md`](docs/seo/metadata-validation-2026-08-31.md), [`docs/seo/performance-and-breadcrumbs-2026-08-31.md`](docs/seo/performance-and-breadcrumbs-2026-08-31.md), and [`docs/seo/content-release-checklist.md`](docs/seo/content-release-checklist.md) for the completed SEO work, live checks, challenges, and next rollout steps.
 
@@ -119,6 +119,8 @@ The repo also includes an interactive requirements brief that separates the two 
 | `/journal/the-silent-killer-of-property-management-operations` | Field Note 5 article page |
 | `/journal/thursday-night-chaos-git-bouncers-and-the-illusion-of-freedom` | Field Note 6 article page |
 | `/journal/the-ghost-house-and-the-math-boogeyman` | Field Note 7 article page |
+| `/es/notas` | Spanish notes index with Nota 2 and Nota 1 |
+| `/es/notas/emailvault-necesitaba-fronteras` | Nota 2: EmailVault, Gmail OAuth, and preservation boundaries |
 | `/lab` | Testing shelf for m3ldSync, VendorRadar, and experiments that have not earned Work yet |
 | `/work` | Case studies shipped: PM Ops Map, TechSync Ops, and TurnFlow Home |
 | `/work/pm-ops-map` | PM Ops Map case study page |
@@ -322,3 +324,16 @@ The light theme switches the brand accent to `#0e7490` and adjusts the animated 
 ## Attributions
 
 See [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) for licensing details on third-party components and assets.
+
+## Spanish Nota 2
+
+Added the supplied Spanish EmailVault article dated October 18, 2026 at
+`/es/notas/emailvault-necesitaba-fronteras`. It uses the existing Spanish preview
+and article layout, related links, metadata, and browser listen controls. The
+Morse-code joke remains a clickable link with its exact query string. The supplied
+workflow diagram is transcribed into the local SVG
+`public/images/journal/emailvault-flujo.svg`, with the complete workflow as alt
+text. The language switch connects this note with English Field Note 10.
+
+See [the release record](docs/seo/nota-2-emailvault-2026-10-18.md) for implementation,
+validation, and remaining deployment checks.

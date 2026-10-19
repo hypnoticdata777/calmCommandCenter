@@ -134,6 +134,7 @@ export function SpanishJournal() {
                     className="space-y-8 overflow-hidden"
                   >
                     <ArticleListenControls
+                      lang="es-MX"
                       title={entry.title}
                       readTime={entry.readTime}
                       sections={entry.sections}

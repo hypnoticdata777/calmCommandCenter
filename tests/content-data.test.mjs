@@ -107,3 +107,43 @@ test("internal related links point to known site routes", async () => {
     );
   }
 });
+
+test("Spanish Nota 2 preserves its public links, image, and metadata", async () => {
+  const { spanishJournalEntries } = await loadContentData();
+  const entry = spanishJournalEntries.find((item) => item.label === "Nota 2");
+  assert.ok(entry);
+  assert.equal(entry.dateISO, "2026-10-18");
+  assert.equal(entry.slug, "emailvault-necesitaba-fronteras");
+  assert.ok(entry.sections.some((text) => text.includes("https://morsecodetranslator.com/es/?c=-..+.+...+--+.-+-..+.-.+.")));
+  assert.ok(entry.sections.some((text) => text.includes("/images/journal/emailvault-flujo.svg")));
+  assert.ok(entry.sections.every((text) => !text.includes("mail.google.com")));
+  assert.ok(entry.relatedLinks.some((link) => link.href === "/journal/emailvault-needed-boundaries"));
+});
+
+test("article body renders the Morse link and local diagram without raw markup", async () => {
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { JournalBody } = await vite.ssrLoadModule("/src/app/components/JournalBody.tsx");
+  const { spanishJournalEntries } = await loadContentData();
+  const entry = spanishJournalEntries.find((item) => item.label === "Nota 2");
+  const html = renderToStaticMarkup(createElement(JournalBody, {
+    sections: entry.sections, subheads: new Set(), strongLines: new Set(),
+  }));
+  assert.ok(html.includes('href="https://morsecodetranslator.com/es/?c=-..+.+...+--+.-+-..+.-.+."'));
+  assert.match(html, /<img[^>]+src="\/images\/journal\/emailvault-flujo.svg"[^>]+alt="Hilo de Gmail/);
+  assert.ok(!html.includes("[image.png]"));
+});
+
+test("article body never interprets unsafe links, external images, or raw HTML", async () => {
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { JournalBody } = await vite.ssrLoadModule("/src/app/components/JournalBody.tsx");
+  const html = renderToStaticMarkup(createElement(JournalBody, {
+    sections: ['[unsafe](javascript:alert(1))', '<script>alert(1)</script>', '![image](http://example.com/image.png)'],
+    subheads: new Set(), strongLines: new Set(),
+  }));
+  assert.ok(!html.includes("<a "));
+  assert.ok(!html.includes("<script>"));
+  assert.ok(!html.includes("<img"));
+  assert.ok(html.includes("&lt;script&gt;"));
+});

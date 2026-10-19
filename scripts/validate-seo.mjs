@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 
 const expectedTypesByPath = new Map([
+  ["/es/notas/emailvault-necesitaba-fronteras", ["WebSite", "Person", "BlogPosting", "BreadcrumbList"]],
   ["/journal", ["WebSite", "Person", "Blog", "BreadcrumbList"]],
   [
     "/journal/the-hackathon-blew-a-gasket",

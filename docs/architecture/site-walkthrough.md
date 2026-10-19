@@ -268,3 +268,23 @@ site is still a React SPA but needs direct URLs that Google and social preview
 tools can read immediately. After each publish, the validator checks every live
 sitemap route, metadata, schema, social image, and breadcrumb before we call it
 done."
+
+## Spanish articles and limited body markup
+
+Spanish content lives in `src/app/data/spanishJournal.ts`. Both the expandable
+`SpanishJournal` index and `SpanishJournalEntry` route reuse `JournalBody` and
+`ArticleListenControls`. Adding a data entry also adds its static SEO page through
+`buildSpanishJournalRoutes`; sitemap entries and live validator schema expectations
+still require explicit updates.
+
+`JournalBody` interprets only inline HTTPS Markdown links and standalone images
+under `/images/journal/` with lowercase filenames and SVG, PNG, or WebP extensions.
+Other text stays escaped by React, including raw HTML and unsupported URL schemes.
+The existing heading/emphasis sets still select exact lines. Local diagrams need
+complete descriptive alt text; narration reads that text and link labels rather
+than Markdown syntax or URLs. Spanish callers pass `lang="es-MX"` to speech synthesis.
+English callers retain the browser's existing language selection.
+
+Nota 2 pairs `/es/notas/emailvault-necesitaba-fronteras` with
+`/journal/emailvault-needed-boundaries` through the Navbar's two language maps.
+See [its release record](../seo/nota-2-emailvault-2026-10-18.md).
