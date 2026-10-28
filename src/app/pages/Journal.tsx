@@ -1559,6 +1559,7 @@ export function Journal() {
                     />
                     <JournalBody
                       sections={entry.sections}
+                      compactImages={entry.slug === "why-automated-fixes-break-production-systems"}
                       subheads={journalSubheads}
                       strongLines={journalStrongLines}
                     />

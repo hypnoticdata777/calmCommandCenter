@@ -14,12 +14,14 @@ function inlineContent(text: string) {
 
 type JournalBodyProps = {
   sections: string[];
+  compactImages?: boolean;
   subheads: ReadonlySet<string>;
   strongLines: ReadonlySet<string>;
 };
 
 export function JournalBody({
   sections,
+  compactImages = false,
   subheads,
   strongLines,
 }: JournalBodyProps) {
@@ -28,13 +30,28 @@ export function JournalBody({
       {/* Strings support HTTPS links and local article images, never raw HTML. */}
       {sections.map((section, index) =>
         /^!\[[^\]]+\]\(\/images\/journal\/[a-z0-9-]+\.(?:svg|png|webp)\)$/.test(section) ? (
-          <figure key={`${index}-${section}`}>
+          <figure
+            key={`${index}-${section}`}
+            className={compactImages ? "mx-auto w-full max-w-[560px]" : undefined}
+          >
             <img
               src={section.match(/\]\(([^)]+)\)$/)![1]}
               alt={section.match(/^!\[([^\]]+)\]/)![1]}
               className="h-auto w-full rounded border border-foreground/10"
               loading="lazy"
             />
+            {compactImages && (
+              <figcaption className="mt-2 text-center text-sm text-foreground/60">
+                <a
+                  href={section.match(/\]\(([^)]+)\)$/)![1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 hover:text-brand"
+                >
+                  View full-size image (opens in a new tab)
+                </a>
+              </figcaption>
+            )}
           </figure>
         ) : subheads.has(section) ? (
           <h3
