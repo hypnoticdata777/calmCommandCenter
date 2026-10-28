@@ -1248,13 +1248,23 @@ export const journalEntries = [
       "I pushed a minor documentation edit, and the system ran its routine security check on outside code. Alarms immediately went off over a newly discovered code execution flaw in a third-party library, along with a memory issue buried three layers deep.",
       "If you trust your package manager implicitly, the instinct is to run the automated “fix everything” command.",
       "But blind automation is dangerous. That auto-fix would have downgraded our core file-storage system just to satisfy a nested warning. In remote operations, that is the equivalent of a maintenance tech fixing a leaky faucet by permanently shutting off the building's main water line. The warning is gone, but the building is unlivable.",
+
+      "![Actual TurnFlow dependency diff showing targeted Next.js and zod upgrades and the zod override, avoiding the suggested storage downgrade.](/images/journal/fn-eleven-dependency-fix.png)",
+      "Source evidence: this card reproduces the package changes from [TurnFlow Home commit ec4bb76](https://github.com/hypnoticdata777/turnflow-home/commit/ec4bb76993b33a3a08fa074e32fe06e5fab4a3b0). It is not a screenshot of the audit warning. The suggested storage downgrade was avoided, not applied.",
       "At the same time, bringing new people into a system creates immediate vulnerability.",
       "When you invite a contractor to your app, letting their web browser handle access rights opens the door to chaos. If you build a signup form asking the user to input their email and select their role, you are effectively handing a random vendor a master key and trusting them to enforce their access boundaries.",
       "Worse, if your system trusts the client, a simple double-click on a signup button creates race conditions and duplicate accounts in milliseconds.",
       "The solution is to manage code the same way you manage remote physical contractors: verify everything at the source.",
       "When security alerts pop up, review them manually. Selectively upgrade only the broken pieces and force the system to use patched versions without touching the rest of the foundation. Then, wipe the environment, run a clean installation from scratch, and push it through the test suite. If it can't survive a clean install, it doesn't ship.",
       "For inviting users, strip the trust from the client. My signup forms have no email fields and no role selectors.",
+
+      "![Original TurnFlow Home demo screenshot showing invitation signup with a read-only invited email, name and password fields, and no role selector.](/images/journal/fn-eleven-invite-signup.png)",
+      "The original repository screenshot uses synthetic demo data. The invited email is displayed read-only, not accepted as an editable email input; the server reads both email and role from the invitation record.",
       "The server reads a hidden invite token, checks the database, and locks their identity on the backend. I kill race conditions directly at the database level by requiring a strict one-to-one match when claiming an invitation. A double-click just bounces harmlessly off the database constraints.",
+
+      "![TurnFlow source excerpt conditionally claiming only pending invitations, followed by historical clean-install verification recorded in the repository.](/images/journal/fn-eleven-invite-claim.png)",
+      "The single-claim guard is an atomic conditional update: only an invitation still marked pending can be claimed. User email uniqueness is a separate database constraint. The full signup sequence is not one transaction. Verification results shown are historical repository records, not a fresh test run.",
+      "Inspect the [invitation implementation](https://github.com/hypnoticdata777/turnflow-home/blob/6a86af59798316388bca9dd90947d843ee99a40d/lib/actions/invites.ts#L335-L345) and [recorded verification](https://github.com/hypnoticdata777/turnflow-home/blob/6a86af59798316388bca9dd90947d843ee99a40d/docs/07-refinement/build-log/2026-10.md).",
       "If you are building an app or managing operations right now:",
       "• Review security alerts manually and isolate the upgrades",
       "• Separate your security scans from routine text updates",
