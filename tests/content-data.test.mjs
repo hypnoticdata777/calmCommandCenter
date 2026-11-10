@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { createServer } from "vite";
 
 let vite;
@@ -146,4 +147,23 @@ test("article body never interprets unsafe links, external images, or raw HTML",
   assert.ok(!html.includes("<script>"));
   assert.ok(!html.includes("<img"));
   assert.ok(html.includes("&lt;script&gt;"));
+});
+
+
+test("Field Note 12 preserves source links and ships every referenced evidence image", async () => {
+  const { journalEntries } = await loadContentData();
+  const entry = journalEntries.find((item) => item.label === "Field Note 12");
+  assert.ok(entry && !entry.comingSoon);
+  assert.equal(entry.title, "Caffeine, Context, and CI/CD: Engineering Apps as Extensions of Ourselves");
+  assert.equal(entry.slug, "caffeine-context-and-ci-cd");
+  assert.ok(entry.sections.some((text) => text.includes("https://historyofinformation.com/detail.php?entryid=4640")));
+  assert.ok(entry.sections.some((text) => text.includes("https://softpanorama.org/Commercial_linuxes/Android/history.shtml")));
+  const images = entry.sections.flatMap((text) => [...text.matchAll(/!\[[^\]]+\]\((\/images\/journal\/[^)]+)\)/g)].map((match) => match[1]));
+  assert.equal(images.length, 5);
+  for (const image of images) {
+    const bytes = await readFile(new URL(`../public${image}`, import.meta.url));
+    assert.equal(bytes.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+  }
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  assert.ok(sitemap.includes(`https://h777.dev/journal/${entry.slug}`));
 });
