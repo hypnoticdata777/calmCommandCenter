@@ -158,6 +158,14 @@ test("Field Note 12 preserves source links and ships every referenced evidence i
   assert.equal(entry.slug, "caffeine-context-and-ci-cd");
   assert.ok(entry.sections.some((text) => text.includes("https://historyofinformation.com/detail.php?entryid=4640")));
   assert.ok(entry.sections.some((text) => text.includes("https://softpanorama.org/Commercial_linuxes/Android/history.shtml")));
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { JournalBody } = await vite.ssrLoadModule("/src/app/components/JournalBody.tsx");
+  const html = renderToStaticMarkup(createElement(JournalBody, {
+    sections: entry.sections, subheads: new Set(), strongLines: new Set(),
+  }));
+  assert.ok(html.includes('href="https://youtu.be/Lj4adAAHa68?si=9xOAtVHH5maevYDA&amp;t=48"'));
+  assert.ok(html.includes('>King Kong ain’t got nothing on me right now.</a>'));
   const images = entry.sections.flatMap((text) => [...text.matchAll(/!\[[^\]]+\]\((\/images\/journal\/[^)]+)\)/g)].map((match) => match[1]));
   assert.equal(images.length, 5);
   for (const image of images) {
