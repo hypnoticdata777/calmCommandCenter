@@ -1376,7 +1376,7 @@ export const journalEntries = [
       "![Conceptual comparisons showing that closed does not mean locked, approved does not mean paid, and completed does not mean resolved.](/images/journal/fn-twelve-boolean-trap.png)",
       "The Engineering Behind the Magic",
       "There’s frequent talk in this field about designing apps that feel like magic—smooth and instinctive extensions of ourselves. But magic isn’t real. Magic is just exhausting, paranoid engineering disguised as convenience.",
-      "Code written by amateurs works solely under ideal conditions. Elite engineers understand that the most dangerous failures often come from systems behaving exactly as designed, while the real world behaves entirely differently than the design assumed.",
+      "Getting software to work under ideal conditions is only the beginning. The harder engineering work is finding where those assumptions break—because some of the most dangerous failures happen when the code follows its instructions perfectly, but the world doesn’t follow the plan.",
       "Back to the espresso. Time to finish this degree and ship the next module."
     ],
     "relatedLinks": [
