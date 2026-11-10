@@ -6,6 +6,8 @@ format: Problem -> Algorithm -> Pseudocode -> Flowchart.
 Use it when you need to explain what the project does, how it works, and how
 the main logic moves from a visitor opening the site to seeing the correct page.
 
+For the authoritative current topology and directory tree, read [Site Architecture & Project Topology](site-walkthrough.md). This algorithm companion was reconciled November 10, 2026.
+
 ## Problem
 
 The project needs to present Carlos Sanchez's property management operations
@@ -283,3 +285,29 @@ This setup separates responsibilities:
 
 That is why the project is not just a group of pages. It is a small content and
 case-study system.
+
+
+## Current Media, Localization, and Build Boundaries
+
+The runtime also includes `/es`, `/es/contacto`, `/es/notas`, and `/es/notas/:slug`. Spanish article data lives in `spanishJournal.ts`. Language pairing is explicit in Navbar maps, not automatic translation. Current sitemap coverage is 26 public page URLs.
+
+```text
+FOR each article section:
+    IF section is a supported local image:
+        render figure and image button
+        look up an optional caption by image path
+        render smaller italic source caption inside figure
+        allow opening the original asset
+    ELSE IF section matches an exact heading/emphasis entry:
+        render that presentation
+    ELSE:
+        render escaped text with supported HTTPS links
+
+WHEN image button activates:
+    open native modal dialog
+    contain focus and lock background scrolling
+WHEN Close, Escape, outside click, or article navigation occurs:
+    close dialog and restore appropriate focus/scroll state
+```
+
+The runtime uses `createRoot`, not hydration. Static generation builds route-specific head information and limited fallback HTML, not a full rendered article. Public images/downloads are copied static assets, not additional React routes. Caption data is separate from narrative sections and is not part of the title/section speech array. The Tools-directory redesign remains a proposal.

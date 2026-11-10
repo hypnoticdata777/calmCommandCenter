@@ -4,6 +4,8 @@ This guide turns the architecture docs into practice. Use it when you want to
 explain the h777 codebase out loud without freezing or drifting into vague
 answers.
 
+Current implementation/topology reference: [Site Architecture & Project Topology](site-walkthrough.md). Teaching guide reconciled November 10, 2026.
+
 ## Goal
 
 Be able to explain:
@@ -37,7 +39,7 @@ Use this when someone asks, "How does your site work?"
 > route-specific static HTML at build time so crawlers and social previews can
 > read each public page immediately. After deploy, `validate-seo.mjs` checks the
 > live site for titles, descriptions, canonical URLs, JSON-LD schema,
-> breadcrumbs, sitemap routes, and social images.
+> breadcrumbs, sitemap routes, and social images. The build supplies limited fallback content; the complete article mounts in the browser with `createRoot`, not `hydrateRoot`.
 >
 > The main tradeoff is that some route metadata is duplicated across React,
 > sitemap, prerender, and validation files. It works, and it is guarded by a
@@ -167,7 +169,7 @@ Important terms:
 - BreadcrumbList
 - sitemap
 - prerender
-- hydration
+- client mounting with `createRoot` (not hydration)
 
 ## Follow A Request Through The Code
 
@@ -355,3 +357,17 @@ Say this when you need to remind yourself you actually know the code:
 > content arrays, reusable render templates, SEO metadata, static prerendering,
 > and validation scripts. If I can trace a URL to a component, a component to
 > its data, and the data to its SEO output, I can explain the system.
+
+
+## Current Journal Media Drill
+
+Explain these files together: `JournalBody.tsx`, `journalImageCaptions.ts`, `Journal.tsx`, and `JournalEntry.tsx`.
+
+1. Article sections contain controlled text and local image references.
+2. English callers pass a separate image-path caption map.
+3. A figure groups the image, smaller italic source note, and original-image link.
+4. FN 11/12 opt into a 560px cap; other callers retain the default layout.
+5. A keyboard-accessible button opens a native dialog. Explain dismissal, focus, scroll restoration, and cleanup when articles change.
+6. Speech uses title/sections; captions are not ordinary speech sections.
+
+Distinguish eight committed content/rendering tests from temporary Playwright interaction checks. Explain that the performance script budgets bundles and Work images, not Journal images or ZIP downloads. Keep current implemented navigation separate from the unimplemented Tools proposal.
