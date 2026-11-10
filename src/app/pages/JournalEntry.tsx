@@ -127,7 +127,7 @@ export function JournalEntry() {
 
         <JournalBody
           sections={entry.sections}
-          compactImages={entry.slug === "why-automated-fixes-break-production-systems"}
+          compactImages={["why-automated-fixes-break-production-systems", "caffeine-context-and-ci-cd"].includes(entry.slug)}
           subheads={journalSubheads}
           strongLines={journalStrongLines}
         />
