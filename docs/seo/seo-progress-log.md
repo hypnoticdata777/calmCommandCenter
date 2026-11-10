@@ -1,10 +1,14 @@
 # h777 SEO Progress Log
 
-Last updated: 2026-09-14
+Last updated: 2026-11-10
 
 ## Current Status
 
-The h777 portfolio now has a real SEO foundation for the current React/Vite stack. Every main page, Field Note, and Work case study has a dedicated URL, route-aware metadata, article metadata, a reliable PNG social preview path, local screenshot assets for the current Work case studies, internal links that connect Journal, Lab, and Work, Google Search Console ownership, a submitted sitemap, static SEO HTML generation for all 16 current public sitemap routes, a repeatable live SEO validator, breadcrumb structured data, and a performance budget baseline.
+The current repository defines **26 public sitemap routes**, including 12 English Field Notes, two Spanish notes, and three Work case studies. The build generates per-route metadata, schema, and limited fallback HTML; the complete UI mounts with React `createRoot` rather than hydrating a fully rendered article. Client navigation updates metadata through `Seo.tsx`.
+
+FN 11/12 include compact evidence images, separate italic captions, accessible native image dialogs, and preserved source links. Active favicons use 16/32/64px PNGs with an ICO fallback. Downloads include archives and social kits.
+
+The release records below distinguish historical live checks from locally prepared changes. This documentation reconciliation does not establish fresh production deployment, indexing, or external social-preview validation. The [architecture reference](../architecture/site-walkthrough.md) describes the current topology.
 
 ## Completed
 
@@ -253,11 +257,26 @@ Built and prepared:
 - Updated README, architecture guidance, and the content release checklist.
 - See [the release record](nota-2-emailvault-2026-10-18.md) for validation and post-deployment steps. These changes do not establish a live deployment.
 
+### 2026-10-25 through 2026-11-10 — FN 11/12, Media, Downloads, and Favicon
+
+- Added `/journal/why-automated-fixes-break-production-systems` and `/journal/caffeine-context-and-ci-cd`; the sitemap/prerender route count is now 26.
+- Revised FN 11 without changing its published title or slug. Distinguished the avoided storage downgrade, server-side identity/role enforcement, and the atomic claim from surrounding signup operations.
+- Added FN 12 with the owner's title, six headings, original source links, and the exact timestamped video URL. Corrected runner pinning, event-ordering/test-layer explanations, and the distinction between recording lines and total diff additions.
+- Added three FN 11 visuals and five FN 12 visuals. Replaced the duplicated Boolean-code card with explicitly labeled AI-generated checkmark/lock artwork encoded as WebP.
+- Moved eight evidence notes into `journalImageCaptions.ts`. Added smaller italic figure captions and image enlargement with keyboard support, native dialog focus handling, dismissal, and scroll restoration.
+- Kept FN 11/12 figures centered at a 560px maximum in articles and expanded Journal previews.
+- Added the HTML-only portfolio study/review package, FN 11 PDF carousel, retrospective HTML/ZIP, and session archive/FN 12 LinkedIn ZIP kit. The Tools-directory proposal remains unimplemented.
+- Enlarged favicon artwork; added 16/32/64px PNGs and a 16/32/48px ICO. Updated the app shell and prerender head, using new asset paths for cache refresh.
+- Eight content/rendering tests and the local type/build/lint/performance checks passed in the prior implementation session. Temporary Chromium checks covered desktop/mobile figures, captions, dialogs, and overflow; these are not a committed browser-test suite.
+- Reconciled the README, architecture reference, glossary, teaching companions, and release procedure with the implementation on November 10. Historical reports/archives remain dated snapshots.
+- Documentation-review verification: 27 local Markdown links resolved, all 26 sitemap paths appeared in the README, and eight tests plus type/build/lint/performance checks passed locally. No production validation was run.
+- See [FN 12's release record](field-note-12-2026-11-09.md) and the [current release checklist](content-release-checklist.md).
+
 ## Challenges
 
-- The site is still a Vite single-page React app for the user experience, but V8 now gives every public sitemap route its own static SEO HTML before hydration.
+- The site is still a Vite single-page React app for the user experience, but V8 now gives every public sitemap route its own static SEO HTML before client mounting.
 - The Journal and Work pages were originally long overview pages. They needed dedicated URL structure without disrupting the existing visual experience.
-- The Work overview and new Work case-study data currently duplicate some content. This is acceptable short term, but future updates should reduce drift by making the overview read from the shared data file.
+- The Work overview now consumes `workCaseStudies.ts`; its overview-specific descriptions, badges, and screenshot selections remain local and still require coordinated editorial updates.
 - Social previews now use a PNG card, but live social preview validation still needs to happen after Vercel deploys the change.
 - The current Work screenshot set is now local. TechSync Ops and TurnFlow Home now match their latest README screenshot sets.
 - V6 added meaningful internal routes, but live crawler validation still needs to happen after deploy because the app remains client-rendered.
@@ -274,7 +293,7 @@ Built and prepared:
 3. Run external rich-result/schema checks against representative Journal and Work pages.
 4. Refresh TechSync Ops and TurnFlow Home screenshots again after their hosted demos are polished.
 5. Add specific share images for top case studies when public screenshots are final.
-6. Refactor Work overview to pull from `workCaseStudies.ts` to prevent copy drift.
+6. Keep the Work overview’s remaining local descriptions/badges aligned with shared case-study data; the overview already consumes `workCaseStudies.ts`.
 7. Run Search Console Core Web Vitals and mobile performance checks after Google has enough field data.
 8. Consider browser lab tooling for LCP, INP, CLS, and bundle attribution.
 

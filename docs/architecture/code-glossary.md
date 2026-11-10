@@ -4,6 +4,8 @@ This glossary explains the code patterns used in the h777 portfolio in practical
 language. It is written for explaining the repo out loud, not for memorizing
 abstract theory.
 
+Current topology and implementation status: [Site Architecture & Project Topology](site-walkthrough.md). Glossary reconciled November 10, 2026.
+
 ## App Startup Terms
 
 ### `createRoot`
@@ -328,10 +330,9 @@ route after the normal Vite build.
 
 ### Hydration
 
-When React takes over static HTML in the browser and makes it interactive.
+Hydration reuses server-rendered React markup with `hydrateRoot`.
 
-In h777: prerendered HTML gives crawlers content immediately; hydration gives
-visitors the full React app.
+In h777 this is **not** the startup mechanism: `main.tsx` uses `createRoot`, which mounts the client UI and replaces the build-time fallback inside `#root`. The metadata/fallback generator does not render the full article. Do not describe this app as hydrating its article pages.
 
 ### Validator
 
@@ -389,3 +390,26 @@ In h777:
 - "The current tradeoff is metadata duplication. The next mature architecture
   move would be a shared route manifest that generates sitemap, prerender data,
   and validation expectations from one source."
+
+
+## Journal Media and Downloads
+
+### `compactImages`
+
+Optional `JournalBody` prop, default false. FN 11/12 opt in to centered figures capped at 560px. The image can still be opened at full size.
+
+### `imageCaptions` and `figcaption`
+
+The image-path-keyed map in `journalImageCaptions.ts` is passed by English Journal callers. Source notes render as smaller italic `figcaption` content within a `figure`, not as narrative paragraphs. Supported HTTPS links are retained. These caption strings are not included in the article speech section array.
+
+### Native `dialog`
+
+A browser modal element opened with `showModal()`. Journal image buttons open it; Close, Escape, or an outside click dismisses it. Native modal behavior contains/restores focus, while the component manages background scroll restoration and closes on article changes. This depends on modern browser support.
+
+### Public asset vs. page route
+
+`public/images/...` and `public/downloads/...` become root-relative files copied to `dist`. They do not require React routes or sitemap page entries. Existing assets must be served before an SPA fallback.
+
+### Historical verification
+
+A recorded source-repository test result is evidence from that run, not proof that the current checkout or production site was tested again. A pushed commit, a merged PR, and a completed deployment are separate events.
