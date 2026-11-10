@@ -168,9 +168,19 @@ test("Field Note 12 preserves source links and ships every referenced evidence i
   assert.ok(html.includes('>King Kong ain’t got nothing on me right now.</a>'));
   const images = entry.sections.flatMap((text) => [...text.matchAll(/!\[[^\]]+\]\((\/images\/journal\/[^)]+)\)/g)].map((match) => match[1]));
   assert.equal(images.length, 5);
+  assert.ok(images.includes("/images/journal/fn-twelve-checkmark-lock.webp"));
+  assert.ok(entry.sections.some((text) => text.includes("door.closed === true does not imply door.locked === true")));
+  const { journalImageCaptions } = await vite.ssrLoadModule("/src/app/data/journalImageCaptions.ts");
+  assert.ok(journalImageCaptions["/images/journal/fn-twelve-checkmark-lock.webp"].includes("AI-generated editorial illustration"));
+  assert.doesNotMatch([...entry.sections, ...images.map((image) => journalImageCaptions[image] ?? "")].join(" "), /\bmeld\b/i);
   for (const image of images) {
     const bytes = await readFile(new URL(`../public${image}`, import.meta.url));
-    assert.equal(bytes.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+    if (image.endsWith(".webp")) {
+      assert.equal(bytes.subarray(0, 4).toString(), "RIFF");
+      assert.equal(bytes.subarray(8, 12).toString(), "WEBP");
+    } else {
+      assert.equal(bytes.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+    }
   }
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   assert.ok(sitemap.includes(`https://h777.dev/journal/${entry.slug}`));
