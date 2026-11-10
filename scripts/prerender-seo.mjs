@@ -630,7 +630,10 @@ function renderHead(route, assetHead) {
     <meta name="theme-color" content="#0f0f0f" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-v2-64.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-v2-16.png" />
+    <link rel="shortcut icon" href="/favicon.ico?v=2" />
     <link rel="canonical" href="${url}" />${alternateTags}
     <meta property="og:type" content="${route.type ?? "website"}" />
     <meta property="og:title" content="${escapeHtml(route.title)}" />
