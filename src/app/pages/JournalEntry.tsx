@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { journalImageCaptions } from "../data/journalImageCaptions";
 import { Link, useParams } from "react-router-dom";
 import { ArticleListenControls } from "../components/ArticleListenControls";
 import { JournalBody } from "../components/JournalBody";
@@ -127,6 +128,7 @@ export function JournalEntry() {
 
         <JournalBody
           sections={entry.sections}
+          imageCaptions={journalImageCaptions}
           compactImages={["why-automated-fixes-break-production-systems", "caffeine-context-and-ci-cd"].includes(entry.slug)}
           subheads={journalSubheads}
           strongLines={journalStrongLines}

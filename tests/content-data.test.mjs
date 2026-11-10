@@ -175,3 +175,27 @@ test("Field Note 12 preserves source links and ships every referenced evidence i
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   assert.ok(sitemap.includes(`https://h777.dev/journal/${entry.slug}`));
 });
+
+
+test("evidence captions render inside their figures and keep linked sources", async () => {
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { JournalBody } = await vite.ssrLoadModule("/src/app/components/JournalBody.tsx");
+  const { journalImageCaptions } = await vite.ssrLoadModule("/src/app/data/journalImageCaptions.ts");
+  const { journalEntries } = await loadContentData();
+  const entry = journalEntries.find((item) => item.label === "Field Note 12");
+  const caption = journalImageCaptions["/images/journal/fn-twelve-runner.png"];
+  assert.ok(caption);
+  assert.ok(!entry.sections.includes(caption));
+  const html = renderToStaticMarkup(createElement(JournalBody, {
+    sections: entry.sections,
+    imageCaptions: journalImageCaptions,
+    compactImages: true,
+    subheads: new Set(),
+    strongLines: new Set(),
+  }));
+  assert.equal((html.match(/<figcaption/g) ?? []).length, 5);
+  assert.match(html, /<figcaption[^>]*>[\s\S]*?<p class="italic">This is a text rendering/);
+  assert.ok(html.includes('href="https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/.github/workflows/canary.yml"'));
+  assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 5);
+});

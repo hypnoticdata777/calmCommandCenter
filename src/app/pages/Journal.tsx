@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { journalImageCaptions } from "../data/journalImageCaptions";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArticleListenControls } from "../components/ArticleListenControls";
@@ -1258,7 +1259,6 @@ export const journalEntries = [
       "The same standard belongs in the code.",
       "I reviewed the dependency paths, upgraded the affected packages, and added an override so a nested dependency resolved to the patched version without taking the suggested storage downgrade.",
       "![Actual TurnFlow dependency diff showing targeted Next.js and zod upgrades and the zod override, avoiding the suggested storage downgrade.](/images/journal/fn-eleven-dependency-fix.png)",
-      "Source evidence: this card reproduces the package changes from [TurnFlow Home commit ec4bb76](https://github.com/hypnoticdata777/turnflow-home/commit/ec4bb76993b33a3a08fa074e32fe06e5fab4a3b0). It is not a screenshot of the audit warning. The suggested storage downgrade was avoided, not applied.",
       "Then came the part that makes the change credible: a clean installation from the updated lockfile, followed by verification.",
       "The recorded checks passed: lint, type checks, tests, the production dependency audit, schema-drift checks, and the production build.",
       "That is evidence for the change. It is not a promise that nothing can go wrong.",
@@ -1272,7 +1272,6 @@ export const journalEntries = [
       "An email field or a role selector is not inherently insecure. The issue begins when the server treats a value submitted by the browser as proof that someone is entitled to that identity or permission.",
       "For this invite-only flow, the signup screen displays the invited email as read-only and has no role selector. The recipient supplies their name and password.",
       "![Original TurnFlow Home demo screenshot showing invitation signup with a read-only invited email, name and password fields, and no role selector.](/images/journal/fn-eleven-invite-signup.png)",
-      "The original repository screenshot uses synthetic demo data. The invited email is displayed read-only, not accepted as an editable email input; the server reads both email and role from the invitation record.",
       "But removing fields is not the security boundary.",
       "The server enforcing the invitation is the boundary.",
       "The server looks up the invitation, checks its validity, and takes the email and role from that record—not from editable form values.",
@@ -1287,8 +1286,6 @@ export const journalEntries = [
       "That makes the invitation claim atomic—not the entire signup process. Account creation and assignment remain separate steps, so failures between them still need handling.",
       "A unique email constraint provides another safeguard against duplicate accounts. It solves a different problem from preventing an invitation from being claimed twice.",
       "![TurnFlow source excerpt conditionally claiming only pending invitations, followed by historical clean-install verification recorded in the repository.](/images/journal/fn-eleven-invite-claim.png)",
-      "The single-claim guard is an atomic conditional update: only an invitation still marked pending can be claimed. User email uniqueness is a separate database constraint. The full signup sequence is not one transaction. Verification results shown are historical repository records, not a fresh test run.",
-      "Inspect the [invitation implementation](https://github.com/hypnoticdata777/turnflow-home/blob/6a86af59798316388bca9dd90947d843ee99a40d/lib/actions/invites.ts#L335-L345) and [recorded verification](https://github.com/hypnoticdata777/turnflow-home/blob/6a86af59798316388bca9dd90947d843ee99a40d/docs/07-refinement/build-log/2026-10.md).",
       "Those distinctions matter.",
       "A disabled button helps someone avoid a repeated action.",
       "A server check decides whether the action is allowed.",
@@ -1352,7 +1349,6 @@ export const journalEntries = [
       "Imagine trusting an automated system to watch your back, only for it to silently pull the rug out from under you. My automated safety checks completely flatlined on code that hadn’t even changed. The deployment died in one second before a single test could even run. The problem wasn’t my code; the hosted CI runner had moved to a newer operating-system image, and my pinned browser-testing tools did not support it. The migration had been announced in CI annotations, but I had missed the warning.",
       "Beneath my feet, the environment transformed. I pinned the browser-test jobs to Ubuntu 24.04 and added a weekly canary that deliberately runs on the unpinned runner. If that canary fails, it opens or updates an issue so I can investigate before moving the pin. Pinning buys stability; the canary keeps that stability from hiding the next compatibility problem.",
       "![Typeset supplied CI log excerpt and explanatory diagram showing pinned Ubuntu 24.04 browser jobs, an unpinned weekly canary, and issue reporting.](/images/journal/fn-twelve-runner.png)",
-      "This is a text rendering of the supplied log, not an original GitHub screenshot. The [pinned browser workflow](https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/.github/workflows/ci.yml) and [weekly canary](https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/.github/workflows/canary.yml) are committed source evidence; their tests were not rerun for this article.",
       "Test the Outcome, Not the Wires",
       "Those 1994 manufacturer apps were locked down and rigid. My initial “golden file” tests were acting the same way.",
       "After converting the tracking screen during our Phase 1B interface migration, 19 test cases failed purely on a wiring change. I hadn’t changed the behavior of the app at all. The problem was the test harness hashing raw HTML, which meant it was pinning invisible hooks like onclick=\"...\".",
@@ -1361,16 +1357,13 @@ export const journalEntries = [
       "If an app is an extension of a person, your tests have to act like a person.",
       "While recording tests for the refactor, I found a bug hiding in plain sight: typing a new name into a field and pressing “Enter” didn’t actually save the row. The Enter handler marked the edit as saved before calling blur(). The blur handler—the actual save path—saw that flag and skipped the write. It was an event-ordering mistake, not two operations literally happening at the same millisecond.",
       "![Actual diff removing the premature saved flag so Enter reaches the blur handler that performs the save.](/images/journal/fn-twelve-rename-fix.png)",
-      "The [rename fix](https://github.com/hypnoticdata777/pm-ops-map/commit/5ae3c9d) removes the premature saved flag. This card reproduces a source diff; it is not a screenshot of GitHub.",
       "The Playwright recording found the Enter bug, and a jsdom unit test written afterwards can reproduce it too. The real-browser layer caught another mistake that jsdom did not reproduce: removing the focused input during Escape could trigger blur and fall through to a save. These layers complement each other. Unit tests give fast feedback; real-browser tests exercise event and focus behavior that a simulated environment may not reproduce.",
       "![Real jsdom test excerpt and an explanatory browser-test sequence; both test layers contribute different evidence.](/images/journal/fn-twelve-test-layers.png)",
-      "Compare the [unit test](https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/js/__tests__/rename-task.test.js) with the [browser recording](https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/e2e/tracking-interactions.spec.js). A browser test automates interactions; it is not literally a human tester.",
       "Record the Change, Not the Whole World",
       "Because modern apps track so much preference data to remain context-aware, state management easily turns into a nightmare.",
       "When I first set up the Playwright recording to document the UI changes, it stored a full snapshot of the app at every single step. The first push had 25,308 added lines across the change, including 24,259 lines of recording files. It was far too much to review effectively. Twenty-six departments snapshotted repeatedly.",
       "I rewrote the logic to record the initial state in full, and then only log the diffs—what specifically changed between steps. The final recording files dropped to 5,330 lines, while the overall change fell to 6,416 additions and 324 deletions across 29 files. The earlier 5,133-line figure was before the final scenarios were added. These are different counts, but they tell the same story: the record became much easier to review.",
       "![Historical before-and-after counts: PR additions 25,308 to 6,416, recording lines 24,259 to 5,330.](/images/journal/fn-twelve-recording-delta.png)",
-      "Historical counts supplied with the article. The [recording-compaction commit](https://github.com/hypnoticdata777/pm-ops-map/commit/a47c04c) documents the change to initial state plus deltas. These figures are not a fresh performance measurement.",
       "The Operations Boolean Trap",
       "I see this exact same disconnect every single day managing physical operations. The mutations that survived the simulated test environment remind me of what happens in the field.",
       "A balcony door at our Sunnyside building? Steve went out to inspect it. The door closed and latched, which might have looked like a success to a rigid testing script. But he checked further and discovered the lock didn’t actually fully engage.",
@@ -1381,7 +1374,6 @@ export const journalEntries = [
       "• workOrder.completed === true does not imply problem.resolved === true.",
       "You can have three technically correct records and still have three massive operational failures.",
       "![Conceptual comparisons showing that closed does not mean locked, approved does not mean paid, and completed does not mean resolved.](/images/journal/fn-twelve-boolean-trap.png)",
-      "An explanatory analogy, not a customer record or a Property Meld screenshot.",
       "The Engineering Behind the Magic",
       "There’s frequent talk in this field about designing apps that feel like magic—smooth and instinctive extensions of ourselves. But magic isn’t real. Magic is just exhausting, paranoid engineering disguised as convenience.",
       "Code written by amateurs works solely under ideal conditions. Elite engineers understand that the most dangerous failures often come from systems behaving exactly as designed, while the real world behaves entirely differently than the design assumed.",
@@ -1691,6 +1683,7 @@ export function Journal() {
                     />
                     <JournalBody
                       sections={entry.sections}
+                      imageCaptions={journalImageCaptions}
                       compactImages={["why-automated-fixes-break-production-systems", "caffeine-context-and-ci-cd"].includes(entry.slug)}
                       subheads={journalSubheads}
                       strongLines={journalStrongLines}
