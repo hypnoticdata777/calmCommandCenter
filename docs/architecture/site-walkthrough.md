@@ -1,6 +1,6 @@
 # Site Architecture & Project Topology
 
-Last reconciled with repository code: **November 10, 2026**.
+Last reconciled with repository code: **November 11, 2026**.
 
 This is the primary, single-document reference for the implemented h777 portfolio:
 its system boundaries, directory structure, routes, content flow, rendering,
@@ -204,7 +204,7 @@ excerpt, sections, publication state, and related links.
 A `sections` string renders as a heading, emphasized paragraph, normal paragraph,
 or supported standalone image. The two sets select exact strings; there is no
 full Markdown parser. React escapes displayed text. Only explicit inline HTTPS
-Markdown links and local image paths matching the renderer's restricted pattern
+Markdown links, triple-star `***bold italic***` spans, and local image paths matching the renderer's restricted pattern
 are interpreted. Raw HTML, unsupported schemes, and arbitrary external image
 Markdown are not interpreted. This is a controlled-content renderer, not a
 comprehensive sanitizer for arbitrary uploaded HTML/SVG.
@@ -229,7 +229,7 @@ change closes an open dialog. Original-image links remain available in a new tab
 
 `ArticleListenControls` uses browser speech synthesis, chunking the title and
 sections, with play/pause/resume/restart/stop behavior. Markdown links normalize
-to labels; image strings normalize to alt text. Spanish callers request `es-MX`;
+to labels; image strings normalize to alt text; triple-star emphasis markers are removed. Spanish callers request `es-MX`;
 English callers retain browser language selection. Voice availability depends on
 the browser/platform; no portfolio speech API server is configured.
 
@@ -338,7 +338,7 @@ npm run validate:seo
 
 | Check | Scope / limitation |
 |---|---|
-| `test` | Eight current Node tests using Vite-loaded modules and React static markup. Content routes/links, controlled rendering, Spanish content, FN 12 assets, video URL, and captions. Not a complete browser/integration suite. |
+| `test` | Nine current Node tests using Vite-loaded modules and React static markup. Content routes/links, controlled rendering, Spanish content, FN 12 assets, video URL, and captions. Not a complete browser/integration suite. |
 | `lint` | Custom `lint-source.mjs` rules; not ESLint and not a full security audit. |
 | `typecheck` | Strict TypeScript checks for source and Vite config; no emitted app files. |
 | `build:check` | Type check, Vite build, and route metadata/fallback generation. |

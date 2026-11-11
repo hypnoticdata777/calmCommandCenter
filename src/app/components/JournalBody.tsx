@@ -1,13 +1,16 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 
-// Only explicit HTTPS links are supported; React escapes all displayed text.
+// Only explicit HTTPS links and triple-star bold/italic spans are supported.
+// React escapes all displayed text; raw HTML is never interpreted.
 function inlineContent(text: string) {
-  return text.split(/(\[[^\]]+\]\(https:\/\/[^\s)]+\))/g).map((part, index) => {
+  return text.split(/(\[[^\]]+\]\(https:\/\/[^\s)]+\)|\*\*\*[^*]+\*\*\*)/g).map((part, index) => {
     const link = part.match(/^\[([^\]]+)\]\((https:\/\/[^\s)]+)\)$/);
     return link ? (
       <a key={index} href={link[2]} className="text-brand underline underline-offset-4 hover:opacity-80">
         {link[1]}
       </a>
+    ) : /^\*\*\*[^*]+\*\*\*$/.test(part) ? (
+      <strong key={index}><em>{part.slice(3, -3)}</em></strong>
     ) : <Fragment key={index}>{part}</Fragment>;
   });
 }

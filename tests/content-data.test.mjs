@@ -209,3 +209,23 @@ test("evidence captions render inside their figures and keep linked sources", as
   assert.ok(html.includes('href="https://github.com/hypnoticdata777/pm-ops-map/blob/c0bb7bbaeea8b1a68e92eb8078ae16a087f20a05/.github/workflows/canary.yml"'));
   assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 5);
 });
+
+
+test("Field Note 12 editorial emphasis renders safely without losing links", async () => {
+  const { createElement } = await import("react");
+  const { renderToStaticMarkup } = await import("react-dom/server");
+  const { JournalBody } = await vite.ssrLoadModule("/src/app/components/JournalBody.tsx");
+  const { journalEntries } = await loadContentData();
+  const entry = journalEntries.find((item) => item.label === "Field Note 12");
+  assert.ok(entry.sections.some((text) => text.includes("classroom and the messy reality of the systems I’m building.")));
+  assert.ok(entry.sections.some((text) => text.includes("I recalibrated the harness to ignore dynamic event bindings and focus strictly on the structural output.")));
+  const html = renderToStaticMarkup(createElement(JournalBody, {
+    sections: [...entry.sections, '***<script>alert(1)</script>***'],
+    subheads: new Set(), strongLines: new Set(),
+  }));
+  assert.ok(html.includes("<strong><em>The problem</em></strong> wasn’t my code; <strong><em>the hosted CI runner had moved to a newer operating-system image, and my pinned browser-testing tools did not support it.</em></strong>"));
+  assert.ok(!html.includes("***"));
+  assert.ok(!html.includes("<script>"));
+  assert.ok(html.includes("<strong><em>&lt;script&gt;alert(1)&lt;/script&gt;</em></strong>"));
+  assert.ok(html.includes('href="https://youtu.be/Lj4adAAHa68?si=9xOAtVHH5maevYDA&amp;t=48"'));
+});

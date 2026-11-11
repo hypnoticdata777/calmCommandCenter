@@ -13,6 +13,7 @@ type ArticleListenControlsProps = {
 function normalizeSpeechText(value: string) {
   return value
     .replace(/!?\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\*\*\*([^*]+)\*\*\*/g, "$1")
     .replace(/[“”]/g, '"')
     .replace(/[‘’]/g, "'")
     .replace(/\s+/g, " ")

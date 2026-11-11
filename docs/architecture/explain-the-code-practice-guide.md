@@ -370,4 +370,4 @@ Explain these files together: `JournalBody.tsx`, `journalImageCaptions.ts`, `Jou
 5. A keyboard-accessible button opens a native dialog. Explain dismissal, focus, scroll restoration, and cleanup when articles change.
 6. Speech uses title/sections; captions are not ordinary speech sections.
 
-Distinguish eight committed content/rendering tests from temporary Playwright interaction checks. Explain that the performance script budgets bundles and Work images, not Journal images or ZIP downloads. Keep current implemented navigation separate from the unimplemented Tools proposal.
+Distinguish nine committed content/rendering tests from temporary Playwright interaction checks. Explain that the performance script budgets bundles and Work images, not Journal images or ZIP downloads. Keep current implemented navigation separate from the unimplemented Tools proposal.
