@@ -6,7 +6,7 @@ A public portfolio site for `h777`, built to showcase property management tools,
 
 For the single document covering system topology, project structure, runtime, content, build output, and deployment boundaries, read **[Site Architecture & Project Topology](docs/architecture/site-walkthrough.md)**.
 
-Documentation reconciled with the repository on November 10, 2026. Local implementation and historical production validation are distinguished below.
+Documentation reconciled with the repository on November 11, 2026. Local implementation and historical production validation are distinguished below.
 
 ## What It Is
 
@@ -325,7 +325,7 @@ vite.config.ts                    # React/Tailwind plugins and @ alias
 tsconfig.json                     # Browser TypeScript configuration
 tsconfig.node.json                # Vite configuration type checking
 scripts/                          # Build-time SEO, live SEO, lint, performance checks
-tests/content-data.test.mjs        # Eight current content/rendering tests
+tests/content-data.test.mjs        # Nine current content/rendering tests
 public/
   sitemap.xml                     # 26 current public page URLs
   robots.txt
@@ -404,6 +404,6 @@ npm run build:check
 npm run validate:performance
 ```
 
-The suite currently has eight tests; it covers content relationships, safe rendering, captions, original links, and referenced image signatures. Previous desktop/mobile interaction checks were temporary Playwright scripts, not a committed browser-test suite. Recheck dialogs, captions, speech, and full-size links manually or with a browser after UI changes.
+The suite currently has nine tests; it covers content relationships, safe rendering, captions, original links, and referenced image signatures. Previous desktop/mobile interaction checks were temporary Playwright scripts, not a committed browser-test suite. Recheck dialogs, captions, speech, and full-size links manually or with a browser after UI changes.
 
 Use the existing `work` branch review workflow: commit, push, open/review a PR to `main`, merge, then verify the hosting deployment and run `npm run validate:seo`. A pushed commit or passing build is not production verification. See the [content release checklist](docs/seo/content-release-checklist.md).
