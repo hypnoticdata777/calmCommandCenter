@@ -64,8 +64,8 @@ export default function App() {
             transition={{ duration: 1.4, delay: 0.6, ease: "easeIn" }}
             className="text-lg text-foreground/60 leading-relaxed tracking-wide"
           >
-            Building software and systems for remote operations, service
-            workflows, and high-stakes handoffs.
+            Creating software and systems to support remote operations, service
+            workflows, and high-risk handoffs.
           </motion.p>
         </div>
 
@@ -79,13 +79,13 @@ export default function App() {
 
           <div className="space-y-6">
             <h2 className="text-brand text-display leading-tight font-bold tracking-[0.02em]">
-              Making messy operations behave themselves.
+              Transforming messy operations into controlled, manageable routines.
             </h2>
 
             <div className="space-y-4 text-foreground/80 leading-loose text-lg">
               <p className="italic">People, tools, clients, vendors, and timing.</p>
               <p className="italic">Scattered requests, proof, and follow-ups.</p>
-              <p className="italic">Work that needs to be visible and explainable.</p>
+              <p className="italic">Work requiring visibility and explanation.</p>
             </div>
           </div>
 
@@ -93,15 +93,15 @@ export default function App() {
 
           <div className="space-y-6">
             <p className="text-foreground/90 leading-loose text-lg">
-              I have worked remotely since 2013 across service, operations,
+              Since 2013, I have gained experience across service, operations,
               leadership, client communication, project coordination, and
-              high-stakes follow-up.
+              high-stakes follow-up, navigating the challenges and demands of each role.
             </p>
             <p className="text-foreground/60 leading-loose text-lg italic">
-              Property management sharpened the pattern: when the handoff
-              breaks, everything downstream gets louder. Now I turn that
+              The pattern became clearer through property management: a break in the
+              handoff causes everything downstream to amplify. Now, I turn that
               operating experience into tools, workflow experiments, and
-              practical systems for the messy middle of real work.
+              practical systems for the messy middle of actual work.
             </p>
           </div>
         </motion.div>
@@ -136,7 +136,7 @@ export default function App() {
         className="mt-32 flex flex-col items-center gap-5 relative z-10 w-full max-w-md"
       >
         <p className="text-foreground/45 tracking-wide leading-relaxed">
-          The journal holds the thinking. The lab tests the experiments. Work
+          The journal contains the thoughts. The lab tests the experiment. Work
           holds the tools that have earned a clearer case study.
         </p>
 
