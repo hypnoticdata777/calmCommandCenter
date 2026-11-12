@@ -120,14 +120,14 @@ function buildRoutes(journalEntries, workStudies, spanishSiteCopy, spanishJourna
   {
     path: "/",
     title: "h777 | Remote Operations Software and Workflow Tools",
-    headline: "Making messy operations behave themselves.",
+    headline: "Transforming messy operations into controlled, manageable routines.",
     description:
       "h777 is a public portfolio for remote operations software, workflow tools, field notes, and practical systems by Carlos Sanchez.",
     type: "website",
     section: "Home",
     paragraphs: [
-      "Building software and systems for remote operations, service workflows, and high-stakes handoffs.",
-      "The journal holds the thinking. The lab tests the experiments. Work holds the tools that have earned a clearer case study.",
+      "Creating software and systems to support remote operations, service workflows, and high-risk handoffs.",
+      "The journal contains the thoughts. The lab tests the experiment. Work holds the tools that have earned a clearer case study.",
     ],
     links: ["/journal", "/lab", "/work", "/contact"],
     alternates: {
